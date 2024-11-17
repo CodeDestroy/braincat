@@ -211,6 +211,12 @@
                             </div>
                         </div>
 
+                        <div>
+                            <label for="captcha" class="block text-sm font-medium text-grey-900">Введите код</label>
+                            <input class="jCaptcha" id="captcha" type="text" placeholder="Введите результат сюда">
+                        </div>
+                        
+
                         <!-- Кнопка регистрации -->
                         <div>
                             <button type="submit" class="w-full py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-800">
@@ -218,6 +224,36 @@
                             </button>
                         </div>
                     </form>
+                    <script>
+                        var myCaptcha = new jCaptcha({
+                            el: '.jCaptcha',
+                            canvas: {
+                                class: 'jCaptchaCanvas',
+                                style: {
+                                    // required properties for captcha stylings:
+                                    width: 100,
+                                    height: 15,
+                                    textBaseline: 'top',
+                                    font: '15px Arial',
+                                    textAlign: 'left',
+                                    fillStyle: '#ddd'
+                                }
+                            },
+                            // set callback function for success and error messages:
+                            callback: ( response, $captchaInputElement, numberOfTries ) => {
+                                if ( response == 'success' ) {
+                                    // success handle, e.g. continue with form submit
+                                }
+                                if ( response == 'error' ) {
+                                    // error handle, e.g. add error class to captcha input
+                    
+                                    if (numberOfTries === 3) {
+                                        // maximum attempts handle, e.g. disable form
+                                    }
+                                }
+                            }
+                        });
+                    </script>
                 </div>
             </div>
         </div>

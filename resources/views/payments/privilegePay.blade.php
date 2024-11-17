@@ -17,7 +17,7 @@
         
                 <!-- Robokassa Payment Button -->
                 <div class="text-center flex justify-center">
-                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=cjqYKabkt0yzMyvYu237Xg"></script>
+                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=MSjcwsBTE0mNRH0IFnFRjg"></script>
                 </div>
                 
                 <!-- Back Button -->
@@ -41,7 +41,7 @@
         
                 <!-- Robokassa Payment Button -->
                 <div class="text-center flex justify-center">
-                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=5jaJqLHxgkSUSAQ-YNyoUQ"></script>
+                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=TEA8IRRRakGF-H0TxeNy9A"></script>
                 </div>
                 <!-- Back Button -->
                 <div class="mt-4 text-center">

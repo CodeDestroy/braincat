@@ -131,7 +131,7 @@ class PaymentController extends Controller
     {   
 
         $user = User::find($request->user()->id);
-        $course = Course::where('id', '>', 1)->first();
+        $course = Course::where('id', '>=', 1)->first();
         /* $payment = Payment::create([
             'user_id' => $user->id,
             'course_id' => $course->id,
