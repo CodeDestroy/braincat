@@ -94,6 +94,13 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+canvas{
+  /*prevent interaction with the canvas*/
+  pointer-events:none;
+}
+</style>
+
 <div class="container mx-auto px-4">
     <div class="flex min-h-full justify-center">
         <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
@@ -105,7 +112,7 @@
                 </p>
 
                 <div class="mt-10">
-                    <form method="POST" action="{{ route('register') }}" class="space-y-6">
+                    <form onsubmit="submitForm(event)" method="POST" action="{{ route('register') }}" class="space-y-6">
                         @csrf
 
                         <!-- Фамилия -->
@@ -212,8 +219,10 @@
                         </div>
 
                         <div>
+                            <div id="captcha">
+                            </div>
                             <label for="captcha" class="block text-sm font-medium text-grey-900">Введите код</label>
-                            <input class="jCaptcha" id="captcha" type="text" placeholder="Введите результат сюда">
+                            <input id="cpatchaTextBox" type="text" required class="block w-full rounded-md border-0 outline-none accent-purple-800 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-800 sm:text-sm sm:leading-6">
                         </div>
                         
 
@@ -224,36 +233,7 @@
                             </button>
                         </div>
                     </form>
-                    <script>
-                        var myCaptcha = new jCaptcha({
-                            el: '.jCaptcha',
-                            canvas: {
-                                class: 'jCaptchaCanvas',
-                                style: {
-                                    // required properties for captcha stylings:
-                                    width: 100,
-                                    height: 15,
-                                    textBaseline: 'top',
-                                    font: '15px Arial',
-                                    textAlign: 'left',
-                                    fillStyle: '#ddd'
-                                }
-                            },
-                            // set callback function for success and error messages:
-                            callback: ( response, $captchaInputElement, numberOfTries ) => {
-                                if ( response == 'success' ) {
-                                    // success handle, e.g. continue with form submit
-                                }
-                                if ( response == 'error' ) {
-                                    // error handle, e.g. add error class to captcha input
-                    
-                                    if (numberOfTries === 3) {
-                                        // maximum attempts handle, e.g. disable form
-                                    }
-                                }
-                            }
-                        });
-                    </script>
+
                 </div>
             </div>
         </div>
@@ -262,4 +242,43 @@
         </div>
     </div>
 </div>
+<script defer>
+    createCaptcha();
+    var code;
+    function createCaptcha() {
+    //clear the contents of captcha div first 
+        document.getElementById('captcha').innerHTML = "";
+        var charsArray =
+        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*";
+        var lengthOtp = 6;
+        var captcha = [];
+        for (var i = 0; i < lengthOtp; i++) {
+            //below code will not allow Repetition of Characters
+            var index = Math.floor(Math.random() * charsArray.length + 1); //get the next character from the array
+            if (captcha.indexOf(charsArray[index]) == -1)
+            captcha.push(charsArray[index]);
+            else i--;
+        }
+        var canv = document.createElement("canvas");
+        canv.id = "captchaCanv";
+        canv.width = 150;
+        canv.height = 75;
+        var ctx = canv.getContext("2d");
+        ctx.font = "34px Georgia";
+        ctx.strokeText(captcha.join(""), 0, 30);
+        //storing captcha so that can validate you can save it somewhere else according to your specific requirements
+        code = captcha.join("");
+        document.getElementById("captcha").appendChild(canv); // adds the canvas to the body element
+    }
+    function submitForm(event) {
+        event.preventDefault();
+        const form = event.target;
+        if (document.getElementById("cpatchaTextBox").value == code) {
+            form.submit();
+        }else{
+            alert("Код введён неверно. Попробуйте снова");
+            createCaptcha();
+        }
+    }
+</script>
 @endsection
