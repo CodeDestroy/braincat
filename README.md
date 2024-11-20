@@ -1,4 +1,5 @@
 php8.3, nodejs v18, npm v9
+
 После git clone, в корне проекта:
 composer install
 npm install
