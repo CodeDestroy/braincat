@@ -1,14 +1,14 @@
 <p>php8.3, nodejs v18, npm v9</p>
 
 
-<p>После git clone, в корне проекта:</p>
+<p>После <span style='color: green'>git clone</span>, в корне проекта:</p>
 
 <ul>
     <li>
-        composer install    
+        <span style='color: green'>composer install</span>    
     </li>
     <li>
-        npm install   
+        <span style='color: green'>npm install</span>   
     </li>
 </ul>
 
@@ -36,6 +36,6 @@ DB_PASSWORD=
 </ul>
 
 <h4>Запуск:</h4>
-<p>В одном терминале npm run dev, в другом php artisan serve.</p>
+<d>В одном терминале <span style='color: green'>npm run dev</span>, в другом <span style='color: green'>php artisan serve</span>.</p>
 
-<p>Или же сначала npm run build, потом php artisan serve, тогда не будет работать hot reload</p>
+<p>Или же сначала <span style='color: green'>npm run build</span>, потом <span style='color: green'>php artisan serve</span>, тогда не будет работать hot reload</p>
