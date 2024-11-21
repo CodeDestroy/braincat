@@ -11,7 +11,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::get('/', 'index')->name('home');
     Route::get('/contacts', 'contacts')->name('contacts');
     Route::get('/about', 'about')->name('about');
-    Route::get('/docs', function (Request $request) { return redirect()->route('documents.offer'); });
+    Route::get('/docs', function (Request $request) { return redirect()->route('documents.offer'); })->name('documents');
     Route::get('/docs/offer', 'offer')->name('documents.offer');
     Route::get('/docs/contract', 'contract')->name('documents.contract');
     Route::get('/docs/agreement', 'agreement')->name('documents.agreement');

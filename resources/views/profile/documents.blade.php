@@ -3,7 +3,6 @@
 @section('content')
 
 
-
 <div class="mx-auto max-w-7xl pt-16 lg:flex lg:gap-x-16 lg:px-8">
     <h1 class="sr-only">Документы</h1>
   
@@ -127,25 +126,6 @@
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Сканы паспорта</h2>
                 <p class="mt-1 text-sm leading-6 text-gray-500">Загрузите страницы паспорта</p>
 
-                <!-- Скан 2 страницы паспорта -->
-                {{-- <div class="sm:col-span-full">
-                    <label for="passportPage2" class="block text-sm font-medium text-gray-900">Скан 2 страницы паспорта</label>
-                    <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                        <div class="text-center">
-                            <svg class="mx-auto size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z" clip-rule="evenodd"></path>
-                            </svg>
-                            <div class="mt-4 flex text-sm text-gray-600">
-                                <label for="passportPage2" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                                    <span>Загрузите файл</span>
-                                    <input id="passportPage2" name="passportPage2" type="file" class="sr-only">
-                                </label>
-                                <p class="pl-1">или переместите файл сюда</p>
-                            </div>
-                            <p class="text-xs text-gray-600">PNG, JPG до 10MB</p>
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="space-y-6">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Скан 2 страницы паспорта</h2>
                     <div id="passportPage2ImageContainer" class="mt-4">
@@ -189,25 +169,6 @@
                     </form>
                 </div>
 
-                <!-- Скан 3 страницы паспорта -->
-                {{-- <div class="sm:col-span-full">
-                    <label for="passportPage3" class="block text-sm font-medium text-gray-900">Скан 3 страницы паспорта</label>
-                    <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                        <div class="text-center">
-                            <svg class="mx-auto size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z" clip-rule="evenodd"></path>
-                            </svg>
-                            <div class="mt-4 flex text-sm text-gray-600">
-                                <label for="passportPage3" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                                    <span>Загрузите файл</span>
-                                    <input id="passportPage3" name="passportPage3" type="file" class="sr-only">
-                                </label>
-                                <p class="pl-1">или переместите файл сюда</p>
-                            </div>
-                            <p class="text-xs text-gray-600">PNG, JPG до 10MB</p>
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="space-y-6">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Скан 3 страницы паспорта</h2>
                     <div id="passportPage3ImageContainer" class="mt-4">
@@ -250,25 +211,6 @@
                         </div>
                     </form>
                 </div>
-                <!-- Скан 5 страницы паспорта -->
-                {{-- <div class="sm:col-span-full">
-                    <label for="passportPage3" class="block text-sm font-medium text-gray-900">Скан 5 страницы паспорта</label>
-                    <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                        <div class="text-center">
-                            <svg class="mx-auto size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z" clip-rule="evenodd"></path>
-                            </svg>
-                            <div class="mt-4 flex text-sm text-gray-600">
-                                <label for="passportPage3" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                                    <span>Загрузите файл</span>
-                                    <input id="passportPage3" name="passportPage3" type="file" class="sr-only">
-                                </label>
-                                <p class="pl-1">или переместите файл сюда</p>
-                            </div>
-                            <p class="text-xs text-gray-600">PNG, JPG до 10MB</p>
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="space-y-6">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Скан 5 страницы паспорта</h2>
                     <div id="passportPage5ImageContainer" class="mt-4">
@@ -346,13 +288,6 @@
                     }
                     
                 </script>
-                {{-- <form action="#" method="POST" class="mt-6 space-y-6">
-                    @csrf
-                    <div>
-                        <label for="snils" class="block text-sm font-medium text-gray-900">СНИЛС</label>
-                        <input id="snils" name="snils" type="text" class="mt-2 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-600 focus:ring-indigo-600" placeholder="Введите СНИЛС">
-                    </div>
-                </form> --}}
             </div>
 
             <!-- Загрузка сканов -->
