@@ -3,10 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /* Route::get('/home', function () {
     return view('home');
 
 }); */
+
+Auth::routes(['verify' => true]);
+
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/contacts', 'contacts')->name('contacts');
@@ -38,21 +42,38 @@ Route::controller(App\Http\Controllers\PaymentController::class)->group(function
     Route::get('/payment/privilege/{freq}/{sum}', 'privilege')->name('payment.privilege');
     Route::get('/payment/enterprise/{freq}', 'enterprise')->name('payment.enterprise');
     Route::get('/payment/{tier}/{freq}/{price}', 'index')->name('payment.index');
-}); 
-Auth::routes();
+})->middleware(['auth', 'verified']);
+
+
 Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 Route::controller(App\Http\Controllers\UserDocumentController::class)->group(function () {
     /* Route::get('/user/{user}/document/{type}', [UserDocumentController::class, 'showDocument']);
  */
-    Route::get('/user/{user}/document/{type}', 'index')->name('showDocument');
+    Route::get('/user/{user}/document/{type}', 'index')->name('showDocument')->middleware(['auth', 'verified']);
 });
 Route::controller(App\Http\Controllers\ProfileController::class)->group(function () {
-    Route::get('/settings', 'index')->name('settings.general');
-    Route::get('/settings/security', 'security')->name('settings.security');
-    Route::get('/settings/documents', 'documents')->name('settings.documents');
+    Route::get('/settings', 'index')->name('settings.general')->middleware(['auth', 'verified']);
+    Route::get('/settings/security', 'security')->name('settings.security')->middleware(['auth', 'verified']);
+    Route::get('/settings/documents', 'documents')->name('settings.documents')->middleware(['auth', 'verified']);
     
     
     Route::get('/settings/education', 'education')->name('settings.education');
@@ -75,8 +96,10 @@ Route::controller(App\Http\Controllers\ProfileController::class)->group(function
     
     Route::post('/settings/general/uploadSnilsScan', 'uploadSnilsScan')->name('settings.general.uploadSnilsScan');
 
+    Route::post('/settings/general/uploadStudScan', 'uploadStudScan')->name('settings.general.uploadStudScan');
+    
 
-    Route::get('/profile', 'profile')->name('profile.general');
-    Route::post('/profile/registerSecond', 'registerSecond')->name('profile.registerSecond');
-});  
+    Route::get('/profile', 'profile')->name('profile.general')->middleware(['auth', 'verified']);
+    Route::post('/profile/registerSecond', 'registerSecond')->name('profile.registerSecond')->middleware(['auth', 'verified']);
+});
 

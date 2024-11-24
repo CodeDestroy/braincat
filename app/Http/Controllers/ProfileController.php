@@ -38,9 +38,19 @@ class ProfileController extends Controller
         return view('profile.education');
     }
 
-    public function documents() 
+    public function documents(Request $request) 
     {
-        return view('profile.documents');
+        $userCourseRegistration = CourseRegistration::where(['user_id' => $request->user()->id])->first();
+        $userIsStudent = 0;
+        if ($userCourseRegistration->isStudent) {
+            $userIsStudent = 1;
+        }
+        $userStud = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'stud'])->first();
+        $userPassport2Page = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'passport_2_page'])->first();
+        $userPassport3Page = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'passport_3_page'])->first();
+        $userPassport5Page = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'passport_5_page'])->first();
+        $userSnils = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'snils'])->first();
+        return view('profile.documents', compact('userStud', 'userPassport2Page', 'userPassport3Page', 'userPassport5Page', 'userSnils', 'userIsStudent'));
     }
 
     
@@ -236,11 +246,10 @@ class ProfileController extends Controller
             $photo = $request->file('studPhoto');
             $path = $photo->store('stud_photos', 'public');
             /* $photoPaths[] = $path; */
-            CourseRegistrationDocuments::create([
-                'courseRegistrationId' => $courseRegistration->id, // ID регистрации курса
-                'type' => 'stud',
-                'file' => $path,
-            ]);
+            UserDocument::updateOrCreate(
+                ['user_id' => $user->id, 'type' => 'stud'],
+                ['file' => $path,]
+            );
             //}
         }
         // Сохранение фотографий и формирование массива с путями к ним
@@ -354,7 +363,7 @@ class ProfileController extends Controller
             // Сохранение фото в папку "passport_photos"
             $path = $photo->store('passport_photos', options: 'public');
             UserDocument::updateOrCreate(
-                ['user_id' => $user->id, 'type' => 'San passport_5_page'],
+                ['user_id' => $user->id, 'type' => 'passport_5_page'],
                 ['file' => $path]
             );
             /* UserDocument::create([
@@ -408,6 +417,52 @@ class ProfileController extends Controller
     
         return redirect()->route('settings.documents');
     }
+
+    public function uploadStudScan(Request $request)
+    {
+        $user = User::find($request->user()->id);
+
+        $validator = Validator::make($request->all(), [
+            'studPhoto' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // Сохранение фотографий и формирование массива с путями к ним
+        /* if ($request->hasFile('snils')) {
+            foreach ($request->file('snils') as $photo) {
+                // Сохранение фото в папку "passport_photos"
+                $path = $photo->store('snils_photos', options: 'public');
+                UserDocument::create([
+                    'user_id' => $user->id, // ID регистрации курса
+                    'type' => 'snils',
+                    'file' => $path,
+                ]);
+            }
+        } */
+        if ($request->hasFile('studPhoto')) {
+            //foreach ($request->file('passportPhoto') as $photo) {
+                // Сохранение фото в папку "passport_photos"
+            $photo = $request->file('studPhoto');
+            $path = $photo->store('stud_photos', 'public');
+            /* $photoPaths[] = $path; */
+            /* CourseRegistrationDocuments::updateOrCreate([
+                'courseRegistrationId' => $courseRegistration->id, // ID регистрации курса
+                'type' => 'stud',
+                'file' => $path,
+            ]); */
+            UserDocument::updateOrCreate(
+                ['user_id' => $user->id, 'type' => 'stud'],
+                ['file' => $path]
+            );
+            //}
+        }
+    
+        return redirect()->route('settings.documents');
+    }
+    
 
     
 }

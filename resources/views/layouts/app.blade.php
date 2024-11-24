@@ -140,7 +140,7 @@
                                                 Мой профиль
                                                 <span class="absolute inset-0"></span>
                                             </a>
-                                            <p class="mt-1 text-gray-600">Просмотреть информацию о моём профиле/p>
+                                            <p class="mt-1 text-gray-600">Просмотреть информацию о моём профиле</p>
                                         </div>
                                     </div>
                                 </div>
