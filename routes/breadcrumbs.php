@@ -31,10 +31,22 @@ Breadcrumbs::for('documents.contract', function (BreadcrumbTrail $trail) {
     $trail->push('Договор', route('documents.contract'));
 });
 
+// Home > documents.privacy
+Breadcrumbs::for('documents.privacy', function (BreadcrumbTrail $trail) {
+    $trail->parent('documents');
+    $trail->push('Конфиденциальность', route('documents.privacy'));
+});
+
+// Home > documents.policy
+Breadcrumbs::for('documents.policy', function (BreadcrumbTrail $trail) {
+    $trail->parent('documents');
+    $trail->push('Политика', route('documents.policy'));
+});
+
 // Home > documents.agreement
 Breadcrumbs::for('documents.agreement', function (BreadcrumbTrail $trail) {
     $trail->parent('documents');
-    $trail->push('Соглашение на обработку персональных данных', route('documents.agreement'));
+    $trail->push('Согласие на обработку персональных данных', route('documents.agreement'));
 });
 
 // Home > Blog > [Category]

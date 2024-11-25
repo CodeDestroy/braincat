@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth; //Auth namespace
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /* Route::get('/home', function () {
     return view('home');
@@ -20,6 +21,8 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::get('/docs', function (Request $request) { return redirect()->route('documents.offer'); })->name('documents');
     Route::get('/docs/offer', 'offer')->name('documents.offer');
     Route::get('/docs/contract', 'contract')->name('documents.contract');
+    Route::get('/docs/privacy', 'privacy')->name('documents.privacy');
+    Route::get('/docs/policy', 'policy')->name('documents.policy');
     Route::get('/docs/agreement', 'agreement')->name('documents.agreement');
 }); 
 /* Route::controller(App\Http\Controllers\HomeController::class)->group(function () {

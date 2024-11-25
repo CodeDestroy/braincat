@@ -72,3 +72,26 @@
         display: none !important;
     }
 }
+
+@layer {
+    ol.nested {
+        counter-reset: item;
+    }
+
+    ol.nested li {
+        display: table;
+        margin-bottom: 0.5rem;
+    }
+
+    ol.nested li::before {
+        counter-increment: item;
+        content: counters(item, ".") ". ";
+        display: table-cell;
+        padding-right: 0.2rem;
+        color: #6b21a8;
+    }
+
+    .container > ol.nested > li::before {
+        font-weight: bold;
+    }
+}

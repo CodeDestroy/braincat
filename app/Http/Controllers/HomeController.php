@@ -46,6 +46,16 @@ class HomeController extends Controller
         return view('documents.offer');
     }
 
+    public function privacy()
+    {
+        return view('documents.privacy');
+    }
+
+    public function policy()
+    {
+        return view('documents.policy');
+    }
+
     public function contract()
     {
         return view('documents.contract');
