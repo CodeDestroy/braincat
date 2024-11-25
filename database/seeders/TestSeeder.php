@@ -9,7 +9,7 @@ use App\Models\Question;
 use App\Models\Answer;
 use App\Models\Event;
 use App\Models\Course;
-
+use App\Models\EventStatus;
 class TestSeeder extends Seeder
 {
     /**
@@ -17,6 +17,9 @@ class TestSeeder extends Seeder
      */
     public function run(): void
     {
+        $eventStatus1 = EventStatus::create(['status' => 'notActive']);
+        $eventStatus2 = EventStatus::create(['status' => 'inProgress']);
+        $eventStatus3 = EventStatus::create(['status' => 'ended']);
         $course = Course::create([
             'name' => 'Основы теории и практики нейропсихологии', 
             'description' => 'Авторский курс д.п.н., профессора Татьяны Григорьевны Визель',
@@ -32,7 +35,7 @@ class TestSeeder extends Seeder
             'name' => 'СТРОЕНИЕ И ФУНКЦИИ ГОЛОВНОГО МОЗГА ЧЕЛОВЕКА ', 
             'description' => 'Из истории изучения головного мозга человека. Головной мозг человека и его отделы. Поля коры мозга. Проводящие пути мозга',
             'course_id' => $course->id,
-            'image' => 'img/hero_main.jpg',
+            'image' => '/img/hero_main.jpg',
             'start_date' => '2024-11-29',
             'end_date' => '2024-11-29',
             'start_time' => '08:00:00',
@@ -44,7 +47,7 @@ class TestSeeder extends Seeder
             'name' => 'Тест по теме "СТРОЕНИЕ И ФУНКЦИИ ГОЛОВНОГО МОЗГА ЧЕЛОВЕКА"', 
             'description' => 'Тест по теме "СТРОЕНИЕ И ФУНКЦИИ ГОЛОВНОГО МОЗГА ЧЕЛОВЕКА"',
             'course_id' => $course->id,
-            'image' => 'img/hero_main.jpg',
+            'image' => '/img/hero_main.jpg',
             'start_date' => '2024-11-29',
             'end_date' => '2024-11-29',
             'start_time' => '08:00:00',

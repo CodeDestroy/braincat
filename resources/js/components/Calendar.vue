@@ -48,11 +48,12 @@
                 </button>
 
             </div>
-            <button type="button" class="mt-8 w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add event</button>
+            <!-- <button type="button" class="mt-8 w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add event</button> -->
         </div>
         <ol class="mt-4 divide-y divide-gray-100 text-sm leading-6 lg:col-span-7 xl:col-span-8">
           <li v-for="meeting in meetings" :key="meeting.id" class="relative flex space-x-6 py-6 xl:static">
-            <a :href="meeting.course_id+'/event/'+meeting.id">
+            <a :href="meeting.status === 'inProgress' ? meeting.course_id + '/event/' + meeting.id : null" 
+              :class="{ 'pointer-events-none': meeting.status !== 'inProgress', 'text-gray-500': meeting.status !== 'inProgress' }">
             <img :src="meeting.image" alt="" class="h-14 w-14 flex-none rounded-full" />
             <div class="flex-auto">
               <h3 class="pr-10 font-semibold text-gray-900 xl:pr-0">{{ meeting.name }}</h3>
@@ -64,7 +65,7 @@
                   </dt>
                   <dd>
                     <time :datetime="meeting.datetime">
-                        {{ meeting.start_time }} - {{ meeting.end_time }} {{ meeting.description }}
+                      <span style="font-weight: 500; color: black">{{ meeting.description }}</span> {{ formatTime(meeting.start_time) }} - {{ formatTime(meeting.end_time) }} 
                     </time>
                   </dd>
                 </div>
@@ -115,7 +116,7 @@ import {
   MapPinIcon,
 } from '@heroicons/vue/20/solid';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
-import { useRouter, useRoute } from 'vue-router'
+
 // Массив для названий месяцев
 const monthNames = [
   'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
@@ -129,8 +130,8 @@ const formattedMonth = computed(() => {
 const meetings = ref([]);
 const days = ref([
   // Начальные данные (можно обновить позже)
-  { date: '2021-12-27' },
-  { date: '2021-12-28' },
+ /*  { date: '2021-12-27' },
+  { date: '2021-12-28' }, */
   // ...
 ]);
 
@@ -138,15 +139,7 @@ var today = new Date();
 const selectedDate = ref(null);
 const currentMonth = ref('2024-11'); // Начальный месяц для рендера календаря
 var course_id = null;
-/* getUrlQueryParams = async () => {    
-  //router is async so we wait for it to be ready
-  await router.isReady()
-  //once its ready we can access the query params
-  console.log(route.query)
-};
-onMounted(() => {
-  getUrlQueryParams()
-}); */
+
 const lastDigit = async (path) => {
   // Извлекаем последнюю цифру из pathname
   const matches = path.match(/\/(\d+)$/);
@@ -185,8 +178,6 @@ const handleDateClick = (day) => {
         else {
             days.value[index].isSelected = false;
         }
-        /* console.log(days[index], index)
-        console.log(day.date) */
     })
     loadMeetings(day.date);
   }
@@ -208,6 +199,11 @@ const formatDate = (date) => {
   const day = String(date.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 };
+const formatTime = (time) => {
+  // Предполагаем, что время передается в формате "hh:mm:ss"
+  if (!time) return '';
+  return time.split(':').slice(0, 2).join(':'); // Оставляем только часы и минуты
+}
 // Генерация дней для текущего месяца
 const generateDays = (year, month) => {
   const date = new Date(year, month - 1, 1); // Первый день месяца
