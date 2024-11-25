@@ -30,6 +30,6 @@ const tabs = [
     { name: 'Договор', href: '/docs/contract', current: pathname === '/docs/contract' ? true : false },
     { name: 'Конфиденциальность', href: '/docs/privacy', current: pathname === '/docs/privacy' ? true : false },
     { name: 'Политика', href: '/docs/policy', current: pathname === '/docs/policy' ? true : false },
-    { name: 'Соглашение', href: '/docs/agreement', current: pathname === '/docs/agreement' ? true : false },
+    { name: 'Согласие', href: '/docs/agreement', current: pathname === '/docs/agreement' ? true : false },
 ]
 </script>

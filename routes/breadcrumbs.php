@@ -46,7 +46,7 @@ Breadcrumbs::for('documents.policy', function (BreadcrumbTrail $trail) {
 // Home > documents.agreement
 Breadcrumbs::for('documents.agreement', function (BreadcrumbTrail $trail) {
     $trail->parent('documents');
-    $trail->push('Соглашение на обработку персональных данных', route('documents.agreement'));
+    $trail->push('Согласие на обработку персональных данных', route('documents.agreement'));
 });
 
 // Home > Blog > [Category]
