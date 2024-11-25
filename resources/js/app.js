@@ -45,6 +45,7 @@ import Privacy from './components/Privacy.vue';
 import Policy from './components/Policy.vue';
 import Agreement from './components/Agreement.vue';
 import Offer from './components/Offer.vue';
+import Contract from './components/Contract.vue';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 
@@ -79,6 +80,10 @@ createApp({})
 createApp({})
 .component('Offer', Offer)
 .mount('#offer')
+
+createApp({})
+.component('Contract', Contract)
+.mount('#contract')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
 /*   const { jsPDF } = window.jspdf; */
