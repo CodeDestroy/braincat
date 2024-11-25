@@ -41,6 +41,7 @@ createApp({
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
 import SectionHeadingsWithTabs from './components/sectionHeadingsWithTabs.vue';
+import Privacy from './components/Privacy.vue';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 
@@ -60,6 +61,9 @@ createApp({})
 .component('SectionHeadingsWithTabs', SectionHeadingsWithTabs)
 .mount('#docs-heading')  
 
+createApp({})
+.component('Privacy', Privacy)
+.mount('#privacy')  
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
 /*   const { jsPDF } = window.jspdf; */

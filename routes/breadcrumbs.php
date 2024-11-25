@@ -31,6 +31,12 @@ Breadcrumbs::for('documents.contract', function (BreadcrumbTrail $trail) {
     $trail->push('Договор', route('documents.contract'));
 });
 
+// Home > documents.privacy
+Breadcrumbs::for('documents.privacy', function (BreadcrumbTrail $trail) {
+    $trail->parent('documents');
+    $trail->push('Конфиденциальность', route('documents.privacy'));
+});
+
 // Home > documents.agreement
 Breadcrumbs::for('documents.agreement', function (BreadcrumbTrail $trail) {
     $trail->parent('documents');
