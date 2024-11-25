@@ -40,7 +40,7 @@ createApp({
  import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedTier.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
-import SectionHeadingsWithTabs from './components/sectionHeadingsWithTabs.vue';
+import SectionHeadingsWithTabs from './components/SectionHeadingsWithTabs.vue';
 import Privacy from './components/Privacy.vue';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";

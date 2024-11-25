@@ -6,10 +6,10 @@
             </div>
         </div>
         <div class="mt-4">
-            <div class="sm:hidden">
+            <div class="px-2 sm:hidden">
                 <label for="current-tab" class="sr-only"></label>
-                <select id="current-tab" name="current-tab" class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-0 outline-none">
-                    <option v-for="tab in tabs" :key="tab.name" :selected="tab.current">{{ tab.name }}</option>
+                <select id="current-tab" name="current-tab" onchange="window.location.href = this.options[this.selectedIndex].value"  class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 ring-1 ring-purple-300 outline-none">
+                    <option v-for="tab in tabs" :key="tab.name" :value="tab.href" :selected="tab.current">{{ tab.name }}</option>
                 </select>
             </div>
             <div class="hidden sm:block">
