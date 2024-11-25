@@ -42,6 +42,7 @@ import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
 import SectionHeadingsWithTabs from './components/SectionHeadingsWithTabs.vue';
 import Privacy from './components/Privacy.vue';
+import Policy from './components/Policy.vue';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 
@@ -62,8 +63,12 @@ createApp({})
 .mount('#docs-heading')  
 
 createApp({})
+.component('Policy', Policy)
+.mount('#policy')  
+
+createApp({})
 .component('Privacy', Privacy)
-.mount('#privacy')  
+.mount('#privacy')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
 /*   const { jsPDF } = window.jspdf; */
