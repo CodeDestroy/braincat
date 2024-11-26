@@ -2,9 +2,9 @@
 
 <JitsiMeeting
 
-:domain="YOUR_DOMAIN"
+:domain="'mczr-tmk.ru/'"
 
-:room-name="YOUR_ROOM_NAME"
+:room-name="'room_name'"
 
 />
 </template>
