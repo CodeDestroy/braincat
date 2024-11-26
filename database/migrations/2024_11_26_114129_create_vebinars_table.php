@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('room_name');
             $table->dateTime('start_date_time');
+            $table->foreignId('event_id')->constrained('events')->cascadeOnDelete();
             $table->timestamps();
         });
     }

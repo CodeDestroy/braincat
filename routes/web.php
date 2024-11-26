@@ -93,7 +93,10 @@ Route::controller(App\Http\Controllers\EducationController::class)->group(functi
     Route::get('/education/course/{course_id}/test/{id}','showTest')->name('education.showTest')->middleware(['auth'/*, 'verified*/, 'paid']);
     Route::get('/education/course/{course_id}/test/{id}/startTest','startTest')->name('education.startTest')->middleware(['auth'/*, 'verified*/, 'paid']);
     Route::post('/education/course/{course_id}/test/{id}/submitTest','submitTest')->name('education.submitTest')->middleware(['auth'/*, 'verified*/, 'paid']);
-    Route::get('/education/course/{course_id}/selfStudyMaterial/{id}','showSelfStudyMaterial')->name('education.showSelfStudyMaterial')->middleware(['auth'/*, 'verified*/, 'paid']);/* 
+    Route::get('/education/course/{course_id}/selfStudyMaterial/{id}','showSelfStudyMaterial')->name('education.showSelfStudyMaterial')->middleware(['auth'/*, 'verified*/, 'paid']);
+    Route::get('/education/course/{course_id}/vebinar/{id}','showVebinar')->name('education.showVebinar')->middleware(['auth'/*, 'verified*/, 'paid']);
+    
+    /* 
     Route::get('/education/test/{test_id}/question/{question_id}','showQuestion')->name('education.showQuestion'); */
 
 });

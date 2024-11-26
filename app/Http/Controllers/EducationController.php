@@ -14,6 +14,7 @@ use App\Models\Answer;
 use App\Models\UserAnswer;
 use App\Models\TestResult;
 use App\Models\Payment;
+use App\Models\Vebinar;
 use Illuminate\Support\Facades\Log;
 use function GuzzleHttp\default_ca_bundle;
 use Illuminate\Support\Facades\DB;
@@ -72,7 +73,9 @@ class EducationController extends Controller
                         $test = Test::where(['event_id' => $id])->first();
                         return redirect()->route('education.showTest', ['id' => $test->id, 'course_id' => $course_id]);
                     case 'vebinar':
-                        return view('errors.accessError', ['error_title' => 'Вебинар еще не начался', 'error_message' => 'Вебинар начнется 29 Ноября в 19:30 по МСК']);
+                        $vebinar = Vebinar::where(['event_id' => $id])->first();
+                        return redirect()->route('education.showVebinar', ['id' => $vebinar->id, 'course_id' => $course_id]);
+                        /* return view('errors.accessError', ['error_title' => 'Вебинар еще не начался', 'error_message' => 'Вебинар начнется 29 Ноября в 19:30 по МСК']); */
                     default:
                         return view('education.events.selfStudyMaterial', compact('event'));
                     
@@ -91,12 +94,22 @@ class EducationController extends Controller
                 $test = Test::where(['event_id' => $id])->first();
                 return redirect()->route('education.showTest', ['id' => $test->id, 'course_id' => $course_id]);
             case 'vebinar':
-                return view('errors.accessError', ['error_title' => 'Вебинар еще не начался', 'error_message' => 'Вебинар начнется 29 Ноября в 19:30 по МСК']);
+                $vebinar = Vebinar::where(['event_id' => $id])->first();
+                return redirect()->route('education.showVebinar', ['id' => $vebinar->id, 'course_id' => $course_id]);
+                /* return view('errors.accessError', ['error_title' => 'Вебинар еще не начался', 'error_message' => 'Вебинар начнется 29 Ноября в 19:30 по МСК']); */
             default:
                 return view('education.events.selfStudyMaterial', compact('event'));
             
         
         }
+    }
+
+    public function showVebinar(Request $request, $course_id, $id)
+    {
+        $user = $request->user();
+        $vebinar = Vebinar::find($id);
+        return view('education.events.vebinar', compact('vebinar', 'course_id'));
+    
     }
 
     public function showTest(Request $request, $course_id, $id)
