@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'andrei_novichihin@mail.ru',
             'password' => Hash::make('123')
         ]); */
-        Course::create([
+        /* Course::create([
             'name' => 'Основы теории и практики нейропсихологии',
             'description' => 'Авторский курс д.п.н., профессора Татьяны Григорьевны Визель',
             'image' => '',
@@ -37,9 +37,21 @@ class DatabaseSeeder extends Seeder
             'end_time' => '21:00:00',
             'status' => 'в процессе набора',
             'price' => 1,
-        ]);
+        ]); */
+        /* $course = Course::create([
+            'name' => 'Основы теории и практики нейропсихологии', 
+            'description' => 'Авторский курс д.п.н., профессора Татьяны Григорьевны Визель',
+            'image' => '',
+            'start_date' => '2024-11-29',
+            'end_date' => '2025-03-21',
+            'start_time' => '08:00:00',
+            'end_time' => '21:00:00',
+            'status' => 'inProgress',
+            'price' => '30000',
+        ]); */
         $this->call(RoleSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(TestSeeder::class);
     }
 }

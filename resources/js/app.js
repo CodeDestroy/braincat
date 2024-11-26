@@ -40,7 +40,12 @@ createApp({
  import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedTier.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
-import SectionHeadingsWithTabs from './components/sectionHeadingsWithTabs.vue';
+import SectionHeadingsWithTabs from './components/SectionHeadingsWithTabs.vue';
+import Privacy from './components/Privacy.vue';
+import Policy from './components/Policy.vue';
+import Agreement from './components/Agreement.vue';
+import Offer from './components/Offer.vue';
+import Contract from './components/Contract.vue';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 
@@ -60,6 +65,25 @@ createApp({})
 .component('SectionHeadingsWithTabs', SectionHeadingsWithTabs)
 .mount('#docs-heading')  
 
+createApp({})
+.component('Policy', Policy)
+.mount('#policy')  
+
+createApp({})
+.component('Privacy', Privacy)
+.mount('#privacy')
+
+createApp({})
+.component('Agreement', Agreement)
+.mount('#agreement')
+
+createApp({})
+.component('Offer', Offer)
+.mount('#offer')
+
+createApp({})
+.component('Contract', Contract)
+.mount('#contract')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
 /*   const { jsPDF } = window.jspdf; */
@@ -70,7 +94,7 @@ document.getElementById('generate-pdf')?.addEventListener('click', function () {
   let name = ''
   switch (pathname) {
     case '/docs/agreement':
-      name = 'Соглашение на обработку персональных данных.pdf'
+      name = 'Согласие на обработку персональных данных.pdf'
       break;
     case '/docs/contract':
       name = 'Договор.pdf'

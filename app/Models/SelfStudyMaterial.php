@@ -4,22 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EventPresenter extends Model
+class SelfStudyMaterial extends Model
 {
+    //
     protected $fillable = [
-        'user_id',
         'event_id',
+        'text',
+        'title',
+        'description',
+        
     ];
 
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    } 
-
-    public function event()
+    public function events()
     {
         return $this->belongsTo(Event::class);
     }
-
 }

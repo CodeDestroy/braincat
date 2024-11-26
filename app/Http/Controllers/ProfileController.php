@@ -236,7 +236,8 @@ class ProfileController extends Controller
                 'isHealthyChildGk' => $request->input('isHealthyChildGk') ? true : false,
                 'isHealthyChildFranch' => $request->input('isHealthyChildFranch') ? true : false,
                 'isLegalHealthyChildFranch' => $request->input('isLegalHealthyChildFranch') ? true : false,
-                'shouldBeCheckedOut' => $shouldBeCheckedOut
+                'shouldBeCheckedOut' => $shouldBeCheckedOut,
+                'course_id' => 1,
             ]
         );
 

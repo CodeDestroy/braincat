@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-slate-100 py-24 sm:py-32">
+  <div class="bg-slate-100 py-24 sm:py-32" id="content-to-convert">
     <div class="mx-auto max-w-4xl text-center">
       <p class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Календарный план</p>
     </div>

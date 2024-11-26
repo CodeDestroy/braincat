@@ -6,10 +6,10 @@
     <div id='docs-heading'>
         <section-headings-with-tabs/>
     </div>
-    {{ Breadcrumbs::render('documents.agreement') }}
+    {{ Breadcrumbs::render('documents.privacy') }}
    
-    <div id="agreement">
-        <agreement />
+    <div id="privacy">
+        <privacy />
     </div>
 
 </div>

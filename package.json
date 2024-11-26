@@ -21,6 +21,7 @@
         "@heroicons/vue": "^2.1.5",
         "alpinejs": "^3.14.3",
         "html2canvas": "^1.4.1",
-        "jspdf": "^2.5.2"
+        "jspdf": "^2.5.2",
+        "vue-router": "^4.5.0"
     }
 }

@@ -9,6 +9,7 @@ class CourseRegistration extends Model
     protected $fillable = [
         'user_id',
         'shouldBeCheckedOut',
+        'course_id',
         'isAPPCP',
         'isHealthyChildGk',
         'isHealthyChildFranch',
@@ -21,5 +22,9 @@ class CourseRegistration extends Model
     public function users()
     {
         return $this->belongsTo(User::class);
+    }
+    public function courses()
+    {
+        return $this->belongsTo(Course::class);
     }
 }
