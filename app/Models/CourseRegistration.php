@@ -14,6 +14,8 @@ class CourseRegistration extends Model
         'isHealthyChildGk',
         'isHealthyChildFranch',
         'isLegalHealthyChildGK',
+        'isHealthyChildPartner',
+        'isLegalHealthyChildPartner',
         'isStudent',
         'isLegalHealthyChildFranch',
         'managerCheckedOut',

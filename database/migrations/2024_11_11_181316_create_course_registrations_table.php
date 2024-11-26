@@ -17,11 +17,16 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->boolean('isAPPCP')->default(false);
             
+            $table->boolean('isHealthyChild')->default(false)->comment('old health child');
             $table->boolean('isHealthyChildGk')->default(false);
             $table->boolean('isHealthyChildFranch')->default(false);
             $table->boolean('isLegalHealthyChildGK')->default(false);
             $table->boolean('isLegalHealthyChildFranch')->default(false);
             
+            $table->boolean('isHealthyChildPartner')->default(false);
+            $table->boolean('isLegalHealthyChildPartner')->default(false);
+            
+
             $table->boolean('isStudent')->default(false);
             $table->boolean('isLegal')->default(false);
             $table->boolean('shouldBeCheckedOut')->default(false);
