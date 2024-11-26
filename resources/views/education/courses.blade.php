@@ -10,18 +10,19 @@
 <div class="bg-white py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:max-w-4xl">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Ваши курсы</h2>
-            <p class="mt-2 text-lg leading-8 text-gray-600">Тут представленны все оплаченные вами курсы.</p>
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Мои курсы</h2>
+            {{-- <p class="mt-2 text-lg leading-8 text-gray-600">Тут представленны все оплаченные вами курсы.</p> --}}
             <div class="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
                 @foreach ($courses as $course)
+                <a href="{{route('education.course', ['course_id' => $course->id])}}">
                     <article class="relative isolate flex flex-col gap-8 lg:flex-row">
                         <div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
-                            <img src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=3603&amp;q=80" alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover">
+                            <img src="{{$course['image']}}"" alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover">
                             <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
                         </div>
                         <div>
                             <div class="flex items-center gap-x-4 text-xs">
-                                <img src="{{$course['image']}}">
+                                {{-- <img src="{{$course['image']}}"> --}}
                                 @php
                                     $date = $course['start_date']; // Ваша дата
                                     $formattedDate = ucfirst(\Carbon\Carbon::parse($date)->translatedFormat('d F Y'));
@@ -31,10 +32,10 @@
                             </div>
                             <div class="group relative max-w-xl">
                                 <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                                    <a href="{{route('education.course', ['course_id' => $course->id])}}">
+                                    
                                         <span class="absolute inset-0"></span>
                                         {{$course['name']}}
-                                    </a>
+                                    
                                 </h3>
                                 <p class="mt-5 text-sm leading-6 text-gray-600">{{$course['description']}}</p>
                             </div>
@@ -54,6 +55,7 @@
                             </div> --}}
                         </div>
                     </article>
+                </a>
                 @endforeach
                 
                 {{-- <article class="relative isolate flex flex-col gap-8 lg:flex-row">
