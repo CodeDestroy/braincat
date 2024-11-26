@@ -52,8 +52,8 @@
         </div>
         <ol class="mt-4 divide-y divide-gray-100 text-sm leading-6 lg:col-span-7 xl:col-span-8">
           <li v-for="meeting in meetings" :key="meeting.id" class="relative flex space-x-6 py-6 xl:static">
-            <a :href="meeting.status === 'inProgress' ? meeting.course_id + '/event/' + meeting.id : null" 
-              :class="{ 'pointer-events-none': meeting.status !== 'inProgress', 'text-gray-500': meeting.status !== 'inProgress' }">
+            <a :href="meeting.course_id + '/event/' + meeting.id" 
+              :class="{/*  'pointer-events-none': meeting.status !== 'inProgress', 'text-gray-500': meeting.status !== 'inProgress' */ }">
             <img :src="meeting.image" alt="" class="h-14 w-14 flex-none rounded-full" />
             <div class="flex-auto">
               <h3 class="pr-10 font-semibold text-gray-900 xl:pr-0">{{ meeting.name }}</h3>

@@ -4,7 +4,7 @@
       <div class="mx-auto max-w-4xl text-center">
         <p class="mt-2 text-4xl font-bold tracking-tight text-purple-800 sm:text-5xl">Стоимость курса</p>
       </div>
-      <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600"><b>Старт</b> 29 ноября 2024 года. <b>Осталось</b> 7 мест</p>
+      <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600"><b>Старт</b> 29 ноября 2024 года.</p>
       <div class="mt-16 flex justify-center">
         <fieldset aria-label="Payment frequency">
           <RadioGroup v-model="frequency" class="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200">

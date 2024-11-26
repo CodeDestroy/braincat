@@ -51,9 +51,33 @@ class EducationController extends Controller
     public function showEvent(Request $request, $course_id, $id)
     {
         $user = $request->user();
-       
+        /* Log::debug($user->permissions()->get()); */
         $event = Event::find($id);
         Log::debug($event);
+        if ($event->status != 'inProgress') {
+            $permissions = $user->permissions()->get();
+            $permissions = $permissions->pluck('slug')->toArray();
+            if (!in_array('view-events', $permissions)) {
+                return view('errors.accessError', ['error_title' => 'Материалы пока не доступны', 'error_message' => 'У вас нет доступа к этой странице.']);
+            }
+            else  {
+                switch ($event->type) {
+                    case 'selfStudyMaterial':
+                        $selfStudyMaterial = SelfStudyMaterial::where(['event_id' => $id])->first();
+                        
+                        return redirect()->route('education.showSelfStudyMaterial', ['id' => $selfStudyMaterial->id, 'course_id' => $course_id]);
+                        /* return view('education.events.lection', compact('event')); */
+                    case 'test':
+                                
+                        $test = Test::where(['event_id' => $id])->first();
+                        return redirect()->route('education.showTest', ['id' => $test->id, 'course_id' => $course_id]);
+                    default:
+                        return view('education.events.selfStudyMaterial', compact('event'));
+                    
+                
+                }
+            }
+        }
         switch ($event->type) {
             case 'selfStudyMaterial':
                 $selfStudyMaterial = SelfStudyMaterial::where(['event_id' => $id])->first();
@@ -177,16 +201,17 @@ class EducationController extends Controller
         return $score;
     }
 
-    public function showSelfStudyMaterial(Request $request, $id)
+    public function showSelfStudyMaterial(Request $request, $course_id, $id)
     {
-        $user = User::find($request->user());
+        $user = $request->user();
         $selfStudyMaterial = SelfStudyMaterial::find($id);
+        Log::debug($id);
         return view('education.events.selfStudyMaterial', compact('selfStudyMaterial'));
     }
 
     public function showQuestion(Request $request, $test_id, $question_id)
     {
-        $user = User::find($request->user());
+        $user = $request->user();
         $test = Test::find($test_id);
         $question = Question::find($question_id);
         $answers = Answer::where(['question_id' => $question_id])->get();
