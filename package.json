@@ -19,6 +19,7 @@
     "dependencies": {
         "@headlessui/vue": "^1.7.23",
         "@heroicons/vue": "^2.1.5",
+        "@jitsi/vue-sdk": "^1.0.4",
         "alpinejs": "^3.14.3",
         "html2canvas": "^1.4.1",
         "jspdf": "^2.5.2",
