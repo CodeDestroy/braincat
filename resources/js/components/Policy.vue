@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white py-4 sm:py-8">
-        <div class="mx-auto max-w-6xl text-left">
+        <div class="mx-auto max-w-6xl text-left" id="content-to-convert">
             <div class="border-b border-gray-200 pb-5 mb-7">
                 <h2 class="text-lg sm:text-2xl font-semibold leading-6 text-gray-900 px-4 sm:px-8">Политика обработки персональных данных</h2>
             </div>

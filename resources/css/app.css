@@ -95,3 +95,9 @@
         font-weight: bold;
     }
 }
+.underline-purple {
+    text-decoration: underline;
+    text-decoration-color: rgb(107 33 168 / var(--tw-text-opacity));
+    
+    text-decoration-thickness: 3px;
+}

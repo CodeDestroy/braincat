@@ -71,6 +71,8 @@ class EducationController extends Controller
                                 
                         $test = Test::where(['event_id' => $id])->first();
                         return redirect()->route('education.showTest', ['id' => $test->id, 'course_id' => $course_id]);
+                    case 'vebinar':
+                        return view('errors.accessError', ['error_title' => 'Вебинар еще не начался', 'error_message' => 'Вебинар начнется 29 Ноября в 19:30 по МСК']);
                     default:
                         return view('education.events.selfStudyMaterial', compact('event'));
                     
@@ -88,6 +90,8 @@ class EducationController extends Controller
                         
                 $test = Test::where(['event_id' => $id])->first();
                 return redirect()->route('education.showTest', ['id' => $test->id, 'course_id' => $course_id]);
+            case 'vebinar':
+                return view('errors.accessError', ['error_title' => 'Вебинар еще не начался', 'error_message' => 'Вебинар начнется 29 Ноября в 19:30 по МСК']);
             default:
                 return view('education.events.selfStudyMaterial', compact('event'));
             

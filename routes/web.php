@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth; //Auth namespace
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 /* Route::get('/home', function () {
     return view('home');
 
@@ -44,6 +46,43 @@ Route::get('/api/course/{course_id}/events', function (Request $request, $course
                 ->orderBy('start_time')
                 ->orderBy('type', 'ASC')
                 ->get();
+});
+Route::get('/api/days', function (Request $request) {
+    $date = $request->query('date');
+    $dateObject = Carbon::createFromFormat('Y-m-d', $date);
+
+    // Извлекаем год и месяц из $dateObject.
+    $year = $dateObject->year;
+    $month = $dateObject->month;
+
+    // Получаем уникальные даты через запрос.
+    $uniqueDates = Event::select('start_date')
+        ->whereYear('start_date', $year)
+        ->whereMonth('start_date', $month)
+        ->distinct()
+        ->pluck('start_date');
+    return $uniqueDates;
+    /* return Event::where('start_date', '<=', $date)->where('end_date', '>=', $date)
+                ->orderBy('start_time')
+                ->orderBy('type', 'ASC')
+                ->get(); */
+});
+Route::get('/api/course/{course_id}/days', function (Request $request, $course_id) {
+    $date = $request->query('date');
+    $dateObject = Carbon::createFromFormat('Y-m-d', $date);
+
+    // Извлекаем год и месяц из $dateObject.
+    $year = $dateObject->year;
+    $month = $dateObject->month;
+
+    // Получаем уникальные даты через запрос.
+    $uniqueDates = Event::select('start_date')
+        ->whereYear('start_date', $year)
+        ->whereMonth('start_date', $month)
+        ->where('course_id', $course_id)
+        ->distinct()
+        ->pluck('start_date');
+    return $uniqueDates;
 });
 Route::controller(App\Http\Controllers\EducationController::class)->group(function () {
     Route::get('/education', 'showCourses')->name('education.index')->middleware(['auth'/*, 'verified*/]);

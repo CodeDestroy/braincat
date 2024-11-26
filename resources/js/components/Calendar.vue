@@ -1,6 +1,7 @@
 <template>
+
     <div>
-      <h2 class="text-base font-semibold leading-6 text-gray-900">Предстоящие события</h2>
+      <h2 class="font-semibold leading-6 text-gray-900 mt-10 text-3xl">Предстоящие события</h2>
       <div class="lg:grid lg:grid-cols-12 lg:gap-x-16">
         <div class="mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
             <div class="flex items-center text-gray-900">            
@@ -36,13 +37,14 @@
                     v-for="(day, dayIdx) in days"
                     :key="day.date"
                     type="button"
-                    :class="['py-1.5 hover:bg-gray-100 focus:z-10', day.isCurrentMonth ? 'bg-white' : 'bg-gray-50', (day.isSelected || day.isToday) && 'font-semibold', day.isSelected && 'text-white', !day.isSelected && day.isCurrentMonth && !day.isToday && 'text-gray-900', !day.isSelected && !day.isCurrentMonth && !day.isToday && 'text-gray-400', day.isToday && !day.isSelected && 'text-indigo-600', dayIdx === 0 && 'rounded-tl-lg', dayIdx === 6 && 'rounded-tr-lg', dayIdx === days.length - 7 && 'rounded-bl-lg', dayIdx === days.length - 1 && 'rounded-br-lg']"
+                    :class="[ day.hasEvents && 'underline-purple', 'py-1.5 hover:bg-gray-100 focus:z-10', day.isCurrentMonth ? 'bg-white' : 'bg-gray-50', (day.isSelected || day.isToday) && 'font-semibold', day.isSelected && 'text-white', !day.isSelected && day.isCurrentMonth && !day.isToday && 'text-gray-900', !day.isSelected && !day.isCurrentMonth && !day.isToday && 'text-gray-400', day.isToday && !day.isSelected && 'text-indigo-600', dayIdx === 0 && 'rounded-tl-lg', dayIdx === 6 && 'rounded-tr-lg', dayIdx === days.length - 7 && 'rounded-bl-lg', dayIdx === days.length - 1 && 'rounded-br-lg']"
                     @click="handleDateClick(day)"
                 >
                     <time
                         :datetime="day.date"
                         :class="['mx-auto flex h-7 w-7 items-center justify-center rounded-full', day.isSelected && day.isToday && 'bg-indigo-600', day.isSelected && !day.isToday && 'bg-gray-900']"
                     >
+                    
                         {{ day.date.split('-').pop().replace(/^0/, '') }}
                     </time>
                 </button>
@@ -63,11 +65,13 @@
                     <span class="sr-only">Дата</span>
                     <CalendarIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
                   </dt>
-                  <dd>
-                    <time :datetime="meeting.datetime">
-                      <span style="font-weight: 500; color: black">{{ meeting.description }}</span> {{ formatTime(meeting.start_time) }} - {{ formatTime(meeting.end_time) }} 
-                    </time>
-                  </dd>
+                  
+                    <dd>
+                      <time :datetime="meeting.datetime">
+                        <span style="font-weight: 500; color: black">{{ meeting.description }}</span> <template v-if="meeting.type == 'vebinar'">{{ formatTime(meeting.start_time) }} - {{ formatTime(meeting.end_time) }} </template>
+                      </time>
+                    </dd>
+                  
                 </div>
                 <!-- <div class="mt-2 flex items-start space-x-3 xl:ml-3.5 xl:mt-0 xl:border-l xl:border-gray-400 xl:border-opacity-50 xl:pl-3.5">
                   <dt class="mt-0.5">
@@ -128,6 +132,7 @@ const formattedMonth = computed(() => {
   return `${monthNames[parseInt(month, 10) - 1]} ${year}`;
 });
 const meetings = ref([]);
+const busyDays = ref([]);
 const days = ref([
   // Начальные данные (можно обновить позже)
  /*  { date: '2021-12-27' },
@@ -140,7 +145,26 @@ const selectedDate = ref(null);
 const currentMonth = ref('2024-11'); // Начальный месяц для рендера календаря
 var course_id = null;
 
-const lastDigit = async (path) => {
+const loadBusyDays = async (date) => {
+  try {
+    const last = lastDigit(window.location.pathname)
+    if (last) {
+      course_id = last;
+      const response = await axios.get(`/api/course/${course_id}/days`, { params: { date } });
+      busyDays.value = response.data;
+      console.log(response.data)
+    }
+    else {
+      const response = await axios.get('/api/days', { params: { date } });
+      busyDays.value = response.data;
+    }
+    
+  } catch (error) {
+    console.error('Error loading events:', error);
+  }
+}
+
+const lastDigit = (path) => {
   // Извлекаем последнюю цифру из pathname
   const matches = path.match(/\/(\d+)$/);
   return matches ? matches[1] : null; // Возвращаем цифру или null, если ничего не найдено
@@ -150,7 +174,7 @@ const lastDigit = async (path) => {
 // Функция для загрузки встреч с сервера
 const loadMeetings = async (date) => {
   try {
-    const last = await lastDigit(window.location.pathname)
+    const last = lastDigit(window.location.pathname)
     if (last) {
       course_id = last;
       const response = await axios.get(`/api/course/${course_id}/events`, { params: { date } });
@@ -219,6 +243,7 @@ const generateDays = (year, month) => {
       daysArray.push({
         date: formatDate(prevDate),
         isCurrentMonth: false,
+        hasEvents: busyDays.value.includes(formatDate(prevDate)),
       });
     }
   }
@@ -231,7 +256,9 @@ const generateDays = (year, month) => {
       isCurrentMonth: true,
       isToday: formatDate(date) === formatDate(new Date()),
       isSelected: formatDate(date) === formatDate(new Date()),
+      hasEvents: busyDays.value.includes(formatDate(date)),
     });
+    console.log(busyDays.value.includes(formatDate(date)))
     date.setDate(date.getDate() + 1); // Следующий день
   }
 
@@ -243,6 +270,7 @@ const generateDays = (year, month) => {
       daysArray.push({
         date: formatDate(nextDate),
         isCurrentMonth: false,
+        hasEvents: busyDays.value.includes(formatDate(nextDate)),
       });
     }
   }
@@ -252,6 +280,9 @@ const generateDays = (year, month) => {
 
 
 // Инициализация календаря
-generateDays(2024, 11);
+
+loadBusyDays(formatDate(today)).then(() =>generateDays(2024, 11))
+
+
 loadMeetings(formatDate(today))
 </script>
