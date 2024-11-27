@@ -93,16 +93,16 @@ Route::get('/api/course/{course_id}/days', function (Request $request, $course_i
 
 //Обучение
 Route::controller(App\Http\Controllers\EducationController::class)->group(function () {
-    Route::get('/education', 'showCourses')->name('education.index')->middleware(['auth'/*, 'verified*/]);
+    Route::get('/education', 'showCourses')->name('education.index')->middleware(['auth', 'verified']);
     
-    Route::get('/education/course/{course_id}/', 'showCourse')->name('education.course')->middleware(['auth'/*, 'verified*/, 'paid']);
+    Route::get('/education/course/{course_id}/', 'showCourse')->name('education.course')->middleware(['auth', 'verified', 'paid']);
 
-    Route::get('/education/course/{course_id}/event/{id}', 'showEvent')->name('education.showEvent')->middleware(['auth'/*, 'verified*/, 'paid']);
-    Route::get('/education/course/{course_id}/test/{id}','showTest')->name('education.showTest')->middleware(['auth'/*, 'verified*/, 'paid']);
-    Route::get('/education/course/{course_id}/test/{id}/startTest','startTest')->name('education.startTest')->middleware(['auth'/*, 'verified*/, 'paid']);
-    Route::post('/education/course/{course_id}/test/{id}/submitTest','submitTest')->name('education.submitTest')->middleware(['auth'/*, 'verified*/, 'paid']);
-    Route::get('/education/course/{course_id}/selfStudyMaterial/{id}','showSelfStudyMaterial')->name('education.showSelfStudyMaterial')->middleware(['auth'/*, 'verified*/, 'paid']);
-    Route::get('/education/course/{course_id}/vebinar/{id}','showVebinar')->name('education.showVebinar')->middleware(['auth'/*, 'verified*/, 'paid']);
+    Route::get('/education/course/{course_id}/event/{id}', 'showEvent')->name('education.showEvent')->middleware(['auth', 'verified', 'paid']);
+    Route::get('/education/course/{course_id}/test/{id}','showTest')->name('education.showTest')->middleware(['auth', 'verified', 'paid']);
+    Route::get('/education/course/{course_id}/test/{id}/startTest','startTest')->name('education.startTest')->middleware(['auth', 'verified', 'paid']);
+    Route::post('/education/course/{course_id}/test/{id}/submitTest','submitTest')->name('education.submitTest')->middleware(['auth', 'verified', 'paid']);
+    Route::get('/education/course/{course_id}/selfStudyMaterial/{id}','showSelfStudyMaterial')->name('education.showSelfStudyMaterial')->middleware(['auth', 'verified', 'paid']);
+    Route::get('/education/course/{course_id}/vebinar/{id}','showVebinar')->name('education.showVebinar')->middleware(['auth', 'verified', 'paid']);
     
     /* 
     Route::get('/education/test/{test_id}/question/{question_id}','showQuestion')->name('education.showQuestion'); */
@@ -111,14 +111,14 @@ Route::controller(App\Http\Controllers\EducationController::class)->group(functi
 //Платежи
 Route::controller(App\Http\Controllers\PaymentController::class)->group(function () {
    
-    Route::get('/payment/success/{sum}/{freq}', 'success')->name('payment.success')->middleware(['auth'/*, 'verified*/]);
-    Route::get('/payment/fail/{sum}/{freq}', 'fail')->name('payment.fail')->middleware(['auth'/*, 'verified*/]);
+    Route::get('/payment/success/{sum}/{freq}', 'success')->name('payment.success')->middleware(['auth', 'verified']);
+    Route::get('/payment/fail/{sum}/{freq}', 'fail')->name('payment.fail')->middleware(['auth', 'verified']);
     /* Route::post('/payment/success', 'successView')->name('payment.successView');
     Route::post('/payment/fail', 'failView')->name('payment.failView'); */
-    Route::get('/payment/base/{freq}/{sum}', 'base')->name('payment.base')->middleware(['auth'/*, 'verified*/]);
-    Route::get('/payment/privilege/{freq}/{sum}', 'privilege')->name('payment.privilege')->middleware(['auth'/*, 'verified*/]);
-    Route::get('/payment/enterprise/{freq}', 'enterprise')->name('payment.enterprise')->middleware(['auth'/*, 'verified*/]);
-    Route::get('/payment/{tier}/{freq}/{price}', 'index')->name('payment.index')->middleware(['auth'/*, 'verified*/]);
+    Route::get('/payment/base/{freq}/{sum}', 'base')->name('payment.base')->middleware(['auth', 'verified']);
+    Route::get('/payment/privilege/{freq}/{sum}', 'privilege')->name('payment.privilege')->middleware(['auth', 'verified']);
+    Route::get('/payment/enterprise/{freq}', 'enterprise')->name('payment.enterprise')->middleware(['auth', 'verified']);
+    Route::get('/payment/{tier}/{freq}/{price}', 'index')->name('payment.index')->middleware(['auth', 'verified']);
 });
 
 
@@ -168,14 +168,14 @@ Route::get('/reset-password/{token}', function (string $token, Request $request)
 Route::controller(App\Http\Controllers\UserDocumentController::class)->group(function () {
     /* Route::get('/user/{user}/document/{type}', [UserDocumentController::class, 'showDocument']);
  */
-    Route::get('/user/{user}/document/{type}', 'index')->name('showDocument')->middleware(['auth'/*, 'verified*/]);
+    Route::get('/user/{user}/document/{type}', 'index')->name('showDocument')->middleware(['auth', 'verified']);
 });
 
 //Роуты для профиля
 Route::controller(App\Http\Controllers\ProfileController::class)->group(function () {
-    Route::get('/settings', 'index')->name('settings.general')->middleware(['auth'/*, 'verified*/]);
-    Route::get('/settings/security', 'security')->name('settings.security')->middleware(['auth'/*, 'verified*/]);
-    Route::get('/settings/documents', 'documents')->name('settings.documents')->middleware(['auth'/*, 'verified*/]);
+    Route::get('/settings', 'index')->name('settings.general')->middleware(['auth', 'verified']);
+    Route::get('/settings/security', 'security')->name('settings.security')->middleware(['auth', 'verified']);
+    Route::get('/settings/documents', 'documents')->name('settings.documents')->middleware(['auth', 'verified']);
     
     
     Route::get('/settings/education', 'education')->name('settings.education');
@@ -201,7 +201,7 @@ Route::controller(App\Http\Controllers\ProfileController::class)->group(function
     Route::post('/settings/general/uploadStudScan', 'uploadStudScan')->name('settings.general.uploadStudScan');
     
 
-    Route::get('/profile', 'profile')->name('profile.general')->middleware(['auth'/*, 'verified*/]);
-    Route::post('/profile/registerSecond', 'registerSecond')->name('profile.registerSecond')->middleware(['auth'/*, 'verified*/]);
+    Route::get('/profile', 'profile')->name('profile.general')->middleware(['auth', 'verified']);
+    Route::post('/profile/registerSecond', 'registerSecond')->name('profile.registerSecond')->middleware(['auth', 'verified']);
 });
 
