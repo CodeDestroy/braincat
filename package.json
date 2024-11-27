@@ -22,7 +22,10 @@
         "@jitsi/vue-sdk": "^1.0.4",
         "alpinejs": "^3.14.3",
         "html2canvas": "^1.4.1",
+        "jose": "^5.9.6",
+        "jsonwebtoken": "^9.0.2",
         "jspdf": "^2.5.2",
+        "jwt-simple": "^0.5.6",
         "vue-router": "^4.5.0"
     }
 }

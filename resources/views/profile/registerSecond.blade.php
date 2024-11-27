@@ -68,6 +68,12 @@
                     if (event.checked) {
                         isHealthyChildGk.disabled = true
                         
+                        document.getElementById('isLegalHealthyChildPartner').checked = false
+                        document.getElementById('isLegalHealthyChildPartner').disabled = true
+
+                        document.getElementById('isHealthyChildPartner').checked = false
+                        document.getElementById('isHealthyChildPartner').disabled = true
+
                         // Удаляем для ГК
                         isLegalHealthyChildGKDiv.addEventListener('animationend', function handleAnimationEnd() {
                             isLegalHealthyChildGKDiv.classList.remove('hiding');
@@ -92,6 +98,10 @@
                         workPlace.required = true
                     }
                     else {
+                        
+                        document.getElementById('isHealthyChildPartner').disabled = false
+
+                        document.getElementById('isLegalHealthyChildPartner').disabled = false
                         isHealthyChildGk.disabled = false
                         oplataUrLicoDiv.checked = false
 
@@ -126,7 +136,7 @@
             <div class="sm:col-span-2">
                 <div id="isHealthyChildGKDiv" class="relative mt-2 rounded-md shadow-sm items-center flex text-black-900 dark:text-black-300">
                     <input value="true" onchange="showHealthyChildGk(this)" name="isHealthyChildGk" id="isHealthyChildGk" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
-                    <label for="isHealthyChildGK" class="my-2 ms-2.5 text-md font-medium">Сотрудник ГК "Здоровый ребенок"</label>
+                    <label for="isHealthyChildGk" class="my-2 ms-2.5 text-md font-medium">Сотрудник ГК "Здоровый ребёнок"</label>
                 </div>
             </div>
             <script defer>
@@ -139,6 +149,11 @@
                     const workPlace = document.getElementById('workPlace')
                     /*  */
                     if (event.checked) {
+                        document.getElementById('isLegalHealthyChildPartner').checked = false
+                        document.getElementById('isLegalHealthyChildPartner').disabled = true
+
+                        document.getElementById('isHealthyChildPartner').checked = false
+                        document.getElementById('isHealthyChildPartner').disabled = true
 
                         //Проявляем оплата юр лицом
                         /* isLegalHealthyChildGKDiv.classList.remove('hidden'); */
@@ -156,11 +171,14 @@
                         isHealthyChildFranch.disabled = true
                         isHealthyChildFranch.checked = false
 
-                        //Место работы ГК здоров ребенок
-                        workPlace.value = 'ГК "Здоровый ребенок"'
-                        workPlace.disabled = true
+                        //Место работы ГК здоров ребёнок
+                        workPlace.value = 'ГК "Здоровый ребёнок"'
+                        workPlace.readOnly = true
                     }
                     else {
+                        document.getElementById('isHealthyChildPartner').disabled = false
+
+                        document.getElementById('isLegalHealthyChildPartner').disabled = false
 
                         //Убираем галку оплата орг ДЛЯ ГК
                         document.getElementById('isLegalHealthyChildGK').checked = false
@@ -183,12 +201,101 @@
 
                         /* isHealthyChild.checked = false */
                         workPlace.value = ''
+                        
+                        workPlace.readOnly = false
                     }
                 }
             
             </script> 
+
+            {{-- Партнер чекбокс --}}
+            <div class="sm:col-span-2">
+                <div id="isHealthyChildPartnerDiv" class="relative mt-2 rounded-md shadow-sm items-center flex text-black-900 dark:text-black-300">
+                    <input value="true" onchange="showHealthyChildPartner(this)" name="isHealthyChildPartner" id="isHealthyChildPartner" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                    <label for="isHealthyChildPartner" class="my-2 ms-2.5 text-md font-medium">Партнёр ГК "Здоровый ребёнок"</label>
+                </div>
+            </div>
+            <script defer>
+                function showHealthyChildPartner(event) {
+                    const isLegalHealthyChildGKDiv = document.getElementById('isLegalHealthyChildGKDiv')
+                    const isHealthyChildFranch = document.getElementById('isHealthyChildFranch')
+                    const isHealthyChildGk = document.getElementById('isHealthyChildGk')
+                    
+                    const isLegalHealthyChildPartner = document.getElementById('isLegalHealthyChildPartner')
+                    
+                    /* const isHealthyChild = document.getElementById('isHealthyChild') */
+                    const isStudent = document.getElementById('isStudent')
+                    const workPlace = document.getElementById('workPlace')
+                    /*  */
+                    if (event.checked) {
+                        
+                        //Проявляем оплата юр лицом
+                        /* isLegalHealthyChildGKDiv.classList.remove('hidden'); */
+                        /* isLegalHealthyChildGKDiv.classList.remove('hide');
+                        isLegalHealthyChildGKDiv.classList.add('visible');
+                        isLegalHealthyChildGKDiv.classList.remove('hiding'); */
+                        /* setTimeout(() => {
+                            isLegalHealthyChildGKDiv.classList.add('visible');
+                        }, 200); */
+
+                        //Не может быть студентом
+                        isLegalHealthyChildPartner.checked = true
+
+                        isStudent.disabled = true
+                        isStudent.checked = false
+                        //Не может быть работником франшизы, он уже в ГК
+                        isHealthyChildFranch.disabled = true
+                        isHealthyChildFranch.checked = false
+
+                        isHealthyChildGk.disabled = true;
+                        isHealthyChildGk.checked = false
+
+                        //Место работы Казахстан здоров ребёнок
+                        workPlace.value = 'Казахстан, ИП Ильясов Г.А., г. Актобе, Сазда 4, уч. 9'
+                        workPlace.readOnly = true
+                    }
+                    else {
+
+                        //Убираем галку оплата орг ДЛЯ Партнеров
+                        
+                        isLegalHealthyChildPartner.checked = false
+                        //Удаляем оплата юр лицом
+                        /* isLegalHealthyChildGKDiv.classList.add('hiding');
+                        isLegalHealthyChildGKDiv.classList.remove('visible'); */
+                        
+                        /* isLegalHealthyChildGKDiv.addEventListener('animationend', function handleAnimationEnd() {
+                            isLegalHealthyChildGKDiv.classList.remove('hiding');
+                            isLegalHealthyChildGKDiv.classList.add('hide');
+                            isLegalHealthyChildGKDiv.removeEventListener('animationend', handleAnimationEnd);
+                        }); */
+
+                        //Включаем галку оплата юр лицом
+                        isHealthyChildFranch.disabled = false
+
+
+                        isHealthyChildGk.disabled = false
+
+                        //Включаем студента
+                        isStudent.disabled = false
+
+                        /* isHealthyChild.checked = false */
+                        workPlace.value = ''
+                        
+                        workPlace.readOnly = false
+                    }
+                }
             
-            {{-- Для Франчайзи здоровый ребенок --}}
+            </script> 
+
+            {{-- Для Партнеров --}}
+            <div id="isLegalHealthyChildPartnerDiv" class="sm:col-span-2 animated hide">
+                <div class="relative mt-2 rounded-md shadow-sm items-center flex">
+                    <input value="true" name="isLegalHealthyChildPartner" id="isLegalHealthyChildPartner" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                    <label for="isLegalHealthyChildPartner" class="my-2 ms-2.5 text-md font-medium text-black-900 dark:text-black-300">Оплата осуществляется юридическим лицом</label>
+                </div>
+            </div>  
+            
+            {{-- Для Франчайзи здоровый ребёнок --}}
             <div id="oplataUrLicoDiv" class="sm:col-span-2 animated hide">
                 <div class="relative mt-2 rounded-md shadow-sm items-center flex">
                     <input value="true" name="isLegalHealthyChildFranch" id="isLegal" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
