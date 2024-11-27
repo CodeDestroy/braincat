@@ -13,7 +13,7 @@ use Carbon\Carbon;
 
 }); */
 
-Auth::routes(/* ['verify' => true] */);
+Auth::routes(['verify' => true]);
 /* Route::fallback(function () {
     return view('errors.404');
 }); */
@@ -146,7 +146,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 //Сброс пароля
 Route::get('/forgot-password', function () {
-    return view('auth.forgot-password');
+    return view('auth.passwords.email');
 })->middleware('guest')->name('password.request');
 Route::post('/forgot-password', function (Request $request) {
     $request->validate(['email' => 'required|email']);
@@ -156,11 +156,12 @@ Route::post('/forgot-password', function (Request $request) {
     );
 
     return $status === Password::RESET_LINK_SENT
-                ? back()->with(['status' => __($status)])
+                ? back()->with(['status' => __('Ссылка на изменение пароля отправлена на вашу почту')])
                 : back()->withErrors(['email' => __($status)]);
 })->middleware('guest')->name('password.email');
-Route::get('/reset-password/{token}', function (string $token) {
-    return view('auth.reset-password', ['token' => $token]);
+Route::get('/reset-password/{token}', function (string $token, Request $request) {
+    $email = $request->query('email');
+    return view('auth.passwords.reset', ['token' => $token, 'email' => $email]);
 })->middleware('guest')->name('password.reset');
 
 //Роуты для документов
