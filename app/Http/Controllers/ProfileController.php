@@ -42,7 +42,7 @@ class ProfileController extends Controller
     {
         $userCourseRegistration = CourseRegistration::where(['user_id' => $request->user()->id])->first();
         $userIsStudent = 0;
-        if ($userCourseRegistration->isStudent) {
+        if ($userCourseRegistration && $userCourseRegistration->isStudent) {
             $userIsStudent = 1;
         }
         $userStud = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'stud'])->first();
