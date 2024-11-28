@@ -10,7 +10,7 @@
         </li>
         <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
           <p class="text-slate-400">29.11.2024</p>
-          <p>Тема 1.1: Из истории изучения головного мозга человека. Головной мозг человека и его отделы. Поля коры мозга. Проводящие пути мозга</p>
+          <a href="#calendar" @click="handleDateClick('2024-11-29')"><p>Тема 1.1: Из истории изучения головного мозга человека. Головной мозг человека и его отделы. Поля коры мозга. Проводящие пути мозга</p></a>
         </li>
         <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
           <p class="text-slate-400">07.12.2024</p>

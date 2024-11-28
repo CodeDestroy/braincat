@@ -40,6 +40,7 @@ createApp({
  import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedTier.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
+import CalendarPlan from './components/CalendarPlan.vue';
 import SectionHeadingsWithTabs from './components/SectionHeadingsWithTabs.vue';
 import Privacy from './components/Privacy.vue';
 import Policy from './components/Policy.vue';
@@ -61,6 +62,10 @@ createApp({})
 createApp({})
 .component('Plan', Plan)
 .mount('#plan')  
+
+createApp({})
+.component('CalendarPlan', CalendarPlan)
+.mount('#calendar-plan')  
 
 createApp({})
 .component('SectionHeadingsWithTabs', SectionHeadingsWithTabs)
