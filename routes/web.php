@@ -36,8 +36,9 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
 Route::get('/api/events', function (Request $request) {
     $date = $request->query('date');
     return Event::where('start_date', '<=', $date)->where('end_date', '>=', $date)
+                ->orderBy('order', 'ASC')
                 ->orderBy('start_time')
-                ->orderBy('type', 'ASC')
+                /* ->orderBy('type', 'ASC') */
                 ->get();
 });
 
@@ -45,8 +46,9 @@ Route::get('/api/events', function (Request $request) {
 Route::get('/api/course/{course_id}/events', function (Request $request, $course_id) {
     $date = $request->query('date');
     return Event::where('start_date', '<=', $date)->where('end_date', '>=', $date)->where('course_id', $course_id)
+                ->orderBy('order', 'ASC')
                 ->orderBy('start_time')
-                ->orderBy('type', 'ASC')
+                /* ->orderBy('type', 'ASC') */
                 ->get();
 });
 

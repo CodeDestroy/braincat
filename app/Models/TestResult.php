@@ -11,6 +11,7 @@ class TestResult extends Model
         'test_id',
         'score',
         'max_score',
+        'passed'
         
     ];
 

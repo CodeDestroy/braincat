@@ -3,11 +3,15 @@
 
 @section('content')
 <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div id="plan">
+    {{-- <div id="plan">
         <plan/>
     </div>
     <div id="calendar">
         <calendar/>
+    </div> --}}
+    
+    <div id="calendar-plan">
+        <calendar-plan/>
     </div>
 </div>
 @endsection

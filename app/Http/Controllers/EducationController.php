@@ -71,6 +71,7 @@ class EducationController extends Controller
                     case 'test':
                                 
                         $test = Test::where(['event_id' => $id])->first();
+                        
                         return redirect()->route('education.showTest', ['id' => $test->id, 'course_id' => $course_id]);
                     case 'vebinar':
                         $vebinar = Vebinar::where(['event_id' => $id])->first();
@@ -114,12 +115,41 @@ class EducationController extends Controller
 
     public function showTest(Request $request, $course_id, $id)
     {
+        $today = date("Y-m-d");
         $user = $request->user();
+        //Находим этот тест
         $test = Test::find($id);
-        return view('education.events.tests.testPreview', compact('test', 'course_id'));
+        //Получаем из представления записи за сегодня
+        $testResutsToday = ($user->getAllTestTries($today)->toArray())[0];
+        //Получаем из представления записи за всё время
+        $testResutsAll = $user->getAllTestTries()->toArray();
+
+        $testResultEloquent = TestResult::where('user_id', $user->id)->orderBy('created_at', 'desc');
+        
+        //Получаем из таблицы общее количество попыток
+        $triesCount = count($testResultEloquent->get());
+        
+        //Получаем из таблицы последний результат
+        $lastResult = $testResultEloquent->first();
+
+        $isCompleted = false;
+        $whyBlocked = '';
+        $isBlocked = false;
+
+        if ($testResutsToday->passed === 1 ) {
+            /* $whyBlocked = 'Вы прошли тест';
+            $isBlocked = true; */
+            $isCompleted = true;
+        }
+        else if ($testResutsToday->record_count >= 5) {
+            $whyBlocked = 'Слишком много попыток. Прохождение теста заблокировано до завтра.';
+            $isBlocked = true;
+        }
+
+        return view('education.events.tests.testPreview', compact('test', 'course_id', 'testResutsToday', 'testResutsAll', 'lastResult', 'triesCount', 'isBlocked', 'isCompleted', 'whyBlocked'));
     }
 
-    public function startTest(Request $request, $id)
+    public function startTest(Request $request, $course_id, $id)
     {
         $user = $request->user();
         /* $questions = 
@@ -162,7 +192,13 @@ class EducationController extends Controller
                 $score += $userAnswer->score;
             }
         }
-        
+
+        $passed = $maxScore > 0 && ($score / $maxScore) >= 0.6 ? 1 : 0;
+        /* if (var_dump(($score)/($maxScore)) >= 0.6) {
+            $passed = 1;
+        } */
+        Log::debug($maxScore > 0 && ($score / $maxScore) >= 0.6 ? 1 : 0);
+        Log::debug($passed);
         // Вычисляем процент правильных ответов
         /* $score = round($score / $maxScore * 100); */
 
@@ -171,6 +207,7 @@ class EducationController extends Controller
             'test_id' => $test->id,
             'score' => $score,
             'max_score' => $maxScore,
+            'passed' => $passed,
         ]);
         return view('education.events.tests.result', compact('testResult'));
         return response()->json(['message' => 'Answers submitted successfully. Score: ' . $score . ' ' . $TestResult]);
