@@ -50,7 +50,7 @@ import Contract from './components/Contract.vue';
 import Jitsi from './components/Jitsi.vue';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
-
+import AskQuestion from './components/AskQuestion.vue';
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
 .mount('#price')
@@ -95,6 +95,10 @@ createApp({})
 createApp({})
 .component('Jitsi', Jitsi)
 .mount('#jitsi')
+
+createApp({})
+.component('AskQuestion', AskQuestion)
+.mount('#ask-question')
 
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
