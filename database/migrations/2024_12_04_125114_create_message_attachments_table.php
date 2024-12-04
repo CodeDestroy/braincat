@@ -11,8 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+        Schema::create('message_attachments', function (Blueprint $table) {
+            $table->id();
+            /* 'user_id',
+        'theme_id',
+        'text',
+        'isAnonymous',
+        'status' */
+            $table->foreignId('message_id')->references('id')->on('messages')->onDelete('cascade');
+            $table->string('file')->default('');
+            $table->string('type')->default('');
+
+            $table->timestamps();
         });
     }
 
@@ -21,9 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('messages', function (Blueprint $table) {
-            //
-            $table->dropColumn('passed');
-        });
+        Schema::dropIfExists('message_attachments');
     }
 };
