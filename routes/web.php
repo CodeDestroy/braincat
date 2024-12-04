@@ -17,7 +17,10 @@ Auth::routes(['verify' => true]);
 /* Route::fallback(function () {
     return view('errors.404');
 }); */
-
+Route::get('/pdf/{filename}', function ($filename) {
+    $path = storage_path('app/public/pdfs/' . $filename); // Путь к вашему PDF файлу
+    return response()->file($path);
+});
 //Роуты основных страниц
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
@@ -106,6 +109,9 @@ Route::controller(App\Http\Controllers\EducationController::class)->group(functi
     Route::get('/education/course/{course_id}/selfStudyMaterial/{id}','showSelfStudyMaterial')->name('education.showSelfStudyMaterial')->middleware(['auth', 'verified', 'paid']);
     Route::get('/education/course/{course_id}/vebinar/{id}','showVebinar')->name('education.showVebinar')->middleware(['auth', 'verified', 'paid']);
     
+    Route::get('/education/course/{course_id}/askQuestion','showAskQuestion')->name('education.showAskQuestionSelectTheme')->middleware(['auth', 'verified', 'paid']);
+    Route::get('/education/course/{course_id}/askQuestion/theme/{theme_id}','showAskQuestion')->name('education.showAskQuestion')->middleware(['auth', 'verified', 'paid']);
+    Route::post('/education/course/{course_id}/askQuestion/theme/{theme_id}','askQuestion')->name('education.askQuestion')->middleware(['auth', 'verified', 'paid']);
     /* 
     Route::get('/education/test/{test_id}/question/{question_id}','showQuestion')->name('education.showQuestion'); */
 

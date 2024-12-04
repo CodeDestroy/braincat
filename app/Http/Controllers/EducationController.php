@@ -15,6 +15,8 @@ use App\Models\UserAnswer;
 use App\Models\TestResult;
 use App\Models\Payment;
 use App\Models\Vebinar;
+use App\Models\Theme;
+use App\Models\Message;
 use Illuminate\Support\Facades\Log;
 use function GuzzleHttp\default_ca_bundle;
 use Illuminate\Support\Facades\DB;
@@ -270,5 +272,32 @@ class EducationController extends Controller
         $question = Question::find($question_id);
         $answers = Answer::where(['question_id' => $question_id])->get();
         return view('education.events.tests.question', compact(['question', 'answers']));
+    }
+
+    public function showAskQuestion(Request $request, $course_id, $theme_id = null) 
+    {
+        if ($theme_id)
+        {
+            $theme = Theme::find($theme_id);
+            $messages = Message::where(['user_id' => $request->user()->id, 'theme_id' => $theme_id])->get();
+            $themes = Theme::where(['course_id' => $course_id])->get();
+            return view('education.askQuestion', compact(['theme', 'messages', 'themes', 'course_id', 'theme_id']));
+
+        }
+        else 
+        {
+            $theme = null;
+            $messages = [];
+            $themes = Theme::where(['course_id' => $course_id])->get();
+            return view('education.askQuestion', compact(['theme', 'themes', 'messages', 'course_id', 'theme_id']));
+        }
+    }
+
+    
+    public function askQuestion(Request $request, $course_id, $theme_id) 
+    {
+        $content = $request->all();
+        $newMessage = Message::create(['user_id' => $request->user()->id, 'theme_id' => $theme_id, 'text'=>$content['text'], 'isAnonymous' =>  $request->has('isAnonymous') ? 1 : 0]);
+        return redirect()->back();
     }
 }
