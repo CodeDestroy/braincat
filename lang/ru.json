@@ -844,5 +844,12 @@
     "Zambia": "Замбия",
     "Zimbabwe": "Зимбабве",
     "Zip / Postal Code": "Почтовый индекс",
-    "Åland Islands": "Аландские острова"
+    "Åland Islands": "Аландские острова",
+    "birthday": "День рождения",
+    "secondName": "Фамилия",
+    "patronymicName": "Отчество",
+    "address": "Адрес",
+    "tgNickname": "Никнейм Телеграм",
+    "hasWhatsApp": "Есть WhatsApp",
+    "Access Controls": "Контроль доступа"
 }
