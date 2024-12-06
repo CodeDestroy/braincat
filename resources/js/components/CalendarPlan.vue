@@ -9,16 +9,18 @@
                     <p>Раздел 1. Строение и функции головного мозга человека</p>
                 </li>
                 
-                  <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
-                      <a class=" py-4" href="#calendarView" @click="handleDateClick({date: '2024-11-29', isCurrentMonth: true})">
-                          <p class="text-slate-400">29.11.2024</p>
-                          <p class="text-green-500">Тема 1.1: Из истории изучения головного мозга человека. Головной мозг человека и его отделы. Поля коры мозга. Проводящие пути мозга</p>
-                      </a>
-                  </li>
+                <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
+                    <a class=" py-4" href="#calendarView" @click="handleDateClick({date: '2024-11-29', isCurrentMonth: true})">
+                        <p class="text-slate-400">29.11.2024</p>
+                        <p class="text-violet-500">Тема 1.1: Из истории изучения головного мозга человека. Головной мозг человека и его отделы. Поля коры мозга. Проводящие пути мозга</p>
+                    </a>
+                </li>
 
                 <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
-                    <p class="text-slate-400">07.12.2024</p>
-                    <p>Тема 1.2: Высшие психические функции человека. Гнозис и его виды. Праксис и его виды</p>
+                    <a class=" py-4" href="#calendarView" @click="handleDateClick({date: '2024-12-07', isCurrentMonth: true})">
+                        <p class="text-slate-400">07.12.2024</p>
+                        <p class="text-green-500">Тема 1.2: Высшие психические функции человека. Гнозис и его виды. Праксис и его виды</p>
+                    </a>
                 </li>
                 <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
                     <p class="text-slate-400">14.12.2024</p>
@@ -202,7 +204,7 @@
     const days = ref([]);
     const today = new Date();
     const selectedDate = ref(null);
-    const currentMonth = ref('2024-11');
+    const currentMonth = ref('2024-12');
     var course_id = null;
 
       const loadBusyDays = async (date) => {
@@ -341,7 +343,7 @@
 
     // Инициализация календаря
 
-    loadBusyDays(formatDate(today)).then(() =>generateDays(2024, 11))
+    loadBusyDays(formatDate(today)).then(() =>generateDays(2024, 12))
 
 
     loadMeetings(formatDate(today))
