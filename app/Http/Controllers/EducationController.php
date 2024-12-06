@@ -58,9 +58,13 @@ class EducationController extends Controller
         $event = Event::find($id);
         Log::debug($event);
         if ($event->status != 'inProgress') {
-            $permissions = $user->permissions()->get();
+
+            /* $permissions = $user->permissions()->get();
             $permissions = $permissions->pluck('slug')->toArray();
             if (!in_array('view-events', $permissions)) {
+                return view('errors.accessError', ['error_title' => 'Материалы пока не доступны', 'error_message' => 'У вас нет доступа к этой странице.']);
+            } */
+            if (!$user->hasAnyAccess(['content.viewEvents'])) {
                 return view('errors.accessError', ['error_title' => 'Материалы пока не доступны', 'error_message' => 'У вас нет доступа к этой странице.']);
             }
             else  {
@@ -122,14 +126,15 @@ class EducationController extends Controller
         //Находим этот тест
         $test = Test::find($id);
         //Получаем из представления записи за сегодня
-        $testResutsToday = ($user->getAllTestTries($today)->toArray())[0];
+        $testResultsTodayArray = $user->getAllTestTries($today)->toArray();
+        $testResutsToday = !empty($testResultsTodayArray) ? $testResultsTodayArray[0] : null;
         //Получаем из представления записи за всё время
         $testResutsAll = $user->getAllTestTries()->toArray();
 
         $testResultEloquent = TestResult::where('user_id', $user->id)->orderBy('created_at', 'desc');
         
         //Получаем из таблицы общее количество попыток
-        $triesCount = count($testResultEloquent->get());
+        $triesCount = $testResultEloquent->count();
         
         //Получаем из таблицы последний результат
         $lastResult = $testResultEloquent->first();
@@ -138,12 +143,12 @@ class EducationController extends Controller
         $whyBlocked = '';
         $isBlocked = false;
 
-        if ($testResutsToday->passed === 1 ) {
+        if ($testResutsToday && $testResutsToday->passed === 1) {
             /* $whyBlocked = 'Вы прошли тест';
             $isBlocked = true; */
             $isCompleted = true;
         }
-        else if ($testResutsToday->record_count >= 5) {
+        else if ($testResutsToday && $testResutsToday->record_count >= 5) {
             $whyBlocked = 'Слишком много попыток. Прохождение теста заблокировано до завтра.';
             $isBlocked = true;
         }
@@ -163,7 +168,7 @@ class EducationController extends Controller
         return view('education.events.tests.question', compact('questions'));
     }
 
-    public function submitTest(Request $request, $id) 
+    public function submitTest(Request $request, $course_id, $id) 
     {
         // Получаем текущего пользователя и тест
         $user = $request->user(); // Используем авторизованного пользователя
@@ -211,8 +216,9 @@ class EducationController extends Controller
             'max_score' => $maxScore,
             'passed' => $passed,
         ]);
-        return view('education.events.tests.result', compact('testResult'));
-        return response()->json(['message' => 'Answers submitted successfully. Score: ' . $score . ' ' . $TestResult]);
+        
+        return view('education.events.tests.result', compact('testResult', 'passed', 'course_id'));
+        /* return response()->json(['message' => 'Answers submitted successfully. Score: ' . $score . ' ' . $TestResult]); */
     }
 
     /**

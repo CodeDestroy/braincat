@@ -67,7 +67,7 @@
                         <div class="{{$message->user_id == $user->id ? 'justify-end ' : ''}} flex mb-4">
                             <div class="flex flex-col">
                                 <div>
-                                    <p class="text-xs text-gray-500 text-right pr-2">{{ $message->created_at->format('d.m в H:i') }}@if ($message->isAnonymous), Анонимный вопрос@endif</p>
+                                    <p class="text-xs text-gray-500 text-right pr-2">{{ $message->created_at->format('d.m в H:i') }}@if ($message->isAnonymous), Приватный вопрос@endif</p>
                                 </div>
                                 <div class="{{$message->user_id == $user->id ? 'bg-purple-700 text-white' : 'bg-white'}} flex max-w-96 rounded-lg p-3 gap-3 ">
                                     <p>{{$message->text}}</p>

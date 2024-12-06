@@ -2,15 +2,12 @@
 
 @section('content')
 @php
+
+    // TODO: переделать на orchid роли
     $user = Auth::user();
-    /* $isModer = false; */
-    $roles = $user->roles()->get();
-    $roles = $roles->pluck('slug')->toArray();
-    if (in_array('manager', $roles)) {
-        /* print_r('moder = true'); */
-        /* $isModer = true; */
-        $user->isModer = true;
-    }
+
+    if ($user->hasAccess('vebinarModer')){ $user->isModer = true;}
+
 @endphp
 <div class="mx-auto max-w-7xl px-6 lg:px-8" style="height: 60vh">
     {{-- {{$vebinar}} --}}
