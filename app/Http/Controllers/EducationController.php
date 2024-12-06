@@ -168,7 +168,7 @@ class EducationController extends Controller
         return view('education.events.tests.question', compact('questions'));
     }
 
-    public function submitTest(Request $request, $id) 
+    public function submitTest(Request $request, $course_id, $id) 
     {
         // Получаем текущего пользователя и тест
         $user = $request->user(); // Используем авторизованного пользователя
@@ -217,7 +217,7 @@ class EducationController extends Controller
             'passed' => $passed,
         ]);
         
-        return view('education.events.tests.result', compact('testResult', 'passed'));
+        return view('education.events.tests.result', compact('testResult', 'passed', 'course_id'));
         /* return response()->json(['message' => 'Answers submitted successfully. Score: ' . $score . ' ' . $TestResult]); */
     }
 
