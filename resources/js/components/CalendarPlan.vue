@@ -18,7 +18,7 @@
 
                 <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
                     <a class=" py-4" href="#calendarView" @click="handleDateClick({date: '2024-12-07', isCurrentMonth: true})">
-                        <p class="text-slate-400">07.12.2024</p>
+                        <p class="text-slate-400">07.12.2024 19:00 по МСК</p>
                         <p class="text-green-500">Тема 1.2: Высшие психические функции человека. Гнозис и его виды. Праксис и его виды</p>
                     </a>
                 </li>

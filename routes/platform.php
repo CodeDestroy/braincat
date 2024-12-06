@@ -92,24 +92,26 @@ Route::screen('events', EventListScreen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Events'), route('platform.events')));
+
+//Platform > Events > Edit
 Route::screen('events/{event}/edit', EventEditScreen::class)
     ->name('platform.event.edit')
     ->breadcrumbs(fn (Trail $trail, $event): Trail => $trail
         ->parent('platform.events')
         ->push(__('Edit'), route('platform.event.edit', $event)));
 
+//Platform > Events > Create
+Route::screen('events/create', EventEditScreen::class)
+    ->name('platform.events.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.events')
+        ->push(__('Create'), route('platform.events.create')));
 /* Route::screen('users/{user}/edit', UserEditScreen::class)
     ->name('platform.systems.users.edit')
     ->breadcrumbs(fn (Trail $trail, $user) => $trail
         ->parent('platform.systems.users')
         ->push($user->name, route('platform.systems.users.edit', $user)));
  */
-//Platform > Events > Create
-/* Route::screen('events/create', EventListScreen::class)
-    ->name('platform.events.create')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.events.list')
-        ->push(__('Create'), route('platform.events.create'))); */
 
 // Example...
 Route::screen('example', ExampleScreen::class)

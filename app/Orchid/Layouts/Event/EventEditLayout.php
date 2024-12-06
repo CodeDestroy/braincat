@@ -9,7 +9,7 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\Select;
-use Orchid\Screen\Fields\CheckBox;
+use Orchid\Screen\Fields\Attach;
 use Orchid\Screen\Layouts\Rows;
 use App\Models\Course;
 
@@ -34,11 +34,8 @@ class EventEditLayout extends Rows
                 ->required()
                 ->title(__('Description'))
                 ->placeholder(__('Description')),
-            /* Input::make('event.course_id')
-                ->type('text')
-                ->max(255)
-                ->title(__('Course'))
-                ->placeholder(__('Course')), */
+            Attach::make('image')
+                ->accept('image/*'),
             Relation::make('event.course_id')
                 ->fromModel(Course::class, 'name')
                 ->title('Выберите курс'),

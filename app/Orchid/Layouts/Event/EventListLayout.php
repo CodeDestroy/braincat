@@ -81,7 +81,20 @@ class EventListLayout extends Table
                 ->align(TD::ALIGN_RIGHT)
                 ->defaultHidden()
                 ->sort(),
-
+            TD::make('status', __('Status'))
+                ->render(function (Event $event) {
+                    return __($event->status);
+                })
+                ->align(TD::ALIGN_RIGHT)
+                ->defaultHidden()
+                ->sort(),
+            TD::make('type', __('Type'))
+                ->render(function (Event $event) {
+                    return __($event->type);
+                })
+                ->align(TD::ALIGN_RIGHT)
+                ->defaultHidden()
+                ->sort(),
             TD::make(__('Actions'))
                 ->align(TD::ALIGN_CENTER)
                 ->width('100px')

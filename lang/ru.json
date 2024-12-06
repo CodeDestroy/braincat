@@ -853,9 +853,12 @@
     "hasWhatsApp": "Есть WhatsApp",
     "Access Controls": "Контроль доступа",
     "Self study materials": "Материалы для самостоятельного изучения",
+    "selfStudyMaterial": "Материал для самостоятельного изучения",
     "Events": "События",
     "Vebinars": "Вебинары",
+    "vebinar": "Вебинар",
     "Tests": "Тесты",
+    "test": "Тест",
     "Event Management": "Управление событиями",
     "A comprehensive list of all events": "Список всех событий",
     "Course": "Курс",
@@ -878,7 +881,12 @@
     "Order": "Порядок",
     "Color": "Цвет",
     "Closed": "Закрыто",
+    "closed": "Закрыто",
     "In progress": "В процессе",
-    "Not active": "Неактивно"
+    "inProgress": "В процессе",
+    "Not active": "Неактивно",
+    "notActive": "Неактивно",
+    "": ""
+    
 
 }

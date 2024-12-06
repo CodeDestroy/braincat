@@ -64,9 +64,9 @@ class EventListScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            /* Link::make(__('Add'))
+            Link::make(__('Add'))
                 ->icon('bs.plus-circle')
-                ->href(route('platform.events.create')), */
+                ->href(route('platform.events.create')),
         ];
     }
 
