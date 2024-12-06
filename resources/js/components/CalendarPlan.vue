@@ -93,7 +93,7 @@
         </div>
     </div>
     <div id="calendarView">
-        <h2 class="font-semibold leading-6 text-gray-900 mt-10 text-3xl">Предстоящие события</h2>
+        <h2 class="font-semibold leading-6 text-gray-900 mt-10 text-3xl">События</h2>
         <div class="lg:grid lg:grid-cols-12 lg:gap-x-16">
             <div class="mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
                 <div class="flex items-center text-gray-900">            
