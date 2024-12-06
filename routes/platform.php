@@ -20,6 +20,8 @@ use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
+use App\Orchid\Screens\Event\EventListScreen;
+use App\Orchid\Screens\Event\EventEditScreen;
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -83,6 +85,31 @@ Route::screen('roles', RoleListScreen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Roles'), route('platform.systems.roles')));
+
+// Platform > Events
+Route::screen('events', EventListScreen::class)
+    ->name('platform.events')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Events'), route('platform.events')));
+Route::screen('events/{event}/edit', EventEditScreen::class)
+    ->name('platform.event.edit')
+    ->breadcrumbs(fn (Trail $trail, $event): Trail => $trail
+        ->parent('platform.events')
+        ->push(__('Edit'), route('platform.event.edit', $event)));
+
+/* Route::screen('users/{user}/edit', UserEditScreen::class)
+    ->name('platform.systems.users.edit')
+    ->breadcrumbs(fn (Trail $trail, $user) => $trail
+        ->parent('platform.systems.users')
+        ->push($user->name, route('platform.systems.users.edit', $user)));
+ */
+//Platform > Events > Create
+/* Route::screen('events/create', EventListScreen::class)
+    ->name('platform.events.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.events.list')
+        ->push(__('Create'), route('platform.events.create'))); */
 
 // Example...
 Route::screen('example', ExampleScreen::class)

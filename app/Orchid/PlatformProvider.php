@@ -65,6 +65,8 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.card-text')
                 ->route('platform.example.cards')
                 ->divider(),
+            
+            //НУжное тут
 
             Menu::make(__('Users'))
                 ->icon('bs.people')
@@ -78,6 +80,30 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.roles')
                 ->divider(),
 
+            //Эвенты
+            Menu::make(__('Events'))
+                
+                ->icon('bs.shield')
+                ->route('platform.events')
+                ->permission('platform.events')
+                ->title(__('Events'))
+                /* ->divider() */,
+            //Материалы для самообучения
+            /* Menu::make(__('Self study materials'))
+                ->icon('bs.shield')
+                ->route('platform.events.selfStudyMaterials')
+                ->permission('platform.events.selfStudyMaterials'),
+            //Вебинары
+            Menu::make(__('Vebinars'))
+                ->icon('bs.shield')
+                ->route('platform.events.selfStudyMaterials')
+                ->permission('platform.events.selfStudyMaterials'),
+            //Тесты
+            Menu::make(__('Self study materials'))
+                ->icon('bs.shield')
+                ->route('platform.events.selfStudyMaterials')
+                ->permission('platform.events.selfStudyMaterials'), */
+                
             Menu::make('Documentation')
                 ->title('Docs')
                 ->icon('bs.box-arrow-up-right')
