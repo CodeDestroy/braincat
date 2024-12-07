@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
+use Orchid\Attachment\Attachable;
 class Event extends Model
 {
     use AsSource;
+    use Attachable;
     protected $fillable = [
         'name',
         'description',

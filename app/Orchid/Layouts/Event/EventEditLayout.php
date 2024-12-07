@@ -35,6 +35,7 @@ class EventEditLayout extends Rows
                 ->title(__('Description'))
                 ->placeholder(__('Description')),
             Attach::make('image')
+                ->path('/img')
                 ->accept('image/*'),
             Relation::make('event.course_id')
                 ->fromModel(Course::class, 'name')
