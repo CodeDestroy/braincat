@@ -12,7 +12,9 @@ use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Attach;
 use Orchid\Screen\Layouts\Rows;
 use App\Models\Course;
+use App\Models\Event;
 
+use Orchid\Screen\TD;
 class EventEditLayout extends Rows
 {
     /**
@@ -34,7 +36,15 @@ class EventEditLayout extends Rows
                 ->required()
                 ->title(__('Description'))
                 ->placeholder(__('Description')),
+            /* TD::make('imageView', __('Image'))
+                ->render(function (Event $event) {
+                    $imageHref = $event->image;
+                    return "<img src='$imageHref' width='100px' height='100px'>";
+                })
+                ->sort(), */
             Attach::make('image')
+                ->title(__('Image'))
+                ->path('/img')
                 ->accept('image/*'),
             Relation::make('event.course_id')
                 ->fromModel(Course::class, 'name')

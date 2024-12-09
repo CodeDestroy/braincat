@@ -22,6 +22,10 @@ use Tabuna\Breadcrumbs\Trail;
 
 use App\Orchid\Screens\Event\EventListScreen;
 use App\Orchid\Screens\Event\EventEditScreen;
+use App\Orchid\Screens\Event\SelfStudyMaterialListScreen;
+use App\Orchid\Screens\Event\SelfStudyMaterialEditScreen;
+use App\Orchid\Screens\Event\VebinarListScreen;
+use App\Orchid\Screens\Event\VebinarEditScreen;
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -106,6 +110,50 @@ Route::screen('events/create', EventEditScreen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.events')
         ->push(__('Create'), route('platform.events.create')));
+
+
+// Platform > Events > SelfStudyMaterials
+Route::screen('selfStudyMaterials', SelfStudyMaterialListScreen::class)
+    ->name('platform.events.selfStudyMaterials')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.events')
+        ->push(__('SelfStudyMaterials'), route('platform.events.selfStudyMaterials')));
+
+//Platform > Events > Edit
+Route::screen('selfStudyMaterials/{selfStudyMaterial}/edit', SelfStudyMaterialEditScreen::class)
+    ->name('platform.events.selfStudyMaterials.edit')
+    ->breadcrumbs(fn (Trail $trail, $event): Trail => $trail
+        ->parent('platform.events.selfStudyMaterials')
+        ->push(__('Edit'), route('platform.events.selfStudyMaterials.edit', $event)));
+
+//Platform > Events > Create
+Route::screen('selfStudyMaterials/create', SelfStudyMaterialEditScreen::class)
+    ->name('platform.events.selfStudyMaterials.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.events.selfStudyMaterials')
+        ->push(__('Create'), route('platform.events.selfStudyMaterials.create')));
+
+
+// Platform > Events > Vebinars
+Route::screen('vebinars', VebinarListScreen::class)
+->name('platform.events.vebinars')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.events')
+    ->push(__('Vebinars'), route('platform.events.vebinars')));
+
+//Platform > Events > Edit
+Route::screen('vebinars/{vebinar}/edit', VebinarEditScreen::class)
+->name('platform.events.vebinar.edit')
+->breadcrumbs(fn (Trail $trail, $event): Trail => $trail
+    ->parent('platform.events.vebinars')
+    ->push(__('Edit'), route('platform.events.vebinar.edit', $event)));
+
+//Platform > Events > Create
+Route::screen('vebinars/create', VebinarEditScreen::class)
+->name('platform.events.vebinar.create')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.events.vebinars')
+    ->push(__('Create'), route('platform.events.vebinar.create')));
 /* Route::screen('users/{user}/edit', UserEditScreen::class)
     ->name('platform.systems.users.edit')
     ->breadcrumbs(fn (Trail $trail, $user) => $trail
