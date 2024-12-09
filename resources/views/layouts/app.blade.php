@@ -145,6 +145,24 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if (Auth::user()->hasAnyAccess(['platform.*'])) 
+                                    <div class="p-4">
+                                        <div class="group relative flex gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                                            <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                                                <svg class="h-6 w-6 text-gray-600 group-hover:text-indigo-600" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-auto">
+                                                <a href={{route('platform.index')}} class="block font-semibold text-gray-900">
+                                                    Админка
+                                                    <span class="absolute inset-0"></span>
+                                                </a>
+                                                <p class="mt-1 text-gray-600">Зайти в админ панель</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="grid grid-cols-1 divide-x divide-gray-900/5 bg-gray-50">
                                     {{-- <a href="{{ route('profile.general') }}" class="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100">
                                         <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -230,6 +248,14 @@
                         @else
                             
                             <a href="{{ route('settings.general') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ Auth::user()->name }}</a>
+                            
+                            @if (Auth::user()->hasAnyAccess(['platform.*'])) 
+                                <a href="{{ route('platform.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Админка</a>
+                            @endif
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                        Выйти
+                            </a>
                         @endguest
                         {{-- <div class="py-6">
                             <a href="{{ route('login') }}" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Войти</a>

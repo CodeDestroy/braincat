@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
 class Vebinar extends Model
 {
     use HasFactory;
+    use AsSource;
 
     protected $fillable = ['room_name', 'start_date_time', 'event_id'];
 
