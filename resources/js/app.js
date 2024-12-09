@@ -150,3 +150,4 @@ document.getElementById('generate-pdf')?.addEventListener('click', function () {
   });
 });
 
+

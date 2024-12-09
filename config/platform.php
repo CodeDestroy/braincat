@@ -126,8 +126,13 @@ return [
      */
 
     'resource' => [
-        'stylesheets' => [],
-        'scripts'     => [],
+        'stylesheets' => ["https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css"],
+        'scripts'     => [
+            "https://unpkg.com/quill-html-edit-button@2.2.7/dist/quill.htmlEditButton.min.js", 
+            "/js/admin/quill.htmlEditButton.js", 
+            "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/xml.min.js"
+        ],
     ],
 
     /*

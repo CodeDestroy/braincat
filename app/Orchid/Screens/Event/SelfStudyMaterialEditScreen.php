@@ -2,27 +2,27 @@
 
 namespace App\Orchid\Screens\Event;
 
-use App\Orchid\Layouts\Event\EventEditLayout;
+use App\Orchid\Layouts\Event\SelfStudyMaterialEditLayout;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Actions\Button;
-use App\Models\Event;
+use App\Models\SelfStudyMaterial;
 use Illuminate\Http\Request;
 use Orchid\Support\Facades\Toast;
 use Illuminate\Support\Facades\DB;
 
-class EventEditScreen extends Screen
+class SelfStudyMaterialEditScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
      *
      * @return array
      */
-    public $event;
-    public function query(Event $event): iterable
+    public $selfStudyMaterial;
+    public function query(SelfStudyMaterial $selfStudyMaterial): iterable
     {
 
         return [
-            'event' => $event,
+            'selfStudyMaterial' => $selfStudyMaterial,
         ];
     }
 
@@ -33,7 +33,7 @@ class EventEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return $this->event->exists ? 'Event Edit' : 'Event Create';
+        return $this->selfStudyMaterial->exists ? 'Self study material Edit' : 'Self study material Create';
     }
 
     public function permission(): ?iterable
@@ -61,7 +61,7 @@ class EventEditScreen extends Screen
                 ->icon('bs.trash3')
                 ->confirm(__('Once the event is deleted, all of its resources and data will be permanently deleted.'))
                 ->method('remove')
-                ->canSee($this->event->exists),
+                ->canSee($this->selfStudyMaterial->exists),
 
             Button::make(__('Save'))
                 ->icon('bs.check-circle')
@@ -77,57 +77,38 @@ class EventEditScreen extends Screen
     public function layout(): iterable
     {
         return [
-            EventEditLayout::class,
+            SelfStudyMaterialEditLayout::class,
         ];
     }
-    /* public function save(Event $event, Request $request)
-    {
-        $request->validate([
-            'event.name' => [
-                'required'
-            ],
-            'event.course_id' => ['required'],
-            'event.start_date' => ['required'],
-            'event.end_date' => ['required'],
-            'event.start_time' => ['required'],
-            'event.end_time' => ['required'],
-            'event.status' => ['required'],
-                
-        ]);
-        $event->save($request->all());
-
-        Toast::info(__('Event was saved.'));
-
-        return redirect()->route('platform.events');
-    } */
 
     /**
      * @throws \Exception
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(Request $request)
+
+    public function save(Request $request, SelfStudyMaterial $selfStudyMaterial)
     {
-        $attachment_id = $request->get('image');
 
-        $image = DB::table('attachments')->where('id', $attachment_id)->first();
-        
-        $this->event->fill($request->get('event'));
-        if ($image) {
-            $this->event->image = ('/storage/' . $image->path . '/' . $image->name . '.' . $image->extension);
-        }
+        $selfStudyMaterial->fill($request->get('selfStudyMaterial'))->save();
 
-        $this->event->save();
-        Toast::info('You have successfully updated an event.');
+        Toast::info(__('SelfStudyMaterial was saved'));
 
-        return redirect()->route('platform.events');
+        return redirect()->route('platform.events.selfStudyMaterials');
     }
-    public function remove(Event $event)
+
+    /**
+     * @throws \Exception
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function remove(SelfStudyMaterial $selfStudyMaterial)
     {
-        $event->delete();
+        $selfStudyMaterial->delete();
 
-        Toast::info(__('Event was removed'));
+        Toast::info(__('SelfStudyMaterial was removed'));
 
-        return redirect()->route('platform.events');
+        return redirect()->route('platform.events.selfStudyMaterials');
     }
+
 }

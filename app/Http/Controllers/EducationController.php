@@ -131,7 +131,7 @@ class EducationController extends Controller
         //Получаем из представления записи за всё время
         $testResutsAll = $user->getAllTestTries()->toArray();
 
-        $testResultEloquent = TestResult::where('user_id', $user->id)->orderBy('created_at', 'desc');
+        $testResultEloquent = TestResult::where('user_id', $user->id)->where('test_id', $id)->orderBy('created_at', 'desc');
         
         //Получаем из таблицы общее количество попыток
         $triesCount = $testResultEloquent->count();

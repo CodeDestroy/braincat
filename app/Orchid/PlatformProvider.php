@@ -89,17 +89,17 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title(__('Events'))
                 /* ->divider() */,
             //Материалы для самообучения
-            /* Menu::make(__('Self study materials'))
+            Menu::make(__('Self study materials'))
                 ->icon('bs.shield')
                 ->route('platform.events.selfStudyMaterials')
-                ->permission('platform.events.selfStudyMaterials'),
+                ->permission('platform.events'),
             //Вебинары
             Menu::make(__('Vebinars'))
                 ->icon('bs.shield')
-                ->route('platform.events.selfStudyMaterials')
-                ->permission('platform.events.selfStudyMaterials'),
+                ->route('platform.events.vebinars')
+                ->permission('platform.events'),
             //Тесты
-            Menu::make(__('Self study materials'))
+            /* Menu::make(__('Self study materials'))
                 ->icon('bs.shield')
                 ->route('platform.events.selfStudyMaterials')
                 ->permission('platform.events.selfStudyMaterials'), */
