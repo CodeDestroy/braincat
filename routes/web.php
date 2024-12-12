@@ -38,6 +38,19 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
 //Роут на получение всех эвенов 
 Route::get('/api/events', function (Request $request) {
     $date = $request->query('date');
+    $user = $request->user();
+    
+    $permissions = $user->permissions()->get();
+    $permissions = $permissions->pluck('slug')->toArray();
+    if ($user->hasAccess('content.viewEvents')) {
+        return Event::where('start_date', '<=', $date)
+            ->where('end_date', '>=', $date)
+            ->orderBy('order', 'ASC')
+            ->orderBy('start_time')
+            /* ->orderBy('type', 'ASC') */
+            ->get();
+    }
+    else {
     return Event::where('start_date', '<=', $date)
                 ->where('end_date', '>=', $date)
                 ->where('status', '!=', 'closed')
@@ -45,18 +58,32 @@ Route::get('/api/events', function (Request $request) {
                 ->orderBy('start_time')
                 /* ->orderBy('type', 'ASC') */
                 ->get();
+    }
 });
 
 //Роут на получение эвенов по курсу
 Route::get('/api/course/{course_id}/events', function (Request $request, $course_id) {
     $date = $request->query('date');
-    return Event::where('start_date', '<=', $date)->where('end_date', '>=', $date)
-                ->where('course_id', $course_id)
-                ->where('status', '!=', 'closed')
-                ->orderBy('order', 'ASC')
-                ->orderBy('start_time')
-                /* ->orderBy('type', 'ASC') */
-                ->get();
+    $user = $request->user();
+    $permissions = $user->permissions()->get();
+    $permissions = $permissions->pluck('slug')->toArray();
+        if ($user->hasAccess('content.viewEvents')) {
+            return Event::where('start_date', '<=', $date)->where('end_date', '>=', $date)
+                    ->where('course_id', $course_id)
+                    ->orderBy('order', 'ASC')
+                    ->orderBy('start_time')
+                    /* ->orderBy('type', 'ASC') */
+                    ->get();        
+        }
+        else {
+            return Event::where('start_date', '<=', $date)->where('end_date', '>=', $date)
+                        ->where('course_id', $course_id)
+                        ->where('status', '!=', 'closed')
+                        ->orderBy('order', 'ASC')
+                        ->orderBy('start_time')
+                        /* ->orderBy('type', 'ASC') */
+                        ->get();
+        }
 });
 
 //Роут на получение всех занятых эвентами дней по курсу

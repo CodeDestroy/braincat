@@ -90,11 +90,11 @@ class VebinarEditScreen extends Screen
     public function save(Request $request, Vebinar $vebinar)
     {
 
-        $vebinar->fill($request->get('selfStudyMaterial'))->save();
+        $vebinar->fill($request->get('vebinar'))->save();
 
         Toast::info(__('SelfStudyMaterial was saved'));
 
-        return redirect()->route('platform.events.selfStudyMaterials');
+        return redirect()->route('platform.events.vebinars');
     }
 
     /**
@@ -108,7 +108,7 @@ class VebinarEditScreen extends Screen
 
         Toast::info(__('SelfStudyMaterial was removed'));
 
-        return redirect()->route('platform.events.selfStudyMaterials');
+        return redirect()->route('platform.events.vebinars');
     }
 
 }

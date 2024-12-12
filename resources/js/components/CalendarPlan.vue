@@ -3,6 +3,7 @@
         <div class="mx-auto max-w-4xl text-center">
             <p class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Календарный план</p>
         </div>
+        <template v-if="course.id == 1">
         <div class="mx-auto max-w-7xl mt-12  px-6 lg:px-8">
             <ul role="list" class="space-y-3">
                 <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-purple-800 text-xl font-bold">
@@ -93,6 +94,23 @@
                 </li>
             </ul>
         </div>
+        </template>
+        <template v-else>
+        <div class="mx-auto max-w-7xl mt-12  px-6 lg:px-8">
+            <ul role="list" class="space-y-3">
+                <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-purple-800 text-xl font-bold">
+                    <p>Круглый стол: Гарнитура Forbrain. Особенности работы</p>
+                </li>
+                
+                <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
+                    <a class=" py-4" href="#calendarView" @click="handleDateClick({date: '2024-12-15', isCurrentMonth: true})">
+                        <p class="text-slate-400">15.12.2024</p>
+                        <p class="text-green-500">"Круглый стол: Гарнитура Forbrain. Особенности работы", автор: Космачева Любовь Расуловна, ведущий логопед-дефектолог, педагог высшей категории</p>
+                    </a>
+                </li>
+            </ul>
+        </div>   
+        </template>
     </div>
     <div id="calendarView">
         <h2 class="font-semibold leading-6 text-gray-900 mt-10 text-3xl">События</h2>
@@ -183,6 +201,12 @@
       ChevronRightIcon,
     } from '@heroicons/vue/20/solid';
   
+    const props = defineProps({
+        course: {
+            type: Object,
+            required: true
+        },
+    });
   // Массив для названий месяцев
     const monthNames = [
       'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
