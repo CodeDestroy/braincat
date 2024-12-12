@@ -83,19 +83,19 @@ class PlatformProvider extends OrchidServiceProvider
             //Эвенты
             Menu::make(__('Events'))
                 
-                ->icon('bs.shield')
+                ->icon('bs.calendar')
                 ->route('platform.events')
                 ->permission('platform.events')
                 ->title(__('Events'))
                 /* ->divider() */,
             //Материалы для самообучения
             Menu::make(__('Self study materials'))
-                ->icon('bs.shield')
+                ->icon('bs.book')
                 ->route('platform.events.selfStudyMaterials')
                 ->permission('platform.events'),
             //Вебинары
             Menu::make(__('Vebinars'))
-                ->icon('bs.shield')
+                ->icon('bs.broadcast')
                 ->route('platform.events.vebinars')
                 ->permission('platform.events'),
             //Тесты
