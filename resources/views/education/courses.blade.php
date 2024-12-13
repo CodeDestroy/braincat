@@ -15,7 +15,7 @@
             <div class="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
                 @foreach ($courses as $course)
                 <a href="{{route('education.course', ['course_id' => $course->id])}}">
-                    <article class="relative isolate flex flex-col gap-8 lg:flex-row">
+                    <article class="relative isolate flex flex-col gap-8 lg:flex-row my-5">
                         <div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
                             <img src="{{$course['image']}}"" alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover">
                             <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>

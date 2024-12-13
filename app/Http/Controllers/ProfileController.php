@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\CourseRegistration;
+use App\Models\Course;
 use App\Models\CourseRegistrationDocuments;
 use App\Models\UserDocument;
 use Illuminate\Support\Facades\Storage;
@@ -55,7 +56,8 @@ class ProfileController extends Controller
 
     
     public function profile () {
-        return view('profile.registerSecond');
+        $courses = Course::all();
+        return view('profile.registerSecond', compact('courses'));
 
     }
 
@@ -228,7 +230,7 @@ class ProfileController extends Controller
         ]); */
         
         $courseRegistration = CourseRegistration::updateOrCreate(
-            ['user_id' => $user->id],
+            ['user_id' => $user->id, 'course_id' => $request->input('course_id')],
             [
                 'isLegalHealthyChildGK' => $request->input('isLegalHealthyChildGK') ? true : false,
                 'isStudent' => $request->input('isStudent') ? true : false,
@@ -242,7 +244,6 @@ class ProfileController extends Controller
                 
 
                 'shouldBeCheckedOut' => $shouldBeCheckedOut,
-                'course_id' => 1,
             ]
         );
 

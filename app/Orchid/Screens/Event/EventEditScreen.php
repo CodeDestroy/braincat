@@ -109,10 +109,12 @@ class EventEditScreen extends Screen
     public function save(Request $request)
     {
         $attachment_id = $request->get('image');
+        $type = $request->event['type'];
 
         $image = DB::table('attachments')->where('id', $attachment_id)->first();
         
         $this->event->fill($request->get('event'));
+        $this->event->type = $type;
         if ($image) {
             $this->event->image = ('/storage/' . $image->path . '/' . $image->name . '.' . $image->extension);
         }

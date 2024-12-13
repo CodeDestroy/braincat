@@ -14,7 +14,7 @@
         <ask-question :course="{{ json_encode($course) }}" />
     </div>
     <div id="calendar-plan">
-        <calendar-plan/>
+        <calendar-plan :course="{{ json_encode($course) }}"/>
     </div>
 </div>
 @endsection

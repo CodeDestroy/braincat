@@ -49,6 +49,33 @@
                     <input value="{{ Auth::user()->birthday }}" required type="date" name="birthDay" id="birthDay" class="px-3.5 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="01.01.1901">
                 </div>
             </div>
+            {{-- Выбор курса --}}
+            <div x-data="{ open: false, selected: '{{$courses[0]->name}}', id: '{{$courses[0]->id}}' }" class="sm:col-span-2">
+                <label id="listbox-label" class="block text-sm font-medium text-gray-900">Выберите курс</label>
+                <div class="relative mt-2">
+                    <button style="height: 38px" @click="open = !open" type="button" class="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pl-3 pr-2 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" aria-haspopup="listbox" aria-expanded="open" aria-labelledby="listbox-label">
+                        <span class="col-start-1 self-center row-start-1 flex items-center gap-3 pr-6">
+                            {{-- <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-5 shrink-0 rounded-full"> --}}
+                            <span class="block truncate" x-text="selected"></span>
+                        </span>
+                        <svg class="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
+                            <path fill-rule="evenodd" d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <ul x-show="open" @click.away="open = false" class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label">
+                        @foreach ($courses as $course)
+                            <li @click="selected = '{{ $course->name }}'; open = false; id = '{{$course->id}}'" role="option" class="cursor-default select-none py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white">
+                                <span class="block truncate">{{$course->name}}</span>
+                            </li>
+                            
+                        @endforeach
+                        
+                    </ul>
+                  <!-- Скрытое поле ввода для передачи значения на бекенд -->
+                  <input type="hidden" name="course_id" x-bind:value="id" required>
+                </div>
+            </div>
+            {{-- Чекбоксы --}}
             <div id="isHealthyChildFranchDiv" class="sm:col-span-2">
                 <div class="relative mt-2 rounded-md shadow-sm items-center flex">
                     <input value="true" onchange="showHealthyChildFranch(this)" name="isHealthyChildFranch" id="isHealthyChildFranch" type="checkbox" class="h-4 w-4 rounded accent-purple-800 border-gray-300 text-purple-800 focus:ring-purple-800" {{ old('remember') ? 'checked' : '' }}>
