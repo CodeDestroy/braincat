@@ -100,13 +100,17 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
-    public function getAllTestTries($date = null)
+    public function getAllTestTries($date = null, $test_id = null)
     {
         $query = DB::table('user_test_try_view')
             ->where('user_id', $this->id);
+            
 
         if ($date) {
             $query->whereDate('test_date', $date);
+        }
+        if ($test_id) {
+            $query->where('test_id', $test_id);
         }
 
         return $query->orderBy('test_date', 'desc')->get();

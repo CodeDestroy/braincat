@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chapter;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Event;
@@ -46,8 +47,10 @@ class EducationController extends Controller
     {
         $user = $request->user();
         $course = Course::find($course_id);
+        $chapters = Chapter::where(['course_id' => $course_id])->with('themes')->get();
+        $themes = Theme::where(['course_id' => $course_id])->get();
         /* return $course; */
-        return view('education.course', compact('course'));
+        return view('education.course', compact('course', 'themes', 'chapters'));
         
     }
 
@@ -56,7 +59,6 @@ class EducationController extends Controller
         $user = $request->user();
         /* Log::debug($user->permissions()->get()); */
         $event = Event::find($id);
-        Log::debug($event);
         if ($event->status != 'inProgress') {
 
             /* $permissions = $user->permissions()->get();
@@ -71,13 +73,31 @@ class EducationController extends Controller
                 switch ($event->type) {
                     case 'selfStudyMaterial':
                         $selfStudyMaterial = SelfStudyMaterial::where(['event_id' => $id])->first();
-                        
+                        $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)
+                        ->whereDate('start_date', '<', $event->start_date)
+                        ->orderBy('id','asc')->get();
+                        foreach ($allTests as $eventTest) {
+                            $testFinded = Test::where(['event_id' => $eventTest->id])->first();
+                            /* Log::info($testFinded); */
+                            $testPassed = TestResult::where(['test_id' => $testFinded->id, 'user_id' => $user->id, 'passed' => 1])->first();
+                            /* Log::info($testPassed); */
+                            if (!$testPassed)
+                                return redirect()->route('education.showTest', ['id' => $testFinded->id, 'course_id' => $course_id]);
+                        }
                         return redirect()->route('education.showSelfStudyMaterial', ['id' => $selfStudyMaterial->id, 'course_id' => $course_id]);
                         /* return view('education.events.lection', compact('event')); */
                     case 'test':
-                                
+                        $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)
+                        ->whereDate('start_date', '<', $event->start_date)
+                        ->orderBy('id','asc')->get();
+                        foreach ($allTests as $eventTest) {
+                            $testFinded = Test::where(['event_id' => $eventTest->id])->first();
+                            $testPassed = TestResult::where(['test_id' => $testFinded->id, 'user_id' => $user->id, 'passed' => 1])->first();
+                            /* Log::info($testPassed); */
+                            if (!$testPassed)
+                                return redirect()->route('education.showTest', ['id' => $testFinded->id, 'course_id' => $course_id]);
+                        }        
                         $test = Test::where(['event_id' => $id])->first();
-                        
                         return redirect()->route('education.showTest', ['id' => $test->id, 'course_id' => $course_id]);
                     case 'vebinar':
                         $vebinar = Vebinar::where(['event_id' => $id])->first();
@@ -93,11 +113,31 @@ class EducationController extends Controller
         switch ($event->type) {
             case 'selfStudyMaterial':
                 $selfStudyMaterial = SelfStudyMaterial::where(['event_id' => $id])->first();
+                $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)
+                ->whereDate('start_date', '<', $event->start_date)
+                ->orderBy('id','asc')->get();
                 
+                foreach ($allTests as $eventTest) {
+                    $testFinded = Test::where(['event_id' => $eventTest->id])->first();
+                    /* Log::info($testFinded); */
+                    $testPassed = TestResult::where(['test_id' => $testFinded->id, 'user_id' => $user->id, 'passed' => 1])->first();
+                    /* Log::info($testPassed); */
+                    if (!$testPassed)
+                        return redirect()->route('education.showTest', ['id' => $testFinded->id, 'course_id' => $course_id]);
+                }
                 return redirect()->route('education.showSelfStudyMaterial', ['id' => $selfStudyMaterial->id, 'course_id' => $course_id]);
                 /* return view('education.events.lection', compact('event')); */
             case 'test':
-                        
+                $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)
+                ->whereDate('start_date', '<', $event->start_date)
+                ->orderBy('id','asc')->get();
+                foreach ($allTests as $eventTest) {
+                    $testFinded = Test::where(['event_id' => $eventTest->id])->first();
+                    $testPassed = TestResult::where(['test_id' => $testFinded->id, 'user_id' => $user->id, 'passed' => 1])->first();
+                    /* Log::info($testPassed); */
+                    if (!$testPassed)
+                        return redirect()->route('education.showTest', ['id' => $testFinded->id, 'course_id' => $course_id]);
+                }        
                 $test = Test::where(['event_id' => $id])->first();
                 return redirect()->route('education.showTest', ['id' => $test->id, 'course_id' => $course_id]);
             case 'vebinar':
@@ -126,7 +166,7 @@ class EducationController extends Controller
         //Находим этот тест
         $test = Test::find($id);
         //Получаем из представления записи за сегодня
-        $testResultsTodayArray = $user->getAllTestTries($today)->toArray();
+        $testResultsTodayArray = $user->getAllTestTries($today, $test->id)->toArray();
         $testResutsToday = !empty($testResultsTodayArray) ? $testResultsTodayArray[0] : null;
         //Получаем из представления записи за всё время
         $testResutsAll = $user->getAllTestTries()->toArray();

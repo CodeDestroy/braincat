@@ -21,7 +21,8 @@ class Event extends Model
         'end_time',
         'status',
         'order',
-        'color'
+        'color',
+        'theme_id'
         
     ];
 

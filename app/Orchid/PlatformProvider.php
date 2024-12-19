@@ -80,13 +80,19 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.roles')
                 ->divider(),
 
+            //Курсы
+            Menu::make(__('Courses'))
+                ->icon('bs.briefcase')
+                ->route('platform.courses')
+                ->permission('platform.events')
+                ->title(__('Events')),
             //Эвенты
             Menu::make(__('Events'))
                 
                 ->icon('bs.calendar')
                 ->route('platform.events')
                 ->permission('platform.events')
-                ->title(__('Events'))
+                
                 /* ->divider() */,
             //Материалы для самообучения
             Menu::make(__('Self study materials'))
