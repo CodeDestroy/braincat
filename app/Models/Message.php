@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Orchid\Screen\AsSource;
 class Message extends Model
 {
+    use AsSource;
     protected $fillable = [
         'user_id',
         'theme_id',
@@ -14,12 +15,12 @@ class Message extends Model
         'status'
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function themes()
+    public function theme()
     {
         return $this->belongsTo(Theme::class);
     }

@@ -92,7 +92,7 @@ class VebinarEditScreen extends Screen
 
         $vebinar->fill($request->get('vebinar'))->save();
 
-        Toast::info(__('SelfStudyMaterial was saved'));
+        Toast::info(__('Vebinar') . __(' was saved'));
 
         return redirect()->route('platform.events.vebinars');
     }
@@ -106,7 +106,7 @@ class VebinarEditScreen extends Screen
     {
         $vebinar->delete();
 
-        Toast::info(__('SelfStudyMaterial was removed'));
+        Toast::info(__('Vebinar') . __(' was removed'));
 
         return redirect()->route('platform.events.vebinars');
     }

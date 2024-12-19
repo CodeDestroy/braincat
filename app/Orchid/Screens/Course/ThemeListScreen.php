@@ -7,6 +7,8 @@ namespace App\Orchid\Screens\Course;
 use App\Orchid\Layouts\Course\CourseListLayout;
 use Orchid\Platform\Models\Role;
 use App\Models\Course;
+use App\Models\Theme;
+use App\Orchid\Layouts\Course\ThemeListLayout;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
@@ -18,7 +20,7 @@ use Orchid\Screen\TD;
 use Illuminate\Http\Request;
 use Orchid\Support\Facades\Toast;
 
-class CourseListScreen extends Screen
+class ThemeListScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -29,7 +31,7 @@ class CourseListScreen extends Screen
     {
         return [
             /* 'events' => Event::filters()->defaultSort('id', 'desc')->paginate(), */
-            'courses' => Course::all(),
+            'themes' => Theme::all(),
         ];
     }
 
@@ -38,7 +40,7 @@ class CourseListScreen extends Screen
      */
     public function name(): ?string
     {
-        return __('Courses') . ' ' .  __('Management');
+        return __('Themes') . ' ' . __('Management');
     }
 
     /**
@@ -46,7 +48,7 @@ class CourseListScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'A comprehensive list of all courses';
+        return 'A comprehensive list of all ' . __('themes');
     }
 
     public function permission(): ?iterable
@@ -66,7 +68,7 @@ class CourseListScreen extends Screen
         return [
             Link::make(__('Add'))
                 ->icon('bs.plus-circle')
-                ->href(route('platform.courses.create')),
+                ->href(route('platform.courses.chapters.themes.create')),
         ];
     }
 
@@ -78,7 +80,7 @@ class CourseListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            CourseListLayout::class,
+            ThemeListLayout::class,
         ];
     }
 
@@ -86,6 +88,6 @@ class CourseListScreen extends Screen
     {
         Course::findOrFail($request->get('id'))->delete();
 
-        Toast::info(__('User was removed'));
+        Toast::info(__('Theme') . __(' was removed'));
     }
 }

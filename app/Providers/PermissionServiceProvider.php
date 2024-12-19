@@ -29,6 +29,9 @@ class PermissionServiceProvider extends ServiceProvider
         $permissions = ItemPermission::group('Контент')
             ->addPermission('content.viewEvents', 'Просматривать закрытые события')
             ->addPermission('platform.events', 'Просмотр всех событий в админке');
+        $dashboard->registerPermissions($permissions);
+        $permissions = ItemPermission::group('Пользователи')
+            ->addPermission('users.actions.messages', 'Просматривать сообщения пользователей');
 
         $dashboard->registerPermissions($permissions);
         

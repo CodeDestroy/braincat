@@ -33,7 +33,7 @@ class CourseEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return $this->course->exists ? 'Course Edit' : 'Course Create';
+        return $this->course->exists ? __('Edit') . ' ' . __('Course') : __('Create') . ' ' . __('Course');
     }
 
     public function permission(): ?iterable
@@ -113,7 +113,7 @@ class CourseEditScreen extends Screen
 
         $image = DB::table('attachments')->where('id', $attachment_id)->first();
         
-        $this->course->fill($request->get('event'));
+        $this->course->fill($request->get('course'));
 
         if ($image) {
             $this->course->image = ('/storage/' . $image->path . '/' . $image->name . '.' . $image->extension);
@@ -130,6 +130,6 @@ class CourseEditScreen extends Screen
 
         Toast::info(__('Event was removed'));
 
-        return redirect()->route('platform.events');
+        return redirect()->route('platform.courses');
     }
 }

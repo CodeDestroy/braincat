@@ -3,11 +3,11 @@
         <div class="mx-auto max-w-4xl text-center">
             <p class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Календарный план</p>
         </div>
-        <template v-if="course.id == 1">
+        <!-- <template v-if="course.id == 1"> -->
         <div class="mx-auto max-w-7xl mt-12  px-6 lg:px-8">
             <ul role="list" class="space-y-3">
                 <template  v-for="chapter in chapters" :key="chapter.id" >
-                <li class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-purple-800 text-xl font-bold">
+                <li class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-purple-800 text-xl font-bold" :style="{color: chapter.color}">
                     <p>{{ chapter.name }}</p>
                 </li>
                 <li v-for="(theme, index) in chapter.themes" :key="theme.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
@@ -28,7 +28,7 @@
                 </li>
                 </template>
             </ul>
-            <ul role="list" class="space-y-3">
+            <!-- <ul role="list" class="space-y-3">
                 <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-purple-800 text-xl font-bold">
                     <p>Раздел 1. Строение и функции головного мозга человека</p>
                 </li>
@@ -115,10 +115,10 @@
                 <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-green-900 text-xl font-bold">
                     <p>Итоговое занятие</p>
                 </li>
-            </ul>
+            </ul> -->
         </div>
-        </template>
-        <template v-else>
+        <!-- </template> -->
+        <!-- <template v-else>
         <div class="mx-auto max-w-7xl mt-12  px-6 lg:px-8">
             <ul role="list" class="space-y-3">
                 <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-purple-800 text-xl font-bold">
@@ -133,7 +133,7 @@
                 </li>
             </ul>
         </div>   
-        </template>
+        </template> -->
     </div>
     <div id="calendarView">
         <h2 class="font-semibold leading-6 text-gray-900 mt-10 text-3xl">События</h2>

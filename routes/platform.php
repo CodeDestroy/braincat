@@ -2,8 +2,14 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Layouts\Course\ThemeListLayout;
+use App\Orchid\Screens\Chat\MessagesListScreen;
+use App\Orchid\Screens\Course\ChapterEditScreen;
+use App\Orchid\Screens\Course\ChapterListScreen;
 use App\Orchid\Screens\Course\CourseEditScreen;
 use App\Orchid\Screens\Course\CourseListScreen;
+use App\Orchid\Screens\Course\ThemeEditScreen;
+use App\Orchid\Screens\Course\ThemeListScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -121,14 +127,14 @@ Route::screen('selfStudyMaterials', SelfStudyMaterialListScreen::class)
         ->parent('platform.events')
         ->push(__('SelfStudyMaterials'), route('platform.events.selfStudyMaterials')));
 
-//Platform > Events > Edit
+//Platform > Events > SelfStudyMaterials > Edit
 Route::screen('selfStudyMaterials/{selfStudyMaterial}/edit', SelfStudyMaterialEditScreen::class)
     ->name('platform.events.selfStudyMaterials.edit')
     ->breadcrumbs(fn (Trail $trail, $event): Trail => $trail
         ->parent('platform.events.selfStudyMaterials')
         ->push(__('Edit'), route('platform.events.selfStudyMaterials.edit', $event)));
 
-//Platform > Events > Create
+//Platform > Events > SelfStudyMaterials > Create
 Route::screen('selfStudyMaterials/create', SelfStudyMaterialEditScreen::class)
     ->name('platform.events.selfStudyMaterials.create')
     ->breadcrumbs(fn (Trail $trail) => $trail
@@ -143,19 +149,26 @@ Route::screen('vebinars', VebinarListScreen::class)
     ->parent('platform.events')
     ->push(__('Vebinars'), route('platform.events.vebinars')));
 
-//Platform > Events > Edit
+//Platform > Events > Vebinars > Edit
 Route::screen('vebinars/{vebinar}/edit', VebinarEditScreen::class)
 ->name('platform.events.vebinar.edit')
 ->breadcrumbs(fn (Trail $trail, $event): Trail => $trail
     ->parent('platform.events.vebinars')
     ->push(__('Edit'), route('platform.events.vebinar.edit', $event)));
 
-//Platform > Events > Create
+//Platform > Events > Vebinars > Create
 Route::screen('vebinars/create', VebinarEditScreen::class)
 ->name('platform.events.vebinar.create')
 ->breadcrumbs(fn (Trail $trail) => $trail
     ->parent('platform.events.vebinars')
     ->push(__('Create'), route('platform.events.vebinar.create')));
+
+// Platform > Courses 
+Route::screen('messages', MessagesListScreen::class)
+->name('platform.users.messages')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.index')
+    ->push(__('Messages'), route('platform.users.messages')));
 
 
 // Platform > Courses 
@@ -179,12 +192,49 @@ Route::screen('vebinars/create', CourseEditScreen::class)
     ->parent('platform.courses')
     ->push(__('Create'), route('platform.courses.create')));
 
-/* Route::screen('users/{user}/edit', UserEditScreen::class)
-    ->name('platform.systems.users.edit')
-    ->breadcrumbs(fn (Trail $trail, $user) => $trail
-        ->parent('platform.systems.users')
-        ->push($user->name, route('platform.systems.users.edit', $user)));
- */
+// Platform > Courses > Chapters
+Route::screen('chapters', ChapterListScreen::class)
+->name('platform.courses.chapters')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.courses')
+    ->push(__('Chapters'), route('platform.courses.chapters')));
+
+//Platform > Courses > Chapters > Edit
+Route::screen('chapters/{chapter}/edit', ChapterEditScreen::class)
+->name('platform.courses.chapters.edit')
+->breadcrumbs(fn (Trail $trail, $chapter): Trail => $trail
+    ->parent('platform.courses.chapters')
+    ->push(__('Edit'), route('platform.courses.chapters.edit', $chapter)));
+
+//Platform > Courses > Chapters > Create
+Route::screen('chapters/create', ChapterEditScreen::class)
+->name('platform.courses.chapters.create')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.courses')
+    ->push(__('Create'), route('platform.courses.create')));
+
+// Platform > Courses > Chapters > Themes
+Route::screen('themes', ThemeListScreen::class)
+->name('platform.courses.chapters.themes')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.courses.chapters')
+    ->push(__('Chapters'), route('platform.courses.chapters.themes')));
+
+//Platform > Courses > Chapters > Themes > Edit
+Route::screen('themes/{theme}/edit', ThemeEditScreen::class)
+->name('platform.courses.chapters.themes.edit')
+->breadcrumbs(fn (Trail $trail, $chapter): Trail => $trail
+    ->parent('platform.courses.chapters.themes')
+    ->push(__('Edit'), route('platform.courses.chapters.themes.edit', $chapter)));
+
+//Platform > Courses > Chapters > Themes > Create
+Route::screen('themes/create', ThemeEditScreen::class)
+->name('platform.courses.chapters.themes.create')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.courses.chapters.themes')
+    ->push(__('Create'), route('platform.courses.chapters.themes.create')));
+
+    //platform.courses.themes.create
 
 // Example...
 Route::screen('example', ExampleScreen::class)

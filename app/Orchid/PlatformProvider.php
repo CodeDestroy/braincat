@@ -80,19 +80,36 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.roles')
                 ->divider(),
 
+            //Пользователи и их действия
+            Menu::make(__('Messages'))
+                ->icon('bs.shield')
+                ->route('platform.users.messages')
+                ->permission('users.actions.messages')
+                ->title(__('User actions'))
+                ->divider(),
             //Курсы
             Menu::make(__('Courses'))
                 ->icon('bs.briefcase')
                 ->route('platform.courses')
                 ->permission('platform.events')
-                ->title(__('Events')),
+                ->title(__('Courses')),
+            //Разделы
+            Menu::make(__('Chapters'))
+                ->icon('bs.card-list')
+                ->route('platform.courses.chapters')
+                ->permission('platform.events'),
+            //Темы
+            Menu::make(__('Themes'))
+                ->icon('bs.bookmarks')
+                ->route('platform.courses.chapters.themes')
+                ->permission('platform.events'),
             //Эвенты
             Menu::make(__('Events'))
                 
                 ->icon('bs.calendar')
                 ->route('platform.events')
                 ->permission('platform.events')
-                
+                ->title(__('Events'))
                 /* ->divider() */,
             //Материалы для самообучения
             Menu::make(__('Self study materials'))

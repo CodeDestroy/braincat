@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Orchid\Screen\AsSource;
 class Theme extends Model
 {
+    use AsSource;
     protected $fillable = [
         'name',
         'description',
@@ -29,11 +30,11 @@ class Theme extends Model
 
     public function course()
     {
-        return $this->hasOne(Course::class);
+        return $this->belongsTo(Course::class);
     }
 
     public function chapter()
     {
-        return $this->hasOne(related: Chapter::class);
+        return $this->belongsTo( Chapter::class);
     }
 }

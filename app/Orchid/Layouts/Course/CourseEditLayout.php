@@ -58,11 +58,13 @@ class CourseEditLayout extends Rows
                 ->title('Start time')
                 ->noCalendar()
                 ->format('H:i:ss')
+                ->placeholder(__('Select time'))
                 ->format24hr(),
             DateTimer::make('course.end_time')
                 ->title('End time')
                 ->noCalendar()
                 ->format('H:i:ss')
+                ->placeholder(__('Select time'))
                 ->format24hr(),
             
             Select::make('course.status')
@@ -77,7 +79,13 @@ class CourseEditLayout extends Rows
                 ->type('text')
                 ->title(__('Price'))
                 ->placeholder(__('Price')),
-    
+            Select::make('course.canAskQuestion')
+                ->title('Can ask questions')
+                ->empty(__('Yes'), '1')
+                ->options([
+                    '1' => __('Yes'),
+                    '0' => __('No'),
+                ]),
         ];
     }
 }

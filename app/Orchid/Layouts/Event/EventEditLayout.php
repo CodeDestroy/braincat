@@ -27,13 +27,13 @@ class EventEditLayout extends Rows
         return [
             Input::make('event.name')
                 ->type('text')
-                ->max(255)
+                ->max(255)->required()
                 ->title(__('Title'))
                 ->placeholder(__('Title')),
             Input::make('event.description')
                 ->type('text')
                 ->max(255)
-                ->required()
+                
                 ->title(__('Description'))
                 ->placeholder(__('Description')),
             /* TD::make('imageView', __('Image'))
@@ -60,11 +60,13 @@ class EventEditLayout extends Rows
                 ->title('Start time')
                 ->noCalendar()
                 ->format('H:i:ss')
+                ->placeholder(__('Select time'))
                 ->format24hr(),
             DateTimer::make('event.end_time')
                 ->title('End time')
                 ->noCalendar()
                 ->format('H:i:ss')
+                ->placeholder(__('Select time'))
                 ->format24hr(),
             
             Select::make('event.status')

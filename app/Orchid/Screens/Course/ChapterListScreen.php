@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Course;
 
+use App\Models\Chapter;
+use App\Orchid\Layouts\Course\ChapterListLayout;
 use App\Orchid\Layouts\Course\CourseListLayout;
 use Orchid\Platform\Models\Role;
 use App\Models\Course;
@@ -18,7 +20,7 @@ use Orchid\Screen\TD;
 use Illuminate\Http\Request;
 use Orchid\Support\Facades\Toast;
 
-class CourseListScreen extends Screen
+class ChapterListScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -29,7 +31,7 @@ class CourseListScreen extends Screen
     {
         return [
             /* 'events' => Event::filters()->defaultSort('id', 'desc')->paginate(), */
-            'courses' => Course::all(),
+            'chapters' => Chapter::all(),
         ];
     }
 
@@ -38,7 +40,7 @@ class CourseListScreen extends Screen
      */
     public function name(): ?string
     {
-        return __('Courses') . ' ' .  __('Management');
+        return __('Chapters') . ' ' . __('Management');
     }
 
     /**
@@ -46,7 +48,7 @@ class CourseListScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'A comprehensive list of all courses';
+        return 'A comprehensive list of all chapters';
     }
 
     public function permission(): ?iterable
@@ -66,7 +68,7 @@ class CourseListScreen extends Screen
         return [
             Link::make(__('Add'))
                 ->icon('bs.plus-circle')
-                ->href(route('platform.courses.create')),
+                ->href(route('platform.courses.chapters.create')),
         ];
     }
 
@@ -78,13 +80,13 @@ class CourseListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            CourseListLayout::class,
+            ChapterListLayout::class,
         ];
     }
 
     public function remove(Request $request): void
     {
-        Course::findOrFail($request->get('id'))->delete();
+        Chapter::findOrFail($request->get('id'))->delete();
 
         Toast::info(__('User was removed'));
     }

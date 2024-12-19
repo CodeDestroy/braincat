@@ -1,28 +1,31 @@
 <?php
 
-namespace App\Orchid\Screens\Event;
+namespace App\Orchid\Screens\Course;
 
-use App\Orchid\Layouts\Event\SelfStudyMaterialEditLayout;
+use App\Orchid\Layouts\Course\CourseEditLayout;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Actions\Button;
-use App\Models\SelfStudyMaterial;
+use App\Models\Course;
+use App\Models\Theme;
+use App\Orchid\Layouts\Course\ThemeEditLayout;
 use Illuminate\Http\Request;
 use Orchid\Support\Facades\Toast;
 use Illuminate\Support\Facades\DB;
 
-class SelfStudyMaterialEditScreen extends Screen
+use Illuminate\Support\Facades\Log;
+class ThemeEditScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
      *
      * @return array
      */
-    public $selfStudyMaterial;
-    public function query(SelfStudyMaterial $selfStudyMaterial): iterable
+    public $theme;
+    public function query(Theme $theme): iterable
     {
 
         return [
-            'selfStudyMaterial' => $selfStudyMaterial,
+            'theme' => $theme,
         ];
     }
 
@@ -33,7 +36,7 @@ class SelfStudyMaterialEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return $this->selfStudyMaterial->exists ? 'Self study material Edit' : 'Self study material Create';
+        return $this->theme->exists ? __('Edit') . ' ' . __('Theme') : __('Create') . ' ' . __('Theme');
     }
 
     public function permission(): ?iterable
@@ -61,7 +64,7 @@ class SelfStudyMaterialEditScreen extends Screen
                 ->icon('bs.trash3')
                 ->confirm(__('Once the event is deleted, all of its resources and data will be permanently deleted.'))
                 ->method('remove')
-                ->canSee($this->selfStudyMaterial->exists),
+                ->canSee($this->theme->exists),
 
             Button::make(__('Save'))
                 ->icon('bs.check-circle')
@@ -77,38 +80,30 @@ class SelfStudyMaterialEditScreen extends Screen
     public function layout(): iterable
     {
         return [
-            SelfStudyMaterialEditLayout::class,
+            ThemeEditLayout::class,
         ];
     }
 
-    /**
-     * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-
-    public function save(Request $request, SelfStudyMaterial $selfStudyMaterial)
-    {
-
-        $selfStudyMaterial->fill($request->get('selfStudyMaterial'))->save();
-
-        Toast::info(__('SelfStudyMaterial') . __(' was saved'));
-
-        return redirect()->route('platform.events.selfStudyMaterials');
-    }
 
     /**
      * @throws \Exception
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function remove(SelfStudyMaterial $selfStudyMaterial)
+    public function save(Request $request)
     {
-        $selfStudyMaterial->delete();
+        $this->theme->fill($request->get('theme'))->save();
 
-        Toast::info(__('SelfStudyMaterial') . __(' was removed'));
+        Toast::info(__('Theme') . __(' was saved'));
 
-        return redirect()->route('platform.events.selfStudyMaterials');
+        return redirect()->route('platform.courses.chapters.themes');
     }
+    public function remove(Theme $theme)
+    {
+        $theme->delete();
 
+        Toast::info(__('Theme') . __(' was removed'));
+
+        return redirect()->route('platform.courses.chapters.themes');
+    }
 }
