@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\Course\CourseEditScreen;
+use App\Orchid\Screens\Course\CourseListScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -154,6 +156,29 @@ Route::screen('vebinars/create', VebinarEditScreen::class)
 ->breadcrumbs(fn (Trail $trail) => $trail
     ->parent('platform.events.vebinars')
     ->push(__('Create'), route('platform.events.vebinar.create')));
+
+
+// Platform > Courses 
+Route::screen('courses', CourseListScreen::class)
+->name('platform.courses')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.index')
+    ->push(__('Courses'), route('platform.courses')));
+
+//Platform > Courses > Edit
+Route::screen('courses/{course}/edit', CourseEditScreen::class)
+->name('platform.courses.edit')
+->breadcrumbs(fn (Trail $trail, $course): Trail => $trail
+    ->parent('platform.courses')
+    ->push(__('Edit'), route('platform.courses.edit', $course)));
+
+//Platform > Courses > Create
+Route::screen('vebinars/create', CourseEditScreen::class)
+->name('platform.courses.create')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.courses')
+    ->push(__('Create'), route('platform.courses.create')));
+
 /* Route::screen('users/{user}/edit', UserEditScreen::class)
     ->name('platform.systems.users.edit')
     ->breadcrumbs(fn (Trail $trail, $user) => $trail

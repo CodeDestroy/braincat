@@ -6,6 +6,29 @@
         <template v-if="course.id == 1">
         <div class="mx-auto max-w-7xl mt-12  px-6 lg:px-8">
             <ul role="list" class="space-y-3">
+                <template  v-for="chapter in chapters" :key="chapter.id" >
+                <li class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-purple-800 text-xl font-bold">
+                    <p>{{ chapter.name }}</p>
+                </li>
+                <li v-for="(theme, index) in chapter.themes" :key="theme.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
+                    <a
+                        
+                        href="#calendarView"
+                        @click="handleDateClick({date: theme.start_date, isCurrentMonth: true})"
+                        class="py-4"
+                    >
+                        <p class="text-slate-400">{{ formatDateToRu(theme.start_date) }} {{ formatTime(theme.start_time) }} по МСК</p>
+                        <p v-bind:class="{
+                            'text-green-500': isActive(theme.start_date),
+                            'text-violet-500': isPast(theme.start_date),
+                            'text-black-500' : isFuture(theme.start_date)
+                            /* 'cursor-not-allowed': isPast(theme.start_date) */
+                        }">{{ theme.name }}</p> <!-- Предположим, у вас есть title для темы -->
+                    </a>
+                </li>
+                </template>
+            </ul>
+            <ul role="list" class="space-y-3">
                 <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-purple-800 text-xl font-bold">
                     <p>Раздел 1. Строение и функции головного мозга человека</p>
                 </li>
@@ -206,17 +229,61 @@
             type: Object,
             required: true
         },
+        themes: {
+            type: Array,
+            required: true
+        },
+        chapters: {
+            type: Array,
+            required: true
+        }
     });
+
+    console.log(props.chapters)
   // Массив для названий месяцев
     const monthNames = [
       'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
       'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь',
     ];
-  
+    const isActive = (startDate) => {
+        const dateToCheck = new Date(startDate);
+        const today = new Date();
+
+        // Сравниваем только год, месяц и день
+        return dateToCheck.getFullYear() === today.getFullYear() &&
+            dateToCheck.getMonth() === today.getMonth() &&
+            dateToCheck.getDate() === today.getDate();
+    }
+
+    const isPast = (startDate) => {
+        const dateToCheck = new Date(startDate);
+        const today = new Date();
+
+        // Сравниваем только год, месяц и день
+        return dateToCheck.getFullYear() < today.getFullYear() ||
+            (dateToCheck.getFullYear() === today.getFullYear() && dateToCheck.getMonth() < today.getMonth()) ||
+            (dateToCheck.getFullYear() === today.getFullYear() && dateToCheck.getMonth() === today.getMonth() && dateToCheck.getDate() < today.getDate());
+    }
+
+    const isFuture = (startDate) => {
+        const dateToCheck = new Date(startDate);
+        const today = new Date();
+
+        // Сравниваем только год, месяц и день
+        return dateToCheck.getFullYear() > today.getFullYear() ||
+            (dateToCheck.getFullYear() === today.getFullYear() && dateToCheck.getMonth() > today.getMonth()) ||
+            (dateToCheck.getFullYear() === today.getFullYear() && dateToCheck.getMonth() === today.getMonth() && dateToCheck.getDate() > today.getDate());
+    }
+    const formatDateToRu = (date) => {
+        const d = new Date(date);
+        return d.toLocaleDateString('ru-RU'); // Форматирует дату в формате dd-mm-yyyy
+    }
+
     const formattedMonth = computed(() => {
       const [year, month] = currentMonth.value.split('-');
       return `${monthNames[parseInt(month, 10) - 1]} ${year}`;
     });
+
     
     const items = ref([
       { id: 1 },

@@ -56,7 +56,7 @@
         <div class="mx-auto max-w-2xl space-y-16 sm:space-y-20 lg:mx-0 lg:max-w-none">
             <div>
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Профиль</h2>
-                <p class="mt-1 text-sm leading-6 text-gray-500">Эта информация доступна публично.</p>
+                <p class="mt-1 text-sm leading-6 text-gray-500">Основная информация.</p>
   
                 <dl class="mt-6 space-y-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
                     {{-- <div class="pt-6 sm:flex">
@@ -270,7 +270,7 @@
   
             <div>
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Остальные данные</h2>
-                <p class="mt-1 text-sm leading-6 text-gray-500">Эта информация доступна только нам.</p>
+                {{-- <p class="mt-1 text-sm leading-6 text-gray-500">Эта информация доступна только нам.</p> --}}
   
                 {{-- <ul role="list" class="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
                     <li class="flex justify-between gap-x-6 py-6">

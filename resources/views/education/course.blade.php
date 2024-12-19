@@ -11,10 +11,10 @@
         <calendar/>
     </div> --}}
     <div id="ask-question">
-        <ask-question :course="{{ json_encode($course) }}" />
+        <ask-question :course="{{ json_encode($course) }}" :themes="{{ json_encode($themes) }}"/>
     </div>
     <div id="calendar-plan">
-        <calendar-plan :course="{{ json_encode($course) }}"/>
+        <calendar-plan :course="{{ json_encode($course) }}" :themes="{{ json_encode($themes) }}" :chapters="{{ json_encode($chapters) }}"/>
     </div>
 </div>
 @endsection
