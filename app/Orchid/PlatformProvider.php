@@ -82,11 +82,12 @@ class PlatformProvider extends OrchidServiceProvider
 
             //Пользователи и их действия
             Menu::make(__('Messages'))
-                ->icon('bs.shield')
+                ->icon('bs.envelope-open')
                 ->route('platform.users.messages')
                 ->permission('users.actions.messages')
                 ->title(__('User actions'))
                 ->divider(),
+            
             //Курсы
             Menu::make(__('Courses'))
                 ->icon('bs.briefcase')
@@ -122,10 +123,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.events.vebinars')
                 ->permission('platform.events'),
             //Тесты
-            /* Menu::make(__('Self study materials'))
+            Menu::make(__('Tests'))
                 ->icon('bs.shield')
-                ->route('platform.events.selfStudyMaterials')
-                ->permission('platform.events.selfStudyMaterials'), */
+                ->route('platform.events.tests')
+                ->permission('platform.events'),
                 
             Menu::make('Documentation')
                 ->title('Docs')

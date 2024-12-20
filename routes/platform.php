@@ -10,6 +10,8 @@ use App\Orchid\Screens\Course\CourseEditScreen;
 use App\Orchid\Screens\Course\CourseListScreen;
 use App\Orchid\Screens\Course\ThemeEditScreen;
 use App\Orchid\Screens\Course\ThemeListScreen;
+use App\Orchid\Screens\Event\TestEditScreen;
+use App\Orchid\Screens\Event\TestListScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -163,6 +165,27 @@ Route::screen('vebinars/create', VebinarEditScreen::class)
     ->parent('platform.events.vebinars')
     ->push(__('Create'), route('platform.events.vebinar.create')));
 
+// Platform > Events > Tests
+Route::screen('tests', TestListScreen::class)
+->name('platform.events.tests')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.events')
+    ->push(__('Vebinars'), route('platform.events.tests')));
+
+//Platform > Events > Tests > Edit
+Route::screen('tests/{test}/edit', TestEditScreen::class)
+->name('platform.events.tests.edit')
+->breadcrumbs(fn (Trail $trail, $event): Trail => $trail
+    ->parent('platform.events.tests')
+    ->push(__('Edit'), route('platform.events.tests.edit', $event)));
+
+//Platform > Events > Tests > Create
+Route::screen('test/create', TestEditScreen::class)
+->name('platform.events.tests.create')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.events.tests')
+    ->push(__('Create'), route('platform.events.tests.create')));
+
 // Platform > Courses 
 Route::screen('messages', MessagesListScreen::class)
 ->name('platform.users.messages')
@@ -186,7 +209,7 @@ Route::screen('courses/{course}/edit', CourseEditScreen::class)
     ->push(__('Edit'), route('platform.courses.edit', $course)));
 
 //Platform > Courses > Create
-Route::screen('vebinars/create', CourseEditScreen::class)
+Route::screen('courses/create', CourseEditScreen::class)
 ->name('platform.courses.create')
 ->breadcrumbs(fn (Trail $trail) => $trail
     ->parent('platform.courses')

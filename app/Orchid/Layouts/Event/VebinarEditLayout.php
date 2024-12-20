@@ -30,7 +30,7 @@ class VebinarEditLayout extends Rows
                 ->fromModel(Event::class, 'name')
                 ->applyScope('type', ['vebinar'])
                 ->displayAppend('full')
-                ->title('Выберите курс'),
+                ->title('Выберите событие'),
             Input::make('vebinar.room_name')
                 ->type('text')
                 ->max(255)
