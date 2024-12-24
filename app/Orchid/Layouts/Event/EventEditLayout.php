@@ -81,6 +81,7 @@ class EventEditLayout extends Rows
                 ->empty(__('Self study materials'), 'selfStudyMaterial')
                 ->options([
                     /* 'selfStudyMaterial' => __('Self study materials'), */
+                    'record' => __('Record'),
                     'test' => __('Tests'),
                     'vebinar' => __('Vebinars'),
                 ]),

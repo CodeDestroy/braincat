@@ -103,6 +103,9 @@ class EducationController extends Controller
                         $vebinar = Vebinar::where(['event_id' => $id])->first();
                         return redirect()->route('education.showVebinar', ['id' => $vebinar->id, 'course_id' => $course_id]);
                         /* return view('errors.accessError', ['error_title' => 'Вебинар еще не начался', 'error_message' => 'Вебинар начнется 29 Ноября в 19:30 по МСК']); */
+                    case 'record':
+                        $selfStudyMaterial = SelfStudyMaterial::where(['event_id' => $id])->first();
+                        return redirect()->route('education.showSelfStudyMaterial', ['id' => $selfStudyMaterial->id, 'course_id' => $course_id]);
                     default:
                         return view('education.events.selfStudyMaterial', compact('event'));
                     
@@ -144,6 +147,9 @@ class EducationController extends Controller
                 $vebinar = Vebinar::where(['event_id' => $id])->first();
                 return redirect()->route('education.showVebinar', ['id' => $vebinar->id, 'course_id' => $course_id]);
                 /* return view('errors.accessError', ['error_title' => 'Вебинар еще не начался', 'error_message' => 'Вебинар начнется 29 Ноября в 19:30 по МСК']); */
+            case 'record':
+                $selfStudyMaterial = SelfStudyMaterial::where(['event_id' => $id])->first();
+                return redirect()->route('education.showSelfStudyMaterial', ['id' => $selfStudyMaterial->id, 'course_id' => $course_id]);
             default:
                 return view('education.events.selfStudyMaterial', compact('event'));
             
