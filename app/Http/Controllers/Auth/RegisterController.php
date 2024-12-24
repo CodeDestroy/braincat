@@ -52,10 +52,11 @@ class RegisterController extends Controller
     {
         //Добавить проверку 'name', 'secondName' и 'patronymicName' на латиницу. Если латиница - кидать ошибку
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => 'required|string|max:255|regex:/[а-яё]/iu',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:3', 'confirmed'],
-            /* 'phone' => 'required|string|regex:/^\+7-\d{3}-\d{3}-\d{2}-\d{2}$/i', */
+            'secondName' => 'required|string|max:255|regex:/[а-яё]/iu',
+            'patronymicName' => 'string|max:255|regex:/[а-яё]/iu',
             'phone' => ['required', 'string'],
         ]);
     }
