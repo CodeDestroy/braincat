@@ -38,7 +38,7 @@ class CourseListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Course Management';
+        return __('Courses') . ' ' .  __('Management');
     }
 
     /**

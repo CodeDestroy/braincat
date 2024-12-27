@@ -889,7 +889,24 @@
     "Self study material Edit": "Редактирование материала для самостоятельного изучения",
     "Text": "Текст",
     "Event": "Событие",
-    "Room name": "Название комнаты"
+    "Room name": "Название комнаты",
+    
+    "Courses": "Курсы",
+    "Chapter": "Раздел",
+    "Chapters": "Разделы",
+    "Theme": "Тема",
+    "Themes": "Темы",
+    "Calendar visibility": "Видно в календаре",
+    "Management": "управление",
+    "Select Date...": "Выберите дату...",
+    "Select date": "Выберите дату",
+    "Select time": "Выберите время",
+    "User actions": "Действия пользователей",
+    "User": "Пользователь",
+    "Message view": "Просмотр сообщения",
+    "Can ask questions": "Можно задавать вопросы",
+    "Record": "Видеозапись",
+    "not_regex": "Поле :attribute имеет неверный формат."
     
 
 }

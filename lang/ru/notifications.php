@@ -15,6 +15,6 @@ return [
 
     'Reset Password Notification' => 'Уведомление о сбросе пароля',
     'You are receiving this email because we received a password reset request for your account.' => 'Вы получили это письмо, потому что мы получили запрос на сброс пароля для вашей учетной записи.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'throttle' => 'Слишком много попыток. Попробуйте снова через :seconds секунд.',
 
 ];

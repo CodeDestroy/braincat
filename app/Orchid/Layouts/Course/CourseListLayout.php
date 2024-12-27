@@ -95,6 +95,13 @@ class CourseListLayout extends Table
                 ->align(TD::ALIGN_RIGHT)
                 ->defaultHidden()
                 ->sort(),
+            //canAskQuestion
+            TD::make('canAskQuestion', __('Can ask questions'))
+                ->render(function (Course $course) {
+                    return $course->canAskQuestion ? __('Yes') : __('No');
+                })
+                ->defaultHidden()
+                ->align(TD::ALIGN_RIGHT),
             TD::make(__('Actions'))
                 ->align(TD::ALIGN_CENTER)
                 ->width('100px')

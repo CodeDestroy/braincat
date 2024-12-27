@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white shadow sm:rounded-lg mb-5" v-if="props.course.id == 1">
+    <div class="bg-white shadow sm:rounded-lg mb-5" v-if="props.course.canAskQuestion == 1">
         <div class="px-4 py-5 sm:p-6">
             <h3 class="text-base font-semibold leading-6 text-gray-900">Задать вопрос</h3>
             <div class="mt-5">
@@ -24,14 +24,14 @@
     import { ref, onMounted } from 'vue';
     
     const props = defineProps({
-      course: {
-          type: Object,
-          required: true
-      },
-      themes: {
-          type: Array,
-          required: true
-      }
+        course: {
+            type: Object,
+            required: true
+        },
+        themes: {
+            type: Array,
+            required: true
+        }
       
     });
 

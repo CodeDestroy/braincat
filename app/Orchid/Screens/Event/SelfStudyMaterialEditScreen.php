@@ -92,7 +92,7 @@ class SelfStudyMaterialEditScreen extends Screen
 
         $selfStudyMaterial->fill($request->get('selfStudyMaterial'))->save();
 
-        Toast::info(__('SelfStudyMaterial was saved'));
+        Toast::info(__('SelfStudyMaterial') . __(' was saved'));
 
         return redirect()->route('platform.events.selfStudyMaterials');
     }
@@ -106,7 +106,7 @@ class SelfStudyMaterialEditScreen extends Screen
     {
         $selfStudyMaterial->delete();
 
-        Toast::info(__('SelfStudyMaterial was removed'));
+        Toast::info(__('SelfStudyMaterial') . __(' was removed'));
 
         return redirect()->route('platform.events.selfStudyMaterials');
     }

@@ -16,11 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('course_id')->nullable();
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
+            $table->string(column: 'color')->default('#000');
             $table->timestamps();
         });
     }
