@@ -24,6 +24,7 @@ Route::get('/pdf/{filename}', function ($filename) {
 //Роуты основных страниц
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
+    Route::get('/nikolaeva', 'nikolaeva')->name('nikolaeva');
     Route::get('/contacts', 'contacts')->name('contacts');
     Route::get('/about', 'about')->name('about');
     Route::get('/docs', function (Request $request) { return redirect()->route('documents.offer'); })->name('documents');
