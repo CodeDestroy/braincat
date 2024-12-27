@@ -37,7 +37,8 @@ createApp({
   .component('Calendar', Calendar)
   .mount('#calendar')  */ 
 
- import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedTier.vue';
+import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedTier.vue';
+import ThreeTiersPrice from './components/ThreeTiersPrice.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
 import CalendarPlan from './components/CalendarPlan.vue';
@@ -51,9 +52,15 @@ import Jitsi from './components/Jitsi.vue';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import AskQuestion from './components/AskQuestion.vue';
+import WithLargeAvatar from './components/WithLargeAvatar.vue';
+
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
 .mount('#price')
+
+createApp({})
+.component('ThreeTiersPrice', ThreeTiersPrice)
+.mount('#price-webinar')
 
 createApp({})
 .component('Calendar', Calendar)
@@ -100,6 +107,9 @@ createApp({})
 .component('AskQuestion', AskQuestion)
 .mount('#ask-question')
 
+createApp({})
+.component('WithLargeAvatar', WithLargeAvatar)
+.mount('#with-large-avatar')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
 /*   const { jsPDF } = window.jspdf; */
