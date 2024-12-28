@@ -216,7 +216,7 @@ class ProfileController extends Controller
         $photoPaths = [];
         
         // Обновление данных пользователя
-        
+        /* return $request->input('course_id'); */
         $shouldBeCheckedOut = false;
         if ($request->input('isHealthyChild') || $request->input('isStudent') || $request->input('isAPPCP'))
             $shouldBeCheckedOut = true;
@@ -241,11 +241,12 @@ class ProfileController extends Controller
 
                 'isHealthyChildPartner' => $request->input('isHealthyChildPartner') ? true : false,
                 'isLegalHealthyChildPartner' => $request->input('isLegalHealthyChildPartner') ? true : false,
-                
+                /* 'course_id'=> $request->input('course_id'), */
 
                 'shouldBeCheckedOut' => $shouldBeCheckedOut,
             ]
         );
+        /* return $courseRegistration; */
 
         if ($request->hasFile('studPhoto')) {
             //foreach ($request->file('passportPhoto') as $photo) {

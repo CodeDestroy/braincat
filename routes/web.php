@@ -151,14 +151,15 @@ Route::controller(App\Http\Controllers\EducationController::class)->group(functi
 //Платежи
 Route::controller(App\Http\Controllers\PaymentController::class)->group(function () {
    
-    Route::get('/payment/success/{sum}/{freq}', 'success')->name('payment.success')->middleware(['auth', 'verified']);
-    Route::get('/payment/fail/{sum}/{freq}', 'fail')->name('payment.fail')->middleware(['auth', 'verified']);
+    Route::get('/payment/success/{course}/{sum}/{freq}', 'success')->name('payment.success')->middleware(['auth', 'verified']);
+    Route::get('/payment/fail/{course}/{sum}/{freq}', 'fail')->name('payment.fail')->middleware(['auth', 'verified']);
     /* Route::post('/payment/success', 'successView')->name('payment.successView');
     Route::post('/payment/fail', 'failView')->name('payment.failView'); */
-    Route::get('/payment/base/{freq}/{sum}', 'base')->name('payment.base')->middleware(['auth', 'verified']);
-    Route::get('/payment/privilege/{freq}/{sum}', 'privilege')->name('payment.privilege')->middleware(['auth', 'verified']);
-    Route::get('/payment/enterprise/{freq}', 'enterprise')->name('payment.enterprise')->middleware(['auth', 'verified']);
-    Route::get('/payment/{tier}/{freq}/{price}', 'index')->name('payment.index')->middleware(['auth', 'verified']);
+    Route::get('/payment/base/{course}/{freq}/{sum}', 'base')->name('payment.base')->middleware(['auth', 'verified']);
+    Route::get('/payment/privilege/{course}/{freq}/{sum}', 'privilege')->name('payment.privilege')->middleware(['auth', 'verified']);
+    Route::get('/payment/enterprise/{course}/{freq}', 'enterprise')->name('payment.enterprise')->middleware(['auth', 'verified']);
+    Route::get('/payment/students/{course}/{freq}/{price}', 'student')->name('payment.student')->middleware(['auth', 'verified']);
+    Route::get('/payment/{tier}/{course}/{freq}/{price}', 'index')->name('payment.index')->middleware(['auth', 'verified']);
 });
 
 

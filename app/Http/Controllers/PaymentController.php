@@ -13,70 +13,82 @@ class PaymentController extends Controller
 {
 
 
-    public function enterprise($freq) {
+    public function enterprise($course, $freq) {
         return view('payments.enterprisePay');
 
     }
 
-    public function privilege($freq, $sum) {
+    public function privilege( $course, $freq, $sum,) {
         if (!auth()->user()) {
             return  redirect()->route('login');
         }
         else {
-            $courseRegistration = CourseRegistration::where('user_id', auth()->user()->id)->first();
-
-            if (!$courseRegistration->managerCheckedOut) {
-                return view('payments.userIsCheckingProgress', compact(['freq', 'sum']));
-            }
-            else {
+            $courseRegistration = CourseRegistration::where('user_id', auth()->user()->id)
+                                                    ->where('course_id', $course)
+                                                    ->first();
+            
+            //if (!$courseRegistration->managerCheckedOut) {
+            //    return view('payments.userIsCheckingProgress', compact(['freq', 'sum']));
+            //}
+            //else {
+                if ($course != 1)
+                    return view('payments.nikolaeva.privilegePay', compact(['freq', 'sum']));
+        
                 return view('payments.privilegePay', compact(['freq', 'sum']));
-            }
+            //}
         }
         
     }
-    public function base($freq, $sum) {
+    public function base($course, $freq, $sum) {
+        if ($course != 1)
+            return view('payments.nikolaeva.basePay', compact(['freq', 'sum']));
         return view('payments.basePay', compact(['freq', 'sum']));
 
     }
 
-    public function index($tier, $freq, $price)
+    public function student($course, $freq, $sum) {
+        $courseRegistration = CourseRegistration::where('user_id', auth()->user()->id)
+            ->where('course_id', $course)
+            ->first();
+        if ($courseRegistration->isStudent)    
+            return view('payments.nikolaeva.student', compact(['freq', 'sum']));
+        else
+            return view('payments.nikolaeva.basePay', compact(['freq', '3000']));
+    }
+
+    public function index($tier, $course, $freq, $price)
     {
         if (!auth()->user()) {
             return  redirect()->route('login');
         }
         $user = User::find(auth()->user()->id);
         
-        $courseRegistration = CourseRegistration::where('user_id', $user->id)->first();
-        /* 
+        $courseRegistration = CourseRegistration::where('user_id', $user->id)
+                                                        ->where('course_id', $course)
+                                                        ->first();
+        
+                                                        /* 
         'isAPPCP',
         'isHealthyChild',
         'isStudent',
         'isLegal'
         */
-        if ($user->hasSecondStep) {
+        if ($courseRegistration) {
             switch ($tier) {
                 case 'tier-base':
-                    /*  
-                    'isAPPCP',
-                    'isHealthyChildGk',
-                    'isHealthyChildFranch',
-                    'isLegalHealthyChildGK',
-                    'isStudent',
-                    'isLegalHealthyChildFranch',
-                    */
                     if ( $courseRegistration->isAPPCP || 
                         ($courseRegistration->isHealthyChildGk && !$courseRegistration->isLegalHealthyChildGK) || 
                         $courseRegistration->isStudent ||
                         ($courseRegistration->isHealthyChildFranch && !$courseRegistration->isLegalHealthyChildFranch)                        ) {
                         //Привилегия
-                        return redirect('/payment/privilege/' . $freq . '/22000');
+                        return redirect('/payment/privilege/' . $course . '/' . $freq . '/22000');
                     } else if ($courseRegistration->isLegalHealthyChildFranch || $courseRegistration->isLegalHealthyChildGK) {
                         //Льгота
-                        return redirect('/payment/enterprise/' . $freq );
+                        return redirect('/payment/enterprise/' . $course . '/' . $freq );
                     }
                     else {
                         //База
-                        return redirect('/payment/base/' . $freq . '/30000');
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/30000');
                     }
                     break;
                 case 'tier-privilege':
@@ -86,14 +98,14 @@ class PaymentController extends Controller
                         $courseRegistration->isStudent ||
                         ($courseRegistration->isHealthyChildFranch && !$courseRegistration->isLegalHealthyChildFranch)                        ) {
                         //Привилегия
-                        return redirect('/payment/privilege/' . $freq . '/22000');
+                        return redirect('/payment/privilege/' . $course . '/' . $freq . '/22000/');
                     } else if ($courseRegistration->isLegalHealthyChildFranch || $courseRegistration->isLegalHealthyChildGK) {
                         //Льгота
-                        return redirect('/payment/enterprise/' . $freq);
+                        return redirect('/payment/enterprise/' . $course . '/' . $freq);
                     }
                     else {
                         //База
-                        return redirect('/payment/base/' . $freq . '/30000');
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/30000');
                     }
                     break;
                 case 'tier-enterprise':
@@ -103,16 +115,38 @@ class PaymentController extends Controller
                         $courseRegistration->isStudent ||
                         ($courseRegistration->isHealthyChildFranch && !$courseRegistration->isLegalHealthyChildFranch)                        ) {
                         //Привилегия
-                        return redirect('/payment/privilege/' . $freq . '/22000');
+                        return redirect('/payment/privilege/' . $course . '/' . $freq . '/22000');
                     } else if ($courseRegistration->isLegalHealthyChildFranch || $courseRegistration->isLegalHealthyChildGK) {
                         //Льгота
-                        return redirect('/payment/enterprise/' . $freq);
+                        return redirect('/payment/enterprise/' . $course . '/' . $freq);
                     }
                     else {
                         //База
-                        return redirect('/payment/base/' . $freq . '/30000');
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/30000');
                     }
                     break;
+                case 'tier-base2':    
+                    if ( $courseRegistration->isStudent)
+                        return redirect('/payment/students/' . $course . '/' . $freq . '/1250');
+                    elseif ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild)  
+                        return redirect('/payment/privilege/' . $course . '/' . $freq . '/2500');
+                    else
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
+                case 'tier-privilege2':
+                    if ( $courseRegistration->isStudent)
+                        return redirect('/payment/students/' . $course . '/' . $freq . '/1250');
+                    elseif ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild)  
+                        return redirect('/payment/privilege/' . $course . '/' . $freq . '/2500');
+                    else
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
+                case 'tier-students':
+                    if ( $courseRegistration->isStudent)
+                        return redirect('/payment/students/' . $course . '/' . $freq . '/1250');
+                    elseif ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild)  
+                        return redirect('/payment/privilege/' . $course . '/' . $freq . '/2500');
+                    else
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
+
             }
             
             
@@ -127,11 +161,11 @@ class PaymentController extends Controller
         return view('payment');
     }
 
-    public function success(Request $request, $sum, $freq)//: RedirectResponse
+    public function success(Request $request, $course_id, $sum, $freq)//: RedirectResponse
     {   
 
         $user = User::find($request->user()->id);
-        $course = Course::where('id', '>=', 1)->first();
+        $course = Course::find( $course_id);
         /* $payment = Payment::create([
             'user_id' => $user->id,
             'course_id' => $course->id,
@@ -139,14 +173,15 @@ class PaymentController extends Controller
             'status' => 'success',
             'freq' => $freq
         ]); */
+        if (!$course) return view('errors.404');
         if ($freq == 100) {
             $payment = Payment::updateOrCreate(
-                ['user_id' => $user->id, 'freq' => $freq]
-                ,[
-                'course_id' => $course->id,
-                'amount' => $sum,
-                'status' => 'success another',
-            ]);
+                ['user_id' => $user->id, 'freq' => $freq, 'course_id' => $course->id,],
+                [
+                    'amount' => $sum,
+                    'status' => 'success another',
+                ]
+            );
 
             /* $payment = Payment::create([
                 'user_id' => $user->id,
@@ -183,11 +218,11 @@ class PaymentController extends Controller
         return view('payments.success');
     }
 
-    public function fail(Request $request, $sum, $freq)
+    public function fail(Request $request,$course, $sum, $freq)
     {
         $payment = Payment::create([
             'user_id' => $user->id,
-            'course_id' => $course->id,
+            'course_id' => $course,
             'amount' => $sum,
             'status' => 'failed',
             'freq' => $freq

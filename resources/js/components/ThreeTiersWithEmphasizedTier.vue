@@ -22,7 +22,7 @@
             <span :class="[tier.featured ? 'text-white' : 'text-gray-900', 'text-4xl font-bold tracking-tight']">{{ typeof tier.price === 'string' ? tier.price : tier.price[frequency.value] }}</span>
             <span v-if="typeof tier.price !== 'string'" :class="[tier.featured ? 'text-gray-300' : 'text-gray-600', 'text-sm font-semibold leading-6']">{{ frequency.priceSuffix }}</span>
           </p>
-          <a :href="tier.href + '/' + frequency.value + '/' + tier.price[frequency.value]" :aria-describedby="tier.id" :class="[tier.featured ? 'bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white' : 'bg-purple-800 text-white shadow-sm hover:bg-purple-700 focus-visible:outline-purple-800', 'mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2']">{{ tier.cta }}</a>
+          <a style="background-color: grey;" :href="tier.href + '/' + frequency.value + '/' + tier.price[frequency.value]" :aria-describedby="tier.id" :class="[tier.featured ? 'bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white' : 'bg-purple-800 text-white shadow-sm hover:bg-purple-700 focus-visible:outline-purple-800', 'disabled mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2']">{{ tier.cta }}</a>
           <ul role="list" :class="[tier.featured ? 'text-gray-300' : 'text-gray-600', 'mt-8 space-y-3 text-sm leading-6 xl:mt-10']">
             <li v-for="feature in tier.features" :key="feature" class="flex gap-x-3">
               <CheckIcon :class="[tier.featured ? 'text-white' : 'text-purple-800', 'h-6 w-5 flex-none']" aria-hidden="true" />
@@ -48,7 +48,7 @@ const tiers = [
   {
     name: 'Базовый',
     id: 'tier-base',
-    href: '/payment/tier-base',
+    href: '/payment/base/1',
     price: { 100: '30000', 50: '32000' },
     description: 'дополнительное профессиональное образование',
     features: [
@@ -64,7 +64,7 @@ const tiers = [
   {
     name: 'Льготный',
     id: 'tier-privilege',
-    href: '/payment/tier-privilege',
+    href: '/payment/privilege/1',
     price: { 100: '22000', 50: '25000' },
     description: 'дополнительное профессиональное образование',
     features: [
@@ -84,7 +84,7 @@ const tiers = [
   {
     name: 'Организации',
     id: 'tier-enterprise',
-    href: '/payment/tier-enterprise',
+    href: '/payment/enterprise/1',
     price: 'Индивидуально',
     description: 'дополнительное профессиональное образование',
     features: [

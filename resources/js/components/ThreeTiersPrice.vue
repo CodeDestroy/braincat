@@ -33,6 +33,7 @@
   import { RadioGroup, RadioGroupOption } from '@headlessui/vue'
   import { CheckIcon } from '@heroicons/vue/20/solid'
   
+  
   const frequencies = [
     { value: '100', label: '', priceSuffix: '' },
   ]
@@ -40,7 +41,7 @@
     {
       name: 'Базовая',
       id: 'tier-base',
-      href: '/payment/tier-base',
+      href: '/payment/tier-base2/3',
       price: { 100: '3000' },
       description: 'доступ к материалам вебинара в течение года',
       features: [
@@ -56,7 +57,7 @@
     {
       name: 'Льготная',
       id: 'tier-privilege',
-      href: '/payment/tier-privilege',
+      href: '/payment/tier-privilege2/3',
       price: { 100: '2500' },
       description: 'доступ к материалам вебинара в течение года',
       features: [
@@ -69,7 +70,7 @@
     {
       name: 'Студенческая',
       id: 'tier-students',
-      href: '/payment/tier-students',
+      href: '/payment/tier-students/3',
       price: { 100: '1250' },
       description: 'доступ к материалам вебинара в течение года',
       features: [
