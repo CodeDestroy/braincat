@@ -6,13 +6,14 @@
     @if ($freq == 100)
         <div class="flex justify-center items-center bg-gray-100" style="height: 60vh">
             <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Вам подходит тариф: <br>Льготный план</h2>
+                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Вебинар 19.01.2025 <br>10-00 - 13-00</h2>
                 
                 <!-- Plan and Price -->
                 <div class="bg-indigo-100 p-4 rounded-lg mb-6 text-center">
-                    <h3 class="text-xl font-semibold text-indigo-700">Льготный план</h3>
+                    <h3 class="text-xl font-semibold text-indigo-700">д.б.н., профессор Е.И. Николаева</h3>
                     <p class="text-3xl font-bold text-indigo-900 mt-2">{{ (int)$sum }} ₽</p>
-                    <p class="text-gray-500 mt-1">Единовременная оплата</p>
+                    <p class="text-gray-500 mt-1">"Что такое созревание мозга и какие условия его обеспечивают"
+                        тариф: Льготный</p>
                 </div>
         
                 <!-- Robokassa Payment Button -->

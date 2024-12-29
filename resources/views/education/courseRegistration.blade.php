@@ -6,18 +6,18 @@
         <div class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
     </div> --}}
     <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Введите ваши данные</h2>
-        <p class="mt-2 text-lg/8 text-gray-600">Введите дополнительные данные, мы проверим, можете ли вы получить скидку.</p>
+        <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Регистрация на курс </h2>
+        <p class="mt-2 text-lg/8 text-gray-600">«{{$course['name']}}»</p>
     </div>
     <form action="{{ route('profile.registerSecond') }}" method="POST" enctype="multipart/form-data" class="mx-auto mt-16 max-w-xl sm:mt-20">
         @csrf
         <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-            <div class="sm:col-span-2">
+            {{-- <div class="sm:col-span-2">
                 <label for="snils" class="block text-sm/6 font-semibold text-gray-900">СНИЛС</label>
                 <div class="relative mt-2 rounded-md shadow-sm">
-                    <input value="{{ Auth::user()->SNILS }}" type="text" name="snils" id="snils" class="px-3.5 block w-full rounded-md border-0 py-1.5 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="000-000-000 00">
+                    <input value="{{ Auth::user()->SNILS }}" required type="text" name="snils" id="snils" class="px-3.5 block w-full rounded-md border-0 py-1.5 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="000-000-000 00">
                 </div>
-            </div>
+            </div> --}}
             <div class="sm:col-span-2">
                 <label for="address" class="block text-sm/6 font-semibold text-gray-900">Место проживания</label>
                 <div class="relative mt-2 rounded-md shadow-sm">
@@ -49,41 +49,13 @@
                     <input value="{{ Auth::user()->birthday }}" type="date" name="birthDay" id="birthDay" class="px-3.5 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="01.01.1901">
                 </div>
             </div>
-            {{-- Выбор курса --}}
-            
             <input type="hidden" name="course_id" x-bind:value="id" value="{{$course_id}}" required>
-            {{-- <div x-data="{ open: false, selected: '{{$courses[0]->name}}', id: '{{$courses[0]->id}}' }" class="sm:col-span-2">
-                <label id="listbox-label" class="block text-sm font-medium text-gray-900">Выберите курс</label>
-                <div class="relative mt-2">
-                    <button style="height: 38px" @click="open = !open" type="button" class="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pl-3 pr-2 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" aria-haspopup="listbox" aria-expanded="open" aria-labelledby="listbox-label">
-                        <span class="col-start-1 self-center row-start-1 flex items-center gap-3 pr-6">
-                            <span class="block truncate" x-text="selected"></span>
-                        </span>
-                        <svg class="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
-                            <path fill-rule="evenodd" d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <ul x-show="open" @click.away="open = false" class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label">
-                        @foreach ($courses as $course)
-                            <li @click="selected = '{{ $course->name }}'; open = false; id = '{{$course->id}}'" role="option" class="cursor-default select-none py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white">
-                                <span class="block truncate">{{$course->name}}</span>
-                            </li>
-                            
-                        @endforeach
-                    </ul>
-                  <input type="hidden" name="course_id" x-bind:value="id" required>
-                </div>
-            </div> --}}
+            <input type="hidden" name="url" x-bind:value="url" value="{{$course['url']}}" required>
+
             {{-- Чекбоксы --}}
             <div id="isHealthyChildFranchDiv" class="sm:col-span-2">
                 <div class="relative mt-2 rounded-md shadow-sm items-center flex">
-                    
-                    <input 
-                        value="true" onchange="showHealthyChildFranch(this)" 
-                        name="isHealthyChildFranch" id="isHealthyChildFranch" 
-                        type="checkbox" class="h-4 w-4 rounded accent-purple-800 border-gray-300 text-purple-800 focus:ring-purple-800" 
-                        {{ $lastCourseRegistration ? ($lastCourseRegistration['isHealthyChildFranch'] ? 'checked' : '') : '' }}
-                    >
+                    <input value="true" onchange="showHealthyChildFranch(this)" name="isHealthyChildFranch" id="isHealthyChildFranch" type="checkbox" class="h-4 w-4 rounded accent-purple-800 border-gray-300 text-purple-800 focus:ring-purple-800" {{ old('remember') ? 'checked' : '' }}>
                     <label for="isHealthyChildFranch" class="my-2 ms-2.5 text-md font-medium text-black-900 dark:text-black-300">Сотрудник франчайзи ГК "Здоровый ребёнок"</label>
                 </div>
             </div>
@@ -107,18 +79,18 @@
                         document.getElementById('isHealthyChildPartner').disabled = true
 
                         // Удаляем для ГК
-                        isLegalHealthyChildGKDiv.addEventListener('animationend', function handleAnimationEnd() {
+                        /* isLegalHealthyChildGKDiv.addEventListener('animationend', function handleAnimationEnd() {
                             isLegalHealthyChildGKDiv.classList.remove('hiding');
                             oplataUrLicoDiv.classList.add('hide');
                             isLegalHealthyChildGKDiv.removeEventListener('animationend', handleAnimationEnd);
-                        });
+                        }); */
 
                         document.getElementById('isLegalHealthyChildGK').checked = false
                         
                         //Проявляем чекбокс и лист работ
-                        oplataUrLicoDiv.classList.remove('hide');
+                        /* oplataUrLicoDiv.classList.remove('hide');
                         oplataUrLicoDiv.classList.add('visible');
-                        oplataUrLicoDiv.classList.remove('hiding');
+                        oplataUrLicoDiv.classList.remove('hiding'); */
 
                         workPlaceDiv.classList.remove('hide');
                         workPlaceDiv.classList.add('visible');
@@ -127,7 +99,7 @@
 
                         isStudent.disabled = true
                         document.getElementById('isStudent').checked = false
-                        workPlace.required = true
+                        /* workPlace.required = true */
                     }
                     else {
                         
@@ -137,15 +109,15 @@
                         isHealthyChildGk.disabled = false
                         oplataUrLicoDiv.checked = false
 
-                        oplataUrLicoDiv.classList.add('hiding');
+                        /* oplataUrLicoDiv.classList.add('hiding');
                         oplataUrLicoDiv.classList.remove('visible');
-                        
+                         */
                         // Убираем класс `hiding` после завершения анимации
-                        oplataUrLicoDiv.addEventListener('animationend', function handleAnimationEnd() {
+                        /* oplataUrLicoDiv.addEventListener('animationend', function handleAnimationEnd() {
                             oplataUrLicoDiv.classList.remove('hiding');
                             oplataUrLicoDiv.classList.add('hide');
                             oplataUrLicoDiv.removeEventListener('animationend', handleAnimationEnd);
-                        });
+                        }); */
 
                         workPlaceDiv.classList.add('hiding');
                         workPlaceDiv.classList.remove('visible');
@@ -167,15 +139,7 @@
             </script>
             <div class="sm:col-span-2">
                 <div id="isHealthyChildGKDiv" class="relative mt-2 rounded-md shadow-sm items-center flex text-black-900 dark:text-black-300">
-                    <input 
-                        value="true" 
-                        onchange="showHealthyChildGk(this)" 
-                        name="isHealthyChildGk" 
-                        id="isHealthyChildGk" 
-                        type="checkbox" 
-                        class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600"
-                        {{ $lastCourseRegistration ? ($lastCourseRegistration['isHealthyChildGk'] ? 'checked' : '') : '' }}
-                    >
+                    <input value="true" onchange="showHealthyChildGk(this)" name="isHealthyChildGk" id="isHealthyChildGk" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
                     <label for="isHealthyChildGk" class="my-2 ms-2.5 text-md font-medium">Сотрудник ГК "Здоровый ребёнок"</label>
                 </div>
             </div>
@@ -197,9 +161,9 @@
 
                         //Проявляем оплата юр лицом
                         /* isLegalHealthyChildGKDiv.classList.remove('hidden'); */
-                        isLegalHealthyChildGKDiv.classList.remove('hide');
+                        /* isLegalHealthyChildGKDiv.classList.remove('hide');
                         isLegalHealthyChildGKDiv.classList.add('visible');
-                        isLegalHealthyChildGKDiv.classList.remove('hiding');
+                        isLegalHealthyChildGKDiv.classList.remove('hiding'); */
                         /* setTimeout(() => {
                             isLegalHealthyChildGKDiv.classList.add('visible');
                         }, 200); */
@@ -224,14 +188,14 @@
                         document.getElementById('isLegalHealthyChildGK').checked = false
 
                         //Удаляем оплата юр лицом
-                        isLegalHealthyChildGKDiv.classList.add('hiding');
+                        /* isLegalHealthyChildGKDiv.classList.add('hiding');
                         isLegalHealthyChildGKDiv.classList.remove('visible');
                         
                         isLegalHealthyChildGKDiv.addEventListener('animationend', function handleAnimationEnd() {
                             isLegalHealthyChildGKDiv.classList.remove('hiding');
                             isLegalHealthyChildGKDiv.classList.add('hide');
                             isLegalHealthyChildGKDiv.removeEventListener('animationend', handleAnimationEnd);
-                        });
+                        }); */
 
                         //Включаем галку оплата юр лицом
                         isHealthyChildFranch.disabled = false
@@ -251,8 +215,7 @@
             {{-- Партнер чекбокс --}}
             <div class="sm:col-span-2">
                 <div id="isHealthyChildPartnerDiv" class="relative mt-2 rounded-md shadow-sm items-center flex text-black-900 dark:text-black-300">
-                    <input {{ $lastCourseRegistration ? ($lastCourseRegistration['isHealthyChildPartner'] ? 'checked' : '') : '' }}
-                    value="true" onchange="showHealthyChildPartner(this)" name="isHealthyChildPartner" id="isHealthyChildPartner" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                    <input value="true" onchange="showHealthyChildPartner(this)" name="isHealthyChildPartner" id="isHealthyChildPartner" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
                     <label for="isHealthyChildPartner" class="my-2 ms-2.5 text-md font-medium">Партнёр ГК "Здоровый ребёнок"</label>
                 </div>
             </div>
@@ -269,15 +232,6 @@
                     const workPlace = document.getElementById('workPlace')
                     /*  */
                     if (event.checked) {
-                        
-                        //Проявляем оплата юр лицом
-                        /* isLegalHealthyChildGKDiv.classList.remove('hidden'); */
-                        /* isLegalHealthyChildGKDiv.classList.remove('hide');
-                        isLegalHealthyChildGKDiv.classList.add('visible');
-                        isLegalHealthyChildGKDiv.classList.remove('hiding'); */
-                        /* setTimeout(() => {
-                            isLegalHealthyChildGKDiv.classList.add('visible');
-                        }, 200); */
 
                         //Не может быть студентом
                         isLegalHealthyChildPartner.checked = true
@@ -300,15 +254,6 @@
                         //Убираем галку оплата орг ДЛЯ Партнеров
                         
                         isLegalHealthyChildPartner.checked = false
-                        //Удаляем оплата юр лицом
-                        /* isLegalHealthyChildGKDiv.classList.add('hiding');
-                        isLegalHealthyChildGKDiv.classList.remove('visible'); */
-                        
-                        /* isLegalHealthyChildGKDiv.addEventListener('animationend', function handleAnimationEnd() {
-                            isLegalHealthyChildGKDiv.classList.remove('hiding');
-                            isLegalHealthyChildGKDiv.classList.add('hide');
-                            isLegalHealthyChildGKDiv.removeEventListener('animationend', handleAnimationEnd);
-                        }); */
 
                         //Включаем галку оплата юр лицом
                         isHealthyChildFranch.disabled = false
@@ -331,7 +276,7 @@
             {{-- Для Партнеров --}}
             <div id="isLegalHealthyChildPartnerDiv" class="sm:col-span-2 animated hide">
                 <div class="relative mt-2 rounded-md shadow-sm items-center flex">
-                    <input {{ $lastCourseRegistration ? ($lastCourseRegistration['isLegalHealthyChildPartner'] ? 'checked' : '') : '' }} value="true" name="isLegalHealthyChildPartner" id="isLegalHealthyChildPartner" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                    <input value="true" name="isLegalHealthyChildPartner" id="isLegalHealthyChildPartner" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
                     <label for="isLegalHealthyChildPartner" class="my-2 ms-2.5 text-md font-medium text-black-900 dark:text-black-300">Оплата осуществляется юридическим лицом</label>
                 </div>
             </div>  
@@ -339,7 +284,7 @@
             {{-- Для Франчайзи здоровый ребёнок --}}
             <div id="oplataUrLicoDiv" class="sm:col-span-2 animated hide">
                 <div class="relative mt-2 rounded-md shadow-sm items-center flex">
-                    <input value="true" {{$lastCourseRegistration ? ( $lastCourseRegistration['isLegal'] ? 'checked' : '') : '' }} name="isLegalHealthyChildFranch" id="isLegal" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                    <input value="true" name="isLegalHealthyChildFranch" id="isLegal" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
                     <label for="isLegal" class="my-2 ms-2.5 text-md font-medium text-black-900 dark:text-black-300">Обучение оплачивает организация</label>
                 </div>
             </div>  
@@ -347,7 +292,7 @@
             {{-- Для ГК --}}
             <div id="isLegalHealthyChildGKDiv" class="sm:col-span-2 animated hide">
                 <div class="relative mt-2 rounded-md shadow-sm items-center flex">
-                    <input {{ $lastCourseRegistration ? ( $lastCourseRegistration['isLegalHealthyChildGK'] ? 'checked' : '') : '' }} value="true" name="isLegalHealthyChildGK" id="isLegalHealthyChildGK" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+                    <input value="true" name="isLegalHealthyChildGK" id="isLegalHealthyChildGK" type="checkbox" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
                     <label for="isLegalHealthyChildGK" class="my-2 ms-2.5 text-md font-medium text-black-900 dark:text-black-300">Оплата осуществляется юридическим лицом</label>
                 </div>
             </div>         
@@ -376,7 +321,7 @@
             </script>
             <div id="isStudentDiv" class="sm:col-span-2">
                 <div class="relative mt-2 rounded-md shadow-sm items-center flex">
-                    <input {{ $lastCourseRegistration ? ($lastCourseRegistration['isStudent'] ? 'checked' : '') : '' }} id="isStudent" onchange="setStudent(this)" value="true" type="checkbox" name="isStudent" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded  dark:bg-gray-700 dark:border-gray-600">
+                    <input id="isStudent" onchange="setStudent(this)" value="true" type="checkbox" name="isStudent" class="accent-purple-800 w-4 h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded  dark:bg-gray-700 dark:border-gray-600">
                     <label for="isStudent" class="my-2 ms-2.5 text-md font-medium text-black-900 dark:text-black-300">Студент профильного ВУЗа</label>
                 </div>
             </div> 
@@ -435,7 +380,7 @@
                     <label for="isAPPCP" class="my-2 ms-2.5 text-md font-medium text-black-900 dark:text-black-300">Являюсь членом Ассоциации педагогов, психологов, психотерапевтов</label>
                 </div>
             </div> 
-            <div>
+            {{-- <div>
                 <label for="workPlace" class="block text-sm/6 font-semibold text-gray-900">Место работы</label>
                 <div class="mt-2.5">
                     <input value="{{ Auth::user()->workPlace }}" id="workPlace" type="text" name="workPlace" id="workPlace" autocomplete="workPlace" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
@@ -458,8 +403,8 @@
                 <div class="mt-2.5">
                     <input value="{{ Auth::user()->tgNickname }}" type="text" name="tgNickname" id="tgNickname" autocomplete="tgNickname" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                 </div>
-            </div>  
-            <div class="sm:col-span-2  mt-2">
+            </div>   --}}
+            {{-- <div class="sm:col-span-2  mt-2">
                 <label for="phone-number" class="block text-sm/6 font-semibold text-gray-900">Паспортные данные</label>
                 <div class="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-2 mt-2">
@@ -485,7 +430,7 @@
                         </div>
                     </div>
                 </div>
-            </div>        
+            </div>      --}}   
             <div class="sm:col-span-full animated hide" id='studPhotoDiv'>
                 <label for="studPhotoDiv" class="block text-sm/6 font-medium text-gray-900">Фотография или скан сутденческого билета</label>
                 <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
@@ -528,20 +473,7 @@
                     <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Я согласен с условиями пользовательского соглашения</span>
                 </label>
             </div> --}}
-            {{-- <div id="isAgreePrivacy" class="sm:col-span-2">
-                <div class="relative mt-2 rounded-md shadow-sm items-center flex">
-                    <input id="agree" required type="checkbox" class="accent-purple-800 min-w-4 min-h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded  dark:bg-gray-700 dark:border-gray-600">
-                    <label for="agree" class="my-2 ms-2.5 text-md font-medium text-grey-900 dark:text-grey-300">Согласен с <a target="_blank" href="{{ route('documents.privacy') }}" class="text-indigo-600">политикой конфиденциальности</a></label>
-                </div>
-            </div> 
-            
-            <div id="isAgreeWithPersonalDataProc" class="sm:col-span-2">
-                <div class="relative mt-2 rounded-md shadow-sm items-center flex">
-                    <input id="agreeWithPersonalDataProc" required type="checkbox" class="accent-purple-800 min-w-4 min-h-4 text-indigo-800 bg-gray-100 border-gray-300 rounded  dark:bg-gray-700 dark:border-gray-600">
-                    <label for="agreeWithPersonalDataProc" class="my-2 ms-2.5 text-md font-medium text-grey-900 dark:text-grey-300">Согласен с <a target="_blank" href="{{ route('documents.policy') }}" class="text-indigo-600">политикой обработки персональных данных</a></label>
-                </div>
-            </div>  --}}
-            
+             
         </div>
         <div class="mt-8">
             <button type="submit" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Подтвердить</button>

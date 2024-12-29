@@ -174,12 +174,32 @@
                                         class="bg-white"
                                     >
                                 </div>
+                                {{-- $request->user()->sendEmailVerificationNotification(); --}}
+                                @if(!Auth::user()->email_verified_at)
+                                {{-- <form class="mr-3" id="verifyEmail" method="POST" action="{{ route('verification.send') }}"> --}}
+                                    {{-- <button type="button" onclick="verifyEmail(event)" class="font-semibold text-indigo-600 hover:text-indigo-500">Подтвердить email</button> --}}
+                                    <a href="{{route('verification.noticeNew')}}"class="font-semibold text-indigo-600 hover:text-indigo-500">Подтвердить email</a>
+                                {{-- </form> --}}
+                                @endif
                                 <button type="button" onclick="updateEmail(event)" class="font-semibold text-indigo-600 hover:text-indigo-500">Изменить</button>
                                 <button type="submit" id='emailSub' class="font-semibold text-indigo-600 hover:text-indigo-500" style="display: none">Сохранить</button>
                             </dd>
                         </div>
                     </form>
                     <script>
+                        function verifyEmail(event) {
+                            console.log()
+                            fetch("{{ route('verification.sendGet') }}")
+                            .then(response => {
+                                if (response.ok)
+                                    alert('Сообщение с сылкой направлено на вашу почту')
+                                    console.log(response)
+                            })
+                            .catch(error => {
+                                console.log(error)
+                                alert('Неизвестная ошибка')
+                            })
+                        }
                         function updateEmail(event) {
                             console.log()
                             event.srcElement.style.display = 'none'

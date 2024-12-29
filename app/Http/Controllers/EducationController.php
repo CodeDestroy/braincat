@@ -38,8 +38,9 @@ class EducationController extends Controller
         } */
         /* $courses = Course::where(['user_id' => $user->id, 'type' => 'course'])->get(); */
         $courses = Course::whereIn('id', $paysIds)->get();
-
-        return view('education.courses', compact('courses'));
+        //Сделать идентификатор доступности оплаты
+        $availableCourses = Course::whereNotIn('id', $paysIds)->whereDate('start_date', '>=', date('Y-m-d'))->get();
+        return view('education.courses', compact('courses', 'availableCourses'));
         
     }
 
@@ -351,5 +352,12 @@ class EducationController extends Controller
         $content = $request->all();
         $newMessage = Message::create(['user_id' => $request->user()->id, 'theme_id' => $theme_id, 'text'=>$content['text'], 'isAnonymous' =>  $request->has('isAnonymous') ? 1 : 0]);
         return redirect()->back();
+    }
+
+    public function registerCourse (Request $request, $course_id) 
+    {
+        $course = Course::find($course_id);
+        return view('education.courseRegistration', compact('course_id', 'course'));
+
     }
 }

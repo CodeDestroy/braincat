@@ -63,17 +63,63 @@ class PaymentController extends Controller
         }
         $user = User::find(auth()->user()->id);
         
-        $courseRegistration = CourseRegistration::where('user_id', $user->id)
+        /* $courseRegistration = CourseRegistration::where('user_id', $user->id)
                                                         ->where('course_id', $course)
-                                                        ->first();
+                                                        ->first(); */
         
-                                                        /* 
-        'isAPPCP',
-        'isHealthyChild',
-        'isStudent',
-        'isLegal'
-        */
+        $isAPPCP = 0;
+        $isHealthyChild = 0;
+        $isHealthyChildGk = 0;
+        $isStudent = 0;
+        $isHealthyChildFranch = 0;
+        $isHealthyChildPartner = 0;
+        $shouldBeCheckedOut = 0;
+        $allCourseRegistrations = CourseRegistration::where('user_id', $user->id)
+                                /* ->where('course_id', '<>', $course) */
+                                ->orderBy('id', 'asc')->get();
+        if ($allCourseRegistrations->count() == 0) {
+            return redirect()->route('registerCourse', ['course_id' => $course]);
+        }
+        foreach ($allCourseRegistrations as $courseRegistration) {
+            $isAPPCP = $courseRegistration->isAPPCP ? $courseRegistration->isAPPCP : 0;
+            $isHealthyChild = $courseRegistration->isHealthyChild ? $courseRegistration->isHealthyChild : 0;
+            $isHealthyChildGk = $courseRegistration->isHealthyChildGk ? $courseRegistration->isHealthyChildGk : 0;
+            $isStudent = $courseRegistration->isStudent ? $courseRegistration->isStudent : 0;
+            $isHealthyChildFranch = $courseRegistration->isHealthyChildFranch ? $courseRegistration->isHealthyChildFranch : 0;
+            $isHealthyChildPartner = $courseRegistration->isHealthyChildPartner ? $courseRegistration->isHealthyChildPartner : 0;
+            if ($courseRegistration->shouldBeCheckedOut 
+                && !$courseRegistration->managerCheckedOut 
+                && !$shouldBeCheckedOut && 
+                ($isAPPCP || $isHealthyChild || $isHealthyChildGk || $isStudent || $isHealthyChildFranch || $isHealthyChildPartner)) 
+            {
+                $shouldBeCheckedOut = 1;
+            }
+            else if ($courseRegistration->shouldBeCheckedOut && $courseRegistration->managerCheckedOut)
+                $shouldBeCheckedOut = 0;
+            
+        }  
+        $courseRegistration = CourseRegistration::updateOrCreate(
+            ['user_id' => $user->id, 'course_id' => $course],
+            [
+                'isAPPCP' => $isAPPCP,
+                'isHealthyChild' => $isHealthyChild,
+                'isHealthyChildGk' => $isHealthyChildGk,
+                'isHealthyChildFranch' => $isHealthyChildFranch,
+                'isStudent' => $isStudent,
+                'shouldBeCheckedOut' => $shouldBeCheckedOut,
+                'isHealthyChildPartner' => $isHealthyChildPartner,
+            ]
+        );    
+        $actualPrice = 3000;
+        if ($isStudent)
+            $actualPrice = 1250;
+        if ($isAPPCP || $isHealthyChildGk || $isHealthyChild || $isHealthyChildFranch || $isHealthyChildPartner)
+            $actualPrice = 2500;
+
         if ($courseRegistration) {
+            if ($shouldBeCheckedOut && !$courseRegistration->managerCheckedOut) {
+                return view('payments.nikolaeva.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
+            }
             switch ($tier) {
                 case 'tier-base':
                     if ( $courseRegistration->isAPPCP || 
@@ -128,21 +174,21 @@ class PaymentController extends Controller
                 case 'tier-base2':    
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/1250');
-                    elseif ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild)  
+                    elseif ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch )  
                         return redirect('/payment/privilege/' . $course . '/' . $freq . '/2500');
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
                 case 'tier-privilege2':
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/1250');
-                    elseif ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild)  
+                    elseif ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
                         return redirect('/payment/privilege/' . $course . '/' . $freq . '/2500');
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
                 case 'tier-students':
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/1250');
-                    elseif ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild)  
+                    elseif ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
                         return redirect('/payment/privilege/' . $course . '/' . $freq . '/2500');
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
@@ -157,8 +203,8 @@ class PaymentController extends Controller
 
        
         /* if ($user->) */
-        return $price;
-        return view('payment');
+        /* return $price; */
+        return view('home');
     }
 
     public function success(Request $request, $course_id, $sum, $freq)//: RedirectResponse
