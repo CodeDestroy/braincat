@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-/* Route::get('/home', function () {
+/* Route::get('/vizel', function () {
     return view('home');
 
 }); */
@@ -23,7 +23,8 @@ Route::get('/pdf/{filename}', function ($filename) {
 });
 //Роуты основных страниц
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
-    Route::get('/', 'index')->name('home');
+    Route::get('/vizel', 'index')->name('vizel');
+    Route::get('/', 'nikolaeva')->name('home');
     Route::get('/nikolaeva', 'nikolaeva')->name('nikolaeva');
     Route::get('/contacts', 'contacts')->name('contacts');
     Route::get('/about', 'about')->name('about');
@@ -144,6 +145,8 @@ Route::controller(App\Http\Controllers\EducationController::class)->group(functi
     Route::get('/education/course/{course_id}/askQuestion','showAskQuestion')->name('education.showAskQuestionSelectTheme')->middleware(['auth', 'verified', 'paid']);
     Route::get('/education/course/{course_id}/askQuestion/theme/{theme_id}','showAskQuestion')->name('education.showAskQuestion')->middleware(['auth', 'verified', 'paid']);
     Route::post('/education/course/{course_id}/askQuestion/theme/{theme_id}','askQuestion')->name('education.askQuestion')->middleware(['auth', 'verified', 'paid']);
+    Route::get('/education/registerCourse/{course_id}', 'registerCourse')->name('registerCourse')->middleware(['auth', 'verified']);
+    
     /* 
     Route::get('/education/test/{test_id}/question/{question_id}','showQuestion')->name('education.showQuestion'); */
 
@@ -163,15 +166,22 @@ Route::controller(App\Http\Controllers\PaymentController::class)->group(function
 });
 
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('home');
-});
+}); */
 
 
 //Подтверждение почты
-Route::get('/email/verify', function () {
-    return view('auth.verify');
+Route::get('/email/verify', function (Request $request) {
+    /* $request->user()->sendEmailVerificationNotification(); */
+    /* return redirect()->route('auth.verify'); */
+    return redirect()->route('settings.general');
 })->middleware('auth')->name('verification.notice');
+Route::get('/email/verifyNew', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return view('auth.verify');
+    /* return redirect()->route('settings.general'); */
+})->middleware('auth')->name('verification.noticeNew');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
@@ -184,7 +194,11 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::get('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
 
+    return __('Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.sendGet');
 //Сброс пароля
 Route::get('/forgot-password', function () {
     return view('auth.passwords.email');

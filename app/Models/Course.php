@@ -19,7 +19,8 @@ class Course extends Model
         'end_time',
         'status',
         'price',
-        'canAskQuestion'
+        'canAskQuestion',
+        'url'
         
     ];
 }

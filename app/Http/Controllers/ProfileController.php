@@ -55,9 +55,11 @@ class ProfileController extends Controller
     }
 
     
-    public function profile () {
+    public function profile (Request $request) {
         $courses = Course::all();
-        return view('profile.registerSecond', compact('courses'));
+        $lastCourseRegistration = CourseRegistration::where('user_id', $request->user()->id)->orderBy('id', 'desc')->first();
+        $course_id = $lastCourseRegistration ? $lastCourseRegistration->course_id : 1;
+        return view('profile.registerSecond', compact('courses', 'course_id', 'lastCourseRegistration'));
 
     }
 
@@ -183,7 +185,7 @@ class ProfileController extends Controller
             'snils' => 'nullable|string',
             'address' => 'nullable|string|max:255',
             'postIndex' => 'nullable|string|max:6',
-            'email' => [
+            /*'email' => [
                 'required',
                 'email',
                 function ($attribute, $value, $fail) use ($user) {
@@ -191,7 +193,7 @@ class ProfileController extends Controller
                         $fail('Email не совпадает с email текущего пользователя.');
                     }
                 },
-            ],/* 
+            ], 
             'phone' => 'nullable|string|regex:/^\+7[0-9]{10}$/', */
             'birthDay' => 'nullable|date',
             'workPlace' => 'nullable|string|max:255',
@@ -218,7 +220,7 @@ class ProfileController extends Controller
         // Обновление данных пользователя
         /* return $request->input('course_id'); */
         $shouldBeCheckedOut = false;
-        if ($request->input('isHealthyChild') || $request->input('isStudent') || $request->input('isAPPCP'))
+        if ($request->input('isHealthyChildPartner') || $request->input('isHealthyChildFranch') || $request->input('isHealthyChild') || $request->input('isHealthyChildGk') || $request->input('isStudent') || $request->input('isAPPCP'))
             $shouldBeCheckedOut = true;
         /* $courseRegistration = CourseRegistration::create([
             'user_id' => $user->id,
@@ -287,7 +289,8 @@ class ProfileController extends Controller
             'passpoortNumber' => $request->input('passpoortNumber'),
             'hasSecondStep' => 1,
         ]);
-    
+        if ($request->input('url'))
+            return redirect($request->input('url'));
         return redirect('/');
     }
 
