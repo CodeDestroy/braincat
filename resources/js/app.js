@@ -53,6 +53,7 @@ import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import AskQuestion from './components/AskQuestion.vue';
 import WithLargeAvatar from './components/WithLargeAvatar.vue';
+import SideBySideGrid from './components/SidebySideGrid.vue';
 
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
@@ -110,6 +111,10 @@ createApp({})
 createApp({})
 .component('WithLargeAvatar', WithLargeAvatar)
 .mount('#with-large-avatar')
+
+createApp({})
+.component('SideBySideGrid', SideBySideGrid)
+.mount('#contacts')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
 /*   const { jsPDF } = window.jspdf; */
