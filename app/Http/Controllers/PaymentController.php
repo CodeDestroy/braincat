@@ -111,11 +111,11 @@ class PaymentController extends Controller
             ]
         );    
         $actualPrice = 3000;
-        if ($isStudent)
-            $actualPrice = 1250;
+        
         if ($isAPPCP || $isHealthyChildGk || $isHealthyChild || $isHealthyChildFranch || $isHealthyChildPartner)
             $actualPrice = 2500;
-
+        if ($isStudent)
+            $actualPrice = 1250;
         if ($courseRegistration) {
             if ($shouldBeCheckedOut && !$courseRegistration->managerCheckedOut) {
                 return view('payments.nikolaeva.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
