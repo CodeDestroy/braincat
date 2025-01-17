@@ -46,12 +46,17 @@ class ProfileController extends Controller
         if ($userCourseRegistration && $userCourseRegistration->isStudent) {
             $userIsStudent = 1;
         }
+        $userDiplomMainPage = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'diplom_main_page'])->first();
+        $userDiplomSupplementFirstPage = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'diplom_supplement_1_page'])->first();
+        $userDiplomSupplementSecondPage = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'diplom_supplement_2_page'])->first();
         $userStud = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'stud'])->first();
         $userPassport2Page = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'passport_2_page'])->first();
         $userPassport3Page = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'passport_3_page'])->first();
         $userPassport5Page = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'passport_5_page'])->first();
         $userSnils = UserDocument::where(['user_id' => $request->user()->id, 'type' => 'snils'])->first();
-        return view('profile.documents', compact('userStud', 'userPassport2Page', 'userPassport3Page', 'userPassport5Page', 'userSnils', 'userIsStudent'));
+        return view('profile.documents', 
+            compact('userStud', 'userPassport2Page', 'userPassport3Page', 
+            'userPassport5Page', 'userSnils', 'userIsStudent', 'userDiplomMainPage', 'userDiplomSupplementFirstPage', 'userDiplomSupplementSecondPage'));
     }
 
     
@@ -292,6 +297,99 @@ class ProfileController extends Controller
         if ($request->input('url'))
             return redirect($request->input('url'));
         return redirect('/');
+    }
+
+    public function uploadDiplomMainPageScan(Request $request)
+    {
+        $user = User::find($request->user()->id);
+
+        $validator = Validator::make($request->all(), [
+            'diplomMainPage' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // Сохранение фотографий и формирование массива с путями к ним
+        if ($request->hasFile('diplomMainPage')) {
+            $photo = $request->file('diplomMainPage');
+            // Сохранение фото в папку "passport_photos"
+            $path = $photo->store('diplom_photos', options: 'public');
+            UserDocument::updateOrCreate(
+                ['user_id' => $user->id, 'type' => 'diplom_main_page'],
+                ['file' => $path]
+            );
+            /* UserDocument::create([
+                'user_id' => $user->id, // ID регистрации курса
+                'type' => 'passport_2_page',
+                'file' => $path,
+            ]); */
+        }
+    
+        return redirect()->route('settings.documents');
+    }
+
+    public function uploadDiplomFirstPageScan(Request $request)
+    {
+        $user = User::find($request->user()->id);
+
+        $validator = Validator::make($request->all(), [
+            'diplomSupplementFirstPage' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // Сохранение фотографий и формирование массива с путями к ним
+        if ($request->hasFile('diplomSupplementFirstPage')) {
+            $photo = $request->file('diplomSupplementFirstPage');
+            // Сохранение фото в папку "passport_photos"
+            $path = $photo->store('diplom_photos', options: 'public');
+            UserDocument::updateOrCreate(
+                ['user_id' => $user->id, 'type' => 'diplom_supplement_1_page'],
+                ['file' => $path]
+            );
+            /* UserDocument::create([
+                'user_id' => $user->id, // ID регистрации курса
+                'type' => 'passport_2_page',
+                'file' => $path,
+            ]); */
+        }
+    
+        return redirect()->route('settings.documents');
+    }
+
+    public function uploadDiplomSecondPageScan(Request $request)
+    {
+        $user = User::find($request->user()->id);
+
+        $validator = Validator::make($request->all(), [
+            'diplomSupplementSecondPage' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // Сохранение фотографий и формирование массива с путями к ним
+        if ($request->hasFile('diplomSupplementSecondPage')) {
+            $photo = $request->file('diplomSupplementSecondPage');
+            // Сохранение фото в папку "passport_photos"
+            $path = $photo->store('diplom_photos', options: 'public');
+            UserDocument::updateOrCreate(
+                ['user_id' => $user->id, 'type' => 'diplom_supplement_2_page'],
+                ['file' => $path]
+            );
+            /* UserDocument::create([
+                'user_id' => $user->id, // ID регистрации курса
+                'type' => 'passport_2_page',
+                'file' => $path,
+            ]); */
+        }
+    
+        return redirect()->route('settings.documents');
     }
 
     public function uploadPassport2PageScan(Request $request)
