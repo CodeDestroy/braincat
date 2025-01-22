@@ -25,12 +25,12 @@
 </head>
 <body>
     <div id="app">
-        <header class="bg-white">
-            <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <header class="bg-amber-50 sticky top-0 z-10 shadow-[rgba(0,0,15,0.1)_0px_8px_2px_-2px]">
+            <nav class="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8" aria-label="Global">
                 {{-- Логотип --}}
                 <a href="{{ url('/') }}" class="-m-1.5 p-1.5">
-                    <span class="sr-only">Психология для профессионалов</span>
-                    <img class="h-10 w-auto" src="{{ asset('img/logo_clover.svg') }}" alt="">
+                    <span class="sr-only">Ученый кот</span>
+                    <img class="h-16 w-auto" src="{{ asset('img/braincat_logo.png') }}" alt="">
                 </a>
                 {{-- Кнопка открытия моб меню --}}
                 <div class="flex lg:hidden">
@@ -188,7 +188,7 @@
                     <div class="flex items-center justify-between">
                     <a href="/" class="-m-1.5 p-1.5">
                         <span class="sr-only">Психология профессионалов</span>
-                        <img class="h-8 w-auto" src="{{ asset('img/logo_clover.svg') }}" alt="">
+                        <img class="h-20 w-auto" src="{{ asset('img/braincat_logo.jpg') }}" alt="">
                     </a>
                     <button onclick="document.getElementById('mobileMenu').style.display = 'none'" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
                         <span class="sr-only">Закрыть</span>
@@ -229,7 +229,7 @@
                 </div>
             </div>
         </header>
-        <main class="py-4">
+        <main class="py-0">
             @yield('content')
         </main>
         <footer class="bg-white">
@@ -252,7 +252,7 @@
                         <a href="{{ route('documents') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Документы</a>
                     </div> --}}
                 </nav>
-                <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2024 АНО ДПО "ФОРУМ". Психология для профессионалов. Все права защищены.</p>
+                <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2025 АНО ДПО "ФОРУМ". Психология для профессионалов. Все права защищены.</p>
             </div>
         </footer> 
     </div>

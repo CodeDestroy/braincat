@@ -4,7 +4,7 @@
       <div class="mx-auto max-w-2xl space-y-16 divide-y divide-gray-100 lg:mx-0 lg:max-w-none">
         <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
           <div>
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900">Контакты</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-amber-700">Контакты</h2>
             <p class="mt-4 leading-7 text-gray-600"></p>
           </div>
           <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">
@@ -13,12 +13,12 @@
               <dl class="mt-3 space-y-1 text-sm leading-6 text-gray-600">
                 <div>
                   <dt class="sr-only">Email</dt>
-                  <dd><a class="font-semibold text-indigo-600" href="mailto:collaborate@example.com">admin@psy4pro.ru
+                  <dd><a class="font-semibold text-amber-700" href="mailto:collaborate@example.com">admin@psy4pro.ru
                   </a></dd>
                 </div>
                 <div class="mt-1">
                   <dt class="sr-only">Telegram</dt>
-                  <dd><a class="font-semibold text-indigo-600" href="https://t.me/T_Ladilova">@T_Ladilova</a></dd>
+                  <dd><a class="font-semibold text-amber-700" href="https://t.me/T_Ladilova">@T_Ladilova</a></dd>
                 </div>
                 <div class="mt-1">
                   <dt class="sr-only">Телефон</dt>
@@ -31,12 +31,12 @@
               <dl class="mt-3 space-y-1 text-sm leading-6 text-gray-600">
                 <div>
                   <dt class="sr-only">Email</dt>
-                  <dd><a class="font-semibold text-indigo-600" href="mailto:press@example.com">support@psy4pro.ru
+                  <dd><a class="font-semibold text-amber-700" href="mailto:press@example.com">support@psy4pro.ru
                   </a></dd>
                 </div>
                 <div class="mt-1">
                   <dt class="sr-only">Telegram</dt>
-                  <dd><a class="font-semibold text-indigo-600" href="https://t.me/drbrain4pro">@drbrain4pro</a></dd>
+                  <dd><a class="font-semibold text-amber-700" href="https://t.me/drbrain4pro">@drbrain4pro</a></dd>
                 </div>
               </dl>
             </div>
@@ -44,7 +44,7 @@
         </div>
         <div class="grid grid-cols-1 gap-x-8 gap-y-10 pt-16 lg:grid-cols-3">
           <div>
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900">Адрес</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-amber-700">Адрес</h2>
             <p class="mt-4 leading-7 text-gray-600"></p>
           </div>
           <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">
