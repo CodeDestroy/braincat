@@ -55,6 +55,9 @@ import AskQuestion from './components/AskQuestion.vue';
 import WithLargeAvatar from './components/WithLargeAvatar.vue';
 import WithLargeAvatarKurbatov from './components/WithLargeAvatarKurbatov.vue';
 import SideBySideGrid from './components/SidebySideGrid.vue';
+import Hero from './components/Hero.vue';
+import GridList from './components/GridList.vue';
+import Cards from './components/Cards.vue';
 
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
@@ -120,6 +123,18 @@ createApp({})
 createApp({})
 .component('SideBySideGrid', SideBySideGrid)
 .mount('#contacts')
+
+createApp({})
+.component('Hero', Hero)
+.mount('#hero')
+
+createApp({})
+.component('GridList', GridList)
+.mount('#gridlist')
+
+createApp({})
+.component('Cards', Cards)
+.mount('#cards')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
 /*   const { jsPDF } = window.jspdf; */

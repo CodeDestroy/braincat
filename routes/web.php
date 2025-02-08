@@ -24,7 +24,7 @@ Auth::routes(['verify' => true]);
 //Роуты основных страниц
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
     /* Route::get('/vizel', 'index')->name('vizel'); */
-    Route::get('/', 'kurbatov')->name('home');
+    Route::get('/', 'index')->name('home');
     Route::get('/kurbatov', 'kurbatov')->name('kurbatov');
     Route::get('/nikolaeva', 'nikolaeva')->name('nikolaeva');
     Route::get('/contacts', 'contacts')->name('contacts');
