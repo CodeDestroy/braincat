@@ -40,6 +40,7 @@ createApp({
 import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedTier.vue';
 import ThreeTiersPrice from './components/ThreeTiersPrice.vue';
 import ThreeTiersPriceKudryashova from './components/ThreeTiersPriceKudryashova.vue';
+import ThreeTiersPriceKudryashova25022025 from './components/ThreeTiersPriceKudryashova25022025.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
 import CalendarPlan from './components/CalendarPlan.vue';
@@ -72,6 +73,11 @@ createApp({})
 createApp({})
 .component('ThreeTiersPriceKudryashova', ThreeTiersPriceKudryashova)
 .mount('#price-webinar')
+
+createApp({})
+.component('ThreeTiersPriceKudryashova25022025', ThreeTiersPriceKudryashova25022025)
+.mount('#price-webinar')
+
 createApp({})
 .component('Calendar', Calendar)
 .mount('#calendar')
