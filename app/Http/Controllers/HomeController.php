@@ -80,4 +80,9 @@ class HomeController extends Controller
     {
         return view('kudryashova_17022025');
     }
+
+    public function kudryashova_25022025()
+    {
+        return view('kudryashova_25022025');
+    }
 }

@@ -26,6 +26,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     /* Route::get('/vizel', 'index')->name('vizel'); */
     Route::get('/', 'index')->name('home');
     Route::get('/kudryashova_17022025', 'kudryashova_17022025')->name('kudryashova_17022025');
+    Route::get('/kudryashova_25022025', 'kudryashova_25022025')->name('kudryashova_25022025');
     Route::get('/kurbatov', 'kurbatov')->name('kurbatov');
     Route::get('/nikolaeva', 'nikolaeva')->name('nikolaeva');
     Route::get('/contacts', 'contacts')->name('contacts');
