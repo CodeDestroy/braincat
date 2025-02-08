@@ -39,6 +39,7 @@ createApp({
 
 import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedTier.vue';
 import ThreeTiersPrice from './components/ThreeTiersPrice.vue';
+import ThreeTiersPriceKudryashova from './components/ThreeTiersPriceKudryashova.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
 import CalendarPlan from './components/CalendarPlan.vue';
@@ -54,6 +55,7 @@ import html2canvas from "html2canvas";
 import AskQuestion from './components/AskQuestion.vue';
 import WithLargeAvatar from './components/WithLargeAvatar.vue';
 import WithLargeAvatarKurbatov from './components/WithLargeAvatarKurbatov.vue';
+import WithLargeAvatarKudryashova from './components/WithLargeAvatarKudryashova.vue';
 import SideBySideGrid from './components/SidebySideGrid.vue';
 import Hero from './components/Hero.vue';
 import GridList from './components/GridList.vue';
@@ -67,6 +69,9 @@ createApp({})
 .component('ThreeTiersPrice', ThreeTiersPrice)
 .mount('#price-webinar')
 
+createApp({})
+.component('ThreeTiersPriceKudryashova', ThreeTiersPriceKudryashova)
+.mount('#price-webinar')
 createApp({})
 .component('Calendar', Calendar)
 .mount('#calendar')
@@ -118,6 +123,10 @@ createApp({})
 
 createApp({})
 .component('WithLargeAvatarKurbatov', WithLargeAvatarKurbatov)
+.mount('#with-large-avatar')
+
+createApp({})
+.component('WithLargeAvatarKudryashova', WithLargeAvatarKudryashova)
 .mount('#with-large-avatar')
 
 createApp({})
