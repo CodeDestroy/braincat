@@ -3,17 +3,17 @@
     <li v-for="person in people" :key="person.email" class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
       <a :href="person.href" class="flex flex-1 flex-col p-8 focus:outline-none">
         <img class="mx-auto h-32 w-32 flex-shrink-0 rounded-full" :src="person.imageUrl" alt="" />
-        <h3 class="mt-6 text-sm font-medium text-gray-900">{{ person.name }}</h3>
+        <h3 class="mt-6 text-sm font-medium text-salt-700">{{ person.name }}</h3>
         <dl class="mt-1 flex flex-grow flex-col justify-between">
           <dt class="sr-only">Title</dt>
           <dd class="text-sm text-gray-500">{{ person.title }}</dd>
           <dt class="sr-only">Event Caprion</dt>
-          <dd class="text-base font-medium text-rose-900 mt-5">{{ person.eventCaption }}</dd>
+          <dd class="text-base font-medium text-salt-700 mt-5">{{ person.eventCaption }}</dd>
           <dt class="sr-only">Event Date</dt>
           <dd class="text-sm text-gray-500 mt-1">{{ person.eventDate }}</dd>
           <dt class="sr-only">Role</dt>
           <dd class="mt-5">
-            <span class="inline-flex items-center rounded-full bg-rose-50 px-2 py-1 text-xs font-medium text-rose-600 ring-1 ring-inset ring-rose-600/20">{{ person.role }}</span>
+            <span class="inline-flex items-center rounded-full bg-mona-lisa-50 px-2 py-1 text-xs font-medium text-mona-lisa-500 ring-1 ring-inset ring-mona-lisa-500/20">{{ person.role }}</span>
           </dd>
         </dl>
       </a>
