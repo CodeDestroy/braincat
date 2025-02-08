@@ -25,12 +25,12 @@
 </head>
 <body>
     <div id="app">
-        <header class="bg-amber-50 sticky top-0 z-10 shadow-[rgba(0,0,15,0.1)_0px_8px_2px_-2px]">
+        <header class="bg-white sticky top-0 z-10 shadow-[rgba(0,0,15,0.1)_0px_8px_2px_-2px]">
             <nav class="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8" aria-label="Global">
                 {{-- Логотип --}}
                 <a href="{{ url('/') }}" class="-m-1.5 p-1.5">
                     <span class="sr-only">Ученый кот</span>
-                    <img class="h-16 w-auto" src="{{ asset('img/braincat_logo.png') }}" alt="">
+                    <img class="h-12 sm:h-14 w-auto" src="{{ asset('img/braincat_logo.svg') }}" alt="">
                 </a>
                 {{-- Кнопка открытия моб меню --}}
                 <div class="flex lg:hidden">

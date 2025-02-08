@@ -1,76 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="relative bg-slate-100" {{-- style="height: 100vh;" --}} >
-    <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
-        <div class="px-6 pb-24 pt-10 sm:pb-32 lg:col-span-7 lg:px-0 lg:pb-56 lg:pt-48 xl:col-span-6">
-          <div class="mx-auto max-w-2xl lg:mx-0">
-              <div class="hidden sm:mt-32 sm:flex lg:mt-16">
-                  <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                      Дополнительное образование. <a href="/#plan" class="whitespace-nowrap font-semibold text-purple-800"><span class="absolute inset-0" aria-hidden="true"></span>Календарный план</a>
-                  </div>
-              </div>
-              <h1 class="mt-24 text-3xl font-bold tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">Основы теории и практики нейропсихологии</h1>
-              <p class="mt-6 text-lg leading-6 text-gray-600">Авторский курс д.п.н., профессора Татьяны Григорьевны Визель</p>
-              <div class="mt-10 flex items-center gap-x-6">
-                  <a href="#price" class="rounded-md bg-purple-800 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-800">Записаться</a>
-                  <a href="#dopObr" class="text-sm font-semibold leading-6 text-gray-900">Узнать больше...</a>
-              </div>
-          </div>
-        </div>
-        <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
-            <img class="aspect-[3/2] w-full bg-gray-50 object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full" src="{{ asset('img/hero_main.jpg') }}" alt="">
-        </div>
-    </div>
+
+<div id="hero">
+    <hero />
+</div>
+
+<div id="gridlist">
+    <grid-list />
 </div>
   
-  
-<div class="bg-white py-24 sm:py-32"  id='dopObr'{{-- style="height: 100vh;" --}}>
+<div class="bg-gray-100 py-24 sm:py-32"  id='dopObr'{{-- style="height: 100vh;" --}}>
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
-            <h2 class="text-3xl font-bold tracking-tight text-purple-800 sm:text-4xl">Дополнительное образование</h2>
-            <p class="mt-1 text-lg leading-8 text-gray-600">удостоверение государственного образца</p>
+            <h2 class="text-3xl font-bold tracking-tight text-pink-800 sm:text-4xl">Обучайтесь с нами</h2>
         </div>
         <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
                 <div class="flex flex-col">
                     <dt class="text-base font-semibold leading-7 text-gray-900">
-                        <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-800">
-                            <svg class="h-7 w-7 text-white" viewBox="0 0 32 32" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path d="M27 2H5C4.20435 2 3.44129 2.31607 2.87868 2.87868C2.31607 3.44129 2 4.20435 2 5V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H9.59L12.29 24.71C12.3834 24.8027 12.4943 24.876 12.6161 24.9258C12.7379 24.9755 12.8684 25.0008 13 25H15V25.38L9.55 28.11C9.33365 28.2402 9.17456 28.4474 9.10466 28.69C9.03476 28.9326 9.05924 29.1927 9.17317 29.4181C9.2871 29.6434 9.48205 29.8173 9.71889 29.9048C9.95572 29.9924 10.2169 29.9871 10.45 29.89L15 27.62V28C15 28.2652 15.1054 28.5196 15.2929 28.7071C15.4804 28.8946 15.7348 29 16 29C16.2652 29 16.5196 28.8946 16.7071 28.7071C16.8946 28.5196 17 28.2652 17 28V27.62L21.55 29.89C21.6883 29.964 21.8431 30.0019 22 30C22.1847 29.9994 22.3656 29.9478 22.5227 29.8507C22.6798 29.7536 22.8069 29.6149 22.89 29.45C23.0086 29.2138 23.0289 28.9403 22.9465 28.6892C22.864 28.4381 22.6855 28.2299 22.45 28.11L17 25.38V25H19C19.1316 25.0008 19.2621 24.9755 19.3839 24.9258C19.5057 24.876 19.6166 24.8027 19.71 24.71L22.41 22H27C27.7956 22 28.5587 21.6839 29.1213 21.1213C29.6839 20.5587 30 19.7956 30 19V5C30 4.20435 29.6839 3.44129 29.1213 2.87868C28.5587 2.31607 27.7956 2 27 2ZM8 16C8 15.7348 8.10536 15.4804 8.29289 15.2929C8.48043 15.1054 8.73478 15 9 15H19C19.2652 15 19.5196 15.1054 19.7071 15.2929C19.8946 15.4804 20 15.7348 20 16C20 16.2652 19.8946 16.5196 19.7071 16.7071C19.5196 16.8946 19.2652 17 19 17H9C8.73478 17 8.48043 16.8946 8.29289 16.7071C8.10536 16.5196 8 16.2652 8 16ZM8 12C8 11.7348 8.10536 11.4804 8.29289 11.2929C8.48043 11.1054 8.73478 11 9 11H14C14.2652 11 14.5196 11.1054 14.7071 11.2929C14.8946 11.4804 15 11.7348 15 12C15 12.2652 14.8946 12.5196 14.7071 12.7071C14.5196 12.8946 14.2652 13 14 13H9C8.73478 13 8.48043 12.8946 8.29289 12.7071C8.10536 12.5196 8 12.2652 8 12ZM18.59 23H13.41L12.41 22H19.59L18.59 23ZM23 9H9C8.73478 9 8.48043 8.89464 8.29289 8.70711C8.10536 8.51957 8 8.26522 8 8C8 7.73478 8.10536 7.48043 8.29289 7.29289C8.48043 7.10536 8.73478 7 9 7H23C23.2652 7 23.5196 7.10536 23.7071 7.29289C23.8946 7.48043 24 7.73478 24 8C24 8.26522 23.8946 8.51957 23.7071 8.70711C23.5196 8.89464 23.2652 9 23 9Z" fill="#6B21A8"/>
+                        <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-pink-800" aria-hidden="true">
+                            <svg class="h-7 w-7 text-white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" fill="#9d174d"/>
                             </svg>
                         </div>
-                        Теория
                     </dt>
                     <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                        <p class="flex-auto">Еженедельные вебинары по каждой теме учебного курса. Все материалы, включая видезаписи и презентации, доступны в течение одного года после окончания курса.</p>
+                        <p class="flex-auto">Внимательное отношение к каждому слушателю</p>
                     </dd>
                 </div>
                 <div class="flex flex-col">
                   <dt class="text-base font-semibold leading-7 text-gray-900">
-                      <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-800">
-                        <svg class="h-7 w-7 text-white" fill="none" viewBox="0 0 32 32" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                            <path d="M27 6H17V26H27C27.7956 26 28.5587 25.6839 29.1213 25.1213C29.6839 24.5587 30 23.7956 30 23V9C30 8.20435 29.6839 7.44129 29.1213 6.87868C28.5587 6.31607 27.7956 6 27 6ZM25 21H20C19.7348 21 19.4804 20.8946 19.2929 20.7071C19.1054 20.5196 19 20.2652 19 20C19 19.7348 19.1054 19.4804 19.2929 19.2929C19.4804 19.1054 19.7348 19 20 19H25C25.2652 19 25.5196 19.1054 25.7071 19.2929C25.8946 19.4804 26 19.7348 26 20C26 20.2652 25.8946 20.5196 25.7071 20.7071C25.5196 20.8946 25.2652 21 25 21ZM25 17H22C21.7348 17 21.4804 16.8946 21.2929 16.7071C21.1054 16.5196 21 16.2652 21 16C21 15.7348 21.1054 15.4804 21.2929 15.2929C21.4804 15.1054 21.7348 15 22 15H25C25.2652 15 25.5196 15.1054 25.7071 15.2929C25.8946 15.4804 26 15.7348 26 16C26 16.2652 25.8946 16.5196 25.7071 16.7071C25.5196 16.8946 25.2652 17 25 17ZM25 13H20C19.7348 13 19.4804 12.8946 19.2929 12.7071C19.1054 12.5196 19 12.2652 19 12C19 11.7348 19.1054 11.4804 19.2929 11.2929C19.4804 11.1054 19.7348 11 20 11H25C25.2652 11 25.5196 11.1054 25.7071 11.2929C25.8946 11.4804 26 11.7348 26 12C26 12.2652 25.8946 12.5196 25.7071 12.7071C25.5196 12.8946 25.2652 13 25 13Z" fill="#6B21A8"/>
-                            <path d="M12 20C12 20.2652 11.8946 20.5196 11.7071 20.7071C11.5196 20.8946 11.2652 21 11 21C10.7348 21 10.4804 20.8946 10.2929 20.7071C10.1054 20.5196 10 20.2652 10 20V6H5C4.20435 6 3.44129 6.31607 2.87868 6.87868C2.31607 7.44129 2 8.20435 2 9V23C2 23.7956 2.31607 24.5587 2.87868 25.1213C3.44129 25.6839 4.20435 26 5 26H15V6H12V20Z" fill="#6B21A8"/>
+                    <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-pink-800">
+                        <svg class="h-7 w-7 text-white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" fill="#9d174d"/>
                         </svg>
-                      </div>
-                      Практика
+                    </div>
                   </dt>
                   <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                      <p class="flex-auto">Тестирование по результатам изучения каждого раздела курса. Индивидуальная итоговая работа, которую проверит и прокомментирует д.п.н., профессор Татьяна Григорьевна Визель</p>
+                      <p class="flex-auto">Комфортный доступ к обучающим материалам</p>
                   </dd>
                 </div>
                 <div class="flex flex-col">
                   <dt class="text-base font-semibold leading-7 text-gray-900">
-                      <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-800">
-                        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-                          </svg>
+                      <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-pink-800">
+                      <svg class="h-7 w-7 text-white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" fill="#9d174d"/>
+                        </svg>
                       </div>
-                      Интерактивность
                   </dt>
                   <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                      <p class="flex-auto">Обратная связь на вебинарах и при изучении каждой темы курса. Разборы интересных и нетривиальных случаев. Ответы на индивидуальные   вопросы по темам курса</p>
+                      <p class="flex-auto">Живой контакт со спикерами и кураторами курсов</p>
                   </dd>
                 </div>
             </dl>
@@ -78,12 +58,8 @@
     </div>
 </div>
 
-<div id="price">
-    <three-tiers-with-emphasized-tier/>
-</div>
-
-<div id="plan">
-    <plan/>
+<div id="cards">
+    <cards />
 </div>
 
 @endsection
