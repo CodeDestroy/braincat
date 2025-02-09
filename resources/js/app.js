@@ -41,6 +41,8 @@ import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedT
 import ThreeTiersPrice from './components/ThreeTiersPrice.vue';
 import ThreeTiersPriceKudryashova from './components/ThreeTiersPriceKudryashova.vue';
 import ThreeTiersPriceKudryashova25022025 from './components/ThreeTiersPriceKudryashova25022025.vue';
+import ThreeTiersPriceTretyakova02032025 from './components/ThreeTiersPriceTretyakova02032025.vue';
+import ThreeTiersPriceTretyakova15032025 from './components/ThreeTiersPriceTretyakova15032025.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
 import CalendarPlan from './components/CalendarPlan.vue';
@@ -57,10 +59,12 @@ import AskQuestion from './components/AskQuestion.vue';
 import WithLargeAvatar from './components/WithLargeAvatar.vue';
 import WithLargeAvatarKurbatov from './components/WithLargeAvatarKurbatov.vue';
 import WithLargeAvatarKudryashova from './components/WithLargeAvatarKudryashova.vue';
+import WithLargeAvatarTretyakova from './components/WithLargeAvatarTretyakova.vue';
 import SideBySideGrid from './components/SidebySideGrid.vue';
 import Hero from './components/Hero.vue';
 import GridList from './components/GridList.vue';
 import Cards from './components/Cards.vue';
+import ContentTretyakova15032025 from './components/ContentTretyakova15032025.vue';
 
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
@@ -76,6 +80,14 @@ createApp({})
 
 createApp({})
 .component('ThreeTiersPriceKudryashova25022025', ThreeTiersPriceKudryashova25022025)
+.mount('#price-webinar')
+
+createApp({})
+.component('ThreeTiersPriceTretyakova02032025', ThreeTiersPriceTretyakova02032025)
+.mount('#price-webinar')
+
+createApp({})
+.component('ThreeTiersPriceTretyakova15032025', ThreeTiersPriceTretyakova15032025)
 .mount('#price-webinar')
 
 createApp({})
@@ -136,6 +148,10 @@ createApp({})
 .mount('#with-large-avatar')
 
 createApp({})
+.component('WithLargeAvatarTretyakova', WithLargeAvatarTretyakova)
+.mount('#with-large-avatar')
+
+createApp({})
 .component('SideBySideGrid', SideBySideGrid)
 .mount('#contacts')
 
@@ -150,6 +166,10 @@ createApp({})
 createApp({})
 .component('Cards', Cards)
 .mount('#cards')
+
+createApp({})
+.component('ContentTretyakova15032025', ContentTretyakova15032025)
+.mount('#content')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
 /*   const { jsPDF } = window.jspdf; */
