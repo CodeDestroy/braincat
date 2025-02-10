@@ -65,6 +65,7 @@ import Hero from './components/Hero.vue';
 import GridList from './components/GridList.vue';
 import Cards from './components/Cards.vue';
 import ContentTretyakova15032025 from './components/ContentTretyakova15032025.vue';
+import ContentTretyakova02032025 from './components/ContentTretyakova02032025.vue';
 
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
@@ -169,6 +170,10 @@ createApp({})
 
 createApp({})
 .component('ContentTretyakova15032025', ContentTretyakova15032025)
+.mount('#content')
+
+createApp({})
+.component('ContentTretyakova02032025', ContentTretyakova02032025)
 .mount('#content')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
