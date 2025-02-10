@@ -7,7 +7,7 @@
 /storage/*.key
 /storage/pail
 /vendor
-/app_old
+.htaccess
 .env
 .env.backup
 .env.production
@@ -22,4 +22,3 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
-braincat.zip
