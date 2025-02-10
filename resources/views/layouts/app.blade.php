@@ -190,7 +190,7 @@
                 >
                     <div class="flex items-center justify-between">
                     <a href="/" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Психология профессионалов</span>
+                        <span class="sr-only">Учёный кот</span>
                         <img class="h-20 w-auto" src="{{ asset('img/braincat_logo.jpg') }}" alt="">
                     </a>
                     <button onclick="document.getElementById('mobileMenu').style.display = 'none'" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
@@ -255,7 +255,7 @@
                         <a href="{{ route('documents') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Документы</a>
                     </div> --}}
                 </nav>
-                <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2025 АНО ДПО "ФОРУМ". Психология для профессионалов. Все права защищены.</p>
+                <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2025 АНО ДПО "ФОРУМ". Учёный кот. Все права защищены.</p>
             </div>
         </footer> 
     </div>

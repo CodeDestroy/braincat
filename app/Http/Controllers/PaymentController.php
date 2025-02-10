@@ -327,42 +327,42 @@ class PaymentController extends Controller
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/1350');
                     else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch )  
-                        return redirect('/payment/enterprise/' . $course . '/' . $freq . '/1');
+                        return redirect('/contacts');
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/1500');
                 case 'tier-students5':
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/1350');
                     else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
-                        return redirect('/payment/enterprise/' . $course . '/' . $freq . '/1');
+                        return redirect('/contacts');
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/1500');
                 case 'tier-enterprise5':
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/1350');
                     else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
-                        return redirect('/payment/enterprise/' . $course . '/' . $freq . '/1');
+                        return redirect('/contacts');
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/1500');
                 case 'tier-base6':    
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/4500');
                     else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch )  
-                        return redirect('/payment/enterprise/' . $course . '/' . $freq . '/1');
+                        return redirect('/contacts');
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/5000');
                 case 'tier-students6':
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/4500');
                     else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
-                        return redirect('/payment/enterprise/' . $course . '/' . $freq . '/1');
+                        return redirect('/contacts');
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/5000');
                 case 'tier-enterprise6':
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/4500');
                     else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
-                        return redirect('/payment/enterprise/' . $course . '/' . $freq . '/1');
+                        return redirect('/contacts');
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/5000');
 
