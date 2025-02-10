@@ -57,7 +57,7 @@
     {
       name: 'Льготный',
       id: 'tier-privilege',
-      href: '/payment/tier-students6/6',
+      href: '/payment/tier-students6/8',
       price: { 100: '4500' },
       description: 'Практико-ориентированный семинар',
       features: [
@@ -69,7 +69,7 @@
     {
       name: 'Организации',
       id: 'tier-enterprise',
-      href: '/payment/tier-enterprise6/6',
+      href: '/payment/tier-enterprise6/8',
       price: 'По запросу',
       description: 'Практико-ориентированный семинар',
       features: [
