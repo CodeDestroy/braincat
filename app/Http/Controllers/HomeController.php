@@ -36,9 +36,9 @@ class HomeController extends Controller
         return view('nikolaeva');
     }
 
-    public function kurbatov() 
+    public function kochetkova() 
     {
-        return view('kurbatov');
+        return view('kochetkova');
     }
 
     public function contacts() 

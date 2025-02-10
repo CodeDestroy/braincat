@@ -32,7 +32,7 @@ const people = [
     role: 'Вебинар, Запись',
     eventDate: '19.01.2025',
     imageUrl: 'img/nikolaeva_list.jpg',
-    href: '/nikolaeva'
+    href: 'https://psy4pro.ru/nikolaeva'
   },
   {
     name: 'Светлана Васильевна Кочеткова',
@@ -41,7 +41,7 @@ const people = [
     role: 'Семинар. Резюме',
     eventDate: '02.02.2025',
     imageUrl: 'img/kochetkova_list.jpg',
-    href: '/kochetkova' 
+    href: 'https://psy4pro.ru/kochetkova' 
   },
   {
     name: 'Александра Артуровна Кудряшова',

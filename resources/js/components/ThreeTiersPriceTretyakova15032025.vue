@@ -39,8 +39,8 @@
     {
       name: 'Базовый',
       id: 'tier-base',
-      href: '/payment/tier-base2/6',
-      price: { 100: '1500' },
+      href: '/payment/tier-base6/8',
+      price: { 100: '5000' },
       description: 'Практико-ориентированный семинар',
       features: [
         'психологи',
@@ -57,8 +57,8 @@
     {
       name: 'Льготный',
       id: 'tier-privilege',
-      href: '/payment/tier-students/6',
-      price: { 100: '1350' },
+      href: '/payment/tier-students6/6',
+      price: { 100: '4500' },
       description: 'Практико-ориентированный семинар',
       features: [
         'студенты профильных высших учебных заведений различных форм собственности очной формы обучения'
@@ -69,7 +69,7 @@
     {
       name: 'Организации',
       id: 'tier-enterprise',
-      href: '/payment/enterprise/6',
+      href: '/payment/tier-enterprise6/6',
       price: 'По запросу',
       description: 'Практико-ориентированный семинар',
       features: [
