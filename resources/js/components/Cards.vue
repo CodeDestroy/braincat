@@ -61,5 +61,32 @@ const people = [
     imageUrl: 'img/kudryashova_list.jpg',
     href: '/kudryashova_25022025'
   },
+  {
+  name: 'Галина Анатольевна Третьякова',
+    title: 'медицинский психолог',
+    eventCaption: 'Детско-родительские отношения. Методы диагностики и коррекции',
+    role: 'Вебинар. Онлайн',
+    eventDate: '02.03.2025',
+    imageUrl: 'img/tretyakova_list.jpg',
+    href: '/tretyakova_02032025'
+  },
+  {
+    name: 'Галина Анатольевна Третьякова',
+    title: 'медицинский психолог',
+    eventCaption: 'Методы психологической диагностики в клинике детской психиатрии и неврологии',
+    role: 'Двухдневный вебинар. Онлайн',
+    eventDate: '15-16.03.2025',
+    imageUrl: 'img/tretyakova_list.jpg',
+    href: '/tretyakova_15032025'
+  },
+  {
+    name: 'Сергей Александрович Курбатов',
+    title: 'кандидат медицинских наук, врач',
+    eventCaption: 'Генетика в неврологии для начинающих специалистов',
+    role: 'Курс. Онлайн',
+    eventDate: 'скоро',
+    imageUrl: 'img/kurbatov_list.jpg',
+    href: '/kurbatov'
+  },
 ]
 </script>

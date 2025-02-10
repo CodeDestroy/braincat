@@ -7,13 +7,17 @@
         <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
             <div class="mx-auto w-full max-w-sm lg:w-96">
                 <div>
-                    <h2 class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">{{ __('Войдите в аккаунт') }}</h2>
-                    <p class="mt-2 text-sm leading-6 text-gray-500">
+                    <h2 class="mt-8 text-2xl font-bold leading-9 tracking-tight text-salt-700">{{ __('Войдите в аккаунт') }}</h2>
                         @if (Route::has('register'))
-                            Не зарегистрированы?
-                            <a href="{{ route('register') }}" class="font-semibold text-purple-800 hover:text-purple-700">{{ __('Зарегистрироваться') }}</a>
+                            <div class="flex items-center justify-between mt-10">
+                                <div class="flex items-center text-sm">
+                                    <p class="text-gray-500">Нет учетной записи? </p>
+                                </div>
+                                <div class="text-sm leading-6">
+                                    <a href="{{ route('register') }}" class="font-semibold text-mona-lisa-600 hover:text-mona-lisa-600">{{ __('Зарегистрируйтесь') }}</a>
+                                </div>
+                            </div>
                         @endif
-                    </p>
                 </div>
         
                 <div class="mt-10">
@@ -57,13 +61,13 @@
             
                                 @if (Route::has('password.request'))
                                     <div class="text-sm leading-6">
-                                        <a href="{{ route('password.request') }}" class="font-semibold text-purple-800 hover:text-purple-700">{{ __('Забыли пароль?') }}</a>
+                                        <a href="{{ route('password.request') }}" class="font-semibold text-mona-lisa-600 hover:text-mona-lisa-600">{{ __('Забыли пароль?') }}</a>
                                     </div>
                                 @endif
                             </div>
             
                             <div>
-                                <button type="submit" class="flex w-full justify-center rounded-md bg-purple-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-800">
+                                <button type="submit" class="flex w-full justify-center rounded-md bg-salt-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-salt-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-salt-800">
                                     {{ __('Войти') }}
                                 </button>
                             </div>
@@ -114,8 +118,8 @@
                 </div>
             </div>
         </div>
-        <div class="relative hidden w-0 flex-1 lg:block">
-            <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset('img/login_main.jpg') }}" alt="">
+        <div class="relative hidden w-0 flex-1 md:block">
+            <img class="absolute inset-0 h-full w-full object-contain" src="{{ asset('img/login_main.jpg') }}" alt="">
         </div>
     </div>
 </div>
