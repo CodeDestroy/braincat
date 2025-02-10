@@ -74,7 +74,9 @@ class EducationController extends Controller
                 switch ($event->type) {
                     case 'selfStudyMaterial':
                         $selfStudyMaterial = SelfStudyMaterial::where(['event_id' => $id])->first();
-                        $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)
+
+                        $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)->where('course_id', $event->course_id)
+
                         ->whereDate('start_date', '<', $event->start_date)
                         ->orderBy('id','asc')->get();
                         foreach ($allTests as $eventTest) {
@@ -88,7 +90,9 @@ class EducationController extends Controller
                         return redirect()->route('education.showSelfStudyMaterial', ['id' => $selfStudyMaterial->id, 'course_id' => $course_id]);
                         /* return view('education.events.lection', compact('event')); */
                     case 'test':
-                        $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)
+
+                        $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)->where('course_id', $event->course_id)
+
                         ->whereDate('start_date', '<', $event->start_date)
                         ->orderBy('id','asc')->get();
                         foreach ($allTests as $eventTest) {
@@ -117,7 +121,9 @@ class EducationController extends Controller
         switch ($event->type) {
             case 'selfStudyMaterial':
                 $selfStudyMaterial = SelfStudyMaterial::where(['event_id' => $id])->first();
-                $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)
+
+                $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)->where('course_id', $event->course_id)
+
                 ->whereDate('start_date', '<', $event->start_date)
                 ->orderBy('id','asc')->get();
                 
@@ -132,7 +138,9 @@ class EducationController extends Controller
                 return redirect()->route('education.showSelfStudyMaterial', ['id' => $selfStudyMaterial->id, 'course_id' => $course_id]);
                 /* return view('education.events.lection', compact('event')); */
             case 'test':
-                $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)
+
+                $allTests = Event::where(['type' => 'test'])->where('id', '<', $id)->where('course_id', $event->course_id)
+
                 ->whereDate('start_date', '<', $event->start_date)
                 ->orderBy('id','asc')->get();
                 foreach ($allTests as $eventTest) {
@@ -241,8 +249,13 @@ class EducationController extends Controller
                     $score += $userAnswer->score;
                 }
             } else {
+                /* foreach ($answerId as $singleAnswerId) {
+                    $userAnswer = $this->saveAnswer($user->id, $test->id, $singleAnswerId);
+                    $score += $userAnswer->score;
+                } */
                 // Сохраняем одиночный ответ (радио-кнопки)
-                $userAnswer = $this->saveAnswer($user->id, $test->id, $answerId);
+                $answer = Answer::where('question_id', $questionId)->first();
+                $userAnswer = $this->saveAnswer($user->id, $test->id, $answer->id, $answerId);
                 $score += $userAnswer->score;
             }
         }
@@ -271,7 +284,7 @@ class EducationController extends Controller
     /**
      * Метод для сохранения ответа
      */
-    protected function saveAnswer($userId, $testId, $answerId)
+    protected function saveAnswer($userId, $testId, $answerId, $textAnswer = null)
     {
         // Допустим, у ответа может быть привязан балл, поэтому получаем ответ из базы
         $answer = Answer::find($answerId);
@@ -286,7 +299,7 @@ class EducationController extends Controller
             'test_id' => $testId,
             'answer_id' => $answerId,
             'score' => $answer->score ?? 0, // Пример получения баллов
-            'textAnswer' => null // Используйте для текстовых вопросов, если они есть
+            'textAnswer' => $textAnswer // Используйте для текстовых вопросов, если они есть
         ]);
         return $userAnswer;
     }
