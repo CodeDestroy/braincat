@@ -31,7 +31,7 @@
         <header class="bg-white sticky top-0 z-10 shadow-[rgba(0,0,15,0.1)_0px_8px_2px_-2px]">
             <nav class="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8" aria-label="Global">
                 {{-- Логотип --}}
-                <a href="{{ url('/') }}" class="-m-1.5 p-1.5">
+                <a href="{{ url('/') }}" class="-m-1.5 p-1.5 focus:outline focus:outline-offset-0 focus:outline-mona-lisa-600 focus-visible:outline focus-visible:outline-offset-0 focus-visible:outline-mona-lisa-600">
                     <span class="sr-only">Ученый кот</span>
                     <img class="h-12 sm:h-14 w-auto" src="{{ asset('img/braincat_logo.svg') }}" alt="">
                 </a>

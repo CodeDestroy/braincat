@@ -1,6 +1,6 @@
 <template>
-  <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid lg:grid-cols-3 sm:grid-cols-2 sm:gap-px sm:divide-y-0">
-    <div v-for="(action, actionIdx) in actions" :key="action.title" :class="[action.blockBackground, actionIdx === 0 ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none' : '', actionIdx === 1 ? 'sm:rounded-tr-lg' : '', actionIdx === actions.length - 2 ? 'sm:rounded-bl-lg' : '', actionIdx === actions.length - 1 ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none' : '', 'group relative p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-900']">
+  <div class="divide-y divide-gray-200 overflow-hidden bg-gray-200 shadow sm:grid lg:grid-cols-3 sm:grid-cols-2 sm:gap-px sm:divide-y-0">
+    <div v-for="(action, actionIdx) in actions" :key="action.title" :class="[action.blockBackground, 'group relative p-6 focus-within:ring-1 focus-within:ring-inset focus-within:ring-mona-lisa-600']">
       <div>
         <span :class="[action.iconBackground, action.iconForeground, 'inline-flex rounded-lg py-2']">
           <component :is="action.icon" class="h-10 w-10" aria-hidden="true" />
