@@ -45,7 +45,7 @@ const actions = [
   },
   {
     title: 'Психология',
-    href: 'https:/psy4pro.ru',
+    href: 'https://psy4pro.ru',
     icon: PuzzlePieceIcon,
     iconForeground: 'text-black',
     iconBackground: '',
