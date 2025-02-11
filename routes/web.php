@@ -130,7 +130,10 @@ Route::get('/api/course/{course_id}/days', function (Request $request, $course_i
 Route::controller(App\Http\Controllers\EducationController::class)->group(function () {
     Route::get('/education', 'showCourses')->name('education.index')->middleware(['auth', 'verified']);
     
-    Route::get('/education/course/{course_id}/', 'showCourse')->name('education.course')->middleware(['auth', 'verified', 'paid']);
+    
+    Route::get('/education/courses/{group}', 'showCoursesByGroup')->name('education.groups')->middleware(['auth', 'verified']);
+    
+    Route::get('/education/course/{course_id}', 'showCourse')->name('education.course')->middleware(['auth', 'verified', 'paid']);
 
     Route::get('/education/course/{course_id}/event/{id}', 'showEvent')->name('education.showEvent')->middleware(['auth', 'verified', 'paid']);
     Route::get('/education/course/{course_id}/test/{id}','showTest')->name('education.showTest')->middleware(['auth', 'verified', 'paid']);
@@ -143,6 +146,7 @@ Route::controller(App\Http\Controllers\EducationController::class)->group(functi
     Route::get('/education/course/{course_id}/askQuestion/theme/{theme_id}','showAskQuestion')->name('education.showAskQuestion')->middleware(['auth', 'verified', 'paid']);
     Route::post('/education/course/{course_id}/askQuestion/theme/{theme_id}','askQuestion')->name('education.askQuestion')->middleware(['auth', 'verified', 'paid']);
     Route::get('/education/registerCourse/{course_id}', 'registerCourse')->name('registerCourse')->middleware(['auth', 'verified']);
+
 });
 //Платежи
 Route::controller(App\Http\Controllers\PaymentController::class)->group(function () {

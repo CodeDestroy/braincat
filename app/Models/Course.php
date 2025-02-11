@@ -23,4 +23,9 @@ class Course extends Model
         'url'
         
     ];
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class,'course_group');
+    }
 }

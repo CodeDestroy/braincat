@@ -18,6 +18,7 @@ use App\Models\Payment;
 use App\Models\Vebinar;
 use App\Models\Theme;
 use App\Models\Message;
+use App\Models\Group;
 use Illuminate\Support\Facades\Log;
 use function GuzzleHttp\default_ca_bundle;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +40,7 @@ class EducationController extends Controller
         /* $courses = Course::where(['user_id' => $user->id, 'type' => 'course'])->get(); */
         $courses = Course::whereIn('id', $paysIds)->get();
         //Сделать идентификатор доступности оплаты
-        $availableCourses = Course::whereNotIn('id', $paysIds)->whereDate('start_date', '>=', date('Y-m-d'))->get();
+        $availableCourses = Course::whereNotIn('id', $paysIds)->whereNotNull('price')->get();
         return view('education.courses', compact('courses', 'availableCourses'));
         
     }
@@ -53,6 +54,18 @@ class EducationController extends Controller
         /* return $course; */
         return view('education.course', compact('course', 'themes', 'chapters'));
         
+    }
+
+    public function showCoursesByGroup (Request $request, $group)
+    {
+        $user = $request->user();
+        $group = Group::where(['alias' => $group])->first();
+        if (!$group)
+            return view('errors.404');
+        $groupName = $group->name;
+        $courses = $group->courses()->get();
+        return view('education.groups', compact('courses', 'groupName'));
+
     }
 
     public function showEvent(Request $request, $course_id, $id)
@@ -165,6 +178,7 @@ class EducationController extends Controller
         
         }
     }
+    
 
     public function showVebinar(Request $request, $course_id, $id)
     {

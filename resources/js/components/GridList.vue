@@ -37,7 +37,7 @@ import {
 const actions = [
   {
     title: 'Медицина',
-    href: '#',
+    href: '/education/courses/medicine',
     icon: HeartIcon,
     iconForeground: 'text-black',
     iconBackground: 'bg-white',
@@ -45,7 +45,7 @@ const actions = [
   },
   {
     title: 'Психология',
-    href: 'https://psy4pro.ru',
+    href: '/education/courses/psychology',
     icon: PuzzlePieceIcon,
     iconForeground: 'text-black',
     iconBackground: '',
@@ -53,7 +53,7 @@ const actions = [
   },
   {
     title: 'Для специалистов',
-    href: '#',
+    href: '/education/courses/specialists',
     icon: UserIcon,
     iconForeground: 'text-black',
     iconBackground: '',
@@ -61,7 +61,7 @@ const actions = [
   },
   {
     title: 'Логопедия',
-    href: '#',
+    href: '/education/courses/speech',
     icon: BookOpenIcon,
     iconForeground: 'text-black',
     iconBackground: '',
@@ -69,7 +69,7 @@ const actions = [
   },
   {
     title: 'Для родителей',
-    href: '#',
+    href: '/education/courses/parents',
     icon: UsersIcon,
     iconForeground: 'text-black',
     iconBackground: '',
@@ -77,7 +77,7 @@ const actions = [
   },
   {
     title: 'Педагогика',
-    href: '#',
+    href: '/education/courses/pedagogy',
     icon: AcademicCapIcon,
     iconForeground: 'text-black',
     iconBackground: '',
