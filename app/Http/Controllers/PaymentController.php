@@ -208,7 +208,7 @@ class PaymentController extends Controller
             }
             
         if ($courseRegistration) {
-            if ($shouldBeCheckedOut && !$courseRegistration->managerCheckedOut) {
+            if ($shouldBeCheckedOut && !$courseRegistration->managerCheckedOut && str_contains($tier, 'student' )) {
                 if ($courseRegistration->course_id == 3)
                     return view('payments.nikolaeva.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
                 if ($courseRegistration->course_id == 4) {
@@ -220,7 +220,12 @@ class PaymentController extends Controller
                 if ($courseRegistration->course_id == 6) {
                     return view('payments.kudryashova_25022025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
                 }
-                    
+                if ($courseRegistration->course_id == 7) {
+                    return view('payments.tretyakova_02032025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
+                }
+                if ($courseRegistration->course_id == 8) {
+                    return view('payments.tretyakova_15032025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
+                }   
 
             }
             switch ($tier) {
@@ -324,47 +329,47 @@ class PaymentController extends Controller
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/5000');
                 case 'tier-base5':    
-                    if ( $courseRegistration->isStudent)
+                    /* if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/1350');
                     else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch )  
                         return redirect('/contacts');
-                    else
+                    else */
                         return redirect('/payment/base/' . $course . '/' . $freq . '/1500');
                 case 'tier-students5':
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/1350');
-                    else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
-                        return redirect('/contacts');
+                    /* else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
+                        return redirect('/contacts'); */
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/1500');
                 case 'tier-enterprise5':
-                    if ( $courseRegistration->isStudent)
+                    /* if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/1350');
-                    else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
+                    else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch) */  
                         return redirect('/contacts');
-                    else
-                        return redirect('/payment/base/' . $course . '/' . $freq . '/1500');
+                    /* else
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/1500'); */
                 case 'tier-base6':    
-                    if ( $courseRegistration->isStudent)
+                    /* if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/4500');
                     else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch )  
                         return redirect('/contacts');
-                    else
+                    else */
                         return redirect('/payment/base/' . $course . '/' . $freq . '/5000');
                 case 'tier-students6':
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/4500');
-                    else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
-                        return redirect('/contacts');
+                    /* else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
+                        return redirect('/contacts'); */
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/5000');
                 case 'tier-enterprise6':
-                    if ( $courseRegistration->isStudent)
+                    /* if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/4500');
-                    else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch)  
+                    else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch) */  
                         return redirect('/contacts');
-                    else
-                        return redirect('/payment/base/' . $course . '/' . $freq . '/5000');
+                    /* else
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/5000'); */
 
             }
             
