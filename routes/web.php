@@ -131,7 +131,7 @@ Route::controller(App\Http\Controllers\EducationController::class)->group(functi
     Route::get('/education', 'showCourses')->name('education.index')->middleware(['auth', 'verified']);
     
     
-    Route::get('/education/courses/{group}', 'showCoursesByGroup')->name('education.groups')->middleware(['auth', 'verified']);
+    Route::get('/education/courses/{group}', 'showCoursesByGroup')->name('education.groups');
     
     Route::get('/education/course/{course_id}', 'showCourse')->name('education.course')->middleware(['auth', 'verified', 'paid']);
 
