@@ -268,7 +268,7 @@ class EducationController extends Controller
                     $score += $userAnswer->score;
                 } */
                 // Сохраняем одиночный ответ (радио-кнопки)
-                $answer = Answer::where('question_id', $questionId)->first();
+                $answer = Answer::find($answerId);
                 $userAnswer = $this->saveAnswer($user->id, $test->id, $answer->id, $answerId);
                 $score += $userAnswer->score;
             }
