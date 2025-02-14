@@ -18,10 +18,12 @@ use App\Models\Payment;
 use App\Models\Vebinar;
 use App\Models\Theme;
 use App\Models\Message;
+use App\Models\MessageAttachment;
 use App\Models\Group;
 use Illuminate\Support\Facades\Log;
 use function GuzzleHttp\default_ca_bundle;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 class EducationController extends Controller
 {
     //
@@ -376,8 +378,25 @@ class EducationController extends Controller
     
     public function askQuestion(Request $request, $course_id, $theme_id) 
     {
+
         $content = $request->all();
         $newMessage = Message::create(['user_id' => $request->user()->id, 'theme_id' => $theme_id, 'text'=>$content['text'], 'isAnonymous' =>  $request->has('isAnonymous') ? 1 : 0]);
+        $user = $request->user();
+
+        $validator = Validator::make($content, [
+            'file' => 'nullable|file|max:10240',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $filePath = null;
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('message_attachments/user_' . $user->id . '/message_' . $newMessage->id, 'public');
+            $fileMimeType = $request->file('file')->getClientMimeType();
+            $newMessageAttachment = MessageAttachment::create(['file' => $filePath, 'message_id' => $newMessage->id, 'type' => $fileMimeType]);
+        }
         return redirect()->back();
     }
 

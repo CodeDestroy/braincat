@@ -483,7 +483,7 @@
                 </div>
 
                 <div class="space-y-6">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">Диплом о профпереподготовке</h2>
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">Диплом о профпереподготовке (разворот)</h2>
                     @if ($userDiplomProfPerepod !== 1)
                     <div id="diplomProfPerepodImageContainer" class="mt-4">
                         <label class="block text-sm font-medium text-gray-900">Загруженное изображение:</label>
