@@ -439,7 +439,7 @@
                 
                 <div class="space-y-6">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Вкладыш (сторона 2)</h2>
-                    @if ($userPassport5Page !== 1)
+                    @if ($userDiplomSupplementSecondPage !== 1)
                     <div id="diplomSecondPageImageContainer" class="mt-4">
                         <label class="block text-sm font-medium text-gray-900">Загруженное изображение:</label>
                         <img id="diplomSecondPageImg" src="" alt="Вкладыш (сторона 2)" style="width: 50%" class="h-auto mt-2 rounded-lg" style="display: none;">
@@ -473,6 +473,51 @@
                                     <label for="diplomSupplementSecondPage" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
                                         <span>Загрузите файл</span>
                                         <input id="diplomSupplementSecondPage" name="diplomSupplementSecondPage" type="file" class="sr-only" onchange="this.form.submit();">
+                                    </label>
+                                    <p class="pl-1">или переместите файл сюда</p>
+                                </div>
+                                <p class="text-xs text-gray-600">PNG, JPG до 10MB</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="space-y-6">
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">Диплом о профпереподготовке (разворот)</h2>
+                    @if ($userDiplomProfPerepod !== 1)
+                    <div id="diplomProfPerepodImageContainer" class="mt-4">
+                        <label class="block text-sm font-medium text-gray-900">Загруженное изображение:</label>
+                        <img id="diplomProfPerepodImg" src="" alt="Диплом о профпереподготовке" style="width: 50%" class="h-auto mt-2 rounded-lg" style="display: none;">
+                    </div>
+                    @endif
+                    <script>
+                        // Получаем путь к загруженному изображению
+                        fetch('/user/{{ Auth::user()->id }}/document/diplom_profperepod')
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.path) {
+                                    console.log(data)
+                                    document.getElementById('diplomProfPerepodImg').src = data.path;
+                                    document.getElementById('diplomProfPerepodImg').style.display = 'block';
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Ошибка загрузки изображения:', error)
+                                document.getElementById('diplomSecondPageImageContainer').style.display = 'none';
+                            });
+                    </script>
+                    <form action="{{ route('settings.general.uploadDiplomPrefPerepodScan') }}" method="POST" enctype="multipart/form-data" class="sm:col-span-full" onsubmit="this.submit();">
+                        @csrf
+                        {{-- <label for="passportPage5" class="block text-sm font-medium text-gray-900">Скан 5 страницы паспорта</label> --}}
+                        <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                            <div class="text-center">
+                                <svg class="mx-auto size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div class="mt-4 flex text-sm text-gray-600">
+                                    <label for="diplomProfPerepodPage" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
+                                        <span>Загрузите файл</span>
+                                        <input id="diplomProfPerepodPage" name="diplomProfPerepodPage" type="file" class="sr-only" onchange="this.form.submit();">
                                     </label>
                                     <p class="pl-1">или переместите файл сюда</p>
                                 </div>

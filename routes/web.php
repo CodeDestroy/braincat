@@ -241,6 +241,7 @@ Route::controller(App\Http\Controllers\ProfileController::class)->group(function
     Route::post('/settings/general/uploadDiplomFirstPageScan', 'uploadDiplomFirstPageScan')->name('settings.general.uploadDiplomFirstPageScan');
     Route::post('/settings/general/uploadDiplomSecondPageScan', 'uploadDiplomSecondPageScan')->name('settings.general.uploadDiplomSecondPageScan');
 
+    Route::post('/settings/general/uploadDiplomPrefPerepodScan', 'uploadDiplomPrefPerepodScan')->name('settings.general.uploadDiplomPrefPerepodScan');
     
     Route::post('/settings/general/uploadSnilsScan', 'uploadSnilsScan')->name('settings.general.uploadSnilsScan');
 

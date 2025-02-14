@@ -43,12 +43,12 @@ return [
             "host" => "smtp.mail.ru",
             "port" => "465",
             "from" => array(
-                "address" => "support@psy4pro.ru",
-                "name" => "Психология для профессионалов"
+                "address" => "admin@braincat.ru",
+                "name" => "Учёный кот"
             ),
             "encryption" => "tls",
-            "username" => "support@psy4pro.ru",
-            "password" => "qdNHhu1mKZj5UvLesPfi",
+            "username" => "admin@braincat.ru",
+            "password" => "vWvpUj9ikZ05FP6Qn9Qy",
             "sendmail" => "/usr/sbin/sendmail -bs",
             "pretend" => false,
             'timeout' => null,

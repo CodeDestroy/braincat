@@ -5,7 +5,7 @@
     $user = Auth::user();
 @endphp
 <div class="container mx-auto sm:px-16 px-3 mt-8">
-    <form @if ($theme_id) action="{{route('education.askQuestion', ['course_id' => $course_id, 'theme_id'=>$theme_id])}}" @endif method="POST">
+    <form @if ($theme_id) action="{{route('education.askQuestion', ['course_id' => $course_id, 'theme_id'=>$theme_id])}}" @endif method="POST" enctype="multipart/form-data">
         @csrf
         <div class="{{$theme ? 'sm:columns-2' : 'columns-2'}} columns-1 " >
             <div class="w-full text-left">
@@ -71,6 +71,18 @@
                                 </div>
                                 <div class="{{$message->user_id == $user->id ? 'bg-purple-700 text-white' : 'bg-white'}} flex max-w-96 rounded-lg p-3 gap-3 ">
                                     <p>{{$message->text}}</p>
+                                    
+                                    
+                                </div>
+                                <div>
+                                    @foreach ($message->attachments as $attachment)
+                                        {{-- <p>{{$attachment->file}}</p> --}}
+                                        <a href="/storage/{{$attachment->file}}" target="_blank">
+                                            <svg class="w-6 h-6 text-purple-700" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path>
+                                            </svg>
+                                        </a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -82,7 +94,15 @@
         <div class="bg-white border-t border-gray-300 p-4 bottom-0 mt-2 " style="width: 100%">
             <div class="flex items-center">
                 <input type="text" placeholder="Текст..." name="text" class="w-full p-2 rounded-md border border-gray-400 focus:outline-none focus:border-blue-500">
+                <label for="file-upload" class="cursor-pointer bg-gray-200 p-2 rounded-md hover:bg-gray-300 transition ml-2">
+                    <svg class="w-6 h-6 text-purple-700" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+                      </svg>
+                </label>
+                <input type="file" id="file-upload" name="file" class="hidden">
                 <button type="submit" class="bg-purple-700 text-white px-4 py-2 rounded-md ml-2">Отправить</button>
+                <!-- Кнопка загрузки файла -->
+                
             </div>
         </div>
         {{-- <div class="flex items-center space-x-6 pt-0 px-4">
@@ -91,10 +111,6 @@
                 <label for="isAnonymous" class="ms-2 text-sm font-medium text-gray-900">{{ __('Анонимный вопрос') }}{{ __(' (в тексте сообщения укажите как с Вами связаться)') }}</label>
             </div>
 
-        </div> --}}
-        {{-- <div class="p-4 pt-0 flex items-center">
-            <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Анонимный вопрос</label>
         </div> --}}
     </form>
     @else
