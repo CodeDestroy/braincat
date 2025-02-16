@@ -43,6 +43,7 @@ import ThreeTiersPriceKudryashova from './components/ThreeTiersPriceKudryashova.
 import ThreeTiersPriceKudryashova25022025 from './components/ThreeTiersPriceKudryashova25022025.vue';
 import ThreeTiersPriceTretyakova02032025 from './components/ThreeTiersPriceTretyakova02032025.vue';
 import ThreeTiersPriceTretyakova15032025 from './components/ThreeTiersPriceTretyakova15032025.vue';
+import ThreeTiersPriceTurkenich17042025 from './components/ThreeTiersPriceTurkenich17042025.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
 import CalendarPlan from './components/CalendarPlan.vue';
@@ -60,12 +61,14 @@ import WithLargeAvatar from './components/WithLargeAvatar.vue';
 import WithLargeAvatarKurbatov from './components/WithLargeAvatarKurbatov.vue';
 import WithLargeAvatarKudryashova from './components/WithLargeAvatarKudryashova.vue';
 import WithLargeAvatarTretyakova from './components/WithLargeAvatarTretyakova.vue';
+import WithLargeAvatarTurkenich from './components/WithLargeAvatarTurkenich.vue';
 import SideBySideGrid from './components/SidebySideGrid.vue';
 import Hero from './components/Hero.vue';
 import GridList from './components/GridList.vue';
 import Cards from './components/Cards.vue';
 import ContentTretyakova15032025 from './components/ContentTretyakova15032025.vue';
 import ContentTretyakova02032025 from './components/ContentTretyakova02032025.vue';
+import ContentTurkenich17042025 from './components/ContentTurkenich17042025.vue';
 
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
@@ -89,6 +92,10 @@ createApp({})
 
 createApp({})
 .component('ThreeTiersPriceTretyakova15032025', ThreeTiersPriceTretyakova15032025)
+.mount('#price-webinar')
+
+createApp({})
+.component('ThreeTiersPriceTurkenich17042025', ThreeTiersPriceTurkenich17042025)
 .mount('#price-webinar')
 
 createApp({})
@@ -153,6 +160,10 @@ createApp({})
 .mount('#with-large-avatar')
 
 createApp({})
+.component('WithLargeAvatarTurkenich', WithLargeAvatarTurkenich)
+.mount('#with-large-avatar')
+
+createApp({})
 .component('SideBySideGrid', SideBySideGrid)
 .mount('#contacts')
 
@@ -174,6 +185,10 @@ createApp({})
 
 createApp({})
 .component('ContentTretyakova02032025', ContentTretyakova02032025)
+.mount('#content')
+
+createApp({})
+.component('ContentTurkenich17042025', ContentTurkenich17042025)
 .mount('#content')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {

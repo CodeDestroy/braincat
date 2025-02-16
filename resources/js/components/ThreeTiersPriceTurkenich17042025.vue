@@ -4,7 +4,8 @@
         <div class="mx-auto max-w-4xl text-center">
           <p class="mt-2 text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-5xl">Стоимость вебинара</p>
         </div>
-        <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">02 марта 2025 года (воскресенье)</p>
+        <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">17 апреля 2025 года (четверг)</p>
+        <p class="mx-auto max-w-2xl text-center text-lg leading-8 text-gray-600">25 апреля 2025 года (четверг)</p>
         <div class="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <div v-for="tier in tiers" :key="tier.id" :class="[tier.featured ? 'bg-green-950 ring-green-950' : 'ring-gray-200', 'rounded-3xl p-8 ring-1 xl:p-10']">
             <h3 :id="tier.id" :class="[tier.featured ? 'text-white' : 'text-gray-900', 'text-lg font-semibold leading-8']">{{ tier.name }}</h3>
@@ -38,16 +39,12 @@
     {
       name: 'Базовый',
       id: 'tier-base',
-      href: '/payment/tier-base5/7',
-      price: { 100: '1500' },
+      href: '/payment/tier-base6/8',
+      price: { 100: '4000' },
       description: 'Лекционно-практический вебинар',
       features: [
+        'нейропсихологи',
         'психологи',
-        'психотерапевты',
-        'педагоги',
-        'дефектологи',
-        'врачи общей практики',
-        'врачи-педиатры',
         'родители'
       ],
       featured: false,
@@ -56,8 +53,8 @@
     {
       name: 'Льготный',
       id: 'tier-privilege',
-      href: '/payment/tier-students5/7',
-      price: { 100: '1350' },
+      href: '/payment/tier-students6/8',
+      price: { 100: '3600' },
       description: 'Лекционно-практический вебинар',
       features: [
         'студенты профильных высших учебных заведений различных форм собственности очной формы обучения'
@@ -68,16 +65,12 @@
     {
       name: 'Организации',
       id: 'tier-enterprise',
-      href: '/payment/tier-enterprise5/7',
+      href: '/payment/tier-enterprise6/8',
       price: 'По запросу',
       description: 'Лекционно-практический вебинар',
       features: [
         'психологи',
-        'психотерапевты',
-        'педагоги',
-        'дефектологи',
-        'врачи общей практики',
-        'врачи-педиатры',
+        'нейропсихологи',
         'родители',
         'студенты профильных высших учебных заведений различных форм собственности очной формы обучения'
       ],
