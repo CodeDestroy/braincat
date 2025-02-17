@@ -9,9 +9,6 @@
                 <p>Часть 1: 17.04.2025 (четверг) 19:00 - 21:15</p>
             </li>
             <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
-                <p>Визитка</p>
-            </li>
-            <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
                 <p>Влияние сенсорно-моторного развития ребенка на его нервную систему. Пирамида развития, иллюстрирующая основные аспекты, необходимые для полноценного развития ребенка</p>
             </li>
             <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
