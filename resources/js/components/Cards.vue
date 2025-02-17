@@ -35,15 +35,6 @@ const people = [
     href: 'https://psy4pro.ru/nikolaeva'
   },
   {
-    name: 'Светлана Васильевна Кочеткова',
-    title: 'аналитический психолог, супервизор',
-    eventCaption: 'Особенности работы с переносом и контрпереносом в психотерапии',
-    role: 'Семинар. Резюме',
-    eventDate: '02.02.2025',
-    imageUrl: 'img/kochetkova_list.jpg',
-    href: 'https://psy4pro.ru/kochetkova' 
-  },
-  {
     name: 'Александра Артуровна Кудряшова',
     title: 'доктор филологических наук',
     eventCaption: 'Современные направления арт-терапии: стратегии и ресурсы',
@@ -88,5 +79,23 @@ const people = [
     imageUrl: 'img/kurbatov_list.jpg',
     href: '/kurbatov'
   },
+  {
+    name: 'Елена Туркенич и Наталия Наконечная',
+    title: 'психологи, специалисты по детско-родительским отношениям',
+    eventCaption: 'Нейростимуляция когнитивной  сферы и эмоционально - коммуникативного поведения детей с особенностями развития',
+    role: 'Двухдневный вебинар. Онлайн',
+    eventDate: '17.04.2025, 24.04.2025',
+    imageUrl: 'img/turkenich_nakonechnaya_list.jpg',
+    href: '/turkenich_nakonechnaya_17042025' 
+  },
+  {
+    name: 'Светлана Васильевна Кочеткова',
+    title: 'аналитический психолог, супервизор',
+    eventCaption: 'Особенности работы с переносом и контрпереносом в психотерапии',
+    role: 'Семинар. Резюме',
+    eventDate: '02.02.2025',
+    imageUrl: 'img/kochetkova_list.jpg',
+    href: 'https://psy4pro.ru/kochetkova' 
+  }
 ]
 </script>
