@@ -48,7 +48,12 @@ class MessagesListLayout extends Table
                     return "<img src='$imageHref' width='100px' height='100px'>";
                 })
                 ->sort(), */
-            
+            TD::make('attachments', __('Theme'))
+                ->render(function (Message $message) {
+                    if (count($message->attachments) > 0)
+                        return '<a target="_blank" href="/storage/' . $message->attachments->first()->file . '">' . $message->attachments->first()->file . '</a>';
+                })
+                ->sort(),
             TD::make('created_at', __('Created'))
                 ->usingComponent(DateTimeSplit::class)
                 ->align(TD::ALIGN_RIGHT)
@@ -72,6 +77,7 @@ class MessagesListLayout extends Table
                             'user' => ($message->user->secondName) . ' ' . ($message->user->name),
                             'theme' => $message->theme->name,
                             'text' => $message->text,
+                            'link' => count($message->attachments) > 0 ? '/storage/' . $message->attachments->first()->file : ''
                         ]);
                         /* ->parameters([
                             'user' => ($message->user->secondName) . ' ' . ($message->user->name),
