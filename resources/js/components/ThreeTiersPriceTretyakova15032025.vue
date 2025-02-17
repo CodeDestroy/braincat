@@ -2,7 +2,7 @@
     <div class="bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-4xl text-center">
-          <p class="mt-2 text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-5xl">Стоимость курса</p>
+          <p class="mt-2 text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-5xl">Стоимость вебинара</p>
         </div>
         <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">15 марта 2025 года (суббота)</p>
         <p class="mx-auto max-w-2xl text-center text-lg leading-8 text-gray-600">16 марта 2025 года (воскресенье)</p>
