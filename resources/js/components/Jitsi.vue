@@ -53,7 +53,7 @@
     SHOW_CHROME_EXTENSION_BANNER: false,
     TOOLBAR_BUTTONS: [
       'microphone', 'camera', 'desktop', 'fullscreen', 'settings',
-      'fodeviceselection', 'recording', 'hangup', 'chat',
+      'fodeviceselection', 'recording', 'hangup', 'chat', 'sharedvideo', 'shareaudio', 'toggle-camera', 'embedmeeting',
       'videoquality', 'filmstrip', 
       'tileview', 'videobackgroundblur', 'download', 'participants-pane', 'pip', 'speakerstats',
       'mute-everyone'

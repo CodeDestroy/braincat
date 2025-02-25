@@ -42,7 +42,7 @@
       name: 'Базовая',
       id: 'tier-base',
       href: '/payment/tier-base2/3',
-      price: { 100: '3000' },
+      price: { 100: '2000' },
       description: 'доступ к материалам вебинара в течение года',
       features: [
         'психологи',
@@ -57,8 +57,8 @@
     {
       name: 'Льготная',
       id: 'tier-privilege',
-      href: '/payment/tier-privilege2/3',
-      price: { 100: '2500' },
+      href: '/payment/tier-base2/3',
+      price: { 100: '2000' },
       description: 'доступ к материалам вебинара в течение года',
       features: [
         'сотрудники ГК "Здоровый ребенок"',
@@ -72,8 +72,8 @@
     {
       name: 'Студенческая',
       id: 'tier-students',
-      href: '/payment/tier-students/3',
-      price: { 100: '1250' },
+      href: '/payment/tier-base2/3',
+      price: { 100: '2000' },
       description: 'доступ к материалам вебинара в течение года',
       features: [
         'студенты профильных высших учебных заведений различных форм собственности очной формы обучения',
