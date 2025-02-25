@@ -7,13 +7,13 @@
           <div class="mx-auto max-w-2xl lg:mx-0">
               <div class="hidden sm:mt-32 sm:flex lg:mt-16">
                   <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                      Вебинар. <strong class="text-purple-800">19 января 2025</strong> 
+                      Видеозапись вебинара. <strong class="text-purple-800">19 января 2025</strong> 
                   </div>
               </div>
               <h1 class="mt-24 text-3xl font-bold tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">Что такое созревание мозга и какие условия его обеспечивают</h1>
               <p class="mt-6 text-lg leading-6 text-gray-600">доктор биологических наук, профессор Елена Ивановна Николаева</p>
               <div class="mt-10 flex items-center gap-x-6">
-                  <a href="#price-webinar" class="rounded-md bg-purple-800 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-800">Записаться</a>
+                  <a href="#price-webinar" class="rounded-md bg-purple-800 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-800">Приобрести запись</a>
                   <a href="#with-large-avatar" class="text-sm font-semibold leading-6 text-gray-900">Узнать больше...</a>
               </div>
           </div>
