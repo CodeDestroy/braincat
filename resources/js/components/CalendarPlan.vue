@@ -295,7 +295,7 @@
     const days = ref([]);
     const today = new Date();
     const selectedDate = ref(null);
-    const currentMonth = ref('2025-01');
+    const currentMonth = ref(today.getFullYear() + '-' + today.getMonth());
     var course_id = null;
 
       const loadBusyDays = async (date) => {
@@ -434,7 +434,7 @@
 
     // Инициализация календаря
 
-    loadBusyDays(formatDate(today)).then(() =>generateDays(2025, 1))
+    loadBusyDays(formatDate(today)).then(() => generateDays(today.getFullYear(), today.getMonth()))
 
 
     loadMeetings(formatDate(today))
