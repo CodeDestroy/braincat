@@ -50,7 +50,7 @@
                     {{-- <a href="{{ url('/about') }}" class="text-sm font-semibold leading-6 text-gray-900">О нас</a> --}}
                     <a href="{{ route('education.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Обучение</a>
                     <a href="{{ url('/contacts') }}" class="text-sm font-semibold leading-6 text-gray-900">Контакты</a>
-                    {{-- <a href="{{ route('documents') }}" class="text-sm font-semibold leading-6 text-gray-900">Документы</a> --}}
+                    <a href="{{ route('documents') }}" class="text-sm font-semibold leading-6 text-gray-900">Документы</a>
                     {{-- <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
                         <span class="sr-only">View notifications</span>
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -207,7 +207,7 @@
                                 {{-- <a href="{{ url('/about') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">О нас</a>--}}
                                 <a href="{{ route('education.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Обучение</a>
                                 <a href="{{ url('/contacts') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Контакты</a>
-                                {{-- <a href="{{ route('documents') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Документы</a>  --}}
+                                <a href="{{ route('documents') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Документы</a> 
                             </div>
                             @guest
                                 @if (Route::has('login'))
@@ -251,9 +251,9 @@
                     <div class="pb-6">
                         <a href="{{ url('/contacts') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Контакты</a>
                     </div>
-                    {{-- <div class="pb-6">
+                    <div class="pb-6">
                         <a href="{{ route('documents') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Документы</a>
-                    </div> --}}
+                    </div>
                 </nav>
                 <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2025 АНО ДПО "ФОРУМ". Учёный кот. Все права защищены.</p>
             </div>

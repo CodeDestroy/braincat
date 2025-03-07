@@ -21,6 +21,10 @@ Route::get('/pdf/{filename}', function ($filename) {
     $path = storage_path('app/public/pdfs/' . $filename); // Путь к вашему PDF файлу
     return response()->file($path);
 });
+Route::get('/sys/getId', function (Request $request) {
+    $user = $request->user();
+    return $user->id;
+});
 //Роуты основных страниц
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
     /* Route::get('/vizel', 'index')->name('vizel'); */
