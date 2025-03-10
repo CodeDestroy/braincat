@@ -11,7 +11,7 @@
                 <p class="text-md font-semibold text-gray-700 text-center mb-4">"Нейростимуляция когнитивной сферы и эмоционально - коммуникативного поведения детей с особенностями развития"</p>
                 
                 <!-- Plan and Price -->
-                <div class=" p-4 rounded-lg mb-6 text-center">
+                <div class=" p-4 rounded-lg mb-6 text-center"> 
                     <h3 class="text-xl font-semibold text-indigo-700">Льготный тариф</h3>
                     <p class="text-3xl font-bold text-indigo-900 mt-2">{{ (int)$sum }} ₽</p>
                     {{-- <p class="text-gray-500 mt-1">Единовременная оплата</p> --}}

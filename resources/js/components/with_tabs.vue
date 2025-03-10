@@ -12,9 +12,9 @@
   }
   ```
 -->
-<template>
+<template> 
   <div class="border-b border-gray-200 pb-5 sm:pb-0">
-    <h3 class="text-base font-semibold leading-6 text-gray-900">Candidates</h3>
+    <h3 class="text-base font-semibold leading-6 text-gray-900">Candidates </h3>
     <div class="mt-3 sm:mt-4">
       <div class="sm:hidden">
         <label for="current-tab" class="sr-only">Select a tab</label>
