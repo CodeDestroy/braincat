@@ -14,6 +14,7 @@ canvas{
             <div class="mx-auto w-full max-w-sm lg:w-96">
                 <h2 class="text-2xl font-bold leading-9 tracking-tight text-gray-900">{{ __('Создайте аккаунт') }}</h2>
 
+
                 <div class="flex items-center justify-between mt-10">
                     <div class="flex items-center text-sm">
                         <p class="text-gray-500"> Уже зарегистрированы?</p>
@@ -23,6 +24,7 @@ canvas{
                     </div>
                 </div>
 
+
                 <div class="mt-10">
                     <form onsubmit="submitForm(event)" method="POST" action="{{ route('register') }}" class="space-y-6">
                         @csrf
@@ -31,7 +33,9 @@ canvas{
                         <div>
                             <label for="secondName" class="block text-sm font-medium text-gray-900">{{ __('Фамилия') }}</label>
                             <div class="mt-2">
+
                                 <input id="secondName" name="secondName" type="text" value="{{ old('secondName') }}" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 @error('lastName') border-red-500 @enderror">
+
                                 @error('secondName')
                                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
@@ -42,7 +46,9 @@ canvas{
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-900">{{ __('Имя') }}</label>
                             <div class="mt-2">
+
                                 <input id="name" name="name" type="text" value="{{ old('name') }}" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 @error('name') border-red-500 @enderror">
+
                                 @error('name')
                                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
@@ -53,7 +59,9 @@ canvas{
                         <div>
                             <label for="patronymicName" class="block text-sm font-medium text-gray-900">{{ __('Отчество') }}</label>
                             <div class="mt-2">
+
                                 <input id="patronymicName" name="patronymicName" type="text" value="{{ old('patronymicName') }}" class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 @error('patronymicName') border-red-500 @enderror">
+
                                 @error('patronymicName')
                                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
@@ -64,7 +72,9 @@ canvas{
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-900">{{ __('Email') }}</label>
                             <div class="mt-2">
+
                                 <input id="email" name="email" type="email" value="{{ old('email') }}" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 @error('email') border-red-500 @enderror">
+
                                 @error('email')
                                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
@@ -75,7 +85,9 @@ canvas{
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-900">{{ __('Телефон') }}</label>
                             <div class="mt-2">
+
                                 <input id="phone" name="phone" type="text" value="{{ old('phone') }}" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 @error('phone') border-red-500 @enderror">
+
                                 @error('phone')
                                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
@@ -86,7 +98,9 @@ canvas{
                         <div>
                             <label for="birthday" class="block text-sm font-medium text-gray-900">{{ __('Дата рождения') }}</label>
                             <div class="mt-2">
+
                                 <input id="birthday" name="birthday" type="date" value="{{ old('birthday') }}" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 @error('birthday') border-red-500 @enderror">
+
                                 @error('birthday')
                                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
@@ -139,7 +153,9 @@ canvas{
                             <label for="password" class="block text-sm font-medium text-gray-900">{{ __('Пароль') }}</label>
                             <div class="relative mt-2">
                                 <input id="password" name="password" type="password" required
+
                                        class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 pr-10 @error('password') border-red-500 @enderror">
+
                                     <button id="showPass" onclick="showPassFunc()" type="button" class="absolute inset-y-0 right-0 flex items-center px-2.5 text-gray-500 hover:text-gray-700" style="right: 5px">
                                         
                                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -184,7 +200,9 @@ canvas{
                         <div>
                             <label for="password-confirm" class="block text-sm font-medium text-gray-900">{{ __('Подтверждение пароля') }}</label>
                             <div class="mt-2">
+
                                 <input id="password-confirm" name="password_confirmation" type="password" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6">
+
                             </div>
                         </div>
 
@@ -192,13 +210,17 @@ canvas{
                             <div id="captcha">
                             </div>
                             <label for="captcha" class="block text-sm font-medium text-grey-900">Введите код</label>
+
                             <input id="cpatchaTextBox" type="text" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6">
+
                         </div>
                         
 
                         <!-- Кнопка регистрации -->
                         <div>
+
                             <button type="submit" class="w-full py-2 bg-mona-lisa-600 text-white rounded-md hover:bg-mona-lisa-700 focus:outline-none focus:ring-2 focus:ring-mona-lisa-600">
+
                                 {{ __('Зарегистрироваться') }}
                             </button>
                         </div>

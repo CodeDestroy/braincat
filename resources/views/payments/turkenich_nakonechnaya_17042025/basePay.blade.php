@@ -6,9 +6,9 @@
     @if ($freq == 100)
         <div class="flex justify-center items-center bg-gray-100" style="height: 80vh">
             <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Видеозапись вебинара 19.01.2025 <br>10-00 - 13-00</h2>
-                <p class="text-xl font-semibold text-gray-700 text-center mb-4">д.б.н., профессор Е.И. Николаева</p>
-                <p class="text-md font-semibold text-gray-700 text-center mb-4">"Что такое созревание мозга и какие условия его обеспечивают"</p>
+                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Двухдневный вебинар  <br> 17.04.2025 19-00 - 21-15 <br> 24.04.2025 19-00 - 21-15</h2>
+                <p class="text-xl font-semibold text-gray-700 text-center mb-4">психологи Елена Владимировна Туркенич и Наталия Тимофеевна Наконечная</p>
+                <p class="text-md font-semibold text-gray-700 text-center mb-4">"Нейростимуляция когнитивной сферы и эмоционально - коммуникативного поведения детей с особенностями развития"</p>
                 
                 <!-- Plan and Price -->
                 <div class=" p-4 rounded-lg mb-6 text-center">
@@ -19,7 +19,7 @@
         
                 <!-- Robokassa Payment Button -->
                 <div class="text-center flex justify-center">
-                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=jiCYDy6ut0uvgmr8_PL3iQ"></script>
+                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=3gbNB_QZ302YnZK41a7VJA"></script>
                 </div>
                 
                 <!-- Back Button -->
@@ -30,7 +30,7 @@
         </div>                                            
     {{-- <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=x9tsj8v0FECSsRG6RJ0S5Q"></script>
         <div>Оплата 100%</div> --}}
-    @else
+    {{-- @else
         <div class="flex justify-center items-center bg-gray-100" style="height: 60vh">
             <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
                 <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Вам подходит тариф: <br>Базовый план</h2>
@@ -50,7 +50,7 @@
                     <a href="/" class="text-indigo-600 hover:underline">Назад на главную</a>
                 </div>
             </div>
-        </div> 
+        </div>  --}}
     {{-- <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=RrY4xB-XREWtRar937qJIg"></script>
         <div>Оплата 50%</div> --}}
     @endif

@@ -21,6 +21,10 @@ Route::get('/pdf/{filename}', function ($filename) {
     $path = storage_path('app/public/pdfs/' . $filename); // Путь к вашему PDF файлу
     return response()->file($path);
 });
+Route::get('/sys/getId', function (Request $request) {
+    $user = $request->user();
+    return $user->id;
+});
 //Роуты основных страниц
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
     /* Route::get('/vizel', 'index')->name('vizel'); */
@@ -29,6 +33,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::get('/kudryashova_25022025', 'kudryashova_25022025')->name('kudryashova_25022025');
     Route::get('/tretyakova_02032025', 'tretyakova_02032025')->name('tretyakova_02032025');
     Route::get('/tretyakova_15032025', 'tretyakova_15032025')->name('tretyakova_15032025');
+    Route::get('/turkenich_nakonechnaya_17042025', 'turkenich_nakonechnaya_17042025')->name('turkenich_nakonechnaya_17042025');
     Route::get('/kurbatov', 'kurbatov')->name('kurbatov');
     Route::get('/nikolaeva', 'nikolaeva')->name('nikolaeva');
     Route::get('/contacts', 'contacts')->name('contacts');

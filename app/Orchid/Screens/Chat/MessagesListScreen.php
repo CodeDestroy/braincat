@@ -14,6 +14,8 @@ use Orchid\Screen\Fields\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Orchid\Screen\Fields\Label;
+use Orchid\Screen\Actions\Link;
+
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Support\Facades\Toast;
 
@@ -85,6 +87,8 @@ class MessagesListScreen extends Screen
                     ->title('Theme'),
                 Label::make('text')
                     ->title(value: 'Text'),
+                Link::make('Скачать прикрепленный файл')
+                    ->href('link')
             ]))
             ->title(__('Message view'))
             ->withoutApplyButton()
@@ -100,12 +104,14 @@ class MessagesListScreen extends Screen
             'text' => $text,
         ];
     }
-    public function asyncGetMessage($user, $theme, $text): iterable
+    public function asyncGetMessage($user, $theme, $text, $link): iterable
     {
+        
         return [
             'user' => $user,
             'theme' => $theme,
             'text' => $text,
+            'link' => $link
         ];
     }
     public function remove(Request $request): void
