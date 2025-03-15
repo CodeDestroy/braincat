@@ -296,12 +296,12 @@ class PaymentController extends Controller
                     }
                     break;
                 case 'tier-base2':    
-                    if ( $courseRegistration->isStudent)
+                    /* if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/4000');
                     else if ($courseRegistration->isHealthyChildGk || $courseRegistration->isAPPCP || $courseRegistration->isHealthyChild || $courseRegistration->isHealthyChildPartner || $courseRegistration->isHealthyChildFranch )  
                         return redirect('/payment/enterprise/' . $course . '/' . $freq . '/1');
-                    else
-                        return redirect('/payment/base/' . $course . '/' . $freq . '/5000');
+                    else */
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/2000');
                 case 'tier-privilege2':
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/4000');

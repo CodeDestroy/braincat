@@ -11,11 +11,11 @@
                     <p class="mt-2 text-sm leading-6 text-gray-500">
                         {{-- @if (Route::has('register'))
                             Не зарегистрированы?
-                            <a href="{{ route('register') }}" class="font-semibold text-purple-800 hover:text-purple-700">{{ __('Зарегистрироваться') }}</a>
+                            <a href="{{ route('register') }}" class="font-semibold text-mona-lisa-600 hover:text-mona-lisa-700">{{ __('Зарегистрироваться') }}</a>
                         @endif --}}
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
-                                <span class="font-semibold text-purple-800 hover:text-purple-700">{{ session('status') }}</span>
+                                <span class="font-semibold text-mona-lisa-600 hover:text-mona-lisa-700">{{ session('status') }}</span>
                             </div>
                         @endif
                     </p>
@@ -38,7 +38,7 @@
                                         autocomplete="email" 
                                         required 
                                         value="{{ $email ?? old('email') }}" 
-                                        class="@error('email') is-invalid @enderror block w-full rounded-md border-0 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-800 sm:text-sm sm:leading-6">
+                                        class="@error('email') is-invalid @enderror block w-full rounded-md border-0 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message == 'passwords.user' ? 'Пользователь не найден' : ($message == 'passwords.throttled' ? 'Ссылка уже была отправлена ранее. Попробуйте позже' : $message) }}</strong>
@@ -50,7 +50,7 @@
                             <div style="margin-top: 0.75rem">
                                 <label for="password" class="block text-sm font-medium text-gray-900">{{ __('Пароль') }}</label>
                                 <div class="mt-2">
-                                    <input minlength="3" id="password" name="password" type="password" required class="block w-full rounded-md border-0 outline-none accent-purple-800 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-800 sm:text-sm sm:leading-6 @error('password') border-red-500 @enderror">
+                                    <input minlength="3" id="password" name="password" type="password" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 @error('password') border-red-500 @enderror">
                                     @error('password')
                                         <p class="mt-1 text-sm text-red-500">{{ ($message == 'validation.min.string' ? 'Минимальная длина 8 символов' : ($message == 'validation.confirmed' ? 'Пароли не совпадают' : $message)) }}</p>
                                     @enderror
@@ -61,7 +61,7 @@
                             <div>
                                 <label for="password-confirm" class="block text-sm font-medium text-gray-900">{{ __('Подтверждение пароля') }}</label>
                                 <div class="mt-2">
-                                    <input  minlength="3" id="password-confirm" name="password_confirmation" type="password" required class="block w-full rounded-md border-0 outline-none accent-purple-800 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-800 sm:text-sm sm:leading-6">
+                                    <input  minlength="3" id="password-confirm" name="password_confirmation" type="password" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
@@ -70,7 +70,7 @@
                    
             
                             <div class="mt-6">
-                                <button type="submit" class="flex w-full justify-center rounded-md bg-purple-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-800">
+                                <button type="submit" class="flex w-full justify-center rounded-md bg-mona-lisa-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-mona-lisa-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mona-lisa-600">
                                     {{ __('Сбросить пароль') }}
                                 </button>
                             </div>
@@ -122,7 +122,7 @@
             </div>
         </div>
         <div class="relative hidden w-0 flex-1 lg:block">
-            <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset('img/login_main.jpg') }}" alt="">
+            <img class="absolute inset-0 h-full w-full object-contain" src="{{ asset('img/login_main.jpg') }}" alt="">
         </div>
     </div>
 </div>
