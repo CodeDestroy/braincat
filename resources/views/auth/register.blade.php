@@ -15,6 +15,7 @@ canvas{
                 <h2 class="text-2xl font-bold leading-9 tracking-tight text-gray-900">{{ __('Создайте аккаунт') }}</h2>
 
 
+
                 <div class="flex items-center justify-between mt-10">
                     <div class="flex items-center text-sm">
                         <p class="text-gray-500"> Уже зарегистрированы?</p>
@@ -25,6 +26,7 @@ canvas{
                 </div>
 
 
+
                 <div class="mt-10">
                     <form onsubmit="submitForm(event)" method="POST" action="{{ route('register') }}" class="space-y-6">
                         @csrf
@@ -33,6 +35,7 @@ canvas{
                         <div>
                             <label for="secondName" class="block text-sm font-medium text-gray-900">{{ __('Фамилия') }}</label>
                             <div class="mt-2">
+
 
                                 <input id="secondName" name="secondName" type="text" value="{{ old('secondName') }}" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 @error('lastName') border-red-500 @enderror">
 
@@ -47,6 +50,7 @@ canvas{
                             <label for="name" class="block text-sm font-medium text-gray-900">{{ __('Имя') }}</label>
                             <div class="mt-2">
 
+
                                 <input id="name" name="name" type="text" value="{{ old('name') }}" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 @error('name') border-red-500 @enderror">
 
                                 @error('name')
@@ -59,6 +63,7 @@ canvas{
                         <div>
                             <label for="patronymicName" class="block text-sm font-medium text-gray-900">{{ __('Отчество') }}</label>
                             <div class="mt-2">
+
 
                                 <input id="patronymicName" name="patronymicName" type="text" value="{{ old('patronymicName') }}" class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 @error('patronymicName') border-red-500 @enderror">
 
