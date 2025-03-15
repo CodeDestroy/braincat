@@ -13,7 +13,7 @@
               <dl class="mt-3 space-y-1 text-sm leading-6 text-gray-600">
                 <div>
                   <dt class="sr-only">Email</dt>
-                  <dd><a class="font-semibold text-amber-700" href="mailto:collaborate@example.com">admin@psy4pro.ru
+                  <dd><a class="font-semibold text-amber-700" href="mailto:collaborate@example.com">admin@braincat.ru
                   </a></dd>
                 </div>
                 <div class="mt-1">
@@ -31,7 +31,7 @@
               <dl class="mt-3 space-y-1 text-sm leading-6 text-gray-600">
                 <div>
                   <dt class="sr-only">Email</dt>
-                  <dd><a class="font-semibold text-amber-700" href="mailto:press@example.com">support@psy4pro.ru
+                  <dd><a class="font-semibold text-amber-700" href="mailto:press@example.com">support@braincat.ru
                   </a></dd>
                 </div>
                 <div class="mt-1">
