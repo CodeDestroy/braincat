@@ -97,13 +97,17 @@
                 <label for="file-upload" class="cursor-pointer bg-gray-200 p-2 rounded-md hover:bg-gray-300 transition ml-2">
                     <svg class="w-6 h-6 text-purple-700" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
-                      </svg>
+                    </svg>
                 </label>
                 <input type="file" id="file-upload" name="file" class="hidden">
                 <button type="submit" class="bg-purple-700 text-white px-4 py-2 rounded-md ml-2">Отправить</button>
                 <!-- Кнопка загрузки файла -->
                 
             </div>
+        </div>
+        <div id="file-preview" class="hidden ml-2 flex items-center space-x-2">
+            <img id="preview-image" src="" class="w-12 h-12 rounded-md hidden">
+            <span id="file-name" class="text-gray-700"></span>
         </div>
         {{-- <div class="flex items-center space-x-6 pt-0 px-4">
             <div class="flex items-center mb-4">
@@ -136,7 +140,32 @@
         }
     });
 </script>
-
+<script>
+    document.getElementById('file-upload').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const previewContainer = document.getElementById('file-preview');
+        const previewImage = document.getElementById('preview-image');
+        const fileName = document.getElementById('file-name');
+    
+        if (file) {
+            previewContainer.classList.remove('hidden');
+            fileName.textContent = file.name;
+    
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewImage.classList.add('hidden');
+            }
+        } else {
+            previewContainer.classList.add('hidden');
+        }
+    });
+</script>
 {{-- <pre>
 {{ print_r($themes) }}   
 </pre> --}}

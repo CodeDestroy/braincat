@@ -906,7 +906,10 @@
     "Message view": "Просмотр сообщения",
     "Can ask questions": "Можно задавать вопросы",
     "Record": "Видеозапись",
-    "not_regex": "Поле :attribute имеет неверный формат."
+    "not_regex": "Поле :attribute имеет неверный формат.",
+    "phone": "Телефон",
+    "phone_number": "Номер телефона",
+    "snils": "СНИЛС"
     
 
 }

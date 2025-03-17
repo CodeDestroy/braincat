@@ -83,6 +83,9 @@ class User extends Authenticatable
     protected $allowedFilters = [
            'id'         => Where::class,
            'name'       => Like::class,
+           'secondName' => Like::class,  
+           'phone'      => Like::class,
+           'snils'      => Like::class,
            'email'      => Like::class,
            'updated_at' => WhereDateStartEnd::class,
            'created_at' => WhereDateStartEnd::class,
@@ -114,5 +117,9 @@ class User extends Authenticatable
         }
 
         return $query->orderBy('test_date', 'desc')->get();
+    }
+    public function documents()
+    {
+        return $this->hasMany(UserDocument::class, 'user_id', 'id');
     }
 }

@@ -8,6 +8,11 @@ use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\CheckBox;
 use Orchid\Screen\Layouts\Rows;
+use Orchid\Screen\TD;
+use Orchid\Screen\Actions\Link;
+
+/* use Orchid\Screen\Components\SimpleTable; */
+use Orchid\Support\Facades\Layout;
 
 class UserEditLayout extends Rows
 {
@@ -67,6 +72,17 @@ class UserEditLayout extends Rows
                 ->sendTrueOrFalse()
                 ->title(__('hasWhatsApp'))
                 ->placeholder(__('hasWhatsApp')),
+            /* Layout::table('documents', [
+                TD::make('documents.type', 'Тип документа'),
+                TD::make('documents.file', 'Файл')->render(fn($doc) => Link::make('Скачать')->href($doc->file)->target('_blank')),
+            ]), */
+            /* SimpleTable::make('documents')
+                ->columns([
+                    TD::make('type', 'Тип документа'),
+                    TD::make('file', 'Файл')->render(fn($doc) => Link::make('Скачать')->href($doc->file)->target('_blank')),
+                ])
+                ->title('Документы пользователя')
+                ->description('Загруженные пользователем документы'), */
         ];
     }
 }
