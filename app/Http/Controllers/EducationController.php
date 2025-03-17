@@ -380,6 +380,8 @@ class EducationController extends Controller
     {
 
         $content = $request->all();
+        if (!$content['text'])
+            $content['text'] = '';
         $newMessage = Message::create(['user_id' => $request->user()->id, 'theme_id' => $theme_id, 'text'=>$content['text'], 'isAnonymous' =>  $request->has('isAnonymous') ? 1 : 0]);
         $user = $request->user();
 
