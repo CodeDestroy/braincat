@@ -44,6 +44,8 @@ class UserListLayout extends Table
             TD::make('phone', __('phone'))
                 ->sort()
                 ->filter(Input::make()),
+            TD::make('birthday', __('birthday'))
+                ->sort(),
             TD::make('email', __('Email'))
                 ->sort()
                 ->cantHide()
