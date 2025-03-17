@@ -20,7 +20,7 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
-
+use App\Orchid\Layouts\User\UserDocumentsLayout;
 class UserEditScreen extends Screen
 {
     /**
@@ -40,6 +40,7 @@ class UserEditScreen extends Screen
         return [
             'user'       => $user,
             'permission' => $user->getStatusPermission(),
+            'documents'  => $user->documents, // Загружаем документы пользователя
         ];
     }
 
@@ -109,7 +110,7 @@ class UserEditScreen extends Screen
                         ->canSee($this->user->exists)
                         ->method('save')
                 ),
-
+            new UserDocumentsLayout(),
             Layout::block(UserPasswordLayout::class)
                 ->title(__('Password'))
                 ->description(__('Ensure your account is using a long, random password to stay secure.'))
