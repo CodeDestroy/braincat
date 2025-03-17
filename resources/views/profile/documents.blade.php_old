@@ -83,6 +83,7 @@
                 </form>
                 <script>
                     function updatePassportSeria(event) {
+                        console.log()
                         event.srcElement.style.display = 'none'
                         document.getElementById('passportSeriaInp').disabled = false; 
                         document.getElementById('passportSeriaInp').className = 'block w-full rounded-md border-0 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -138,6 +139,7 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.path) {
+                                    console.log(data)
                                     document.getElementById('passportPage2Img').src = data.path;
                                     document.getElementById('passportPage2Img').style.display = 'block';
                                 }
@@ -182,6 +184,7 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.path) {
+                                    console.log(data)
                                     document.getElementById('passportPage3Img').src = data.path;
                                     document.getElementById('passportPage3Img').style.display = 'block';
                                 }
@@ -226,6 +229,7 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.path) {
+                                    console.log(data)
                                     document.getElementById('passportPage5Img').src = data.path;
                                     document.getElementById('passportPage5Img').style.display = 'block';
                                 }
@@ -284,6 +288,7 @@
                 </form>
                 <script>
                     function updateSnils(event) {
+                        console.log()
                         event.srcElement.style.display = 'none'
                         document.getElementById('snilsInp').disabled = false; 
                         document.getElementById('snilsInp').className = 'block w-full rounded-md border-0 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -357,6 +362,7 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.path) {
+                                    console.log(data)
                                     document.getElementById('diplomPageImg').src = data.path;
                                     document.getElementById('diplomPageImg').style.display = 'block';
                                 }
@@ -401,6 +407,7 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.path) {
+                                    console.log(data)
                                     document.getElementById('diplomFirstPageImg').src = data.path;
                                     document.getElementById('diplomFirstPageImg').style.display = 'block';
                                 }
@@ -432,10 +439,10 @@
                 
                 <div class="space-y-6">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Вкладыш (сторона 2)</h2>
-                    @if ($userDiplomSupplementSecondPage )
+                    @if ($userDiplomSupplementSecondPage !== 1)
                     <div id="diplomSecondPageImageContainer" class="mt-4">
                         <label class="block text-sm font-medium text-gray-900">Загруженное изображение:</label>
-                        <img id="diplomSecondPageImg" src={{'/storage/' . $userDiplomSupplementSecondPage['file']}} alt="Вкладыш (сторона 2)" style="width: 50%" class="h-auto mt-2 rounded-lg" style="display: none;">
+                        <img id="diplomSecondPageImg" src="" alt="Вкладыш (сторона 2)" style="width: 50%" class="h-auto mt-2 rounded-lg" style="display: none;">
                     </div>
                     @endif
                     <script>
@@ -446,7 +453,7 @@
                                 if (data.path) {
                                     console.log(data)
                                     document.getElementById('diplomSecondPageImg').src = data.path;
-                                    document.getElementById('diplomSecondPageImageContainer').style.display = 'block';
+                                    document.getElementById('diplomSecondPageImg').style.display = 'block';
                                 }
                             })
                             .catch(error => {
@@ -489,13 +496,14 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.path) {
+                                    console.log(data)
                                     document.getElementById('diplomProfPerepodImg').src = data.path;
-                                    document.getElementById('diplomProfPerepodImageContainer').style.display = 'block';
+                                    document.getElementById('diplomProfPerepodImg').style.display = 'block';
                                 }
                             })
                             .catch(error => {
                                 console.error('Ошибка загрузки изображения:', error)
-                                document.getElementById('diplomProfPerepodImageContainer').style.display = 'none';
+                                document.getElementById('diplomSecondPageImageContainer').style.display = 'none';
                             });
                     </script>
                     <form action="{{ route('settings.general.uploadDiplomPrefPerepodScan') }}" method="POST" enctype="multipart/form-data" class="sm:col-span-full" onsubmit="this.submit();">
@@ -537,6 +545,7 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.path) {
+                                console.log(data)
                                 document.getElementById('studImg').src = data.path;
                                 document.getElementById('studImg').style.display = 'block';
                             }
