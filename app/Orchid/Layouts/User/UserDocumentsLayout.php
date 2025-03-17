@@ -27,8 +27,19 @@ class UserDocumentsLayout extends Table
 
                 return $isImage
                     ? "<img src='{$fileUrl}' alt='Документ' style='max-width: 150px; max-height: 150px; border-radius: 5px;'>"
-                    : Link::make('Скачать')->href($fileUrl)->target('_blank');
-            }), // Используем raw(), чтобы HTML работал
+                    : Link::make('Скачать')->href( $fileUrl)->target('_blank');
+            }), // Используем raw(), чтобы HTML работал корректно
+            TD::make('file', 'Документ')->render(function (UserDocument $doc) {
+                if (!$doc->file) {
+                    return 'Файл отсутствует';
+                }
+
+                $fileUrl = ('/storage/' . $doc->file);
+
+                // Проверяем, является ли файл изображением
+
+                return Link::make('Скачать')->href($fileUrl)->target('_blank');
+            }),
         ];
     }
 

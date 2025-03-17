@@ -68,6 +68,11 @@ class UserEditLayout extends Rows
                 ->max(255)
                 ->title(__('tgNickname'))
                 ->placeholder(__('tgNickname')),
+            Input::make('user.SNILS')
+                ->type('text')
+                ->max(255)
+                ->title(__('snils'))
+                ->placeholder(__('snils')),
             CheckBox::make('user.hasWhatsApp')
                 ->sendTrueOrFalse()
                 ->title(__('hasWhatsApp'))
