@@ -69,7 +69,7 @@ class UserDocumentController extends Controller
                 /* $sourcePath = storage_path("app/{$document->file}"); */
                 $sourcePath = ('/storage/' . $document->file);
                 $destinationPath = $userPath . DIRECTORY_SEPARATOR . $document->type;
-
+                return response()->json(['path' => $sourcePath]); 
                 if (file_exists($sourcePath)) {
                     copy($sourcePath, $destinationPath);
                 }
