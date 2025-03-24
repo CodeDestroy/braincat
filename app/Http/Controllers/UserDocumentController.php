@@ -57,16 +57,17 @@ class UserDocumentController extends Controller
 
         foreach ($users as $user) {
             // Формируем название папки: "Фамилия Имя ID"
-            $userFolder = "{$user->last_name} {$user->first_name} {$user->id}";
+            $userFolder = "{$user->secondName} {$user->name} {$user->id}";
             $userPath = $tempDir . DIRECTORY_SEPARATOR . $userFolder;
 
             if (!file_exists($userPath)) {
-                mkdir($userPath, 0777, true);
+                mkdir($userPath, 0777, recursive: true);
             }
 
             // Перебираем документы пользователя
             foreach ($user->documents as $document) {
-                $sourcePath = storage_path("app/{$document->file}");
+                /* $sourcePath = storage_path("app/{$document->file}"); */
+                $sourcePath = ('/storage/' . $document->file);
                 $destinationPath = $userPath . DIRECTORY_SEPARATOR . $document->type;
 
                 if (file_exists($sourcePath)) {
