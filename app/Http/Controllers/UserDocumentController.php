@@ -67,15 +67,12 @@ class UserDocumentController extends Controller
             // Перебираем документы пользователя
             foreach ($user->documents as $document) {
                 /* $sourcePath = storage_path("app/{$document->file}"); */
-                $sourcePath = ('/storage/' . $document->file);
+                $sourcePath = storage_path("storage/{$document->file}");
                 $destinationPath = $userPath . DIRECTORY_SEPARATOR . $document->type;
                 
                 if (file_exists($sourcePath)) {
                     copy($sourcePath, $destinationPath);
                     
-                }
-                else {
-                    return response()->json(['path' => $sourcePath]); 
                 }
             }
         }
