@@ -65,8 +65,8 @@ class UserDocumentController extends Controller
             }
 
             // Перебираем документы пользователя
-            foreach ($user->documents as $document) {
-                /* $sourcePath = storage_path("app/{$document->file}"); */
+            /* foreach ($user->documents as $document) {
+                
                 $sourcePath = storage_path("storage/{$document->file}");
                 $destinationPath = $userPath . DIRECTORY_SEPARATOR . $document->type;
                 
@@ -74,11 +74,37 @@ class UserDocumentController extends Controller
                     copy($sourcePath, $destinationPath);
                     
                 }
+            } */
+            foreach ($user->documents as $document) {
+                // Определяем оригинальное имя файла и его расширение
+                $fileInfo = pathinfo($document->file);
+                $extension = isset($fileInfo['extension']) ? '.' . $fileInfo['extension'] : '';
+                
+                // Полный путь к исходному файлу (реальное хранилище, а не публичный путь)
+                $sourcePath = storage_path("storage/{$document->file}");
+                
+                // Определяем папку пользователя: "Фамилия Имя ID"
+                $userFolder = "{$user->last_name} {$user->first_name} {$user->id}";
+                $userPath = $tempDir . DIRECTORY_SEPARATOR . $userFolder;
+            
+                // Создаём папку пользователя, если её нет
+                if (!file_exists($userPath)) {
+                    mkdir($userPath, 0777, true);
+                }
+            
+                // Итоговое имя файла с расширением
+                $destinationPath = $userPath . DIRECTORY_SEPARATOR . $document->type . $extension;
+            
+                // Копируем файл, если он существует
+                if (file_exists($sourcePath)) {
+                    copy($sourcePath, $destinationPath);
+                }
             }
+            
         }
 
         // Создаем ZIP-архив
-        $zipFile = '/storage/' .'user_documents.zip';
+        $zipFile = '/storage/storage/' .'user_documents.zip';
         $zip = new ZipArchive();
         
         if ($zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
