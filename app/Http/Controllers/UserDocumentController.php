@@ -44,7 +44,7 @@ class UserDocumentController extends Controller
             return response()->json(['message' => 'Документ не найден'], 404);
         } */
     }
-    public function download(): BinaryFileResponse
+    public function download()
     {
         // Директория для временных файлов
         $tempDir = storage_path('/storage/user_docs');
