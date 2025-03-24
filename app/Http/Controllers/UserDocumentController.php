@@ -77,7 +77,7 @@ class UserDocumentController extends Controller
         }
 
         // Создаем ZIP-архив
-        $zipFile = storage_path('app/user_documents.zip');
+        $zipFile = '/storage/' .'user_documents.zip';
         $zip = new ZipArchive();
         
         if ($zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
