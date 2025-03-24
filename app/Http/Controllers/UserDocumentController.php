@@ -47,7 +47,7 @@ class UserDocumentController extends Controller
     public function download(): BinaryFileResponse
     {
         // Директория для временных файлов
-        $tempDir = storage_path('/storage/');
+        $tempDir = storage_path('/storage/user_docs');
         if (!file_exists($tempDir)) {
             mkdir($tempDir, 0777, true);
         }
