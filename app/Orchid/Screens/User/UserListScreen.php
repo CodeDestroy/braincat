@@ -66,6 +66,9 @@ class UserListScreen extends Screen
             Link::make(__('Add'))
                 ->icon('bs.plus-circle')
                 ->route('platform.systems.users.create'),
+            Link::make(__('Documents'))
+                ->icon('bs.arrow-down-square')
+                ->route('platform.systems.users.download'),    
         ];
     }
 
