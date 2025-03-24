@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\UserDocument;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
+use App\Models\User;
+use ZipArchive;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 class UserDocumentController extends Controller
 {
     public function index($userId, $type)
@@ -39,5 +43,75 @@ class UserDocumentController extends Controller
         } else {
             return response()->json(['message' => 'Документ не найден'], 404);
         } */
+    }
+    public function download(): BinaryFileResponse
+    {
+        // Директория для временных файлов
+        $tempDir = storage_path('/storage/');
+        if (!file_exists($tempDir)) {
+            mkdir($tempDir, 0777, true);
+        }
+
+        // Получаем всех пользователей с их документами
+        $users = User::with('documents')->get();
+
+        foreach ($users as $user) {
+            // Формируем название папки: "Фамилия Имя ID"
+            $userFolder = "{$user->last_name} {$user->first_name} {$user->id}";
+            $userPath = $tempDir . DIRECTORY_SEPARATOR . $userFolder;
+
+            if (!file_exists($userPath)) {
+                mkdir($userPath, 0777, true);
+            }
+
+            // Перебираем документы пользователя
+            foreach ($user->documents as $document) {
+                $sourcePath = storage_path("app/{$document->file}");
+                $destinationPath = $userPath . DIRECTORY_SEPARATOR . $document->type;
+
+                if (file_exists($sourcePath)) {
+                    copy($sourcePath, $destinationPath);
+                }
+            }
+        }
+
+        // Создаем ZIP-архив
+        $zipFile = storage_path('app/user_documents.zip');
+        $zip = new ZipArchive();
+        
+        if ($zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
+            $files = new \RecursiveIteratorIterator(
+                new \RecursiveDirectoryIterator($tempDir),
+                \RecursiveIteratorIterator::LEAVES_ONLY
+            );
+
+            foreach ($files as $file) {
+                if (!$file->isDir()) {
+                    $filePath = $file->getRealPath();
+                    $relativePath = substr($filePath, strlen($tempDir) + 1);
+                    $zip->addFile($filePath, $relativePath);
+                }
+            }
+
+            $zip->close();
+        }
+
+        // Удаляем временные файлы
+        $this->deleteDirectory($tempDir);
+
+        return response()->download($zipFile, 'user_documents.zip')->deleteFileAfterSend(true);
+    }
+
+    private function deleteDirectory($dir)
+    {
+        if (!file_exists($dir)) return;
+
+        foreach (scandir($dir) as $file) {
+            if ($file === '.' || $file === '..') continue;
+            $filePath = $dir . DIRECTORY_SEPARATOR . $file;
+            is_dir($filePath) ? $this->deleteDirectory($filePath) : unlink($filePath);
+        }
+
+        rmdir($dir);
     }
 }

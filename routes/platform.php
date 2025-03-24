@@ -27,6 +27,7 @@ use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
+use App\Http\Controllers\UserDocumentController;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -72,6 +73,16 @@ Route::screen('users/create', UserEditScreen::class)
         ->parent('platform.systems.users')
         ->push(__('Create'), route('platform.systems.users.create')));
 
+// Platform > System > Users > Create
+/* Route::screen('users/documents', UserEditScreen::class)
+    ->name('platform.systems.users.documents')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.systems.users')
+        ->push(__('Documents'), route('platform.systems.users.documents'))); */
+
+Route::get('/users/download', [UserDocumentController::class, 'download'])
+    ->name('platform.systems.users.download');
+        
 // Platform > System > Users
 Route::screen('users', UserListScreen::class)
     ->name('platform.systems.users')
@@ -256,6 +267,8 @@ Route::screen('themes/create', ThemeEditScreen::class)
 ->breadcrumbs(fn (Trail $trail) => $trail
     ->parent('platform.courses.chapters.themes')
     ->push(__('Create'), route('platform.courses.chapters.themes.create')));
+
+    
 
     //platform.courses.themes.create
 
