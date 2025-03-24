@@ -53,8 +53,10 @@ class UserDocumentController extends Controller
         }
 
         // Получаем всех пользователей с их документами
-        $users = User::with('documents')->get();
-
+        /* $users = User::with('documents')->get(); */
+        $users = User::whereHas('payments', function ($query) {
+            $query->where('course_id', 1);
+        })->with('documents')->get();
         foreach ($users as $user) {
             // Формируем название папки: "Фамилия Имя ID"
             $userFolder = "{$user->secondName} {$user->name} {$user->id}";
