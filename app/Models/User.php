@@ -122,4 +122,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserDocument::class, 'user_id', 'id');
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'user_id', 'id');
+    }
 }
