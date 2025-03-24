@@ -84,7 +84,7 @@ class UserDocumentController extends Controller
                 $sourcePath = storage_path("storage/{$document->file}");
                 
                 // Определяем папку пользователя: "Фамилия Имя ID"
-                $userFolder = "{$user->last_name} {$user->first_name} {$user->id}";
+                $userFolder = "{$user->secondName} {$user->name} {$user->id}";
                 $userPath = $tempDir . DIRECTORY_SEPARATOR . $userFolder;
             
                 // Создаём папку пользователя, если её нет
@@ -104,7 +104,8 @@ class UserDocumentController extends Controller
         }
 
         // Создаем ZIP-архив
-        $zipFile = '/storage/storage/' .'user_documents.zip';
+        $zipFile = sys_get_temp_dir() . '/user_documents.zip';
+
         $zip = new ZipArchive();
         
         if ($zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
