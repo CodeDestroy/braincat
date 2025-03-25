@@ -38,7 +38,7 @@
     {
       name: 'Базовый',
       id: 'tier-base',
-      href: '/payment/tier-base/11',
+      href: '/payment/tier-base8/11',
       price: { 100: '1500' },
       description: 'Лекционно-практический вебинар',
       features: [
@@ -51,7 +51,7 @@
     {
       name: 'Льготный',
       id: 'tier-privilege',
-      href: '/payment/tier-students/11',
+      href: '/payment/tier-students8/11',
       price: { 100: '1000' },
       description: 'Лекционно-практический вебинар',
       features: [
@@ -63,7 +63,7 @@
     {
       name: 'Организации',
       id: 'tier-enterprise',
-      href: '/payment/tier-enterprise/11',
+      href: '/payment/tier-enterprise8/11',
       price: 'По запросу',
       description: 'Лекционно-практический вебинар',
       features: [
