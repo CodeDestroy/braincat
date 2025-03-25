@@ -89,6 +89,16 @@ const people = [
     href: '/turkenich_nakonechnaya_17042025' 
   },
   {
+    name: 'Оксана Юрьевна Сотникова',
+    title: 'аналитический психолог',
+    eventCaption: 'От искажённого мышления к ясности: формирование психологических защит в процессе терапии',
+    role: 'Вебинар. Онлайн',
+    eventDate: '24.05.2025',
+    imageUrl: 'img/sotnikova_list.jpg',
+    href: '/sotnikova_24052025' 
+  },
+  /*
+  {
     name: 'Светлана Васильевна Кочеткова',
     title: 'аналитический психолог, супервизор',
     eventCaption: 'Особенности работы с переносом и контрпереносом в психотерапии',
@@ -96,6 +106,6 @@ const people = [
     eventDate: '02.02.2025',
     imageUrl: 'img/kochetkova_list.jpg',
     href: 'https://psy4pro.ru/kochetkova' 
-  }
+  }*/
 ]
 </script>
