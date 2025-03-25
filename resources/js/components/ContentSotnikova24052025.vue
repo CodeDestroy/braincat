@@ -6,7 +6,7 @@
       <div class="mx-auto max-w-7xl mt-12  px-6 lg:px-8">
         <ul role="list" class="space-y-3">
           <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
-            <p>Психологический защитный механизм: пределение и раскрытие понятия</p>
+            <p>Психологический защитный механизм: определение и раскрытие понятия</p>
           </li>
           <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
             <p>Низшие (незрелые) защитные механизмы: определение понятия. Их влияние на развитие личности</p>
