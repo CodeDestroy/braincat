@@ -117,7 +117,7 @@
             </div>
 
         </div>
-        @else
+        @endif
     </form>
     @else
     <div class="bg-white p-4 bottom-0 " style="width: 100%; min-height: 56vh; display: flex; align-items: center;">
