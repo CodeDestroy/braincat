@@ -13,7 +13,7 @@
               <h1 class="mt-24 text-3xl font-bold tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">Современные направления арт-терапии: стратегии и ресурсы</h1>
               <p class="mt-6 text-lg leading-6 text-gray-600">доктор филологических наук Александра Артуровна Кудряшова</p>
               <div class="mt-10 flex items-center gap-x-6">
-                  <a href="#price-webinar" class="rounded-md bg-mona-lisa-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-mona-lisa-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mona-lisa-800">Записаться</a>
+                  <a href="#price-webinar" class="rounded-md bg-mona-lisa-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-mona-lisa-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mona-lisa-800">Запись вебинара</a>
                   <a href="#with-large-avatar" class="text-sm font-semibold leading-6 text-gray-900">Узнать больше...</a>
               </div>
           </div>
