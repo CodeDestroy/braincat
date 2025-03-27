@@ -29,7 +29,7 @@ const people = [
     name: 'Елена Ивановна Николаева',
     title: 'доктор биологических наук, профессор',
     eventCaption: 'Что такое созревание мозга и какие условия его обеспечивают',
-    role: 'Вебинар, Запись',
+    role: 'Видеозапись вебинара',
     eventDate: '19.01.2025',
     imageUrl: 'img/nikolaeva_list.jpg',
     href: 'https://psy4pro.ru/nikolaeva'
@@ -38,7 +38,7 @@ const people = [
     name: 'Александра Артуровна Кудряшова',
     title: 'доктор филологических наук',
     eventCaption: 'Современные направления арт-терапии: стратегии и ресурсы',
-    role: 'Вебинар, Запись',
+    role: 'Видеозапись вебинара',
     eventDate: '17.02.2025',
     imageUrl: 'img/kudryashova_list.jpg',
     href: '/kudryashova_17022025'
@@ -47,7 +47,7 @@ const people = [
     name: 'Александра Артуровна Кудряшова',
     title: 'доктор филологических наук',
     eventCaption: 'Арт-терапия в работе с детьми: направления, преимущества, специфика используемых методик',
-    role: 'Вебинар, Запись',
+    role: 'Видеозапись вебинара',
     eventDate: '25.02.2025',
     imageUrl: 'img/kudryashova_list.jpg',
     href: '/kudryashova_25022025'
@@ -56,7 +56,7 @@ const people = [
   name: 'Галина Анатольевна Третьякова',
     title: 'медицинский психолог',
     eventCaption: 'Детско-родительские отношения. Методы диагностики и коррекции',
-    role: 'Вебинар, Запись',
+    role: 'Видеозапись вебинара',
     eventDate: '02.03.2025',
     imageUrl: 'img/tretyakova_list.jpg',
     href: '/tretyakova_02032025'
