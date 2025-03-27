@@ -109,13 +109,15 @@
             <img id="preview-image" src="" class="w-12 h-12 rounded-md hidden">
             <span id="file-name" class="text-gray-700"></span>
         </div>
-        {{-- <div class="flex items-center space-x-6 pt-0 px-4">
+        @if (Auth::user()->hasAnyAccess(['platform.*'])) 
+        <div class="flex items-center space-x-6 pt-0 px-4">
             <div class="flex items-center mb-4">
                 <input type="checkbox" value="true" id='isAnonymous' name="isAnonymous" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 outline-none accent-purple-800 dark:bg-gray-700 dark:border-gray-600">
-                <label for="isAnonymous" class="ms-2 text-sm font-medium text-gray-900">{{ __('Анонимный вопрос') }}{{ __(' (в тексте сообщения укажите как с Вами связаться)') }}</label>
+                <label for="isAnonymous" class="ms-2 text-sm font-medium text-gray-900">{{ __('От преподавателя') }}{{ __(' (в тексте сообщения укажите как с Вами связаться)') }}</label>
             </div>
 
-        </div> --}}
+        </div>
+        @else
     </form>
     @else
     <div class="bg-white p-4 bottom-0 " style="width: 100%; min-height: 56vh; display: flex; align-items: center;">
