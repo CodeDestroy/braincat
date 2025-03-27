@@ -131,11 +131,11 @@ class PaymentController extends Controller
             else if ($course == 4)
                 return view('payments.kochetkova.basePay', compact(['freq', '5000']));
             else if ($course == 5)
-                return view('payments.kudryashova_17022025.basePay', compact(['freq', '1500']));
+                return view('payments.kudryashova_17022025.basePay', compact(['freq', '1000']));
             else if ($course == 6)
-                return view('payments.kudryashova_25022025.basePay', compact(['freq', '1500']));
+                return view('payments.kudryashova_25022025.basePay', compact(['freq', '1000']));
             else if ($course == 7)
-                return view('payments.tretyakova_02032025.basePay', compact(['freq', '1500']));
+                return view('payments.tretyakova_02032025.basePay', compact(['freq', '1000']));
             else if ($course == 8)
                 return view('payments.tretyakova_15032025.basePay', compact(['freq', '1500']));
             else if ($course == 10)
@@ -211,13 +211,13 @@ class PaymentController extends Controller
                     $actualPrice = 4000;
                     break;
                 case 5:
-                    $actualPrice = 1350;
+                    $actualPrice = 1000;
                     break;   
                 case 6:
-                    $actualPrice = 1350;
+                    $actualPrice = 1000;
                     break; 
                 case 7:
-                    $actualPrice = 1350;
+                    $actualPrice = 1000;
                     break; 
                 case 8:
                     $actualPrice = 4500;

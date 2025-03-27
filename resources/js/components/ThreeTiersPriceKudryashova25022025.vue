@@ -39,7 +39,7 @@
       name: 'Базовый',
       id: 'tier-base',
       href: '/payment/tier-base5/6',
-      price: { 100: '1500' },
+      price: { 100: '1000' },
       description: 'Вебинар',
       features: [
         'психологи',
@@ -55,7 +55,7 @@
       name: 'Льготный',
       id: 'tier-privilege',
       href: '/payment/tier-students5/6',
-      price: { 100: '1350' },
+      price: { 100: '1000' },
       description: 'Вебинар',
       features: [
         'студенты профильных высших учебных заведений различных форм собственности очной формы обучения'
