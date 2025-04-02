@@ -70,7 +70,7 @@
     const payload = {
       aud: props.room.room_name,
       iss: "b3265ae35a1b34d1a360738caf8d0f963ee29fb09c0f52f079345c7cc24579d3",
-      sub: "mczr-tmk.ru",
+      sub: "clinicode.online",
       room: props.room.room_name,
       nbf: now - 36000,
       exp: now + 72000,
