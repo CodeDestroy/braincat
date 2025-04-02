@@ -2,7 +2,7 @@
     <JitsiMeeting
       v-if="jwtToken"
       :jwt="jwtToken"
-      :domain="'mczr-tmk.ru'"
+      :domain="'clinicode.online'"
       :room-name="props.room.room_name"
       lang="ru"
       :width="'100%'"
