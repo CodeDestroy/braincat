@@ -52,7 +52,7 @@
     SHOW_WATERMARK_FOR_GUESTS: false,
     SHOW_CHROME_EXTENSION_BANNER: false,
     TOOLBAR_BUTTONS: [
-      'microphone', 'camera', 'desktop', 'fullscreen', 'settings',
+      'microphone', 'camera', 'desktop', 'fullscreen', 'settings', 'whiteboard',
       'fodeviceselection', 'recording', 'hangup', 'chat', 'sharedvideo', 'shareaudio', 'toggle-camera', 'embedmeeting',
       'videoquality', 'filmstrip', 
       'tileview', 'videobackgroundblur', 'download', 'participants-pane', 'pip', 'speakerstats',
