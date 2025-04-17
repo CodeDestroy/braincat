@@ -21,7 +21,7 @@
                 <p>Включение родителей в процесс психокоррекции детей</p>
             </li>
             <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-salt-700 text-xl font-bold">
-                <p>Часть 2: 14.04.2025 (четверг) 19:00 - 21:15</p>
+                <p>Часть 2: 24.04.2025 (четверг) 19:00 - 21:15</p>
             </li>
             <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
                 <p>Комплекс нейропсихологических методик и техник, направленных на развитие неполноценно функционирующих двигательных и когнитивных  функций - нейрокоррекционные упражнения 

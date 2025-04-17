@@ -5,7 +5,7 @@
           <p class="mt-2 text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-5xl">Стоимость вебинара</p>
         </div>
         <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">17 апреля 2025 года (четверг)</p>
-        <p class="mx-auto max-w-2xl text-center text-lg leading-8 text-gray-600">25 апреля 2025 года (четверг)</p>
+        <p class="mx-auto max-w-2xl text-center text-lg leading-8 text-gray-600">24 апреля 2025 года (четверг)</p>
         <div class="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <div v-for="tier in tiers" :key="tier.id" :class="[tier.featured ? 'bg-green-950 ring-green-950' : 'ring-gray-200', 'rounded-3xl p-8 ring-1 xl:p-10']">
             <h3 :id="tier.id" :class="[tier.featured ? 'text-white' : 'text-gray-900', 'text-lg font-semibold leading-8']">{{ tier.name }}</h3>
