@@ -13,7 +13,7 @@
               <h1 class="mt-24 text-3xl font-bold tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">Методы психологической диагностики в клинике детской психиатрии и неврологии</h1>
               <p class="mt-6 text-lg leading-6 text-gray-600">медицинский психолог Галина Анатольевна Третьякова</p>
               <div class="mt-10 flex items-center gap-x-6">
-                  <a href="#price-webinar" class="rounded-md bg-mona-lisa-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-mona-lisa-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mona-lisa-800">Записаться</a>
+                  <a href="#price-webinar" class="rounded-md bg-mona-lisa-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-mona-lisa-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mona-lisa-800">Приобрести запись</a>
                   <a href="#with-large-avatar" class="text-sm font-semibold leading-6 text-gray-900">Узнать больше...</a>
               </div>
           </div>
@@ -29,10 +29,10 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
             <h2 class="text-3xl font-bold tracking-tight text-mona-lisa-700 sm:text-4xl">Двухдневный вебинар </h2>
-            <p class="mt-1 text-lg leading-8 text-gray-600">15 марта 2025 года с 19-00 до 21-40</p>
-            <p class="mt-1 text-lg leading-8 text-gray-600">16 марта 2025 года с 10-00 до 12-40</p>
+            <p class="mt-1 text-lg leading-8 text-gray-600"><strong>Состоялся.</strong></p>
+            {{-- <p class="mt-1 text-lg leading-8 text-gray-600">16 марта 2025 года с 10-00 до 12-40</p>
             <p class="mt-0 text-lg leading-8 text-gray-600"><strong>7 академических часов</strong></p>
-            <p class="mt-0 text-lg leading-8 text-gray-600">лекция, практикум, ответы на вопросы</p>
+            <p class="mt-0 text-lg leading-8 text-gray-600">лекция, практикум, ответы на вопросы</p> --}}
         </div>
         <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
@@ -74,7 +74,10 @@
                       Результат
                   </dt>
                   <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                      <p class="flex-auto">Участники смогут систематизировать имеющиеся медицинские и психолого-педагогические представления о развитии ребенка с 0 до 18 лет, познакомиться с клиническим методом при выявлении различных форм нарушений развития, сформировать базовые навыки составления диагностического заключения. Все слушатели получат именные электронные сертификаты.</p>
+                      <p class="flex-auto">Участники смогут систематизировать имеющиеся медицинские и психолого-педагогические представления о развитии ребенка с 0 до 18 лет, 
+                        познакомиться с клиническим методом при выявлении различных форм нарушений развития, сформировать базовые навыки составления диагностического заключения. 
+                        Именные сертификаты предоставляются только онлайн участникам вебинара, либо тем, кто произвел полную оплату мероприятия, но не смог на нем присутствовать.  
+                        В случае приобретения записи вебинара после его проведения ( с дисконтом)  - сертификаты не предоставляются!</p>
                   </dd>
                 </div>
             </dl>

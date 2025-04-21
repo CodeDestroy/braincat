@@ -137,7 +137,7 @@ class PaymentController extends Controller
             else if ($course == 7)
                 return view('payments.tretyakova_02032025.basePay', compact(['freq', '1000']));
             else if ($course == 8)
-                return view('payments.tretyakova_15032025.basePay', compact(['freq', '1500']));
+                return view('payments.tretyakova_15032025.basePay', compact(['freq', '2000']));
             else if ($course == 10)
                 return view('payments.turkenich_nakonechnaya_17042025.basePay', compact(['freq', '4000']));
             else if ($course == 11)
@@ -220,7 +220,7 @@ class PaymentController extends Controller
                     $actualPrice = 1000;
                     break; 
                 case 8:
-                    $actualPrice = 4500;
+                    $actualPrice = 2000;
                     break; 
                 case 10:
                     $actualPrice = 3600;
@@ -379,7 +379,7 @@ class PaymentController extends Controller
                     /* else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/1500'); */
                 case 'tier-base6':    
-                    return redirect('/payment/base/' . $course . '/' . $freq . '/5000');
+                    return redirect('/payment/base/' . $course . '/' . $freq . '/2000');
                 case 'tier-students6':
                     if ( $courseRegistration->isStudent)
                         return redirect('/payment/students/' . $course . '/' . $freq . '/4500');

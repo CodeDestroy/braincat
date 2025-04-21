@@ -40,7 +40,7 @@
       name: 'Базовый',
       id: 'tier-base',
       href: '/payment/tier-base6/8',
-      price: { 100: '5000' },
+      price: { 100: '2000' },
       description: 'Лекционно-практический вебинар',
       features: [
         'психологи',
@@ -57,8 +57,8 @@
     {
       name: 'Льготный',
       id: 'tier-privilege',
-      href: '/payment/tier-students6/8',
-      price: { 100: '4500' },
+      href: '/payment/tier-base6/8',
+      price: { 100: '2000' },
       description: 'Лекционно-практический вебинар',
       features: [
         'студенты профильных высших учебных заведений различных форм собственности очной формы обучения'
@@ -69,8 +69,8 @@
     {
       name: 'Организации',
       id: 'tier-enterprise',
-      href: '/payment/tier-enterprise6/8',
-      price: 'По запросу',
+      href: '/payment/tier-base6/8',
+      price: { 100: '2000' },
       description: 'Лекционно-практический вебинар',
       features: [
         'психологи',
@@ -83,7 +83,7 @@
         'студенты профильных высших учебных заведений различных форм собственности очной формы обучения'
       ],
       featured: true,
-      cta: 'Узнать',
+      cta: 'Оплатить',
     },
   ]
   
