@@ -25,6 +25,24 @@
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/20/solid'
 
 const people = [
+{
+    name: 'Оксана Юрьевна Сотникова',
+    title: 'аналитический психолог',
+    eventCaption: 'От искажённого мышления к ясности: формирование психологических защит в процессе терапии',
+    role: 'Вебинар. Онлайн',
+    eventDate: '24.05.2025',
+    imageUrl: 'img/sotnikova_list.jpg',
+    href: '/sotnikova_24052025' 
+  },
+  {
+    name: 'Лисавенко Марина Евгеньевна',
+    title: 'аналитический психолог',
+    eventCaption: 'Три чемодана, или путешествие длиною в жизнь: авторская диагностико-ресурсная техника',
+    role: 'Вебинар. Онлайн',
+    eventDate: '26.05.2025',
+    imageUrl: 'img/lisavenko_list.jpg',
+    href: '/lisavenko_26052025' 
+  },
   {
     name: 'Елена Ивановна Николаева',
     title: 'доктор биологических наук, профессор',
@@ -70,6 +88,7 @@ const people = [
     imageUrl: 'img/tretyakova_list.jpg',
     href: '/tretyakova_15032025'
   },
+  /*
   {
     name: 'Сергей Александрович Курбатов',
     title: 'кандидат медицинских наук, врач',
@@ -79,6 +98,7 @@ const people = [
     imageUrl: 'img/kurbatov_list.jpg',
     href: '/kurbatov'
   },
+  */
   {
     name: 'Елена Туркенич и Наталия Наконечная',
     title: 'психологи, специалисты по детско-родительским отношениям',
@@ -87,15 +107,6 @@ const people = [
     eventDate: '17.04.2025, 24.04.2025',
     imageUrl: 'img/turkenich_nakonechnaya_list.jpg',
     href: '/turkenich_nakonechnaya_17042025' 
-  },
-  {
-    name: 'Оксана Юрьевна Сотникова',
-    title: 'аналитический психолог',
-    eventCaption: 'От искажённого мышления к ясности: формирование психологических защит в процессе терапии',
-    role: 'Вебинар. Онлайн',
-    eventDate: '24.05.2025',
-    imageUrl: 'img/sotnikova_list.jpg',
-    href: '/sotnikova_24052025' 
   },
   /*
   {
