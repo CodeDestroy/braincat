@@ -110,4 +110,9 @@ class HomeController extends Controller
     {
         return view('turkenich_nakonechnaya_17042025');
     }
+
+    public function lisavenko_26052025()
+    {
+        return view('lisavenko_26052025');
+    }
 }

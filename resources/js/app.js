@@ -45,6 +45,7 @@ import ThreeTiersPriceTretyakova02032025 from './components/ThreeTiersPriceTrety
 import ThreeTiersPriceTretyakova15032025 from './components/ThreeTiersPriceTretyakova15032025.vue';
 import ThreeTiersPriceTurkenich17042025 from './components/ThreeTiersPriceTurkenich17042025.vue';
 import ThreeTiersPriceSotnikova24052025 from './components/ThreeTiersPriceSotnikova24052025.vue';
+import ThreeTiersPriceLisavenko26052025 from './components/ThreeTiersPriceLisavenko26052025.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
 import CalendarPlan from './components/CalendarPlan.vue';
@@ -64,6 +65,7 @@ import WithLargeAvatarKudryashova from './components/WithLargeAvatarKudryashova.
 import WithLargeAvatarTretyakova from './components/WithLargeAvatarTretyakova.vue';
 import WithLargeAvatarTurkenich from './components/WithLargeAvatarTurkenich.vue';
 import WithLargeAvatarSotnikova from './components/WithLargeAvatarSotnikova.vue';
+import WithLargeAvatarLisavenko from './components/WithLargeAvatarLisavenko.vue';
 import SideBySideGrid from './components/SidebySideGrid.vue';
 import Hero from './components/Hero.vue';
 import GridList from './components/GridList.vue';
@@ -72,6 +74,7 @@ import ContentTretyakova15032025 from './components/ContentTretyakova15032025.vu
 import ContentTretyakova02032025 from './components/ContentTretyakova02032025.vue';
 import ContentTurkenich17042025 from './components/ContentTurkenich17042025.vue';
 import ContentSotnikova24052025 from './components/ContentSotnikova24052025.vue';
+import ContentLisavenko26052025 from './components/ContentLisavenko26052025.vue';
 
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
@@ -103,6 +106,10 @@ createApp({})
 
 createApp({})
 .component('ThreeTiersPriceSotnikova24052025', ThreeTiersPriceSotnikova24052025)
+.mount('#price-webinar')
+
+createApp({})
+.component('ThreeTiersPriceLisavenko26052025', ThreeTiersPriceLisavenko26052025)
 .mount('#price-webinar')
 
 createApp({})
@@ -175,6 +182,10 @@ createApp({})
 .mount('#with-large-avatar')
 
 createApp({})
+.component('WithLargeAvatarLisavenko', WithLargeAvatarLisavenko)
+.mount('#with-large-avatar')
+
+createApp({})
 .component('SideBySideGrid', SideBySideGrid)
 .mount('#contacts')
 
@@ -204,6 +215,10 @@ createApp({})
 
 createApp({})
 .component('ContentSotnikova24052025', ContentSotnikova24052025)
+.mount('#content')
+
+createApp({})
+.component('ContentLisavenko26052025', ContentLisavenko26052025)
 .mount('#content')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
