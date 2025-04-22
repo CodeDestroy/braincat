@@ -6,9 +6,9 @@
     @if ($freq == 100)
         <div class="flex justify-center items-center bg-gray-100" style="height: 80vh">
             <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Вебинар  <br> 24.05.2025 11-00 - 13-00</h2>
-                <p class="text-xl font-semibold text-gray-700 text-center mb-4">аналитический психолог Оксана Юрьевна Сотникова</p>
-                <p class="text-md font-semibold text-gray-700 text-center mb-4">"От искажённого мышления к ясности: формирование психологических защит в процессе терапии"</p>
+                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Вебинар  <br> 26.05.2025 19-00 - 21-15</h2>
+                <p class="text-xl font-semibold text-gray-700 text-center mb-4">педагог, психолог Марина Евгеньевна Лисавенко</p>
+                <p class="text-md font-semibold text-gray-700 text-center mb-4">"Три чемодана или путешествие длиною в жизнь: авторская диагностико-ресурсная техника"</p>
                 
                 <!-- Plan and Price -->
                 <div class="p-4 rounded-lg mb-6 text-center">
@@ -19,7 +19,7 @@
         
                 <!-- Robokassa Payment Button -->
                 <div class="text-center flex justify-center">
-                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=ZGYQPLCWuU2dwsZxHxa2-w"></script>
+                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=Tg8I4MdJiU211JDG-pjIdA"></script>
                 </div>
                 
                 <!-- Back Button -->
