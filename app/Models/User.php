@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\HasRolesAndPermissions;
 use Illuminate\Support\Facades\DB;
-
-class User extends Authenticatable
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasRolesAndPermissions;
     /**

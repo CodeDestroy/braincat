@@ -175,13 +175,13 @@ Route::controller(App\Http\Controllers\PaymentController::class)->group(function
 
 
 //Подтверждение почты
-Route::get('/email/verify', function (Request $request) {
+/* Route::get('/email/verify', function (Request $request) {
     return redirect()->route('settings.general');
-})->middleware('auth')->name('verification.notice');
-Route::get('/email/verifyNew', function (Request $request) {
+})->middleware('auth')->name('verification.notice'); */
+Route::get('/email/verify', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return view('auth.verify');
-})->middleware('auth')->name('verification.noticeNew');
+})->middleware('auth')->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
@@ -223,7 +223,7 @@ Route::controller(App\Http\Controllers\UserDocumentController::class)->group(fun
 
 //Роуты для профиля
 Route::controller(App\Http\Controllers\ProfileController::class)->group(function () {
-    Route::get('/settings', 'index')->name('settings.general')->middleware(['auth', 'verified']);
+    Route::get('/settings', 'index')->name('settings.general')->middleware(['auth']);
     Route::get('/settings/security', 'security')->name('settings.security')->middleware(['auth', 'verified']);
     Route::get('/settings/documents', 'documents')->name('settings.documents')->middleware(['auth', 'verified']);
     

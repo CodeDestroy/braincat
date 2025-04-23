@@ -40,7 +40,7 @@
       id: 'tier-base',
       href: '/payment/tier-base10/13',
       price: { 100: '1000' },
-      description: 'Лекционно-практический вебинар',
+      description: 'Вебинар',
       features: [
         'владельцы медицинских организаций',
         'руководители',
