@@ -46,6 +46,8 @@ class PaymentController extends Controller
                     return view('payments.sotnikova_24052025.enterprisePay', compact(['freq', 'sum']));
                 else if ($course == 12)
                     return view('payments.lisavenko_26052025.enterprisePay', compact(['freq', 'sum']));
+                else if ($course == 13)
+                    return view('payments.norova_24042025.enterprisePay', compact(['freq', 'sum']));
                 else
                     return view('payments.enterprisePay', compact(['freq', 'sum']));
             //}
@@ -84,6 +86,8 @@ class PaymentController extends Controller
                     return view('payments.sotnikova_24052025.privilegePay', compact(['freq', 'sum']));
                 if ($course == 12)
                     return view('payments.lisavenko_26052025.privilegePay', compact(['freq', 'sum']));
+                if ($course == 13)
+                    return view('payments.norova_24042025.privilegePay', compact(['freq', 'sum']));
                     
                 return view('payments.privilegePay', compact(['freq', 'sum']));
             //}
@@ -109,6 +113,8 @@ class PaymentController extends Controller
             return view('payments.sotnikova_24052025.basePay', compact(['freq', 'sum']));
         else if ($course == 12)
             return view('payments.lisavenko_26052025.basePay', compact(['freq', 'sum']));
+        else if ($course == 13)
+            return view('payments.norova_24042025.basePay', compact(['freq', 'sum']));
             
         return view('payments.basePay', compact(['freq', 'sum']));
 
@@ -133,24 +139,12 @@ class PaymentController extends Controller
                 return view('payments.tretyakova_15032025.student', compact(['freq', 'sum']));
             else if ($course == 10)
                 return view('payments.turkenich_nakonechnaya_17042025.student', compact(['freq', 'sum']));
-            else if ($course == 3) 
-                return view('payments.nikolaeva.basePay', compact(['freq', '3000']));
-            else if ($course == 4)
-                return view('payments.kochetkova.basePay', compact(['freq', '5000']));
-            else if ($course == 5)
-                return view('payments.kudryashova_17022025.basePay', compact(['freq', '1000']));
-            else if ($course == 6)
-                return view('payments.kudryashova_25022025.basePay', compact(['freq', '1000']));
-            else if ($course == 7)
-                return view('payments.tretyakova_02032025.basePay', compact(['freq', '1000']));
-            else if ($course == 8)
-                return view('payments.tretyakova_15032025.basePay', compact(['freq', '2000']));
-            else if ($course == 10)
-                return view('payments.turkenich_nakonechnaya_17042025.basePay', compact(['freq', '4000']));
             else if ($course == 11)
                 return view('payments.sotnikova_24052025.student', compact(['freq', 'sum']));
             else if ($course == 12)
                 return view('payments.lisavenko_26052025.student', compact(['freq', 'sum']));
+            else if ($course == 13)
+                return view('payments.norova_24042025.student', compact(['freq', 'sum']));
                 
     }
 
@@ -241,6 +235,9 @@ class PaymentController extends Controller
                 case 12:
                     $actualPrice = 1000;
                     break;
+                case 13:
+                    $actualPrice = 800;
+                    break;
 
             }
             
@@ -271,6 +268,9 @@ class PaymentController extends Controller
                 }     
                 if ($courseRegistration->course_id == 12) {
                     return view('payments.lisavenko_26052025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
+                }   
+                if ($courseRegistration->course_id == 13) {
+                    return view('payments.norova_24042025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
                 }
             }
             switch ($tier) {
@@ -429,6 +429,15 @@ class PaymentController extends Controller
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/1500');
                 case 'tier-enterprise9':
+                    return redirect('/contacts');   
+                case 'tier-base10':    
+                    return redirect('/payment/base/' . $course . '/' . $freq . '/1000');
+                case 'tier-students10':
+                    if ( $courseRegistration->isStudent)
+                        return redirect('/payment/students/' . $course . '/' . $freq . '/800');
+                    else
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/1000');
+                case 'tier-enterprise10':
                     return redirect('/contacts');   
             }
             
