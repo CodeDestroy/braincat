@@ -7,11 +7,11 @@
           <div class="mx-auto max-w-2xl lg:mx-0">
               <div class="hidden sm:mt-32 sm:flex lg:mt-16">
                   <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                      Вебинар <strong class="text-mona-lisa-600">для специалистов</strong> 
+                      Вебинар <strong class="text-mona-lisa-600">для руководителей</strong> 
                   </div>
               </div>
-              <h1 class="mt-24 text-3xl font-bold tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">От искажённого мышления к ясности: формирование психологических защит в процессе терапии</h1>
-              <p class="mt-6 text-lg leading-6 text-gray-600">аналитический психолог Оксана Юрьевна Сотникова</p>
+              <h1 class="mt-24 text-3xl font-bold tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">Организация внутреннего контроля для руководителей частных медицинских организаций</h1>
+              <p class="mt-6 text-lg leading-6 text-gray-600">врач, руководитель Анна Аркадьевна Норова</p>
               <div class="mt-10 flex items-center gap-x-6">
                   <a href="#price-webinar" class="rounded-md bg-mona-lisa-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-mona-lisa-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mona-lisa-800">Записаться</a>
                   <a href="#with-large-avatar" class="text-sm font-semibold leading-6 text-gray-900">Узнать больше...</a>
@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
-            <img class="aspect-[3/2] w-full bg-gray-50 object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full" src="{{ asset('img/hero_sotnikova_24052025.jpg') }}" alt="">
+            <img class="aspect-[3/2] w-full bg-gray-50 object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full" src="{{ asset('img/hero_norova_24042025.jpg') }}" alt="">
         </div>
     </div>
 </div>
@@ -29,9 +29,9 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
             <h2 class="text-3xl font-bold tracking-tight text-mona-lisa-700 sm:text-4xl">Вебинар</h2>
-            <p class="mt-1 text-lg leading-8 text-gray-600">24 мая 2025 года с 11-00 до 13-40</p>
-            <p class="mt-0 text-lg leading-8 text-gray-600"><strong>3 академических часа</strong></p>
-            <p class="mt-0 text-lg leading-8 text-gray-600">лекция, практикум, ответы на вопросы</p>
+            <p class="mt-1 text-lg leading-8 text-gray-600">24 апреля 2025 года с 15-00 до 16-30</p>
+            <p class="mt-0 text-lg leading-8 text-gray-600"><strong>2 академических часа</strong></p>
+            <p class="mt-0 text-lg leading-8 text-gray-600">лекция, ответы на вопросы</p>
         </div>
         <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
@@ -45,7 +45,7 @@
                         Актуальность
                     </dt>
                     <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                        <p class="flex-auto">Многие люди застревают в своём психологическом развитии, не осознавая влияния защит низшего порядка. Задача психолога помочь созреванию личности путём осознания бессознательных механизмов для перехода на более высокий уровень функционирования.
+                        <p class="flex-auto">Разбираемся в объективных измеримых показателях оценки качества и безопасности медицинской помощи в частных медицинских организациях
                         </p>
                     </dd>
                 </div>
@@ -59,7 +59,7 @@
                       Аудитория
                   </dt>
                   <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                      <p class="flex-auto">Психологи, использующие различные подходы в терапии. Студенты профильных высших учебных заведений.</p>
+                      <p class="flex-auto">Руководители медицинских организаций: директоры, заместители директоров, главные врачи, заместители главных врачей, заведующие отделениями, сотрудники, ответственные за организацию и проведение внутреннего контроля и стратегическое развитие организации</p>
                   </dd>
                 </div>
                 <div class="flex flex-col">
@@ -73,7 +73,7 @@
                       Результат
                   </dt>
                   <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                      <p class="flex-auto">Будут изучены механизмы отрицания, всемогущего контроля и расщепления, в том числе их влияние на личность с точки зрения взросления и опасности развития патологий. Специалисты получат инструменты для выявления таких незрелых защит и выработки зрелых. Все участники вебинара получат именные электронные сертификаты.</p>
+                      <p class="flex-auto">Слушатели получат информацию о показателях соответствия и эффективности деятельности медицинских организаций, методах мониторинга и анализа этих показателей, мероприятиях, проводимых в рамках осуществления внутреннего контроля. Все участники вебинара получат именные электронные сертификаты.</p>
                   </dd>
                 </div>
             </dl>
@@ -82,15 +82,15 @@
 </div>
 
 <div id="price-webinar">
-    <three-tiers-price-sotnikova-24052025/>
+    <three-tiers-price-norova-24042025/>
 </div>
 
 <div id="with-large-avatar">
-    <with-large-avatar-sotnikova/>
+    <with-large-avatar-norova/>
 </div>
 
 <div id="content">
-    <content-sotnikova-24052025/>
+    <content-norova-24042025/>
 </div>
 
 @endsection
