@@ -182,7 +182,10 @@ Route::get('/email/verify', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
-
+Route::get('/email/verifyNew', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return view('auth.verify');
+})->middleware('auth')->name('verification.verifyNew');
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/');

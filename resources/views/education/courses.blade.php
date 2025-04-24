@@ -25,10 +25,12 @@
                                     <div class="flex items-center gap-x-4 text-xs">
                                         {{-- <img src="{{$course['image']}}"> --}}
                                         @php
-                                            $date = $course['start_date']; // Ваша дата
-                                            $formattedDate = ucfirst(\Carbon\Carbon::parse($date)->translatedFormat('d F Y'));
-                                        @endphp
-                                        <time datetime="2020-03-16" class="text-gray-500">{{$formattedDate}}</time>
+                                        $date = $course['start_date']; // Дата
+                                        $time = $course['start_time']; // Время
+                                        $datetime = \Carbon\Carbon::parse("$date $time");
+                                        $formattedDateTime = ucfirst($datetime->translatedFormat('d F Y H:i'));
+                                    @endphp
+                                    <time datetime="{{ $datetime->toIso8601String() }}" class="text-gray-500">{{ $formattedDateTime }}</time>
                                         {{-- <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Психология</a> --}}
                                     </div>
                                     <div class="group relative max-w-xl">
@@ -75,13 +77,14 @@
                         </div>
                         <div>
                             <div class="flex items-center gap-x-4 text-xs">
-                                {{-- <img src="{{$course['image']}}"> --}}
+                                
                                 @php
-                                    $date = $course['start_date']; // Ваша дата
-                                    $formattedDate = ucfirst(\Carbon\Carbon::parse($date)->translatedFormat('d F Y'));
+                                    $date = $course['start_date']; // Дата
+                                    $time = $course['start_time']; // Время
+                                    $datetime = \Carbon\Carbon::parse("$date $time");
+                                    $formattedDateTime = ucfirst($datetime->translatedFormat('d F Y H:i'));
                                 @endphp
-                                <time datetime="2020-03-16" class="text-gray-500">{{$formattedDate}}</time>
-                                {{-- <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Психология</a> --}}
+                                <time datetime="{{ $datetime->toIso8601String() }}" class="text-gray-500">{{$formattedDateTime}}</time>
                             </div>
                             <div class="group relative max-w-xl">
                                 <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
