@@ -77,14 +77,11 @@
                         </div>
                         <div>
                             <div class="flex items-center gap-x-4 text-xs">
-                                
                                 @php
-                                    $date = $course['start_date']; // Дата
-                                    $time = $course['start_time']; // Время
-                                    $datetime = \Carbon\Carbon::parse("$date $time");
-                                    $formattedDateTime = ucfirst($datetime->translatedFormat('d F Y H:i'));
+                                    $date = $course['start_date']; // Ваша дата
+                                    $formattedDate = ucfirst(\Carbon\Carbon::parse($date)->translatedFormat('d F Y'));
                                 @endphp
-                                <time datetime="{{ $datetime->toIso8601String() }}" class="text-gray-500">{{$formattedDateTime}}</time>
+                                <time datetime="2020-03-16" class="text-gray-500">{{$formattedDate}}</time>
                             </div>
                             <div class="group relative max-w-xl">
                                 <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
