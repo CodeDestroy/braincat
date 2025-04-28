@@ -33,6 +33,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::get('/kudryashova_25022025', 'kudryashova_25022025')->name('kudryashova_25022025');
     Route::get('/tretyakova_02032025', 'tretyakova_02032025')->name('tretyakova_02032025');
     Route::get('/tretyakova_15032025', 'tretyakova_15032025')->name('tretyakova_15032025');
+    Route::get('/tretyakova_17052025', 'tretyakova_17052025')->name('tretyakova_17052025');
     Route::get('/sotnikova_24052025', 'sotnikova_24052025')->name('sotnikova_24052025');
     Route::get('/lisavenko_26052025', 'lisavenko_26052025')->name('lisavenko_26052025');
     Route::get('/norova_24042025', 'norova_24042025')->name('norova_24042025');

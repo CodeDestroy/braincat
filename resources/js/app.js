@@ -43,6 +43,7 @@ import ThreeTiersPriceKudryashova from './components/ThreeTiersPriceKudryashova.
 import ThreeTiersPriceKudryashova25022025 from './components/ThreeTiersPriceKudryashova25022025.vue';
 import ThreeTiersPriceTretyakova02032025 from './components/ThreeTiersPriceTretyakova02032025.vue';
 import ThreeTiersPriceTretyakova15032025 from './components/ThreeTiersPriceTretyakova15032025.vue';
+import ThreeTiersPriceTretyakova17052025 from './components/ThreeTiersPriceTretyakova17052025.vue';
 import ThreeTiersPriceTurkenich17042025 from './components/ThreeTiersPriceTurkenich17042025.vue';
 import ThreeTiersPriceSotnikova24052025 from './components/ThreeTiersPriceSotnikova24052025.vue';
 import ThreeTiersPriceLisavenko26052025 from './components/ThreeTiersPriceLisavenko26052025.vue';
@@ -74,6 +75,7 @@ import GridList from './components/GridList.vue';
 import Cards from './components/Cards.vue';
 import ContentTretyakova15032025 from './components/ContentTretyakova15032025.vue';
 import ContentTretyakova02032025 from './components/ContentTretyakova02032025.vue';
+import ContentTretyakova17052025 from './components/ContentTretyakova17052025.vue';
 import ContentTurkenich17042025 from './components/ContentTurkenich17042025.vue';
 import ContentSotnikova24052025 from './components/ContentSotnikova24052025.vue';
 import ContentLisavenko26052025 from './components/ContentLisavenko26052025.vue';
@@ -101,6 +103,10 @@ createApp({})
 
 createApp({})
 .component('ThreeTiersPriceTretyakova15032025', ThreeTiersPriceTretyakova15032025)
+.mount('#price-webinar')
+
+createApp({})
+.component('ThreeTiersPriceTretyakova17052025', ThreeTiersPriceTretyakova17052025)
 .mount('#price-webinar')
 
 createApp({})
@@ -218,6 +224,10 @@ createApp({})
 
 createApp({})
 .component('ContentTretyakova02032025', ContentTretyakova02032025)
+.mount('#content')
+
+createApp({})
+.component('ContentTretyakova17052025', ContentTretyakova17052025)
 .mount('#content')
 
 createApp({})

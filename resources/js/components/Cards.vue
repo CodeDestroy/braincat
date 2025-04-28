@@ -25,6 +25,15 @@
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/20/solid'
 
 const people = [
+  {
+  name: 'Галина Анатольевна Третьякова',
+    title: 'медицинский психолог',
+    eventCaption: 'Интеллектуальные диагностические тесты Векслера для детей: WISC, WРРSI',
+    role: 'Вебинар. Онлайн',
+    eventDate: '17.05.2025',
+    imageUrl: 'img/tretyakova_list.jpg',
+    href: '/tretyakova_17052025'
+  },
   { 
     name: 'Анна Аркадьевна Норова',
     title: 'врач, руководитель',
@@ -70,7 +79,6 @@ const people = [
     imageUrl: 'img/nikolaeva_list.jpg',
     href: 'https://psy4pro.ru/nikolaeva'
   },
-  /*
   {
     name: 'Александра Артуровна Кудряшова',
     title: 'доктор филологических наук',
@@ -80,7 +88,6 @@ const people = [
     imageUrl: 'img/kudryashova_list.jpg',
     href: '/kudryashova_17022025'
   },
-  */
   {
     name: 'Александра Артуровна Кудряшова',
     title: 'доктор филологических наук',
@@ -108,7 +115,6 @@ const people = [
     imageUrl: 'img/tretyakova_list.jpg',
     href: '/tretyakova_15032025'
   },
-  /*
   {
     name: 'Сергей Александрович Курбатов',
     title: 'кандидат медицинских наук, врач',
@@ -126,6 +132,6 @@ const people = [
     eventDate: '02.02.2025',
     imageUrl: 'img/kochetkova_list.jpg',
     href: 'https://psy4pro.ru/kochetkova' 
-  }*/
+  }
 ]
 </script>
