@@ -101,6 +101,11 @@ class HomeController extends Controller
         return view('tretyakova_15032025');
     }
 
+    public function tretyakova_17052025()
+    {
+        return view('tretyakova_17052025');
+    }
+
     public function sotnikova_24052025()
     {
         return view('sotnikova_24052025');
