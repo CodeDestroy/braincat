@@ -50,6 +50,8 @@ class PaymentController extends Controller
                     return view('payments.norova_24042025.enterprisePay', compact(['freq', 'sum']));
                 else if ($course == 16)
                     return view('payments.tretyakova_17052025.enterprisePay', compact(['freq', 'sum']));
+                else if ($course == 17)
+                    return view('payments.kudryashova_15052025.enterprisePay', compact(['freq', 'sum']));
                 else
                     return view('payments.enterprisePay', compact(['freq', 'sum']));
             //}
@@ -90,9 +92,11 @@ class PaymentController extends Controller
                     return view('payments.lisavenko_26052025.privilegePay', compact(['freq', 'sum']));
                 if ($course == 13)
                     return view('payments.norova_24042025.privilegePay', compact(['freq', 'sum']));
-                if ($course == 13)
+                if ($course == 16)
                     return view('payments.tretyakova_17052025.privilegePay', compact(['freq', 'sum']));
-                    
+                if ($course == 17)
+                    return view('payments.kudryashova_15052025.privilegePay', compact(['freq', 'sum']));
+                                        
                 return view('payments.privilegePay', compact(['freq', 'sum']));
             //}
         }
@@ -121,6 +125,8 @@ class PaymentController extends Controller
             return view('payments.norova_24042025.basePay', compact(['freq', 'sum']));
         else if ($course == 16)
             return view('payments.tretyakova_17052025.basePay', compact(['freq', 'sum']));
+        else if ($course == 17)
+            return view('payments.kudryashova_15052025.basePay', compact(['freq', 'sum']));
         return view('payments.basePay', compact(['freq', 'sum']));
 
     }
@@ -152,7 +158,9 @@ class PaymentController extends Controller
                 return view('payments.norova_24042025.student', compact(['freq', 'sum']));
             else if ($course == 16)
                 return view('payments.tretyakova_17052025.student', compact(['freq', 'sum']));
-                   
+            else if ($course == 17)
+                return view('payments.kudryashova_15052025.student', compact(['freq', 'sum']));
+                        
     }
 
     public function index($tier, $course, $freq, $price)
@@ -248,6 +256,9 @@ class PaymentController extends Controller
                 case 16:
                     $actualPrice = 2500;
                     break;
+                case 17:
+                    $actualPrice = 1699;
+                    break;
 
             }
             
@@ -285,6 +296,10 @@ class PaymentController extends Controller
                 if ($courseRegistration->course_id == 16) {
                     return view('payments.tretyakova_17052025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
                 }
+                if ($courseRegistration->course_id == 16) {
+                    return view('payments.kudryashova_15052025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
+                }
+                
                 
             }
             switch ($tier) {
@@ -461,6 +476,15 @@ class PaymentController extends Controller
                     else
                         return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
                 case 'tier-enterprise11':
+                    return redirect('/contacts');
+                case 'tier-base12':    
+                    return redirect('/payment/base/' . $course . '/' . $freq . '/1899');
+                case 'tier-students12':
+                    if ( $courseRegistration->isStudent)
+                        return redirect('/payment/students/' . $course . '/' . $freq . '/1699');
+                    else
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/1899');
+                case 'tier-enterprise12':
                     return redirect('/contacts');   
             }
             
