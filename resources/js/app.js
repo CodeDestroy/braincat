@@ -41,6 +41,7 @@ import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedT
 import ThreeTiersPrice from './components/ThreeTiersPrice.vue';
 import ThreeTiersPriceKudryashova from './components/ThreeTiersPriceKudryashova.vue';
 import ThreeTiersPriceKudryashova25022025 from './components/ThreeTiersPriceKudryashova25022025.vue';
+import ThreeTiersPriceKudryashova15052025 from './components/ThreeTiersPriceKudryashova15052025.vue';
 import ThreeTiersPriceTretyakova02032025 from './components/ThreeTiersPriceTretyakova02032025.vue';
 import ThreeTiersPriceTretyakova15032025 from './components/ThreeTiersPriceTretyakova15032025.vue';
 import ThreeTiersPriceTretyakova17052025 from './components/ThreeTiersPriceTretyakova17052025.vue';
@@ -80,6 +81,7 @@ import ContentTurkenich17042025 from './components/ContentTurkenich17042025.vue'
 import ContentSotnikova24052025 from './components/ContentSotnikova24052025.vue';
 import ContentLisavenko26052025 from './components/ContentLisavenko26052025.vue';
 import ContentNorova24042025 from './components/ContentNorova24042025.vue';
+import ContentKudryashova15052025 from './components/ContentKudryashova15052025.vue';
 
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
@@ -95,6 +97,10 @@ createApp({})
 
 createApp({})
 .component('ThreeTiersPriceKudryashova25022025', ThreeTiersPriceKudryashova25022025)
+.mount('#price-webinar')
+
+createApp({})
+.component('ThreeTiersPriceKudryashova15052025', ThreeTiersPriceKudryashova15052025)
 .mount('#price-webinar')
 
 createApp({})
@@ -244,6 +250,10 @@ createApp({})
 
 createApp({})
 .component('ContentNorova24042025', ContentNorova24042025)
+.mount('#content')
+
+createApp({})
+.component('ContentKudryashova15052025', ContentKudryashova15052025)
 .mount('#content')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {

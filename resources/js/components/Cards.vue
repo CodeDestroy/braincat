@@ -25,6 +25,15 @@
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/20/solid'
 
 const people = [
+{
+    name: 'Александра Артуровна Кудряшова',
+    title: 'доктор филологических наук',
+    eventCaption: 'Решение детско-родительских конфликтов в арт-терапии',
+    role: 'Видеозапись вебинара',
+    eventDate: '15.05.2025',
+    imageUrl: 'img/kudryashova_list.jpg',
+    href: '/kudryashova_15052025'
+  },
   {
   name: 'Галина Анатольевна Третьякова',
     title: 'медицинский психолог',
@@ -33,15 +42,6 @@ const people = [
     eventDate: '17.05.2025',
     imageUrl: 'img/tretyakova_list.jpg',
     href: '/tretyakova_17052025'
-  },
-  { 
-    name: 'Анна Аркадьевна Норова',
-    title: 'врач, руководитель',
-    eventCaption: 'Организация внутреннего контроля для руководителей частных медицинских организаций',
-    role: 'Вебинар. Онлайн',
-    eventDate: '24.04.2025',
-    imageUrl: 'img/norova_list.jpg',
-    href: '/norova_24042025' 
   },
   {
     name: 'Оксана Юрьевна Сотникова',
@@ -60,6 +60,15 @@ const people = [
     eventDate: '26.05.2025',
     imageUrl: 'img/lisavenko_list.jpg',
     href: '/lisavenko_26052025' 
+  },
+  { 
+    name: 'Анна Аркадьевна Норова',
+    title: 'врач, руководитель',
+    eventCaption: 'Организация внутреннего контроля для руководителей частных медицинских организаций',
+    role: 'Вебинар. Онлайн',
+    eventDate: '24.04.2025',
+    imageUrl: 'img/norova_list.jpg',
+    href: '/norova_24042025' 
   },
   {
     name: 'Елена Туркенич и Наталия Наконечная',
