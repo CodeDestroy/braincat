@@ -29,7 +29,7 @@ const people = [
     name: 'Александра Артуровна Кудряшова',
     title: 'доктор филологических наук',
     eventCaption: 'Решение детско-родительских конфликтов в арт-терапии',
-    role: 'Видеозапись вебинара',
+    role: 'Вебинар. Онлайн',
     eventDate: '15.05.2025',
     imageUrl: 'img/kudryashova_list.jpg',
     href: '/kudryashova_15052025'
