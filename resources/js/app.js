@@ -49,6 +49,7 @@ import ThreeTiersPriceTurkenich17042025 from './components/ThreeTiersPriceTurken
 import ThreeTiersPriceSotnikova24052025 from './components/ThreeTiersPriceSotnikova24052025.vue';
 import ThreeTiersPriceLisavenko26052025 from './components/ThreeTiersPriceLisavenko26052025.vue';
 import ThreeTiersPriceNorova24042025 from './components/ThreeTiersPriceNorova24042025.vue';
+import ThreeTiersPriceSavchenko21052025 from './components/ThreeTiersPriceSavchenko21052025.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
 import CalendarPlan from './components/CalendarPlan.vue';
@@ -70,6 +71,7 @@ import WithLargeAvatarTurkenich from './components/WithLargeAvatarTurkenich.vue'
 import WithLargeAvatarSotnikova from './components/WithLargeAvatarSotnikova.vue';
 import WithLargeAvatarLisavenko from './components/WithLargeAvatarLisavenko.vue';
 import WithLargeAvatarNorova from './components/WithLargeAvatarNorova.vue';
+import WithLargeAvatarSavchenko from './components/WithLargeAvatarSavchenko.vue';
 import SideBySideGrid from './components/SidebySideGrid.vue';
 import Hero from './components/Hero.vue';
 import GridList from './components/GridList.vue';
@@ -82,6 +84,7 @@ import ContentSotnikova24052025 from './components/ContentSotnikova24052025.vue'
 import ContentLisavenko26052025 from './components/ContentLisavenko26052025.vue';
 import ContentNorova24042025 from './components/ContentNorova24042025.vue';
 import ContentKudryashova15052025 from './components/ContentKudryashova15052025.vue';
+import ContentSavchenko21052025 from './components/ContentSavchenko21052025.vue';
 
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
@@ -129,6 +132,10 @@ createApp({})
 
 createApp({})
 .component('ThreeTiersPriceNorova24042025', ThreeTiersPriceNorova24042025)
+.mount('#price-webinar')
+
+createApp({})
+.component('ThreeTiersPriceSavchenko21052025', ThreeTiersPriceSavchenko21052025)
 .mount('#price-webinar')
 
 createApp({})
@@ -209,6 +216,10 @@ createApp({})
 .mount('#with-large-avatar')
 
 createApp({})
+.component('WithLargeAvatarSavchenko', WithLargeAvatarSavchenko)
+.mount('#with-large-avatar')
+
+createApp({})
 .component('SideBySideGrid', SideBySideGrid)
 .mount('#contacts')
 
@@ -254,6 +265,10 @@ createApp({})
 
 createApp({})
 .component('ContentKudryashova15052025', ContentKudryashova15052025)
+.mount('#content')
+
+createApp({})
+.component('ContentSavchenko21052025', ContentSavchenko21052025)
 .mount('#content')
 
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
