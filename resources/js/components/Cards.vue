@@ -35,13 +35,22 @@ const people = [
     href: '/kudryashova_15052025'
   },
   {
-  name: 'Галина Анатольевна Третьякова',
+    name: 'Галина Анатольевна Третьякова',
     title: 'медицинский психолог',
     eventCaption: 'Интеллектуальные диагностические тесты Векслера для детей: WISC, WРРSI',
     role: 'Вебинар. Онлайн',
     eventDate: '17.05.2025',
     imageUrl: 'img/tretyakova_list.jpg',
     href: '/tretyakova_17052025'
+  },
+  {
+    name: 'Савченко Евгения Александровна',
+    title: 'детский ЛОР-врач, сурдолог',
+    eventCaption: 'Аденоиды. Просто о сложном',
+    role: 'Вебинар. Онлайн',
+    eventDate: '21.05.2025',
+    imageUrl: 'img/savchenko_list.jpg',
+    href: '/savchenko_21052025'
   },
   {
     name: 'Оксана Юрьевна Сотникова',
