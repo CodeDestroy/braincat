@@ -56,7 +56,7 @@
                       Аудитория
                   </dt>
                   <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                      <p class="flex-auto">Родители, педагоги, специалисты, работающие с детьми, студенты профильных ВУЗов</p>
+                      <p class="flex-auto">Родители, педагоги, специалисты, работающие с детьми, студенты профильных ВУЗов.</p>
                   </dd>
                 </div>
                 <div class="flex flex-col">
