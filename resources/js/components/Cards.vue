@@ -25,7 +25,7 @@
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/20/solid'
 
 const people = [
-{
+  {
     name: 'Александра Артуровна Кудряшова',
     title: 'доктор филологических наук',
     eventCaption: 'Решение детско-родительских конфликтов в арт-терапии',
@@ -42,6 +42,15 @@ const people = [
     eventDate: '17.05.2025',
     imageUrl: 'img/tretyakova_list.jpg',
     href: '/tretyakova_17052025'
+  },
+  {
+    name: 'Елена Ивановна Николаева',
+    title: 'доктор биологических наук, профессор',
+    eventCaption: 'Что нужно знать о леворукости',
+    role: 'Вебинар. Онлайн',
+    eventDate: '20.05.2025',
+    imageUrl: 'img/nikolaeva_list.jpg',
+    href: '/nikolaeva_20052025'
   },
   {
     name: 'Савченко Евгения Александровна',
@@ -142,6 +151,7 @@ const people = [
     imageUrl: 'img/kurbatov_list.jpg',
     href: '/kurbatov'
   },
+  /*
   {
     name: 'Светлана Васильевна Кочеткова',
     title: 'аналитический психолог, супервизор',
@@ -151,5 +161,6 @@ const people = [
     imageUrl: 'img/kochetkova_list.jpg',
     href: 'https://psy4pro.ru/kochetkova' 
   }
+  */  
 ]
 </script>

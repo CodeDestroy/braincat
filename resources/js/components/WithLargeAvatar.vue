@@ -5,10 +5,10 @@
       <div class="absolute inset-y-0 right-1/2 -z-10 mr-12 w-[150vw] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-20 md:mr-0 lg:right-full lg:-mr-36 lg:origin-center" />
       <figure class="grid grid-cols-1 items-center gap-x-6 gap-y-8 lg:gap-x-10">
         <div class="col-span-2 w-64 lg:col-end-1 lg:row-span-2 lg:w-72">
-          <img class="rounded-xl bg-indigo-50 lg:rounded-3xl" src="img/about_nikolaeva.jpg" alt="" />
+          <img class="rounded-xl bg-indigo-50 lg:rounded-3xl" src="img/nikolaeva_list.jpg" alt="" />
         </div>
         <figcaption class="text-base lg:col-start-1 lg:row-start-1">
-          <div class="text-lg font-semibold text-purple-800 sm:text-2xl">Елена Ивановна Николаева</div>
+          <div class="text-lg font-semibold text-mona-lisa-600 sm:text-2xl">Елена Ивановна Николаева</div>
           <div class="mt-1 text-gray-500">доктор биологических наук, профессор</div>
         </figcaption>
         <div class="relative col-span-2 lg:col-start-1 lg:row-start-2">
@@ -19,7 +19,7 @@
           <blockquote class="text-gray-900">
             <p>Крупнейший специалист в области функциональной асимметрии мозга, психологии и психофизиологии творчества, автор более 720 научных работ, в том числе учебников "Психофизиология" и "Психология семьи", книг "Психология детского творчества" и "Леворукий ребенок: диагностика, профилактика, коррекция".</p>
             <p class="font-semibold py-4">Область профессиональных интересов:</p>
-            <ul class="marker:text-purple-800 list-disc ps-4">
+            <ul class="marker:text-mona-lisa-600 list-disc ps-4">
               <li>проблемы функциональной асимметрии мозга</li>
               <li>психофизиология развития, в том числе особенности семейного воспитания в разных культурах</li>
               <li>психология детского творчества</li>
