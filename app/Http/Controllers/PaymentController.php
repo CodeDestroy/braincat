@@ -54,6 +54,8 @@ class PaymentController extends Controller
                     return view('payments.kudryashova_15052025.enterprisePay', compact(['freq', 'sum']));
                 else if ($course == 18)
                     return view('payments.savchenko_21052025.enterprisePay', compact(['freq', 'sum']));
+                else if ($course == 19)
+                    return view('payments.nikolaeva_18052025.enterprisePay', compact(['freq', 'sum']));
                 else
                     return view('payments.enterprisePay', compact(['freq', 'sum']));
             //}
@@ -100,7 +102,10 @@ class PaymentController extends Controller
                     return view('payments.kudryashova_15052025.privilegePay', compact(['freq', 'sum']));
                 if ($course == 18)
                     return view('payments.savchenko_21052025.privilegePay', compact(['freq', 'sum']));
-                                        
+                if ($course == 19)
+                    return view('payments.nikolaeva_18052025.privilegePay', compact(['freq', 'sum']));
+                      
+                    
                 return view('payments.privilegePay', compact(['freq', 'sum']));
             //}
         }
@@ -133,6 +138,8 @@ class PaymentController extends Controller
             return view('payments.kudryashova_15052025.basePay', compact(['freq', 'sum']));
         else if ($course == 18)
             return view('payments.savchenko_21052025.basePay', compact(['freq', 'sum']));
+        else if ($course == 19)
+            return view('payments.nikolaeva_18052025.basePay', compact(['freq', 'sum']));
 
             
         return view('payments.basePay', compact(['freq', 'sum']));
@@ -170,7 +177,39 @@ class PaymentController extends Controller
                 return view('payments.kudryashova_15052025.student', compact(['freq', 'sum']));
             else if ($course == 18)
                 return view('payments.savchenko_21052025.student', compact(['freq', 'sum']));
-                
+            else if ($course == 18)
+                return view('payments.nikolaeva_18052025.student', compact(['freq', 'sum']));
+                           
+    }
+
+    public function abonement ($price) 
+    {
+        if (!auth()->user()) {
+            return  redirect()->route('login');
+        }
+        else {
+            $sum = 8175;
+            $courseRegistration = CourseRegistration::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->first();
+            return view('payments.abonement_may_2025.basePay', compact(['sum']));
+        }
+                                                    
+    }
+
+    public function abonementSuccess (Request $request, $price) {
+        $user = User::find($request->user()->id);
+        $courses = [11, 12, 16, 17, 19];
+        foreach ($courses as $course) {
+            Payment::create([
+                'user_id' => $user->id,
+                'course_id' => $course,
+                'amount' => 8175,
+                'status' => 'success',
+                'freq' => 'abonement may 25'
+            ]);
+
+        }
+        return view('payments.success');
+        
     }
 
     public function index($tier, $course, $freq, $price)
@@ -272,6 +311,9 @@ class PaymentController extends Controller
                 case 18:
                     $actualPrice = 350;
                     break;
+                case 19:
+                    $actualPrice = 2500;
+                    break;
 
             }
             
@@ -316,6 +358,9 @@ class PaymentController extends Controller
                     return view('payments.savchenko_21052025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
                 }
 
+                if ($courseRegistration->course_id == 19) {
+                    return view('payments.nikolaeva_18052025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
+                }
                 
                 
                 
@@ -513,6 +558,15 @@ class PaymentController extends Controller
                         return redirect('/payment/base/' . $course . '/' . $freq . '/500');
                 case 'tier-enterprise13':
                     return redirect('/contacts');   
+                case 'tier-base14':    
+                    return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
+                case 'tier-students14':
+                    if ( $courseRegistration->isStudent)
+                        return redirect('/payment/students/' . $course . '/' . $freq . '/2500');
+                    else
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
+                case 'tier-enterprise14':
+                    return redirect('/contacts');   
             }
             
             
@@ -532,13 +586,6 @@ class PaymentController extends Controller
 
         $user = User::find($request->user()->id);
         $course = Course::find( $course_id);
-        /* $payment = Payment::create([
-            'user_id' => $user->id,
-            'course_id' => $course->id,
-            'amount' => $sum,
-            'status' => 'success',
-            'freq' => $freq
-        ]); */
         if (!$course) return view('errors.404');
         if ($freq == 100) {
             $payment = Payment::updateOrCreate(
@@ -548,14 +595,6 @@ class PaymentController extends Controller
                     'status' => 'success another',
                 ]
             );
-
-            /* $payment = Payment::create([
-                'user_id' => $user->id,
-                'course_id' => $course->id,
-                'amount' => $sum,
-                'status' => 'success',
-                'freq' => $freq
-            ]); */
         }
         else {
             $payment = Payment::create([

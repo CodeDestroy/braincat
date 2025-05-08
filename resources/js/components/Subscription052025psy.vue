@@ -6,11 +6,12 @@
       <div class="mx-auto max-w-7xl mt-12  px-6 lg:px-8">
         <ul role="list" class="space-y-3">
           <li class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-mona-lisa-600 text-xl font-bold">
-            <a href="">
+            <a href="/payment/abonement/8175">
               <p>Психология: Май 2025</p>
               <p>5 вебинаров</p>
               <p class="text-slate-400 line-through pt-2">10899 рублей</p>
               <p>8175 рублей</p>
+              <p>Оплатить абонемент</p>
             </a>
           </li>
           <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
@@ -32,11 +33,12 @@
             </a>  
           </li>
           <li class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-mona-lisa-600 text-xl font-bold">
-            <a href="">
+            <a href="/payment/abonement/8175">
               <p>5 вебинаров</p>
               <p>Скидка 25%</p>
               <p class="text-slate-400 line-through">10899 рублей</p>
               <p>8175 рублей</p>
+              <p>Оплатить абонемент</p>
             </a>
           </li>
         </ul>
@@ -48,7 +50,7 @@
 import { comment } from 'postcss';
 
   const items = [
-    { id: 1,
+    { id: 17,
       link: '/kudryashova_15052025',
       image: 'img/hero_kudryashova_15052025.jpg',
       datetime: '15.05.2025 с 19-00 до 21-15',
@@ -61,7 +63,7 @@ import { comment } from 'postcss';
       oldcost: '1899 рублей',
       cost: '1425 рублей'
      },
-     { id: 2,
+     { id: 16,
       link: '/tretyakova_17052025',
       image: 'img/hero_tretyakova_17052025.jpg',
       datetime: '17.05.2025 с 10-00 до 13-00',
@@ -74,7 +76,7 @@ import { comment } from 'postcss';
       oldcost: '3000 рублей',
       cost: '2250 рублей'
      },
-     { id: 3,
+     { id: 19,
       link: '/nikolaeva_18052025',
       image: 'img/hero_nikolaeva_18052025.jpg',
       datetime: '18.05.2025 с 10-00 до 13-00',
@@ -87,7 +89,7 @@ import { comment } from 'postcss';
       oldcost: '3000 рублей',
       cost: '2250 рублей'
      },
-     { id: 4,
+     { id: 11,
       link: '/sotnikova_24052025',
       image: 'img/hero_sotnikova_24052025.jpg',
       datetime: '25.05.2025 с 10-00 до 13-00',
@@ -100,7 +102,7 @@ import { comment } from 'postcss';
       oldcost: '1500 рублей',
       cost: '1125 рублей'
      },
-     { id: 5,
+     { id: 12,
       link: '/lisavenko_26052025',
       image: 'img/hero_lisavenko_26052025.jpg',
       datetime: '26.05.2025 с 19-00 до 21-15',
