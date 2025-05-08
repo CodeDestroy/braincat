@@ -29,12 +29,14 @@ Route::get('/sys/getId', function (Request $request) {
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
     /* Route::get('/vizel', 'index')->name('vizel'); */
     Route::get('/', 'index')->name('home');
+    Route::get('/subscription', 'subscription')->name('subscription');
     Route::get('/kudryashova_17022025', 'kudryashova_17022025')->name('kudryashova_17022025');
     Route::get('/kudryashova_25022025', 'kudryashova_25022025')->name('kudryashova_25022025');
     Route::get('/kudryashova_15052025', 'kudryashova_15052025')->name('kudryashova_15052025');
     Route::get('/tretyakova_02032025', 'tretyakova_02032025')->name('tretyakova_02032025');
     Route::get('/tretyakova_15032025', 'tretyakova_15032025')->name('tretyakova_15032025');
     Route::get('/tretyakova_17052025', 'tretyakova_17052025')->name('tretyakova_17052025');
+    Route::get('/nikolaeva_18052025', 'nikolaeva_18052025')->name('nikolaeva_18052025');
     Route::get('/savchenko_21052025', 'savchenko_21052025')->name('savchenko_21052025');
     Route::get('/sotnikova_24052025', 'sotnikova_24052025')->name('sotnikova_24052025');
     Route::get('/lisavenko_26052025', 'lisavenko_26052025')->name('lisavenko_26052025');

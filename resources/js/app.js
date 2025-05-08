@@ -42,6 +42,7 @@ import ThreeTiersPrice from './components/ThreeTiersPrice.vue';
 import ThreeTiersPriceKudryashova from './components/ThreeTiersPriceKudryashova.vue';
 import ThreeTiersPriceKudryashova25022025 from './components/ThreeTiersPriceKudryashova25022025.vue';
 import ThreeTiersPriceKudryashova15052025 from './components/ThreeTiersPriceKudryashova15052025.vue';
+import ThreeTiersPriceNikolaeva20052025 from './components/ThreeTiersPriceNikolaeva20052025.vue';
 import ThreeTiersPriceTretyakova02032025 from './components/ThreeTiersPriceTretyakova02032025.vue';
 import ThreeTiersPriceTretyakova15032025 from './components/ThreeTiersPriceTretyakova15032025.vue';
 import ThreeTiersPriceTretyakova17052025 from './components/ThreeTiersPriceTretyakova17052025.vue';
@@ -52,6 +53,7 @@ import ThreeTiersPriceNorova24042025 from './components/ThreeTiersPriceNorova240
 import ThreeTiersPriceSavchenko21052025 from './components/ThreeTiersPriceSavchenko21052025.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
+import Subscription052025psy from './components/Subscription052025psy.vue';
 import CalendarPlan from './components/CalendarPlan.vue';
 import SectionHeadingsWithTabs from './components/SectionHeadingsWithTabs.vue';
 import Privacy from './components/Privacy.vue';
@@ -107,6 +109,10 @@ createApp({})
 .mount('#price-webinar')
 
 createApp({})
+.component('ThreeTiersPriceNikolaeva20052025', ThreeTiersPriceNikolaeva20052025)
+.mount('#price-webinar')
+
+createApp({})
 .component('ThreeTiersPriceTretyakova02032025', ThreeTiersPriceTretyakova02032025)
 .mount('#price-webinar')
 
@@ -145,6 +151,10 @@ createApp({})
 createApp({})
 .component('Plan', Plan)
 .mount('#plan')  
+
+createApp({})
+.component('Subscription052025psy', Subscription052025psy)
+.mount('#subscription')
 
 createApp({})
 .component('CalendarPlan', CalendarPlan)

@@ -9,8 +9,16 @@
 <div id="gridlist">
     <grid-list />
 </div>
-  
-<div class="bg-gray-100 py-24 sm:py-32"  id='dopObr'{{-- style="height: 100vh;" --}}>
+
+<div id="subscription">
+    <Subscription052025psy/>
+</div>
+
+<div id="cards">
+    <cards />
+</div>
+
+<div class="bg-gray-100 py-12 sm:py-24"  id='dopObr'{{-- style="height: 100vh;" --}}>
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
             <h2 class="text-3xl font-bold tracking-tight text-mona-lisa-600 sm:text-4xl">Обучайтесь с нами</h2>
@@ -56,10 +64,6 @@
             </dl>
         </div>
     </div>
-</div>
-
-<div id="cards">
-    <cards />
 </div>
 
 @endsection

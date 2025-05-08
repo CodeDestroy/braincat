@@ -2,9 +2,9 @@
     <div class="bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-4xl text-center">
-          <p class="mt-2 text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-5xl">Стоимость вебинара</p>
+          <p class="mt-2 text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-5xl">Вебинар</p>
         </div>
-        <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">24 мая 2025 года (суббота)</p>
+        <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">20 мая 2025 года (вторник)</p>
         <div class="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <div v-for="tier in tiers" :key="tier.id" :class="[tier.featured ? 'bg-green-950 ring-green-950' : 'ring-gray-200', 'rounded-3xl p-8 ring-1 xl:p-10']">
             <h3 :id="tier.id" :class="[tier.featured ? 'text-white' : 'text-gray-900', 'text-lg font-semibold leading-8']">{{ tier.name }}</h3>
@@ -39,12 +39,17 @@
     {
       name: 'Базовый',
       id: 'tier-base',
-      href: '/payment/tier-base8/11',
-      price: { 100: '1500' },
-      description: 'Лекционно-практический вебинар',
+      href: '/payment/tier-base12/17',
+      price: { 100: '3000' },
+      description: 'Вебинар',
       features: [
+        'воспитатели детских садов',
+        'педагоги',
         'психологи',
-        'психотерапевты'
+        'психотерапевты',
+        'дефектологи',
+        'специалисты, работающие с детьми',
+        'родители'
       ],
       featured: false,
       cta: 'Оплатить',
@@ -52,9 +57,9 @@
     {
       name: 'Льготный',
       id: 'tier-privilege',
-      href: '/payment/tier-students8/11',
-      price: { 100: '1000' },
-      description: 'Лекционно-практический вебинар',
+      href: '/payment/tier-students12/17',
+      price: { 100: '2500' },
+      description: 'Вебинар',
       features: [
         'студенты профильных высших учебных заведений различных форм собственности очной формы обучения'
       ],
