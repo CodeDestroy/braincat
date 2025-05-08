@@ -36,9 +36,9 @@ class HomeController extends Controller
         return view('nikolaeva');
     }
 
-    public function nikolaeva_20052025() 
+    public function nikolaeva_18052025() 
     {
-        return view('nikolaeva_20052025');
+        return view('nikolaeva_18052025');
     }
 
     public function kochetkova() 
@@ -83,6 +83,11 @@ class HomeController extends Controller
     public function agreement()
     {
         return view('documents.agreement');
+    }
+
+    public function subscription()
+    {
+        return view('subscription');
     }
     
     public function kudryashova_17022025()

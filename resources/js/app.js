@@ -53,6 +53,7 @@ import ThreeTiersPriceNorova24042025 from './components/ThreeTiersPriceNorova240
 import ThreeTiersPriceSavchenko21052025 from './components/ThreeTiersPriceSavchenko21052025.vue';
 import Calendar from './components/Calendar.vue';
 import Plan from './components/Plan.vue';
+import Subscription052025psy from './components/Subscription052025psy.vue';
 import CalendarPlan from './components/CalendarPlan.vue';
 import SectionHeadingsWithTabs from './components/SectionHeadingsWithTabs.vue';
 import Privacy from './components/Privacy.vue';
@@ -150,6 +151,10 @@ createApp({})
 createApp({})
 .component('Plan', Plan)
 .mount('#plan')  
+
+createApp({})
+.component('Subscription052025psy', Subscription052025psy)
+.mount('#subscription')
 
 createApp({})
 .component('CalendarPlan', CalendarPlan)
