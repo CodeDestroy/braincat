@@ -39,7 +39,7 @@
     {
       name: 'Базовый',
       id: 'tier-base',
-      href: '/payment/tier-base12/17',
+      href: '/payment/tier-base13/19',
       price: { 100: '3000' },
       description: 'Вебинар',
       features: [
@@ -57,7 +57,7 @@
     {
       name: 'Льготный',
       id: 'tier-privilege',
-      href: '/payment/tier-students12/17',
+      href: '/payment/tier-students13/19',
       price: { 100: '2500' },
       description: 'Вебинар',
       features: [
