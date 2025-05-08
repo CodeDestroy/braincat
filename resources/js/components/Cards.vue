@@ -17,7 +17,7 @@
           <dd class="text-sm text-gray-500 mt-1">{{ person.eventDate }}</dd>
           <dt class="sr-only">Role</dt>
           <dd class="mt-5">
-            <span :class="[person.passed ? 'text-green-900 ring-green-900/20 bg-green-50' : 'text-mona-lisa-500 ring-mona-lisa-500/20 bg-mona-lisa-50', 'inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ring-1 ring-inset']">{{ person.role }}</span>
+            <span :class="[person.passed ? 'text-mona-lisa-500 ring-mona-lisa-500/20 bg-mona-lisa-50' :  'text-green-900 ring-green-900/20 bg-green-50', 'inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ring-1 ring-inset']">{{ person.role }}</span>
           </dd>
         </dl>
       </a>
