@@ -18,7 +18,7 @@
     <cards />
 </div>
 
-<div class="bg-gray-100 py-12 sm:py-24"  id='dopObr'{{-- style="height: 100vh;" --}}>
+<div class="bg-gray-100 pt-12 sm:pt-24"  id='dopObr'{{-- style="height: 100vh;" --}}>
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
             <h2 class="text-3xl font-bold tracking-tight text-mona-lisa-600 sm:text-4xl">Обучайтесь с нами</h2>
