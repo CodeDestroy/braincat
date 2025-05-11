@@ -26,14 +26,14 @@
                 </div>
                 {{-- <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=9vXBFEqdHUSOgxwAJiKgWw"></script> --}}
 
-                <div class="text-center flex justify-center">
+                <div class="text-center justify-center">
                     <h1 class="text-mona-lisa-600 font-semibold text-xl">Промокод</h1>
                     <p id="promoMessage" class="text-red-500 mt-2"></p>
                 </div>
                 <div class="flex px-3">
                     
                     <input name="promo" id="promo" placeholder="Промокод" class="mr-2 block w-full rounded-md border-0 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-800 sm:text-sm sm:leading-6"/>
-                    <button onclick="checkPromo()" class="bg-blue-500 hover:bg-blue-700 text-white font-normal text-md py-1 px-2 rounded" style="margin-right: 0; margin-left: auto; ">Применить</button>
+                    <button onclick="checkPromo()" class="bg-salt-700 hover:bg-salt-900 text-white font-normal text-md py-1 px-2 ms-auto me-0 rounded">Применить</button>
                 </div>
 
                 <!-- Back Button -->
