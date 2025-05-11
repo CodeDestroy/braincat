@@ -30,7 +30,7 @@
                     <h1 class="text-mona-lisa-600 font-semibold text-xl">Промокод</h1>
                     <p id="promoMessage" class="text-red-500 mt-2"></p>
                 </div>
-                <div class="flex px-3">
+                <div class="flex px-3 py-2">
                     
                     <input name="promo" id="promo" placeholder="Промокод" class="mr-2 block w-full rounded-md border-0 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-800 sm:text-sm sm:leading-6"/>
                     <button onclick="checkPromo()" class="bg-salt-700 hover:bg-salt-900 text-white font-normal text-md py-1 px-2 ms-auto me-0 rounded">Применить</button>
@@ -38,7 +38,7 @@
 
                 <!-- Back Button -->
                 <div class="mt-4 text-center">
-                    <a href="/" class="text-indigo-600 hover:underline">на главную</a>
+                    <a href="/" class="text-salt-700 hover:underline">на главную</a>
                 </div>
             </div>
         </div>                                            
