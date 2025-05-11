@@ -12,8 +12,8 @@
                  --}}
                 <!-- Plan and Price -->
                 <div class=" p-4 rounded-lg mb-6 text-center">
-                    <h3 class="text-xl font-semibold text-indigo-700 line-through" style="text-decoration: line-through">10899 рублей</h3>
-                    <h3 id='price' class="text-xl font-semibold text-indigo-700">{{ (int)$sum }} рублей</h3>
+                    <h3 class="text-xl font-semibold text-mona-lisa-600 line-through" style="text-decoration: line-through">10899 рублей</h3>
+                    <h3 id='price' class="text-xl font-semibold text-mona-lisa-600">{{ (int)$sum }} рублей</h3>
                     {{-- <p class="text-gray-500 mt-1">Единовременная оплата</p> --}}
                 </div>
         
@@ -27,8 +27,8 @@
                 {{-- <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=9vXBFEqdHUSOgxwAJiKgWw"></script> --}}
 
                 <div class="text-center flex justify-center">
-                    <h1 class="text-indigo-700 font-semibold text-xl">Промокод</h1>
-                    <div id="promoMessage" class="text-red-500 mt-2"></div>
+                    <h1 class="text-mona-lisa-600 font-semibold text-xl">Промокод</h1>
+                    <p id="promoMessage" class="text-red-500 mt-2"></p>
                 </div>
                 <div class="flex px-3">
                     
