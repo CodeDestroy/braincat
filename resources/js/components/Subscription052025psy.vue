@@ -11,7 +11,7 @@
               <p>5 вебинаров</p>
               <p class="text-slate-400 line-through pt-2">10899 рублей</p>
               <p>8175 рублей</p>
-              <p class="font-normal text-salt-700 pt-4 text-base hover:underline">оплатить абонемент</p>
+              <p class="font-normal text-xl text-salt-700 pt-4 text-base hover:underline">Оплатить абонемент</p>
             </a>
           </li>
           <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
@@ -38,7 +38,7 @@
               <p>Скидка 25%</p>
               <p class="text-slate-400 line-through">10899 рублей</p>
               <p>8175 рублей</p>
-              <p class="font-normal text-salt-700 pt-4 text-base hover:underline">оплатить абонемент</p>
+              <p class="font-normal text-xl text-salt-700 pt-4 text-base hover:underline">Оплатить абонемент</p>
             </a>
           </li>
         </ul>
