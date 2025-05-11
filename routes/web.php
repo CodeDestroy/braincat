@@ -120,6 +120,23 @@ Route::get('/api/days', function (Request $request) {
     return $uniqueDates;
 });
 
+/* Route::get('/api/promo', function (Request $request) {
+    $promo = $request->query('promo');
+    $code = '<script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=9vXBFEqdHUSOgxwAJiKgWw"></script>';
+    if ($promo == 'победа') {
+        return $code;
+    }
+    else {
+        return '';
+    }
+}); */
+Route::get('/api/promo', function (Request $request) {
+    $promo = $request->query('promo');
+
+    return response()->json([
+        'success' => $promo === 'победа',
+    ]);
+});
 //Роут на получение занятых эвентами дней по курсу
 Route::get('/api/course/{course_id}/days', function (Request $request, $course_id) {
     $date = $request->query('date');
