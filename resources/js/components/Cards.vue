@@ -3,7 +3,7 @@
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <p class="text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-4xl">События</p>
   </div>
-  <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-8 py-8 sm:py-24">
+  <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-8 pt-8 sm:pt-12">
     <li v-for="person in people" :key="person.email" class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
       <a :href="person.href" class="flex flex-1 flex-col p-8 focus:outline-none">
         <img class="mx-auto h-32 w-32 flex-shrink-0 rounded-full" :src="person.imageUrl" alt="" />
