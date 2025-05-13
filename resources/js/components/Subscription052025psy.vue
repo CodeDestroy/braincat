@@ -92,7 +92,7 @@ import { comment } from 'postcss';
      { id: 11,
       link: '/sotnikova_24052025',
       image: 'img/hero_sotnikova_24052025.jpg',
-      datetime: '25.05.2025 с 10-00 до 13-00',
+      datetime: '24.05.2025 с 10-00 до 13-00',
       duration: '3 академических часа',
       author: 'Сотникова О.Ю.',
       status: 'аналитический психолог',
