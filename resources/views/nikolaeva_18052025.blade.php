@@ -28,7 +28,7 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
             <h2 class="text-3xl font-bold tracking-tight text-mona-lisa-700 sm:text-4xl">Вебинар</h2>
-            <p class="mt-1 text-lg leading-8 text-gray-600"><strong>18 мая 2025 года (вторник)</strong></p>
+            <p class="mt-1 text-lg leading-8 text-gray-600"><strong>18 мая 2025 года (воскресенье)</strong></p>
             <p class="mt-0 text-lg leading-8 text-gray-600"><strong>4 академических часа:</strong> с 10-00 до 13-00</p>
         </div>
         <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
