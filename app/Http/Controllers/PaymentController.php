@@ -196,19 +196,30 @@ class PaymentController extends Controller
     }
 
     public function abonementSuccess (Request $request, $price) {
-        $user = User::find($request->user()->id);
-        $courses = [11, 12, 16, 17, 19];
-        foreach ($courses as $course) {
-            Payment::create([
-                'user_id' => $user->id,
-                'course_id' => $course,
-                'amount' => 8175,
-                'status' => 'success',
-                'freq' => 'abonement may 25'
-            ]);
-
+        if ($price == 8175) 
+        {
+            $courses = [11 => 1125, 12 => 1125, 16 => 2250, 17 => 1425, 19 => 2250];
+            
         }
-        return view('payments.success');
+        else if ($price == 7630) {
+            $courses = [11 => 1050, 12 => 1050, 16 => 2100, 17 => 1330, 19 => 2100];
+        }
+        else {
+            $courses = [11 => 0, 12 => 0, 16 => 0, 17 => 0, 19 => 0];
+        }
+        $user = User::find($request->user()->id);
+            
+            foreach ($courses as $key => $value) {
+                Payment::create([
+                    'user_id' => $user->id,
+                    'course_id' => $key,
+                    'amount' => $value,
+                    'status' => 'success',
+                    'freq' => 'abonement may 25'
+                ]);
+    
+            }
+            return view('payments.success');
         
     }
 
