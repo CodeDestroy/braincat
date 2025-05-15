@@ -7,7 +7,7 @@
         <div class="flex justify-center items-center bg-gray-100" style="height: 80vh">
             <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
                 
-                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Вебинар 18.05.2025 <br>10-00 - 13-00</h2>
+                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Вебинар 31.05.2025 <br>10-00 - 13-00</h2>
                 <p class="text-xl font-semibold text-gray-700 text-center mb-4">д.б.н., профессор Е.И. Николаева</p>
                 <p class="text-md font-semibold text-gray-700 text-center mb-4">"Что нужно знать о леворукости"</p>
 

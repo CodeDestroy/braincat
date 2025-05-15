@@ -51,16 +51,6 @@ const people = [
     passed: false
   },
   {
-    name: 'Елена Ивановна Николаева',
-    title: 'доктор биологических наук, профессор',
-    eventCaption: 'Что нужно знать о леворукости',
-    role: 'Вебинар. Онлайн',
-    eventDate: '18.05.2025',
-    imageUrl: 'img/nikolaeva_list.jpg',
-    href: '/nikolaeva_18052025',
-    passed: false
-  },
-  {
     name: 'Савченко Евгения Александровна',
     title: 'детский ЛОР-врач, сурдолог',
     eventCaption: 'Аденоиды. Просто о сложном',
@@ -89,6 +79,16 @@ const people = [
     imageUrl: 'img/lisavenko_list.jpg',
     href: '/lisavenko_26052025',
     passed: false 
+  },
+  {
+    name: 'Елена Ивановна Николаева',
+    title: 'доктор биологических наук, профессор',
+    eventCaption: 'Что нужно знать о леворукости',
+    role: 'Вебинар. Онлайн',
+    eventDate: '31.05.2025',
+    imageUrl: 'img/nikolaeva_list.jpg',
+    href: '/nikolaeva_18052025',
+    passed: false
   },
   { 
     name: 'Анна Аркадьевна Норова',
