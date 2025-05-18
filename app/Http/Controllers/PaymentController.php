@@ -182,6 +182,24 @@ class PaymentController extends Controller
                            
     }
 
+    public function freeCourse (Request $request, $course) 
+    {
+        if (!auth()->user()) {
+            return  redirect()->route('login');
+        }
+        else {
+            $user = User::find($request->user()->id);
+            Payment::create(attributes: [
+                'user_id' => $user->id,
+                'course_id' => $course,
+                'amount' => 0,
+                'status' => 'success',
+                'freq' => 'free course'
+            ]);
+            return view('payments.freeSuccess');
+        }
+    }
+
     public function abonement ($price) 
     {
         if (!auth()->user()) {
@@ -324,6 +342,9 @@ class PaymentController extends Controller
                     break;
                 case 19:
                     $actualPrice = 2500;
+                    break;
+                case 20:
+                    $actualPrice = 0;
                     break;
 
             }
@@ -578,6 +599,8 @@ class PaymentController extends Controller
                         return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
                 case 'tier-enterprise14':
                     return redirect('/contacts');   
+                case 'free1':
+                    return redirect('/payment/freeCourse/' . $course);
             }
             
             

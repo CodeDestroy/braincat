@@ -188,6 +188,7 @@ Route::controller(App\Http\Controllers\PaymentController::class)->group(function
     Route::get('/payment/privilege/{course}/{freq}/{sum}', 'privilege')->name('payment.privilege')->middleware(['auth', 'verified']);
     Route::get('/payment/enterprise/{course}/{freq}/{sum}', 'enterprise')->name('payment.enterprise')->middleware(['auth', 'verified']);
     Route::get('/payment/students/{course}/{freq}/{price}', 'student')->name('payment.student')->middleware(['auth', 'verified']);
+    Route::get('/payment/freeCourse/{course}', 'freeCourse')->name('payment.freeCourse')->middleware(['auth', 'verified']);
     Route::get('/payment/abonement/success/{sum}', 'abonementSuccess')->name('payment.abonementSuccess')->middleware(['auth', 'verified']);
     Route::get('/payment/abonement/{sum}', 'abonement')->name('payment.abonement')->middleware(['auth', 'verified']);
     Route::get('/payment/{tier}/{course}/{freq}/{price}', 'index')->name('payment.index')->middleware(['auth', 'verified']);

@@ -9,7 +9,7 @@
               <p>Участвовать в бесплатном вебинаре</p>
             </div>
             <div class="mt-5">
-              <button type="button" class="inline-flex items-center rounded-md bg-mona-lisa-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-mona-lisa-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mona-lisa-500">Регистрация</button>
+              <a href="/payment/free1/20/100/0" class="inline-flex items-center rounded-md bg-mona-lisa-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-mona-lisa-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mona-lisa-500">Регистрация</a>
             </div>
           </div>
         </div>
