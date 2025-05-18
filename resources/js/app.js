@@ -74,6 +74,7 @@ import WithLargeAvatarSotnikova from './components/WithLargeAvatarSotnikova.vue'
 import WithLargeAvatarLisavenko from './components/WithLargeAvatarLisavenko.vue';
 import WithLargeAvatarNorova from './components/WithLargeAvatarNorova.vue';
 import WithLargeAvatarSavchenko from './components/WithLargeAvatarSavchenko.vue';
+import WithLargeAvatarBogutenko from './components/WithLargeAvatarBogutenko.vue';
 import SideBySideGrid from './components/SidebySideGrid.vue';
 import Hero from './components/Hero.vue';
 import GridList from './components/GridList.vue';
@@ -87,6 +88,11 @@ import ContentLisavenko26052025 from './components/ContentLisavenko26052025.vue'
 import ContentNorova24042025 from './components/ContentNorova24042025.vue';
 import ContentKudryashova15052025 from './components/ContentKudryashova15052025.vue';
 import ContentSavchenko21052025 from './components/ContentSavchenko21052025.vue';
+import SimpleBogutenko22052025 from './components/SimpleBogutenko22052025.vue';
+
+createApp({})
+.component('SimpleBogutenko22052025', SimpleBogutenko22052025)
+.mount('#simple')
 
 createApp({})
 .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
@@ -227,6 +233,10 @@ createApp({})
 
 createApp({})
 .component('WithLargeAvatarSavchenko', WithLargeAvatarSavchenko)
+.mount('#with-large-avatar')
+
+createApp({})
+.component('WithLargeAvatarBogutenko', WithLargeAvatarBogutenko)
 .mount('#with-large-avatar')
 
 createApp({})
