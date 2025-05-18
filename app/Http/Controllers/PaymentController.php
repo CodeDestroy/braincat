@@ -189,14 +189,23 @@ class PaymentController extends Controller
         }
         else {
             $user = User::find($request->user()->id);
-            Payment::create(attributes: [
-                'user_id' => $user->id,
-                'course_id' => $course,
-                'amount' => 0,
-                'status' => 'success',
-                'freq' => 'free course'
-            ]);
-            return view('payments.freeSuccess');
+
+            $payment = Payment::where('user_id', $user->id)->where('course_id', $course)->first();
+
+            if ($payment)
+            {
+                return view('payments.alreadySuccess');
+            }
+            else {
+                Payment::create(attributes: [
+                    'user_id' => $user->id,
+                    'course_id' => $course,
+                    'amount' => 0,
+                    'status' => 'success',
+                    'freq' => 'free course'
+                ]);
+                return view('payments.freeSuccess');
+            }
         }
     }
 
