@@ -70,6 +70,7 @@ const people = [
     href: '/bogutenko_22052025',
     passed: false
   },
+  /*
   {
     name: 'Оксана Юрьевна Сотникова',
     title: 'аналитический психолог',
@@ -80,6 +81,7 @@ const people = [
     href: '/sotnikova_24052025' ,
     passed: false
   },
+  */
   {
     name: 'Лисавенко Марина Евгеньевна',
     title: 'педагог, психолог',

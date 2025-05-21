@@ -11,7 +11,7 @@
                   </div>
               </div>
               <h1 class="mt-24 text-3xl font-bold tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">От искажённого мышления к ясности: формирование психологических защит в процессе терапии</h1>
-              <p class="mt-6 text-lg leading-6 text-gray-600">аналитический психолог Оксана Юрьевна Сотникова</p>
+              <p class="mt-6 text-lg leading-6 text-gray-600">аналитический психолог</p>
               <div class="mt-10 flex items-center gap-x-6">
                   <a href="#price-webinar" class="rounded-md bg-mona-lisa-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-mona-lisa-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mona-lisa-800">Записаться</a>
                   <a href="#with-large-avatar" class="text-sm font-semibold leading-6 text-gray-900">Узнать больше...</a>
@@ -29,7 +29,7 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
             <h2 class="text-3xl font-bold tracking-tight text-mona-lisa-700 sm:text-4xl">Вебинар</h2>
-            <p class="mt-1 text-lg leading-8 text-gray-600">24 мая 2025 года с 11-00 до 13-40</p>
+            <p class="mt-1 text-lg leading-8 text-gray-600">скоро</p>
             <p class="mt-0 text-lg leading-8 text-gray-600"><strong>3 академических часа</strong></p>
             <p class="mt-0 text-lg leading-8 text-gray-600">лекция, практикум, ответы на вопросы</p>
         </div>
@@ -79,14 +79,6 @@
             </dl>
         </div>
     </div>
-</div>
-
-<div id="price-webinar">
-    <three-tiers-price-sotnikova-24052025/>
-</div>
-
-<div id="with-large-avatar">
-    <with-large-avatar-sotnikova/>
 </div>
 
 <div id="content">

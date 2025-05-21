@@ -6,13 +6,18 @@
       <div class="mx-auto max-w-7xl mt-12  px-6 lg:px-8">
         <ul role="list" class="space-y-3">
           <li class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-mona-lisa-600 text-xl font-bold">
+            <!--
             <a href="/payment/abonement/8175">
+            -->
               <p>Психология: Май 2025</p>
+              <!--
               <p>5 вебинаров</p>
               <p class="text-slate-400 line-through pt-2">10899 рублей</p>
               <p>8175 рублей</p>
               <p class="font-normal text-xl text-salt-700 pt-4 text-base hover:underline">Оплатить абонемент</p>
             </a>
+          -->
+          
           </li>
           <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
               <a class="sm:inline-flex" :href="item.link">
@@ -32,6 +37,7 @@
               </div>
             </a>  
           </li>
+          <!--
           <li class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6 text-mona-lisa-600 text-xl font-bold">
             <a href="/payment/abonement/8175">
               <p>5 вебинаров</p>
@@ -41,6 +47,7 @@
               <p class="font-normal text-xl text-salt-700 pt-4 text-base hover:underline">Оплатить абонемент</p>
             </a>
           </li>
+        -->
         </ul>
       </div>
     </div>
@@ -76,6 +83,7 @@ import { comment } from 'postcss';
       oldcost: '3000 рублей',
       cost: '2250 рублей'
      },
+     /*
      { id: 11,
       link: '/sotnikova_24052025',
       image: 'img/hero_sotnikova_24052025.jpg',
@@ -89,6 +97,7 @@ import { comment } from 'postcss';
       oldcost: '1500 рублей',
       cost: '1125 рублей'
      },
+     */
      { id: 12,
       link: '/lisavenko_26052025',
       image: 'img/hero_lisavenko_26052025.jpg',
