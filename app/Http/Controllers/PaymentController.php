@@ -177,7 +177,7 @@ class PaymentController extends Controller
                 return view('payments.kudryashova_15052025.student', compact(['freq', 'sum']));
             else if ($course == 18)
                 return view('payments.savchenko_21052025.student', compact(['freq', 'sum']));
-            else if ($course == 18)
+            else if ($course == 19)
                 return view('payments.nikolaeva_18052025.student', compact(['freq', 'sum']));
                            
     }

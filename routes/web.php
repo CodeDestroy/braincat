@@ -135,7 +135,7 @@ Route::get('/api/promo', function (Request $request) {
     $promo = $request->query('promo');
 
     return response()->json([
-        'success' => $promo === 'победа' || $promo === '260525',
+        'success' =>  $promo === '310525' || $promo === 'super',
     ]);
 });
 //Роут на получение занятых эвентами дней по курсу
