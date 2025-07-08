@@ -56,6 +56,8 @@ class PaymentController extends Controller
                     return view('payments.savchenko_21052025.enterprisePay', compact(['freq', 'sum']));
                 else if ($course == 19)
                     return view('payments.nikolaeva_18052025.enterprisePay', compact(['freq', 'sum']));
+                else if ($course == 22)
+                    return view('payments.nikolaeva_19072025.enterprisePay', compact(['freq', 'sum']));
                 else
                     return view('payments.enterprisePay', compact(['freq', 'sum']));
             //}
@@ -104,6 +106,10 @@ class PaymentController extends Controller
                     return view('payments.savchenko_21052025.privilegePay', compact(['freq', 'sum']));
                 if ($course == 19)
                     return view('payments.nikolaeva_18052025.privilegePay', compact(['freq', 'sum']));
+
+                if ($course == 22)
+                    return view('payments.nikolaeva_19072025.privilegePay', compact(['freq', 'sum']));
+                
                       
                     
                 return view('payments.privilegePay', compact(['freq', 'sum']));
@@ -140,6 +146,8 @@ class PaymentController extends Controller
             return view('payments.savchenko_21052025.basePay', compact(['freq', 'sum']));
         else if ($course == 19)
             return view('payments.nikolaeva_18052025.basePay', compact(['freq', 'sum']));
+        else if ($course == 22)
+            return view('payments.nikolaeva_19072025.basePay', compact(['freq', 'sum']));
 
             
         return view('payments.basePay', compact(['freq', 'sum']));
@@ -179,6 +187,8 @@ class PaymentController extends Controller
                 return view('payments.savchenko_21052025.student', compact(['freq', 'sum']));
             else if ($course == 19)
                 return view('payments.nikolaeva_18052025.student', compact(['freq', 'sum']));
+            else if ($course == 22)
+                return view('payments.nikolaeva_19072025.student', compact(['freq', 'sum']));
                            
     }
 
@@ -284,7 +294,7 @@ class PaymentController extends Controller
             if ($courseRegistration->shouldBeCheckedOut 
                 && !$courseRegistration->managerCheckedOut 
                 && !$shouldBeCheckedOut && 
-                ($isAPPCP || $isHealthyChild || $isHealthyChildGk || $isStudent || $isHealthyChildFranch || $isHealthyChildPartner)) 
+                $isStudent) 
             {
                 $shouldBeCheckedOut = 1;
             }
@@ -402,7 +412,9 @@ class PaymentController extends Controller
                 if ($courseRegistration->course_id == 19) {
                     return view('payments.nikolaeva_18052025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
                 }
-                
+                if ($courseRegistration->course_id == 22) {
+                    return view('payments.nikolaeva_19072025.userIsCheckingProgress', compact('courseRegistration', 'course', 'actualPrice', 'isStudent'));
+                }
                 
                 
             }
@@ -608,6 +620,16 @@ class PaymentController extends Controller
                         return redirect('/payment/base/' . $course . '/' . $freq . '/3000');
                 case 'tier-enterprise14':
                     return redirect('/contacts');   
+                    
+                case 'tier-base15':    
+                    return redirect('/payment/base/' . $course . '/' . $freq . '/2500');
+                case 'tier-students15':
+                    if ( $courseRegistration->isStudent)
+                        return redirect('/payment/students/' . $course . '/' . $freq . '/2000');
+                    else
+                        return redirect('/payment/base/' . $course . '/' . $freq . '/2500');
+                case 'tier-enterprise15':
+                    return redirect('/contacts'); 
                 case 'free1':
                     return redirect('/payment/freeCourse/' . $course);
             }
