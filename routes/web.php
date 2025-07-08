@@ -37,6 +37,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::get('/tretyakova_15032025', 'tretyakova_15032025')->name('tretyakova_15032025');
     Route::get('/tretyakova_17052025', 'tretyakova_17052025')->name('tretyakova_17052025');
     Route::get('/nikolaeva_18052025', 'nikolaeva_18052025')->name('nikolaeva_18052025');
+    Route::get('/nikolaeva_19072025', 'nikolaeva_19072025')->name('nikolaeva_19072025');
     Route::get('/savchenko_21052025', 'savchenko_21052025')->name('savchenko_21052025');
     Route::get('/sotnikova_24052025', 'sotnikova_24052025')->name('sotnikova_24052025');
     Route::get('/lisavenko_26052025', 'lisavenko_26052025')->name('lisavenko_26052025');

@@ -43,6 +43,7 @@ import ThreeTiersPriceKudryashova from './components/ThreeTiersPriceKudryashova.
 import ThreeTiersPriceKudryashova25022025 from './components/ThreeTiersPriceKudryashova25022025.vue';
 import ThreeTiersPriceKudryashova15052025 from './components/ThreeTiersPriceKudryashova15052025.vue';
 import ThreeTiersPriceNikolaeva20052025 from './components/ThreeTiersPriceNikolaeva20052025.vue';
+import ThreeTiersPriceNikolaeva19072025 from './components/ThreeTiersPriceNikolaeva19072025.vue';
 import ThreeTiersPriceTretyakova02032025 from './components/ThreeTiersPriceTretyakova02032025.vue';
 import ThreeTiersPriceTretyakova15032025 from './components/ThreeTiersPriceTretyakova15032025.vue';
 import ThreeTiersPriceTretyakova17052025 from './components/ThreeTiersPriceTretyakova17052025.vue';
@@ -116,6 +117,10 @@ createApp({})
 
 createApp({})
 .component('ThreeTiersPriceNikolaeva20052025', ThreeTiersPriceNikolaeva20052025)
+.mount('#price-webinar')
+
+createApp({})
+.component('ThreeTiersPriceNikolaeva19072025', ThreeTiersPriceNikolaeva19072025)
 .mount('#price-webinar')
 
 createApp({})

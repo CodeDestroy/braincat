@@ -10,10 +10,6 @@
     <grid-list />
 </div>
 
-<div id="subscription">
-    <Subscription052025psy/>
-</div>
-
 <div id="cards">
     <cards />
 </div>

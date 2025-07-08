@@ -31,6 +31,16 @@ import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/20/solid'
 
 const people = [
   {
+    name: 'Елена Ивановна Николаева',
+    title: 'доктор биологических наук, профессор',
+    eventCaption: 'Раненый целитель',
+    role: 'Вебинар. Онлайн',
+    eventDate: '19.07.2025',
+    imageUrl: 'img/nikolaeva_list.jpg',
+    href: '/nikolaeva_19072025',
+    passed: false
+  },
+  {
     name: 'Александра Артуровна Кудряшова',
     title: 'доктор филологических наук',
     eventCaption: 'Решение детско-родительских конфликтов в арт-терапии',
@@ -172,6 +182,7 @@ const people = [
     href: '/tretyakova_15032025',
     passed: true
   },
+  /*
   {
     name: 'Сергей Александрович Курбатов',
     title: 'кандидат медицинских наук, врач',
@@ -182,7 +193,6 @@ const people = [
     href: '/kurbatov',
     passed: false
   },
-  /*
   {
     name: 'Светлана Васильевна Кочеткова',
     title: 'аналитический психолог, супервизор',
