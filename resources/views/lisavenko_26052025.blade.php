@@ -28,10 +28,10 @@
 <div class="bg-stone-100 py-24 sm:py-32"  id='dopobr'{{-- style="height: 100vh;" --}}>
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
-            <h2 class="text-3xl font-bold tracking-tight text-mona-lisa-700 sm:text-4xl">Вебинар</h2>
-            <p class="mt-1 text-lg leading-8 text-gray-600">26 мая 2025 года с 19-00 до 21-15</p>
+            <h2 class="text-3xl font-bold tracking-tight text-mona-lisa-700 sm:text-4xl">Видеозапись вебинара</h2>
+            {{-- <p class="mt-1 text-lg leading-8 text-gray-600">26 мая 2025 года с 19-00 до 21-15</p>
             <p class="mt-0 text-lg leading-8 text-gray-600"><strong>3 академических часа</strong></p>
-            <p class="mt-0 text-lg leading-8 text-gray-600">лекция, практикум, ответы на вопросы</p>
+            <p class="mt-0 text-lg leading-8 text-gray-600">лекция, практикум, ответы на вопросы</p> --}}
         </div>
         <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
