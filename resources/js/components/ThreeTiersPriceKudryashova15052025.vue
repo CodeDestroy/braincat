@@ -2,7 +2,7 @@
     <div class="bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-4xl text-center">
-          <p class="mt-2 text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-5xl">Вебинар</p>
+          <p class="mt-2 text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-5xl">Видеозапись вебинара</p>
         </div>
         <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">15 мая 2025 года (четверг)</p>
         <div class="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -40,8 +40,8 @@
       name: 'Базовый',
       id: 'tier-base',
       href: '/payment/tier-base12/17',
-      price: { 100: '1899' },
-      description: 'Вебинар',
+      price: { 100: '1000' },
+      description: 'Видеозапись вебинара',
       features: [
         'психологи',
         'психотерапевты',
@@ -56,8 +56,8 @@
       name: 'Льготный',
       id: 'tier-privilege',
       href: '/payment/tier-students12/17',
-      price: { 100: '1699' },
-      description: 'Вебинар',
+      price: { 100: '1000' },
+      description: 'Видеозапись вебинара',
       features: [
         'студенты профильных высших учебных заведений различных форм собственности очной формы обучения'
       ],

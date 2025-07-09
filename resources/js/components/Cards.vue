@@ -44,73 +44,73 @@ const people = [
     name: 'Александра Артуровна Кудряшова',
     title: 'доктор филологических наук',
     eventCaption: 'Решение детско-родительских конфликтов в арт-терапии',
-    role: 'Вебинар. Онлайн',
+    role: 'Видеозапись вебинара',
     eventDate: '15.05.2025',
     imageUrl: 'img/kudryashova_list.jpg',
     href: '/kudryashova_15052025',
-    passed: false
+    passed: true
   },
   {
     name: 'Галина Анатольевна Третьякова',
     title: 'медицинский психолог',
     eventCaption: 'Интеллектуальные диагностические тесты Векслера для детей: WISC, WРРSI',
-    role: 'Вебинар. Онлайн',
+    role: 'Видеозапись вебинара',
     eventDate: '17.05.2025',
     imageUrl: 'img/tretyakova_list.jpg',
     href: '/tretyakova_17052025',
-    passed: false
+    passed: true
   },
   {
     name: 'Савченко Евгения Александровна',
     title: 'детский ЛОР-врач, сурдолог',
     eventCaption: 'Аденоиды. Просто о сложном',
-    role: 'Вебинар. Онлайн',
+    role: 'Видеозапись вебинара',
     eventDate: '21.05.2025',
     imageUrl: 'img/savchenko_list.jpg',
     href: '/savchenko_21052025',
-    passed: false
+    passed: true
   },
   {
     name: 'Богутенко Анна Фёдоровна',
     title: 'нейропсихолог, клинический психолог, нутрициолог',
     eventCaption: 'Интегративный подход в нейропсихологии. Понятие и значимость',
-    role: 'Вебинар. Онлайн',
+    role: 'Видеозапись вебинара',
     eventDate: '22.05.2025',
     imageUrl: 'img/bogutenko_list.jpg',
     href: '/bogutenko_22052025',
-    passed: false
+    passed: true
   },
   /*
   {
     name: 'Оксана Юрьевна Сотникова',
     title: 'аналитический психолог',
     eventCaption: 'От искажённого мышления к ясности: формирование психологических защит в процессе терапии',
-    role: 'Вебинар. Онлайн',
+    role: 'Видеозапись вебинара',
     eventDate: '24.05.2025',
     imageUrl: 'img/sotnikova_list.jpg',
     href: '/sotnikova_24052025' ,
-    passed: false
+    passed: true
   },
   */
   {
     name: 'Лисавенко Марина Евгеньевна',
     title: 'педагог, психолог',
     eventCaption: 'Три чемодана или путешествие длиною в жизнь: авторская диагностико-ресурсная техника',
-    role: 'Вебинар. Онлайн',
+    role: 'Видеозапись вебинара',
     eventDate: '26.05.2025',
     imageUrl: 'img/lisavenko_list.jpg',
     href: '/lisavenko_26052025',
-    passed: false 
+    passed: true 
   },
   {
     name: 'Елена Ивановна Николаева',
     title: 'доктор биологических наук, профессор',
     eventCaption: 'Что нужно знать о леворукости',
-    role: 'Вебинар. Онлайн',
+    role: 'Видеозапись вебинара',
     eventDate: '31.05.2025',
     imageUrl: 'img/nikolaeva_list.jpg',
     href: '/nikolaeva_18052025',
-    passed: false
+    passed: true
   },
   { 
     name: 'Анна Аркадьевна Норова',
@@ -191,7 +191,7 @@ const people = [
     eventDate: 'скоро',
     imageUrl: 'img/kurbatov_list.jpg',
     href: '/kurbatov',
-    passed: false
+    passed: true
   },
   {
     name: 'Светлана Васильевна Кочеткова',

@@ -29,7 +29,7 @@
 <div class="bg-stone-100 py-24 sm:py-32"  id='dopobr'{{-- style="height: 100vh;" --}}>
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
-            <h2 class="text-3xl font-bold tracking-tight text-mona-lisa-700 sm:text-4xl">Двухдневный вебинар-практикум</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-mona-lisa-700 sm:text-4xl">Видеозапись двухдневного вебинара-практикума</h2>
             <p class="mt-1 text-lg leading-8 text-gray-600">17 апреля 2025 года с 19-00 до 21-15</p>
             <p class="mt-1 text-lg leading-8 text-gray-600">24 апреля 2025 года с 19-00 до 21-15</p>
             <p class="mt-0 text-lg leading-8 text-gray-600"><strong>6 академических часов</strong></p>

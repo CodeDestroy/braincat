@@ -6,20 +6,20 @@
     @if ($freq == 100)
         <div class="flex justify-center items-center bg-gray-100" style="height: 80vh">
             <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Вебинар  <br> 17.05.2025 10-00 - 13-00</h2>
+                <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Видеозапись вебинара  <br> 17.05.2025 10-00 - 13-00</h2>
                 <p class="text-xl font-semibold text-gray-700 text-center mb-4">медицинский психолог Г.А. Третьякова</p>
                 <p class="text-md font-semibold text-gray-700 text-center mb-4">"Интеллектуальные диагностические тесты Векслера для детей: WISC, WРРSI"</p>
                 
                 <!-- Plan and Price -->
                 <div class=" p-4 rounded-lg mb-6 text-center">
                     <h3 class="text-xl font-semibold text-indigo-700">Базовый тариф</h3>
-                    <p class="text-3xl font-bold text-indigo-900 mt-2">{{ (int)$sum }} ₽</p>
+                    <p class="text-3xl font-bold text-indigo-900 mt-2">2000 ₽</p>
                     {{-- <p class="text-gray-500 mt-1">Единовременная оплата</p> --}}
                 </div>
         
                 <!-- Robokassa Payment Button -->
                 <div class="text-center flex justify-center">
-                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=43au1fS9EEqyA1f-d2x5kw"></script>    
+                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=xRgv-WcsYEOZeO0UZU8llQ"></script>
                 </div>
                 
                 <!-- Back Button -->
