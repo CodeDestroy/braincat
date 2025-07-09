@@ -19,10 +19,10 @@
         
                 <!-- Robokassa Payment Button -->
                 <div id='robokassaFull' class="text-center flex justify-center">
-                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=VMB3Ve6y1kCEpelsVmzsCA"></script>
+                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=y765AmRDbUK3ihNokMibqw"></script>
                 </div>
                 <div id='robokassaPromo' class="hidden text-center flex justify-center">
-                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=EYEfU4GKGECXBcHAj2cVVw"></script>
+                    <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormSS.js?EncodedInvoiceId=WWfieTdiFUKJbLswhZl_hg"></script>
                 </div>
 
                 <div class="text-center justify-center">
