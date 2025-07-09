@@ -51,8 +51,8 @@
             <div class="rounded-2xl bg-gray-50 p-10">
               <h3 class="text-base font-semibold leading-7 text-gray-900">АНО ДПО "Форум"</h3>
               <address class="mt-3 space-y-1 text-sm not-italic leading-6 text-gray-600">
-                <p>394077, Воронеж</p>
-                <p>бульвар Победы, 13</p>
+                <p>394077, г. Воронеж</p>
+                <p>ул. Лизюкова, 24, оф. 801</p>
               </address>
             </div>
           </div>
