@@ -90,7 +90,7 @@
         
                         promoMsg.innerText = "Промокод применён. Скидка активирована!";
                         promoMsg.className = 'text-green-600 mt-2';
-                        document.getElementById('price').innerHTML = '900 рублей'
+                        document.getElementById('price').innerHTML = '1500 рублей'
                     } else {
                         promoMsg.innerText = "Неверный промокод.";
                         promoMsg.className = 'text-red-500 mt-2';
