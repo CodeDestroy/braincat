@@ -56,7 +56,7 @@
                       Аудитория
                   </dt>
                   <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                      <p class="flex-auto">Врачи, психологи, педагоги, дефектологи, родители и все заинтересованные лица.</p>
+                      <p class="flex-auto">Врачи, психологи, педагоги, специалисты помогающих профессий, родители и все заинтересованные лица.</p>
                   </dd>
                 </div>
                 <div class="flex flex-col">
