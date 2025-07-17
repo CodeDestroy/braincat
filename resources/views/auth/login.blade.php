@@ -33,7 +33,7 @@
                                         type="email" 
                                         autocomplete="email" 
                                         required 
-                                        class="@error('email') is-invalid @enderror block w-full rounded-md border-0 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-800 sm:text-sm sm:leading-6">
+                                        class="@error('email') is-invalid @enderror block w-full rounded-md border-0 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -47,7 +47,7 @@
                                 <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Пароль</label>
                                 <div class="relative mt-2">
                                     <input id="password" name="password" type="password" required
-                                           class="block w-full rounded-md border-0 outline-none accent-purple-800 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-800 sm:text-sm sm:leading-6 pr-10 @error('password') border-red-500 @enderror">
+                                           class="block w-full rounded-md border-0 outline-none accent-mona-lisa-800 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-800 sm:text-sm sm:leading-6 pr-10 @error('password') border-red-500 @enderror">
                                     <button id="showPass" onclick="showPassFunc()" type="button" class="absolute inset-y-0 right-0 flex items-center px-2.5 text-gray-500 hover:text-gray-700" style="right: 5px"> 
                                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"></path>
@@ -94,7 +94,7 @@
                             
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
-                                    <input id="remember" name="remember" type="checkbox" class="h-4 w-4 rounded accent-purple-800 border-gray-300 text-purple-800 focus:ring-purple-800" {{ old('remember') ? 'checked' : '' }}>
+                                    <input id="remember" name="remember" type="checkbox" class="h-4 w-4 rounded accent-mona-lisa-800 border-gray-300 text-mona-lisa-800 focus:ring-mona-lisa-800" {{ old('remember') ? 'checked' : '' }}>
                                     <label for="remember" class="ml-3 block text-sm leading-6 text-gray-700">{{ __('Запомнить меня') }}</label>
                                 </div>
             

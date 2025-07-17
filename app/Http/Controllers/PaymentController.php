@@ -348,7 +348,7 @@ class PaymentController extends Controller
                     $actualPrice = 1000;
                     break;
                 case 13:
-                    $actualPrice = 800;
+                    $actualPrice = 500;
                     break;
                 case 16:
                     $actualPrice = 2500;
@@ -365,7 +365,12 @@ class PaymentController extends Controller
                 case 20:
                     $actualPrice = 0;
                     break;
-
+                case 21:
+                    $actulPrice = 0;
+                    break;    
+                case 22:
+                    $actualPrice = 2500;
+                    break;
             }
             
         if ($courseRegistration) {
