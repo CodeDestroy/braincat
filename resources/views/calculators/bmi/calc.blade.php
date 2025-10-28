@@ -34,7 +34,7 @@
             <input type="number" step="0.1" name="weight" required class="block w-full rounded-md border-0 outline-none accent-mona-lisa-600 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-mona-lisa-600 sm:text-sm sm:leading-6 ">
         </div>
 
-        <button type="submit" class="w-full bg-mona-lisa-600 hover:bg-mona-lisa-700 text-white rounded-lg py-2">
+        <button type="submit" class="mt-2 w-full bg-mona-lisa-600 hover:bg-mona-lisa-700 text-white rounded-lg py-2">
             Рассчитать
         </button>
     </form>
