@@ -8,10 +8,10 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-/* Route::get('/vizel', function () {
-    return view('home');
+use App\Http\Controllers\AnthropometryController;
 
-}); */
+Route::get('/calc/bmi', [AnthropometryController::class, 'index'])->name('calc.form');
+Route::post('/calculate', [AnthropometryController::class, 'calculate'])->name('calc.calculate');
 
 Auth::routes(['verify' => true]);
 Route::fallback(function () {
