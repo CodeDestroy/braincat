@@ -5,9 +5,20 @@
 <div class="bg-gray-100 flex justify-center items-center h-screen">
 
     <div class="bg-white p-8 rounded-2xl shadow-md w-96 space-y-3">
-        <h2 class="text-xl font-semibold text-center mb-4">Результаты</h2>
+        <h3 class="text-xl font-semibold text-center mb-4">Введённые данные:</h3>
+        <p><strong>Дата рождения:</strong> {{ $birthDate }}</p>
+        <p><strong>Дата расчёта:</strong> {{ $calcDate }}</p>
+        <p><strong>Пол:</strong> {{ $sex === 'male' ? 'Мужской' : 'Женский' }}</p>
+        <p><strong>Рост:</strong> {{ $height }} см</p>
+        <p><strong>Вес:</strong> {{ $weight }} кг</p>
+
+        <h3 class="text-xl font-semibold text-center mb-4">Результаты</h3>
 
         <p><strong>Возраст (в мес.):</strong> {{ $ageMonths }}</p>
+        <p>
+            <strong>Возраст (лет + месяцев):</strong>
+            {{ $ageYears }} лет {{ $ageMonthsRemain }} мес
+        </p>
         <p><strong>Height age:</strong> {{ $heightAge }} лет</p>
         <p><strong>Height SDS:</strong> {{ $heightSDS }}</p>
         <p><strong>BMI:</strong> {{ $bmi }}</p>

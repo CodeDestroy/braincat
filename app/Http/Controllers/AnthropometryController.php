@@ -23,6 +23,12 @@ class AnthropometryController extends Controller
         ]);
 
         $ageMonths = $this->getAgeInMonths($request->birth_date, $request->calc_date);
+        $ageYears = floor($ageMonths / 12);
+        $ageMonthsRemain = round($ageMonths - $ageYears * 12);
+        $birthDateFormatted = date('d.m.Y', strtotime($request->birth_date));
+        $calcDateFormatted  = date('d.m.Y', strtotime($request->calc_date));
+
+
         $sexCode = $request->sex === 'male' ? 1 : 2;
 
         $hfaFile = storage_path('app/public/anthropometry_data/height_for_age_2-20.csv');
@@ -94,15 +100,32 @@ class AnthropometryController extends Controller
         $bmiSDS_forHeightAge = $this->calcSds($bmi, $Lb2, $Mb2, $Sb2);
 
         
-
         return view('calculators.bmi.result', [
             'ageMonths'           => round($ageMonths, 1),
+            'ageYears'            => $ageYears,
+            'ageMonthsRemain'     => $ageMonthsRemain,
+
+            'birthDate'           => $birthDateFormatted,
+            'calcDate'            => $calcDateFormatted,
+            'sex'                 => $request->sex,
+            'height'              => $request->height,
+            'weight'              => $request->weight,
+
             'heightAge'           => round($heightAgeYears, 2),
             'heightSDS'           => round($heightSDS, 2),
             'bmi'                 => round($bmi, 2),
             'bmiSDS'              => round($bmiSDS, 2),
             'bmiSDS_forHeightAge' => round($bmiSDS_forHeightAge, 2),
         ]);
+
+        /* return view('calculators.bmi.result', [
+            'ageMonths'           => round($ageMonths, 1),
+            'heightAge'           => round($heightAgeYears, 2),
+            'heightSDS'           => round($heightSDS, 2),
+            'bmi'                 => round($bmi, 2),
+            'bmiSDS'              => round($bmiSDS, 2),
+            'bmiSDS_forHeightAge' => round($bmiSDS_forHeightAge, 2),
+        ]); */
     }
 
     // Оставляем calcSds и getAgeInMonths как в предыдущей версии
