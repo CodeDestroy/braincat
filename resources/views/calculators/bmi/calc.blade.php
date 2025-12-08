@@ -22,7 +22,7 @@
         <h3 class="text-lg font-semibold mt-4">Показания:</h3>
         <div id="measurementsContainer" class="space-y-2">
             <div class="measurement flex space-x-2">
-                <input type="date" name="measurements[0][date]" required class="rounded-md border-0 py-1 px-2 shadow-sm ring-1 ring-gray-300">
+                <input id='startDatePicker' type="date" name="measurements[0][date]" required class="rounded-md border-0 py-1 px-2 shadow-sm ring-1 ring-gray-300">
                 <input type="number" step="0.1" name="measurements[0][height]" placeholder="Рост (см)" required class="rounded-md border-0 py-1 px-2 shadow-sm ring-1 ring-gray-300">
                 <input type="number" step="0.1" name="measurements[0][weight]" placeholder="Вес (кг)" required class="rounded-md border-0 py-1 px-2 shadow-sm ring-1 ring-gray-300">
                 <button type="button" class="removeBtn text-red-900 px-2 rounded">X</button>
@@ -38,6 +38,8 @@
 </div>
 
 <script>
+const startDatePicker = document.getElementById('startDatePicker')
+startDatePicker.valueAsDate = new Date()
 let counter = 1;
 document.getElementById('addMeasurement').addEventListener('click', function () {
     const container = document.getElementById('measurementsContainer');
