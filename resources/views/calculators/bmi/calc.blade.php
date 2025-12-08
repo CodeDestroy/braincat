@@ -49,7 +49,7 @@ document.getElementById('addMeasurement').addEventListener('click', function () 
         <input type="date" name="measurements[${counter}][date]" required class="rounded-md border-0 py-1 px-2 shadow-sm ring-1 ring-gray-300">
         <input type="number" step="0.1" name="measurements[${counter}][height]" placeholder="Рост (см)" required class="rounded-md border-0 py-1 px-2 shadow-sm ring-1 ring-gray-300">
         <input type="number" step="0.1" name="measurements[${counter}][weight]" placeholder="Вес (кг)" required class="rounded-md border-0 py-1 px-2 shadow-sm ring-1 ring-gray-300">
-        <button type="button" class="removeBtn bg-red-500 text-white px-2 rounded">×</button>
+        <button type="button" class="removeBtn text-red-900 px-2 rounded">X</button>
     `;
     container.appendChild(div);
     counter++;
