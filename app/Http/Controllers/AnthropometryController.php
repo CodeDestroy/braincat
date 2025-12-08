@@ -72,9 +72,9 @@ class AnthropometryController extends Controller
             $wflSDS = $this->calcSds($weight, $L_wfl, $M_wfl, $S_wfl);
             $percWFL = $this->zToPercentile($wflSDS);
 
-            $stunting = $lfaSDS < -2 ? 'Задержка роста' : 'Норма';
-            $wasting  = $wflSDS < -2 ? 'Атрофия'  : 'Норма';
-            $underweight = ($wflSDS < -2 && $lfaSDS < -2) ? 'Недовес' : 'Норма';
+            $stunting = $lfaSDS < -2 ? 'Задержка роста' : 'Нет';
+            /* $wasting = $bmiSDS < -2 ? 'Атрофия' : 'Нет'; */
+            $underweight = ($wflSDS < -2 && $lfaSDS < -2) ? 'Недовес' : 'Нет';
             $overweightRisk = $wflSDS > 1 ? 'Повышен' : 'Нет';
             $harmony = abs($wflSDS - $lfaSDS) <= 1 ? 'Гармоничный' : 'Дисгармоничный';
 
@@ -92,7 +92,7 @@ class AnthropometryController extends Controller
                 'percLFA' => $percLFA,
                 'percWFL' => $percWFL,
                 'stunting' => $stunting,
-                'wasting' => $wasting,
+                /* 'wasting' => $wasting, */
                 'underweight' => $underweight,
                 'overweightRisk' => $overweightRisk,
                 'harmony' => $harmony,
@@ -138,6 +138,16 @@ class AnthropometryController extends Controller
         // WFL для графика строим через weight-for-age
         $wflRows = $wfaRows->sortBy('Agemos')->values();
 
+        // Дополнительные показатели как у младших 0–5 лет
+        $stunting = $heightSDS < -2 ? 'Да' : 'Нет';
+        //$wasting = $bmiSDS < -2 ? 'Атрофия' : 'Нет';
+        $underweight = $bmiSDS < -2 ? 'Недовес' : 'Нет';
+        $overweightRisk = $bmiSDS > 1 ? 'Повышен' : 'Нет';
+        $harmony = abs($bmiSDS - $heightSDS) <= 1 ? 'Гармоничный' : 'Дисгармоничный';
+        $percHFA = $this->zToPercentile($heightSDS);
+        $percBMI = $this->zToPercentile($bmiSDS);
+
+
         return view('calculators.bmi.result', [
             'birthDate' => $birthDateFormatted,
             'calcDate' => $calcDateFormatted,
@@ -158,6 +168,15 @@ class AnthropometryController extends Controller
             'measurements' => $measurements,
             'hfaRows' => $hfaRows,
             'wflRows' => $wflRows,
+            'stunting' => $stunting,
+            /* 'wasting' => $wasting, */
+            'underweight' => $underweight,
+            'overweightRisk' => $overweightRisk,
+            'harmony' => $harmony,
+            'percHFA' => $percHFA,
+            'percBMI' => $percBMI,
+            'bmiRows' => $bmiRows
+
         ]);
     }
 
