@@ -3,137 +3,168 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DateTime;
-// ... (namespace и use остаются как у тебя)
 
 class AnthropometryController extends Controller
 {
-    // ... index() и другие методы остаются
     public function index()
     {
         return view('calculators.bmi.calc');
     }
+
     public function calculate(Request $request)
     {
         $request->validate([
             'birth_date' => 'required|date',
-            'calc_date'  => 'required|date|after:birth_date',
-            'sex'        => 'required|in:male,female',
-            'height'     => 'required|numeric|min:30|max:250',
-            'weight'     => 'required|numeric|min:1|max:300',
+            'sex' => 'required|in:male,female',
+            'measurements' => 'required|array|min:1',
+            'measurements.*.date' => 'required|date|after_or_equal:birth_date',
+            'measurements.*.height' => 'required|numeric|min:30|max:250',
+            'measurements.*.weight' => 'required|numeric|min:1|max:300',
         ]);
 
-        $ageMonths = $this->getAgeInMonths($request->birth_date, $request->calc_date);
-        $ageYears = floor($ageMonths / 12);
-        $ageMonthsRemain = round($ageMonths - $ageYears * 12);
+        $measurements = collect($request->measurements)->sortBy(fn($m) => $m['date'])->values();
+
         $birthDateFormatted = date('d.m.Y', strtotime($request->birth_date));
-        $calcDateFormatted  = date('d.m.Y', strtotime($request->calc_date));
-
-
         $sexCode = $request->sex === 'male' ? 1 : 2;
 
+        $velocities = [];
+        for ($i = 1; $i < $measurements->count(); $i++) {
+            $prev = $measurements[$i-1];
+            $curr = $measurements[$i];
+            $monthsDiff = $this->getAgeInMonths($prev['date'], $curr['date']);
+            if ($monthsDiff > 0) {
+                $velocities[] = [
+                    'date' => $curr['date'],
+                    'heightVel' => round(($curr['height'] - $prev['height']) / $monthsDiff, 2),
+                    'weightVel' => round(($curr['weight'] - $prev['weight']) / $monthsDiff, 2),
+                ];
+            }
+        }
+
+        $last = $measurements->last();
+        $calcDateFormatted = date('d.m.Y', strtotime($last['date']));
+        $height = (float)$last['height'];
+        $weight = (float)$last['weight'];
+
+        $ageMonths = $this->getAgeInMonths($request->birth_date, $last['date']);
+        $ageYears = floor($ageMonths / 12);
+        $ageMonthsRemain = round($ageMonths - $ageYears * 12);
+
+        // Дети до 61 месяца — WHO 0–5 лет
+        if ($ageMonths < 61) {
+            $lfaFile = $this->whoFile('LFA', $request->sex, $ageMonths);
+            $wflFile = $this->whoFile('WFL', $request->sex, $ageMonths);
+
+            $lfaRows = collect($this->loadWhoCsv($lfaFile));
+            $wflRows = collect($this->loadWhoCsv($wflFile));
+
+            $lfaRow = $lfaRows->sortBy(fn($r) => abs((float)$r['Agemos'] - $ageMonths))->first();
+            $L_lfa = (float)$lfaRow['L'];
+            $M_lfa = (float)$lfaRow['M'];
+            $S_lfa = (float)$lfaRow['S'];
+            $lfaSDS = $this->calcSds($height, $L_lfa, $M_lfa, $S_lfa);
+            $percLFA = $this->zToPercentile($lfaSDS);
+
+            $closestWfl = $wflRows->sortBy(fn($r) => abs((float)$r['Height'] - $height))->first();
+            $L_wfl = (float)$closestWfl['L'];
+            $M_wfl = (float)$closestWfl['M'];
+            $S_wfl = (float)$closestWfl['S'];
+            $wflSDS = $this->calcSds($weight, $L_wfl, $M_wfl, $S_wfl);
+            $percWFL = $this->zToPercentile($wflSDS);
+
+            $stunting = $lfaSDS < -2 ? 'Задержка роста' : 'Норма';
+            $wasting  = $wflSDS < -2 ? 'Атрофия'  : 'Норма';
+            $underweight = ($wflSDS < -2 && $lfaSDS < -2) ? 'Недовес' : 'Норма';
+            $overweightRisk = $wflSDS > 1 ? 'Повышен' : 'Нет';
+            $harmony = abs($wflSDS - $lfaSDS) <= 1 ? 'Гармоничный' : 'Дисгармоничный';
+
+            return view('calculators.bmi.result', [
+                'birthDate' => $birthDateFormatted,
+                'calcDate' => $calcDateFormatted,
+                'sex' => $request->sex,
+                'height' => $height,
+                'weight' => $weight,
+                'ageMonths' => round($ageMonths, 1),
+                'ageYears' => $ageYears,
+                'ageMonthsRemain' => $ageMonthsRemain,
+                'lfaSDS' => round($lfaSDS, 2),
+                'wflSDS' => round($wflSDS, 2),
+                'percLFA' => $percLFA,
+                'percWFL' => $percWFL,
+                'stunting' => $stunting,
+                'wasting' => $wasting,
+                'underweight' => $underweight,
+                'overweightRisk' => $overweightRisk,
+                'harmony' => $harmony,
+                'heightVelocity' => end($velocities)['heightVel'] ?? 'N/A',
+                'weightVelocity' => end($velocities)['weightVel'] ?? 'N/A',
+                'history' => $velocities,
+                'method' => 'WHO 0–5 лет',
+                'measurements' => $measurements,
+                'hfaRows' => $lfaRows,
+                'wflRows' => $wflRows,
+            ]);
+        }
+
+        // Дети старше 5 лет
         $hfaFile = storage_path('app/public/anthropometry_data/height_for_age_2-20.csv');
         $bmiFile = storage_path('app/public/anthropometry_data/bmi_for-age_2-20.csv');
+        $wfaFile = storage_path('app/public/anthropometry_data/weight_for_age_2-20.csv');
 
-        // Загружаем CSV — теперь loadWhoCsv делает нормализацию заголовков
-        $hfaRows = collect($this->loadWhoCsv($hfaFile));
-        $bmiRows = collect($this->loadWhoCsv($bmiFile));
+        $hfaRows = collect($this->loadWhoCsv($hfaFile))->where('Sex', (string)$sexCode)->values();
+        $bmiRows = collect($this->loadWhoCsv($bmiFile))->where('Sex', (string)$sexCode)->values();
+        $wfaRows = collect($this->loadWhoCsv($wfaFile))->where('Sex', (string)$sexCode)->values();
 
-        // Проверка: после загрузки должны быть колонки Sex и Agemos и L/M/S
-        if ($hfaRows->isEmpty() || $bmiRows->isEmpty()) {
-            return back()->withErrors(['csv' => 'Не удалось загрузить CSV — файл пустой или неправильный формат.']);
-        }
-
-        // Проверяем наличие ожидаемых ключей в первой строке (без ошибки PHP)
-        $required = ['Sex','Agemos','L','M','S'];
-        $firstHfaKeys = array_keys($hfaRows->first());
-        foreach ($required as $k) {
-            if (!in_array($k, $firstHfaKeys, true)) {
-                return back()->withErrors(['csv' => "В CSV для роста отсутствует колонка «{$k}». Проверьте заголовок файла."]);
-            }
-        }
-        $firstBmiKeys = array_keys($bmiRows->first());
-        foreach ($required as $k) {
-            if (!in_array($k, $firstBmiKeys, true)) {
-                return back()->withErrors(['csv' => "В CSV для BMI отсутствует колонка «{$k}». Проверьте заголовок файла."]);
-            }
-        }
-
-        // Фильтруем по полу (Sex) — теперь безопасно, т.к. ключ гарантирован
-        $hfa = $hfaRows->where('Sex', (string)$sexCode)->values();
-        $bmiData = $bmiRows->where('Sex', (string)$sexCode)->values();
-
-        if ($hfa->isEmpty() || $bmiData->isEmpty()) {
-            return back()->withErrors(['csv' => 'Нет строк для выбранного пола (Sex) в CSV. Проверьте значения в колонке Sex.']);
-        }
-
-        // Находим ближайшую строку по возрасту
-        $hfaRow = $hfa->sortBy(fn($r) => abs((float)$r['Agemos'] - $ageMonths))->first();
-        $bmiRow = $bmiData->sortBy(fn($r) => abs((float)$r['Agemos'] - $ageMonths))->first();
-
-        // Извлекаем LMS
-        $Lh = (float)$hfaRow['L'];
-        $Mh = (float)$hfaRow['M'];
-        $Sh = (float)$hfaRow['S'];
-
-        $Lb = (float)$bmiRow['L'];
-        $Mb = (float)$bmiRow['M'];
-        $Sb = (float)$bmiRow['S'];
-
-        $height = (float)$request->height;
-        $weight = (float)$request->weight;
-
-        $heightSDS = $this->calcSds($height, $Lh, $Mh, $Sh);
+        $hfaRow = $hfaRows->sortBy(fn($r) => abs((float)$r['Agemos'] - $ageMonths))->first();
+        $heightSDS = $this->calcSds($height, (float)$hfaRow['L'], (float)$hfaRow['M'], (float)$hfaRow['S']);
 
         $bmi = $weight / pow($height / 100, 2);
-        $bmiSDS = $this->calcSds($bmi, $Lb, $Mb, $Sb);
+        $bmiRow = $bmiRows->sortBy(fn($r) => abs((float)$r['Agemos'] - $ageMonths))->first();
+        $bmiSDS = $this->calcSds($bmi, (float)$bmiRow['L'], (float)$bmiRow['M'], (float)$bmiRow['S']);
 
-        // Height age: находим возраст, где M(height) ближе всего к росту
-        $closestHeight = $hfa->sortBy(fn($r) => abs((float)$r['M'] - $height))->first();
-        $heightAgeMonths = (float)$closestHeight['Agemos'];
-        $heightAgeYears = $heightAgeMonths / 12;
+        $heightAgeMonths = null;
+        $bmiSDS_forHeightAge = null;
+        $closestHeight = $hfaRows->sortBy(fn($r) => abs((float)$r['M'] - $height))->first();
+        if ($closestHeight) {
+            $heightAgeMonths = (float)$closestHeight['Agemos'];
 
-        // BMI SDS for Height age — находим LMS из BMI таблицы для этого heightAgeMonths
-        $bmiForHeightAgeRow = $bmiData->sortBy(fn($r) => abs((float)$r['Agemos'] - $heightAgeMonths))->first();
-        $Lb2 = (float)$bmiForHeightAgeRow['L'];
-        $Mb2 = (float)$bmiForHeightAgeRow['M'];
-        $Sb2 = (float)$bmiForHeightAgeRow['S'];
-        $bmiSDS_forHeightAge = $this->calcSds($bmi, $Lb2, $Mb2, $Sb2);
+            $bmiForHeightAgeRow = $bmiRows->sortBy(fn($r) => abs((float)$r['Agemos'] - $heightAgeMonths))->first();
+            if ($bmiForHeightAgeRow) {
+                $bmiSDS_forHeightAge = $this->calcSds($bmi, (float)$bmiForHeightAgeRow['L'], (float)$bmiForHeightAgeRow['M'], (float)$bmiForHeightAgeRow['S']);
+            }
+        }
+        $heightAge = $heightAgeMonths ? round($heightAgeMonths / 12, 2) : null;
 
-        
+        // WFL для графика строим через weight-for-age
+        $wflRows = $wfaRows->sortBy('Agemos')->values();
+
         return view('calculators.bmi.result', [
-            'ageMonths'           => round($ageMonths, 1),
-            'ageYears'            => $ageYears,
-            'ageMonthsRemain'     => $ageMonthsRemain,
-
-            'birthDate'           => $birthDateFormatted,
-            'calcDate'            => $calcDateFormatted,
-            'sex'                 => $request->sex,
-            'height'              => $request->height,
-            'weight'              => $request->weight,
-
-            'heightAge'           => round($heightAgeYears, 2),
-            'heightSDS'           => round($heightSDS, 2),
-            'bmi'                 => round($bmi, 2),
-            'bmiSDS'              => round($bmiSDS, 2),
-            'bmiSDS_forHeightAge' => round($bmiSDS_forHeightAge, 2),
+            'birthDate' => $birthDateFormatted,
+            'calcDate' => $calcDateFormatted,
+            'sex' => $request->sex,
+            'height' => $height,
+            'weight' => $weight,
+            'ageMonths' => round($ageMonths, 1),
+            'ageYears' => $ageYears,
+            'ageMonthsRemain' => $ageMonthsRemain,
+            'heightSDS' => round($heightSDS, 2),
+            'bmi' => round($bmi, 2),
+            'bmiSDS' => round($bmiSDS, 2),
+            'bmiSDS_forHeightAge' => $bmiSDS_forHeightAge ? round($bmiSDS_forHeightAge, 2) : null,
+            'heightVelocity' => end($velocities)['heightVel'] ?? 'N/A',
+            'weightVelocity' => end($velocities)['weightVel'] ?? 'N/A',
+            'history' => $velocities,
+            'heightAge' => $heightAge,
+            'measurements' => $measurements,
+            'hfaRows' => $hfaRows,
+            'wflRows' => $wflRows,
         ]);
-
-        /* return view('calculators.bmi.result', [
-            'ageMonths'           => round($ageMonths, 1),
-            'heightAge'           => round($heightAgeYears, 2),
-            'heightSDS'           => round($heightSDS, 2),
-            'bmi'                 => round($bmi, 2),
-            'bmiSDS'              => round($bmiSDS, 2),
-            'bmiSDS_forHeightAge' => round($bmiSDS_forHeightAge, 2),
-        ]); */
     }
 
-    // Оставляем calcSds и getAgeInMonths как в предыдущей версии
+
     private function calcSds(float $x, float $L, float $M, float $S): float
     {
-        if ($L == 0.0) {
-            return log($x / $M) / $S;
-        }
+        if ($L == 0.0) return log($x / $M) / $S;
         return (pow($x / $M, $L) - 1) / ($L * $S);
     }
 
@@ -145,86 +176,70 @@ class AnthropometryController extends Controller
         return $interval->y * 12 + $interval->m + $interval->d / 30.4375;
     }
 
-    /**
-     * Надёжный загрузчик CSV:
-     * - Автоопределяет разделитель (\t, ; или ,)
-     * - Удаляет BOM, пробелы и непечатные символы из заголовков
-     * - Нормализует имена заголовков (пример: " sex " -> "Sex")
-     */
+    private function zToPercentile(float $z): float
+    {
+        $cdf = 0.5 * (1 + $this->erf($z / sqrt(2)));
+        return round(max(0, min(1, $cdf)) * 100, 1);
+    }
+
+    private function erf(float $x): float
+    {
+        $sign = $x >= 0 ? 1 : -1;
+        $x = abs($x);
+        $a1 = 0.254829592; $a2 = -0.284496736; $a3 = 1.421413741;
+        $a4 = -1.453152027; $a5 = 1.061405429; $p = 0.3275911;
+        $t = 1.0 / (1.0 + $p * $x);
+        $y = 1.0 - (((((($a5*$t+$a4)*$t+$a3)*$t+$a2)*$t+$a1)*$t) * exp(-$x*$x));
+        return $sign * $y;
+    }
+
     private function loadWhoCsv(string $path): array
     {
         $data = [];
-        if (!file_exists($path)) {
-            return $data;
-        }
-
+        if (!file_exists($path)) return $data;
         $handle = fopen($path, 'r');
-        if ($handle === false) return $data;
-
-        // Прочитаем первую строку отдельно для детекции разделителя
+        if (!$handle) return $data;
         $firstLine = fgets($handle);
-        if ($firstLine === false) {
-            fclose($handle);
-            return $data;
-        }
-
-        // Определяем разделитель: таб, ; или ,
-        $delim = "\t";
-        if (substr_count($firstLine, ";") > substr_count($firstLine, "\t")) {
-            $delim = ";";
-        } elseif (substr_count($firstLine, ",") > substr_count($firstLine, "\t")) {
-            $delim = ",";
-        }
-
-        // Вернёмся в начало файла и используем fgetcsv с найденным разделителем
+        if ($firstLine === false) { fclose($handle); return $data; }
+        $delim = substr_count($firstLine, ";") > substr_count($firstLine, "\t") ? ";" : (substr_count($firstLine, ",") > substr_count($firstLine, "\t") ? "," : "\t");
         rewind($handle);
-
         $header = null;
         while (($row = fgetcsv($handle, 0, $delim)) !== false) {
-            // Некоторые строки могут быть пустыми — пропускаем
             if ($row === [null] || count($row) === 0) continue;
-
-            // Преобразуем значения (замена запятой на точку для чисел)
-            $row = array_map(function ($val) {
-                if ($val === null) return $val;
-                $val = trim($val);
-                // Удаляем BOM если есть
-                $val = preg_replace('/^\xEF\xBB\xBF/', '', $val);
-                // Удаляем множественные пробелы внутри
-                $val = preg_replace('/\s+/', ' ', $val);
-                // Заменяем запятую на точку (для чисел с запятой)
-                $val = str_replace(',', '.', $val);
-                return $val;
-            }, $row);
-
-            if (!$header) {
-                // Нормализуем имена заголовков: удаляем непечатные символы и пробелы, делаем ucfirst
-                $header = array_map(function ($h) {
-                    $h = trim((string)$h);
-                    $h = preg_replace('/^\xEF\xBB\xBF/', '', $h); // BOM
-                    // Удаляем непечатные символы
-                    $h = preg_replace('/[^\PC\s]/u', '', $h);
-                    // Удаляем лишние пробелы и символы кроме букв/цифр/_
-                    $h = preg_replace('/[^\p{L}\p{N}_]+/u', '', $h);
-                    $h = ucfirst(strtolower($h));
-                    return $h;
-                }, $row);
+            $row = array_map(fn($v) => str_replace(',', '.', trim($v)), $row);
+            if (!$header) { 
+                $header = array_map(fn($h) => ucfirst(strtolower(trim($h))), $row);
                 continue;
             }
-
-            // Если строка короче заголовка — дополним пустыми
-            if (count($row) < count($header)) {
-                $row = array_pad($row, count($header), null);
-            }
-
-            // Сопоставляем
+            if (count($row) < count($header)) $row = array_pad($row, count($header), null);
             $assoc = array_combine($header, $row);
-            if ($assoc !== false) {
-                $data[] = $assoc;
-            }
+            if ($assoc !== false) $data[] = $assoc;
         }
-
         fclose($handle);
         return $data;
     }
+
+    private function whoFile(string $type, string $sex, float $ageMonths): string
+    {
+        $sexKey = $sex === 'male' ? 'boys' : 'girls';
+        if ($ageMonths <= 60) return match($type){
+                'LFA' => storage_path("app/public/anthropometry_data/tab_lhfa_{$sexKey}_p_0_5_new.csv"),
+                'WFL' => storage_path("app/public/anthropometry_data/tab_wfl_{$sexKey}_p_0_5_new.csv"),
+                default => '',
+            };
+        return '';
+        /* if ($ageMonths < 24) return match($type){
+            'LFA' => storage_path("app/public/anthropometry_data/tab_lhfa_{$sexKey}_p_0_2.csv"),
+            'WFL' => storage_path("app/public/anthropometry_data/tab_wfl_{$sexKey}_p_0_2.csv"),
+            default => '',
+        };
+        if ($ageMonths >=24 && $ageMonths <60) return match($type){
+            'LFA' => storage_path("app/public/anthropometry_data/tab_lhfa_{$sexKey}_p_2_5.csv"),
+            'WFL' => storage_path("app/public/anthropometry_data/tab_wfh_{$sexKey}_p_2_5.csv"),
+            default => '',
+        };
+        return ''; */
+    }
+    
+    
 }
