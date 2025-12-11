@@ -18,11 +18,10 @@
             <p><strong>WFL/WFH SDS:</strong> {{ $wflSDS }}</p>
             <p><strong>LFA перцентиль:</strong> {{ $percLFA }}%</p>
             <p><strong>WFL/WFH перцентиль:</strong> {{ $percWFL }}%</p>
-            <p><strong>Задержка роста:</strong> {{ $stunting }}</p>
-            <!-- <p><strong>Атрофия:</strong> </p> -->
+            <!-- <p><strong>Задержка роста:</strong> {{ $stunting }}</p>
             <p><strong>Недовес:</strong> {{ $underweight }}</p>
             <p><strong>Риск ожирения:</strong> {{ $overweightRisk }}</p>
-            <p><strong>Пропорциональность развития:</strong> {{ $harmony }}</p>
+            <p><strong>Пропорциональность развития:</strong> {{ $harmony }}</p> -->
         @else
             <p><strong>Height age:</strong> {{ $heightAge }} лет</p>
             <p><strong>Height SDS:</strong> {{ $heightSDS }}</p>
@@ -33,16 +32,15 @@
             <p><strong>BMI SDS (for Height age):</strong> {{ $bmiSDS_forHeightAge ?? 'N/A' }}</p>
             <p><strong>BMI-for-age перцентиль:</strong> {{ $percBMI ?? 'N/A' }}%</p>
 
-            <p><strong>Задержка роста:</strong> {{ $stunting }}</p>
-            <!-- <p><strong>Атрофия:</strong> </p> -->
+            <!-- <p><strong>Задержка роста:</strong> {{ $stunting }}</p>
             <p><strong>Недовес:</strong> {{ $underweight }}</p>
             <p><strong>Риск ожирения:</strong> {{ $overweightRisk }}</p>
-            <p><strong>Пропорциональность развития:</strong> {{ $harmony }}</p>
+            <p><strong>Пропорциональность развития:</strong> {{ $harmony }}</p> -->
         @endif
 
 
-        <h3 class="text-xl font-semibold text-center mb-4">Скорость прироста роста и веса</h3>
-        <canvas id="historyChart" width="400" height="200"></canvas>
+        <!-- <h3 class="text-xl font-semibold text-center mb-4">Скорость прироста роста и веса</h3>
+        <canvas id="historyChart" width="400" height="200"></canvas> -->
 
         <h3 class="text-xl font-semibold text-center mb-4">График роста к возрасту (Height-for-Age)</h3>
         <canvas id="heightAgeChart" width="400" height="200"></canvas>
@@ -51,8 +49,8 @@
             <h3 class="text-xl font-semibold text-center mb-4">График веса к росту (Weight-for-Height)</h3>
             <canvas id="weightHeightChart" width="400" height="200"></canvas>
         @else
-            <h3 class="text-xl font-semibold text-center mb-4">График BMI к росту (BMI-for-Height)</h3>
-            <canvas id="bmiHeightChart" width="400" height="200"></canvas>
+            <!-- <h3 class="text-xl font-semibold text-center mb-4">График BMI к росту (BMI-for-Height)</h3>
+            <canvas id="bmiHeightChart" width="400" height="200"></canvas> -->
 
             <h3 class="text-xl font-semibold text-center mb-4">График BMI к возрасту (BMI-for-Age)</h3>
             <canvas id="bmiAgeChart" width="400" height="200"></canvas>
@@ -121,7 +119,7 @@ function getPercentileAtAge(age, percArray) {
 </script>
 
 <script src="/js/chart.js"></script>
-<script>
+<!-- <script>
 const historyData = @json($history ?? []);
 const labelsCtxHist = historyData.map(d => d.date);
 const heightVelData = historyData.map(d => d.heightVel);
@@ -144,6 +142,10 @@ new Chart(ctxHist, {
         scales: { x: { title: { display: true, text: 'Дата' } }, y: { title: { display: true, text: 'Прирост' } } }
     }
 });
+
+</script> -->
+<script>
+// ---------- HEIGHT-FOR-AGE (перцентили + заливки как BMI-график) ----------
 const sdsColors = {
     "-3": "red",
     "-2": "orange",
@@ -153,46 +155,9 @@ const sdsColors = {
      "2": "cyan",
      "3": "purple"
 };
-</script>
-<script>
-// ---------- HEIGHT-FOR-AGE (перцентили + заливки как BMI-график) ----------
-
 // WHO таблица для Height-for-Age
 const hfaRows2 = @json($hfaRows ?? []);
 
-// вычисление перцентиля по LMS
-/* function hfaPercentile(r, p) {
-    const L = parseFloat(r.L);
-    const M = parseFloat(r.M);
-    const S = parseFloat(r.S);
-
-    // конвертация перцентиля → SDS
-    // P3=−1.88079; P5=−1.64485; P10=−1.28155; P25=−0.6745; P50=0; P75=0.6745; ...
-    const z = {
-        3:  -1.88079,
-        5:  -1.64485,
-        10: -1.28155,
-        25: -0.67449,
-        50:  0,
-        75:  0.67449,
-        90:  1.28155,
-        95:  1.64485,
-        97:  1.88079
-    }[p];
-
-    if (L === 0) return M * Math.exp(S * z);
-    return M * Math.pow(1 + L * S * z, 1 / L);
-} */
-
-// строим массивы данных по перцентилям
-/* function buildHfaPerc_old(p) {
-    return hfaRows2.map(r => {
-        console.log(r)
-        return ({
-        x: parseFloat(r.Agemos),
-        y: hfaPercentile(r, p)
-    })});
-} */
 function buildHfaPerc(key) {
     return hfaRows2.map(r => {
         return ({
@@ -342,7 +307,7 @@ new Chart(document.getElementById('heightAgeChart'), {
 });
 </script>
 
-<script>
+<!-- <script>
 // --- Вес-к-росту ---
 
 const wflRows = @json($wflRows ?? []);   // WHO таблица WFL/WFH
@@ -409,7 +374,7 @@ new Chart(document.getElementById('weightHeightChart'), {
         }
     }
 });
-</script>
+</script> -->
 <script>
 // --- BMI-к-росту график ---
 const bmiData = @json($measurements ?? []);
