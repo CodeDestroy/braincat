@@ -7,7 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'ученыйкот.рф: курсы и вебинары от специалистов') }}</title>
+
+    <meta
+        name="description"
+        content="Образовательная платформа с курсами, вебинарами и персональными консультациями по медицине, психологии, логопедии и педагогике. Материалы подготовлены профильными специалистами и предназначены для обучения врачей, преподавателей, студентов и пациентов."
+    />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -52,7 +57,7 @@
                 {{-- Логотип --}}
                 <a href="{{ url('/') }}" class="m-1.5 p-1.5 border-transparent focus:border-transparent focus:ring-0">
                     <span class="sr-only">Ученый кот</span>
-                    <img class="h-12 sm:h-14 w-auto" src="{{ asset('img/braincat_logo.svg') }}" alt="">
+                    <img class="h-12 sm:h-14 w-auto" src="{{ asset('img/braincat_logo_v4_curves.svg') }}" alt="">
                 </a>
                 <div class="flex">
                     <a href="https://vk.com/brain_cat" class="hidden sm:block px-1 pt-2.5 border-transparent focus:border-transparent focus:ring-0">
@@ -245,7 +250,7 @@
                     <div class="flex items-center justify-between">
                     <a href="/" class="-m-1.5 p-1.5">
                         <span class="sr-only">Учёный кот</span>
-                        <img class="h-20 w-auto" src="{{ asset('img/braincat_logo.jpg') }}" alt="">
+                        <img class="h-20 w-auto" src="{{ asset('img/.jpg') }}" alt="">
                     </a>
                     <button onclick="document.getElementById('mobileMenu').style.display = 'none'" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
                         <span class="sr-only">Закрыть</span>
@@ -313,7 +318,8 @@
                         <a href="{{ route('documents') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Документы</a>
                     </div>
                 </nav>
-                <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2025 АНО ДПО "ФОРУМ". Учёный кот. Все права защищены.</p>
+                <p class="mt-10 text-center text-xs leading-5 text-gray-500">Информация, размещённая на сайте, носит образовательный характер и не заменяет консультацию специалиста.</p>
+                <p class="text-center text-xs leading-5 text-gray-500">&copy; 2025-2026. Все права защищены.</p>
             </div>
             </div>
         </footer> 

@@ -34,11 +34,11 @@ const people = [
     name: 'Елена Ивановна Николаева',
     title: 'доктор биологических наук, профессор',
     eventCaption: 'Раненый целитель',
-    role: 'Вебинар. Онлайн',
+    role: 'Видеозапись вебинара',
     eventDate: '19.07.2025',
     imageUrl: 'img/nikolaeva_list.jpg',
     href: '/nikolaeva_19072025',
-    passed: false
+    passed: true
   },
   {
     name: 'Александра Артуровна Кудряшова',
@@ -112,6 +112,7 @@ const people = [
     href: '/nikolaeva_18052025',
     passed: true
   },
+  /*
   { 
     name: 'Анна Аркадьевна Норова',
     title: 'врач, руководитель',
@@ -122,6 +123,7 @@ const people = [
     href: '/norova_24042025',
     passed: true 
   },
+  */
   {
     name: 'Елена Туркенич и Наталия Наконечная',
     title: 'психологи, специалисты по детско-родительским отношениям',
