@@ -46,6 +46,11 @@ class AnthropometryController extends Controller
         $height = (float)$last['height'];
         $weight = (float)$last['weight'];
 
+        
+        $bmi = $weight / pow($height / 100, 2);
+
+        $ppt = sqrt(($height*$weight)/3600);
+
         $ageMonths = $this->getAgeInMonths($request->birth_date, $last['date']);
         $ageYears = floor($ageMonths / 12);
         $ageMonthsRemain = round($ageMonths - $ageYears * 12);
@@ -84,6 +89,8 @@ class AnthropometryController extends Controller
                 'sex' => $request->sex,
                 'height' => $height,
                 'weight' => $weight,
+                'bmi' => round($bmi, 2),
+                'ppt' => round($ppt, 2),
                 'ageMonths' => round($ageMonths, 1),
                 'ageYears' => $ageYears,
                 'ageMonthsRemain' => $ageMonthsRemain,
@@ -118,7 +125,6 @@ class AnthropometryController extends Controller
         $hfaRow = $hfaRows->sortBy(fn($r) => abs((float)$r['Agemos'] - $ageMonths))->first();
         $heightSDS = $this->calcSds($height, (float)$hfaRow['L'], (float)$hfaRow['M'], (float)$hfaRow['S']);
 
-        $bmi = $weight / pow($height / 100, 2);
         $bmiRow = $bmiRows->sortBy(fn($r) => abs((float)$r['Agemos'] - $ageMonths))->first();
         $bmiSDS = $this->calcSds($bmi, (float)$bmiRow['L'], (float)$bmiRow['M'], (float)$bmiRow['S']);
 
@@ -159,6 +165,7 @@ class AnthropometryController extends Controller
             'ageMonthsRemain' => $ageMonthsRemain,
             'heightSDS' => round($heightSDS, 2),
             'bmi' => round($bmi, 2),
+            'ppt' => round($ppt, 2),
             'bmiSDS' => round($bmiSDS, 2),
             'bmiSDS_forHeightAge' => $bmiSDS_forHeightAge ? round($bmiSDS_forHeightAge, 2) : null,
             'heightVelocity' => end($velocities)['heightVel'] ?? 'N/A',

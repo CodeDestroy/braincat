@@ -18,6 +18,8 @@
             <p><strong>WFL/WFH SDS:</strong> {{ $wflSDS }}</p>
             <p><strong>LFA перцентиль:</strong> {{ $percLFA }}%</p>
             <p><strong>WFL/WFH перцентиль:</strong> {{ $percWFL }}%</p>
+            <p><strong>ИМТ:</strong> {{ $bmi }}</p>
+            <p><strong>Площадь поверхности тела (по формуле Мостеллера):</strong> {{ $ppt }}</p>
             <!-- <p><strong>Задержка роста:</strong> {{ $stunting }}</p>
             <p><strong>Недовес:</strong> {{ $underweight }}</p>
             <p><strong>Риск ожирения:</strong> {{ $overweightRisk }}</p>
@@ -27,10 +29,12 @@
             <p><strong>Height SDS:</strong> {{ $heightSDS }}</p>
             <p><strong>Height-for-age перцентиль:</strong> {{ $percHFA ?? 'N/A' }}%</p>
 
-            <p><strong>BMI:</strong> {{ $bmi }}</p>
-            <p><strong>BMI SDS:</strong> {{ $bmiSDS }}</p>
-            <p><strong>BMI SDS (for Height age):</strong> {{ $bmiSDS_forHeightAge ?? 'N/A' }}</p>
+            <p><strong>ИМТ:</strong> {{ $bmi }}</p>
+            <p><strong>ИМТ SDS:</strong> {{ $bmiSDS }}</p>
+            <p><strong>ИМТ SDS (for Height age):</strong> {{ $bmiSDS_forHeightAge ?? 'N/A' }}</p>
             <p><strong>BMI-for-age перцентиль:</strong> {{ $percBMI ?? 'N/A' }}%</p>
+            
+            <p><strong>Площадь поверхности тела (по формуле Мостеллера):</strong> {{ $ppt }}</p>
 
             <!-- <p><strong>Задержка роста:</strong> {{ $stunting }}</p>
             <p><strong>Недовес:</strong> {{ $underweight }}</p>
